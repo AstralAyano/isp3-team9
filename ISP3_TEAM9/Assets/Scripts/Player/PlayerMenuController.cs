@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class PlayerMenuController : MonoBehaviour
 {
+
     [SerializeField] private CanvasGroup uiCanvasGroup;
     [SerializeField] private Animator playerAnimController;
     [SerializeField] private new Light2D light;
@@ -20,8 +23,7 @@ public class PlayerMenuController : MonoBehaviour
     Queue<float> smoothQueue;
     float lastSum = 0;
 
-    private bool fadeOutCG = false;
-    private float counter = 0;
+    private bool startWalking = false;
 
     public void Reset()
     {
@@ -60,20 +62,14 @@ public class PlayerMenuController : MonoBehaviour
         lastSum += newVal;
 
         light.intensity = lastSum / (float)smoothQueue.Count;
+    }
 
-        if (fadeOutCG)
+    void LateUpdate()
+    { 
+        if (startWalking && transform.position.y < 4.35f)
         {
-            counter += Time.deltaTime;
-
-            if (uiCanvasGroup.alpha > 0.0f)
-            {
-                uiCanvasGroup.alpha = Mathf.Lerp(1, 0, counter / 0.5f);
-            }
-            else
-            {
-                counter = 0;
-                fadeOutCG = false;
-            }
+            float amt = 2.0f * Time.deltaTime;
+            transform.position += new Vector3(0, amt, 0);
         }
     }
 
@@ -84,14 +80,24 @@ public class PlayerMenuController : MonoBehaviour
 
     private IEnumerator StartSequence()
     {
-        fadeOutCG = true;
+        GameObject.Find("UIMenu").GetComponent<UIMenuController>().fadeOutCanvasGroup = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.0f);
 
         playerAnimController.SetBool("walkStart", true);
 
-        light.transform.localPosition -= new Vector3(0.085f, 0, 0);
+        startWalking = true;
+    }
 
-        
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Door"))
+        {
+            startWalking = false;
+
+            UIMenuController uiMenu = GameObject.Find("UIMenu").GetComponent<UIMenuController>();
+
+            uiMenu.StartCoroutine(uiMenu.DoorTouched());
+        }
     }
 }

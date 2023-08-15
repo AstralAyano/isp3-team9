@@ -13,6 +13,10 @@ public class UIMenuController : MonoBehaviour
     [Header("Canvas Group")]
     [SerializeField] private CanvasGroup uiCanvasGroup;
 
+    [Header("Grid Group")]
+    [SerializeField] private GameObject gridMenu;
+    [SerializeField] private GameObject gridLoad;
+
     [Header("Text")]
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text companyText;
@@ -36,6 +40,8 @@ public class UIMenuController : MonoBehaviour
     private bool fadeInCompanyVer = false;
     private bool fadeInStartButton = false;
     private bool fadeInExitButton = false;
+    public bool fadeOutLight = false;
+    public bool fadeOutCanvasGroup = false;
     private bool maxGlowReached = false;
 
     private float counter = 0;
@@ -43,9 +49,10 @@ public class UIMenuController : MonoBehaviour
 
     void Awake()
     {
-        uiCanvasGroup = GetComponent<CanvasGroup>();
+        gridLoad.SetActive(false);
+        gridMenu.SetActive(true);
 
-        uiCanvasGroup.alpha = 0;
+        uiCanvasGroup = GetComponent<CanvasGroup>();
 
         titleText.alpha = 0;
         companyText.alpha = 0;
@@ -57,10 +64,10 @@ public class UIMenuController : MonoBehaviour
         textHighlightMaterial = new Material(textBaseMaterial);
         textHighlightMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0f);
     
-        startButton.GetComponent<Button>().interactable = true;
+        startButton.GetComponent<Button>().interactable = false;
         startButton.GetComponent<CanvasGroup>().alpha = 0;
 
-        exitButton.GetComponent<Button>().interactable = true;
+        exitButton.GetComponent<Button>().interactable = false;
         exitButton.GetComponent<CanvasGroup>().alpha = 0;
     }
 
@@ -72,6 +79,7 @@ public class UIMenuController : MonoBehaviour
     void Update()
     {
         FadeIn();
+        FadeOut();
 
         TitleGlow();
     }
@@ -110,11 +118,10 @@ public class UIMenuController : MonoBehaviour
 
             if (globalLight.intensity < 0.5f)
             {
-                globalLight.intensity = Mathf.Lerp(0, 0.5f, counter / fadeDuration);
+                globalLight.intensity = Mathf.Lerp(0f, 0.5f, counter / fadeDuration);
             }
             else
             {
-                uiCanvasGroup.alpha = 1;
                 counter = 0;
                 fadeInLight = false;
             }
@@ -187,6 +194,39 @@ public class UIMenuController : MonoBehaviour
         }
     }
 
+    void FadeOut()
+    {
+        if (fadeOutLight)
+        {
+            counter += Time.deltaTime;
+
+            if (globalLight.intensity > 0f)
+            {
+                globalLight.intensity = Mathf.Lerp(0.5f, 0f, counter / fadeDuration);
+            }
+            else
+            {
+                counter = 0;
+                fadeOutLight = false;
+            }
+        }
+
+        if (fadeOutCanvasGroup)
+        {
+            counter += Time.deltaTime;
+
+            if (uiCanvasGroup.alpha > 0.0f)
+            {
+                uiCanvasGroup.alpha = Mathf.Lerp(1, 0, counter / 0.5f);
+            }
+            else
+            {
+                counter = 0;
+                fadeOutCanvasGroup = false;
+            }
+        }
+    }
+
     void TitleGlow()
     {
         if (!maxGlowReached && titleCounter >= 0.4f)
@@ -224,5 +264,21 @@ public class UIMenuController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
         lightObj.SetActive(true);
+    }
+
+    public IEnumerator DoorTouched()
+    {
+
+        fadeOutLight = true;
+
+        yield return new WaitForSeconds(0.5f);
+
+        gridMenu.SetActive(false);
+        gridLoad.SetActive(true);
+        GameObject.Find("Player").transform.position = new Vector3(0, -5, 0);
+        
+        yield return new WaitForSeconds(0.5f);
+
+        fadeInLight = true;
     }
 }
