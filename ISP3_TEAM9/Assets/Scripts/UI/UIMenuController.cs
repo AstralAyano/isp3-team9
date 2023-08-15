@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.EventSystems;
 using TMPro;
 
-public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UIMenuController : MonoBehaviour
 {
     [Header("Canvas Group")]
     [SerializeField] private CanvasGroup uiCanvasGroup;
@@ -18,7 +17,7 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     
     [Header("Buttons")]
     [SerializeField] private GameObject startButton;
-    [SerializeField] private Sprite[] startButtonSprites;
+    [SerializeField] private GameObject exitButton;
 
     [Header("Light")]
     [SerializeField] private Light2D globalLight;
@@ -32,7 +31,8 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private bool fadeInLight = false;
     private bool fadeInTitle = false;
     private bool fadeInCompanyVer = false;
-    private bool fadeInButton = false;
+    private bool fadeInStartButton = false;
+    private bool fadeInExitButton = false;
     private bool maxGlowReached = false;
     private bool startButtonClicked = false;
 
@@ -55,7 +55,11 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         textHighlightMaterial = new Material(textBaseMaterial);
         textHighlightMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0f);
     
+        startButton.GetComponent<Button>().interactable = true;
         startButton.GetComponent<CanvasGroup>().alpha = 0;
+
+        exitButton.GetComponent<Button>().interactable = true;
+        exitButton.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     void Start()
@@ -68,6 +72,8 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         FadeIn();
 
         TitleGlow();
+
+        Debug.Log(startButtonClicked);
     }
 
     private IEnumerator MenuFadeIn()
@@ -85,10 +91,14 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         yield return fade;
 
-        fadeInButton = true;
+        fadeInStartButton = true;
 
         yield return fade;
-        
+
+        fadeInExitButton = true;
+
+        yield return fade;
+
         fadeInCompanyVer = true;
     }
 
@@ -125,7 +135,7 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             }
         }
 
-        if (fadeInButton)
+        if (fadeInStartButton)
         {
             counter += Time.deltaTime;
 
@@ -136,7 +146,24 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             else
             {
                 counter = 0;
-                fadeInButton = false;
+                fadeInStartButton = false;
+                startButton.GetComponent<Button>().interactable = true;
+            }
+        }
+
+        if (fadeInExitButton)
+        {
+            counter += Time.deltaTime;
+
+            if (exitButton.GetComponent<CanvasGroup>().alpha < 1.0f)
+            {
+                exitButton.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, counter / fadeDuration);
+            }
+            else
+            {
+                counter = 0;
+                fadeInExitButton = false;
+                exitButton.GetComponent<Button>().interactable = true;
             }
         }
         
@@ -188,25 +215,4 @@ public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         maxGlowReached = false;
     }
-
-    public void StartButtonClick()
-    {
-        startButtonClicked = true;
-    }
-
-    public void OnPointerDown (PointerEventData eventData) 
-	{
-		if (startButtonClicked)
-        {
-            startButton.GetComponent<Image>().sprite = startButtonSprites[1];
-        }
-	}
-
-    public void OnPointerUp (PointerEventData eventData) 
-	{
-		if (startButtonClicked)
-        {
-            startButton.GetComponent<Image>().sprite = startButtonSprites[0];
-        }
-	}
 }
