@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentState = playerStates.Idle;
+            Debug.Log("Idle");
         }
     }
 
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case playerStates.Walk:
                 //Moving right
-                if (Input.GetKeyDown("d"))
+                if (Input.GetKey("d"))
                 {
                     //Find the correct animation
                     for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 //Moving left
-                if (Input.GetKeyDown("a"))
+                else if (Input.GetKey("a"))
                 {
                     //Find the correct animation
                     for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
@@ -131,7 +132,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 //Moving up
-                if (Input.GetKeyDown("w"))
+                else if (Input.GetKey("w"))
                 {
                     //Find the correct animation
                     for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 //Moving down
-                if (Input.GetKeyDown("s"))
+                else if (Input.GetKey("s"))
                 {
                     //Find the correct animation
                     for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
@@ -162,4 +163,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void playerAttack()
+    {
+
+    }
+
+    private void playerHurt()
+    {
+
+    }
+
+
 }
