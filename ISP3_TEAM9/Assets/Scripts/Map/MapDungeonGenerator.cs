@@ -14,6 +14,12 @@ public class MapDungeonGenerator : MapRoomGenerator
     [Range(0.1f, 1)]
     private float roomPercent = 0.8f;
 
+    private void Awake()
+    {
+        tilemapVisualizer.Clear();
+        RunProceduralGeneration();
+    }
+
     protected override void RunProceduralGeneration()
     {
         CorridorFirstGeneration();

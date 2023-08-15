@@ -11,6 +11,12 @@ public class MapRoomGenerator : MapGenerationController
     [SerializeField]
     protected ScriptableRoomGenerationData randomWalkParameters;
 
+    private void Awake()
+    {
+        tilemapVisualizer.Clear();
+        RunProceduralGeneration();
+    }
+
     protected override void RunProceduralGeneration()
     {
         HashSet<Vector2Int> floorPos = RunRandomWalk(randomWalkParameters, startPos);
