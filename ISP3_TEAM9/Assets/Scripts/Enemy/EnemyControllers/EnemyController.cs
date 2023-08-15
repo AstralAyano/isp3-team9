@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,13 +17,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Animator ar;
     [SerializeField] private State currentState;
     [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
+    [SerializeField] private EnemyPathFinding enemyPF; 
 
     [SerializeField] private float health;
 
     private int targetIndex;
-    private Vector3 destination;
-    private Vector3 dir;
-    private Rigidbody2D rb;
 
     private float idleTime;
 
@@ -31,13 +30,10 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         ar = GetComponentInChildren<Animator>();
 
         targetIndex = 0;
-
-        destination = waypoints[targetIndex].transform.position;
-        dir = (destination - transform.position).normalized;
+        enemyPF.target = waypoints[targetIndex].transform;
     }
 
     void Update()
@@ -54,8 +50,6 @@ public class EnemyController : MonoBehaviour
                 Attack();
                 break;
         }
-
-        UpdateSpriteDirection();
     }
 
     private void ChangeState(State next)
@@ -66,13 +60,17 @@ public class EnemyController : MonoBehaviour
         }
         else if (next == State.PATROL)
         {
-            destination = waypoints[targetIndex].transform.position;
-            dir = (destination - transform.position).normalized;
+            targetIndex++;
+            if (targetIndex > waypoints.Count - 1)
+            {
+                targetIndex = 0;
+            }
+            enemyPF.target = waypoints[targetIndex].transform;
+            enemyPF.reachedEndOfPath = false;
         }
         else if (next == State.ATTACK)
         {
-            destination = GameObject.FindWithTag("Player").transform.position;
-            dir = (destination - transform.position).normalized;
+            enemyPF.target = GameObject.FindWithTag("Player").transform;
         }
         else if (next == State.DEAD)
         {
@@ -84,84 +82,61 @@ public class EnemyController : MonoBehaviour
 
     private void Idle()
     {
-        ar.Play("Idle");
+        // play anim
 
+
+        // start timer
         idleTime += Time.deltaTime;
 
+        // swap to partrol after waiting
         if (idleTime >= 2.0f)
         {
+            idleTime = 0f;
             ChangeState(State.PATROL);
         }
     }
 
     private void Patrol()
     {
-        dir = (destination - transform.position).normalized;
+        // play anim
 
-        rb.velocity = new Vector2(dir.x * 2, 0);
-        ar.Play("Walk");
 
-        if (Vector3.Distance(destination, transform.position) <= 0.75)
+        // if reached waypoint, swap to idle
+        if (enemyPF.reachedEndOfPath)
         {
-            targetIndex++;
-            if (targetIndex > waypoints.Count - 1)
-            {
-                targetIndex = 0;
-            }
-
             ChangeState(State.IDLE);
         }
     }
 
     private void Attack()
     {
-        destination = GameObject.FindWithTag("Player").transform.position;
-        dir = (destination - transform.position).normalized;
-
-        if (!attackToResolve)
-        {
-            rb.velocity = new Vector2(dir.x * 2, 0);
-        }
-        else if (attackToResolve)
+        if (attackToResolve) // else wait till attack over
         {
             attackTimer += Time.deltaTime;
 
             if (attackTimer < 0.1f)
             {
-                rb.velocity = new Vector2(dir.x * 8, 0);
+                attackToResolve = false;
             }
         }
     }
 
-    void UpdateSpriteDirection()
-    {
-        if (dir.x >= 0.01f)
-        {
-            transform.localScale = new Vector2(1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
-    }
-
-    public void PlayerWithinAggro(Collider2D other)
+    public void PlayerWithinAggro(Collider2D other) // called by child (AggroRange)
     {
         if (currentState != State.DEAD && other.gameObject.CompareTag("PlayerHitbox"))
         {
             ChangeState(State.ATTACK);
         }
     }
-
-    public void PlayerExitAggro(Collider2D other)
+    public void PlayerExitAggro(Collider2D other) // called by child (AggroRange)
     {
         if (currentState != State.DEAD && other.gameObject.CompareTag("PlayerHitbox"))
         {
-            ChangeState(State.IDLE);
+            ChangeState(State.PATROL);
         }
     }
 
-    public void PlayerInAttackRange(Collider2D other)
+    public void PlayerInAttackRange(Collider2D other) // called by child (AttackRange)
     {
         if (!attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
         {
@@ -169,16 +144,24 @@ public class EnemyController : MonoBehaviour
             {
                 attackToResolve = true;
 
-                ar.Play("Shield");
+                // play anim
 
+
+                // call TakeDamage func in player using the child collider (PlayerHitbox)
                 //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
             }
         }
     }
-
-    public void PlayerExitAttackRange(Collider2D other)
+    public void PlayerExitAttackRange(Collider2D other) // called by child (AttackRange)
     {
-        //Debug.Log("Test");
+        if (!attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
+        {
+            if (other.gameObject.CompareTag("PlayerHitbox"))
+            {
+                // go back to following player
+
+            }
+        }
     }
 
     public void TakeDamage(float damage)
@@ -188,16 +171,21 @@ public class EnemyController : MonoBehaviour
             ChangeState(State.DEAD);
             health = 0;
 
+            // toggle collision with player
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyShield"), LayerMask.NameToLayer("Player"), true);
-            ar.Play("Dead");
-            //GameObject.FindWithTag("Player").GetComponentInChildren<SkillRange>().RemoveEnemy(this.gameObject);
 
+            // play anim
+
+
+            // destroy self
             Destroy(gameObject, 0.75f);
         }
         else
         {
             health -= damage;
-            ar.Play("Hurt");
+
+            // play anim
+
         }
     }
 }

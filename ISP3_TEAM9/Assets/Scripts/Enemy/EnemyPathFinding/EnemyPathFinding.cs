@@ -32,7 +32,6 @@ public class EnemyPathFinding : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            //AstarPathEditor.MenuScan();
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
     }
@@ -56,7 +55,11 @@ public class EnemyPathFinding : MonoBehaviour
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedEndOfPath = true;
+            if (rb.velocity.magnitude > 0)
+            {
+                reachedEndOfPath = true;
+                rb.velocity = Vector2.zero;
+            }
             return;
         }
         else
