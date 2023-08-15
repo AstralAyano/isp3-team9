@@ -14,6 +14,10 @@ public class MapDungeonGenerator : MapRoomGenerator
     [Range(0.1f, 1)]
     private float roomPercent = 0.8f;
 
+    private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+    private HashSet<Vector2Int> corridorPositions;
+
+
     private void Awake()
     {
         tilemapVisualizer.Clear();
@@ -142,9 +146,16 @@ public class MapDungeonGenerator : MapRoomGenerator
         foreach (var roomPosition in roomsToCreate)
         {
             var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
+
+            SaveRoomData(roomPosition, roomFloor);
             roomPos.UnionWith(roomFloor);
         }
         return roomPos;
+    }
+
+    private void SaveRoomData(Vector2Int roomPosition, HashSet<Vector2Int> roomFloor)
+    {
+        roomsDictionary[roomPosition] = roomFloor;
     }
 
     private List<List<Vector2Int>> CreateCorridors(HashSet<Vector2Int> floorPos, HashSet<Vector2Int> potentialRoomPos)
@@ -161,6 +172,7 @@ public class MapDungeonGenerator : MapRoomGenerator
             potentialRoomPos.Add(currPos);
             floorPos.UnionWith(corridor);
         }
+        corridorPositions = new HashSet<Vector2Int>(floorPos);
         return corridors;
     }
 }
