@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController[] animControllers; //Store animator controllers
 
-    private Vector2 currentPos;
+    private Rigidbody2D rb;
     private Vector2 moveDir;
-    private Vector2 movement;
-    private Vector2 newPos;
+
+    [SerializeField]
+    private GameObject[] arrowPrefab;
 
     public enum playerStates
     {
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 
         //Set the animator controller to use
         switch (playerStats.chosenClass)
@@ -58,33 +60,31 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentState = playerStates.Attack;
-            Debug.Log("Attacking");
+            SpawnArrow();
+            //Debug.Log("Attacking");
         }
-        else if (newPos != currentPos)
+        else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
         {
             currentState = playerStates.Walk;
-            Debug.Log("Walking");
+            //Debug.Log("Walking");
         }
         else
         {
             currentState = playerStates.Idle;
-            Debug.Log("Idle");
+            //Debug.Log("Idle");
         }
-
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
-        currentPos = transform.position;
-
+        //Get direction
         moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveDir = Vector2.ClampMagnitude(moveDir, 1); //To ensure vector is unit length
+        Debug.Log(moveDir);
 
-        //Calculate new position 
-        movement = moveDir * playerStats.chosenStats.moveSpeed;
-        newPos = currentPos + movement * Time.fixedDeltaTime;
-        transform.position = newPos;
+        //Calculate velocity 
+        rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
     }
 
     private void LateUpdate()
@@ -152,24 +152,21 @@ public class PlayerController : MonoBehaviour
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 //Moving right
-                //if (newPos.x - currentPos.x > 0)
-                //{
-                    PlayAnim("AnimPlayerShootRight");
-                //}
-                //Moving left
-                if (newPos.x - currentPos.x < 0)
+                if (moveDir.x < 0)
                 {
                     PlayAnim("AnimPlayerShootLeft");
                 }
-                //Moving up
-                else if (newPos.y - currentPos.y > 0)
+                else if (moveDir.y > 0)
                 {
                     PlayAnim("AnimPlayerShootUp");
                 }
-                //Moving down
-                else if (newPos.y - currentPos.y < 0)
+                else if (moveDir.y < 0)
                 {
                     PlayAnim("AnimPlayerShootDown");
+                }
+                else
+                {
+                    PlayAnim("AnimPlayerShootRight");
                 }
                 break;
             default:
@@ -179,9 +176,42 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    //Spawn archer arrows
     private void SpawnArrow()
     {
+        //Return if animation is not done
+        if ((animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0) && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
+        {
+            return;
+        }
 
+        if (moveDir.x < 0)
+        {
+            Rigidbody2D arrowLeftrb = Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>();
+            arrowLeftrb.AddForce(new Vector2(-1000, 0));
+        }
+        else if (moveDir.y > 0)
+        {
+
+            Rigidbody2D arrowUprb = Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>();
+            arrowUprb.AddForce(new Vector2(0, 1000));
+        }
+        else if (moveDir.y < 0)
+        {
+            Rigidbody2D arrowDownrb = Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>();
+            arrowDownrb.AddForce(new Vector2(0, -1000));
+        }
+        else
+        {
+            Rigidbody2D arrowRightrb = Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>();
+            arrowRightrb.AddForce(new Vector2(1000, 0));
+        }
+    }
+
+    private void ShootArrow(string dir)
+    {
+        //GameObject arrow = GetComponentInChildren<GameObject>();
+        //arrow.transform.position = arrow.transform.position + moveDir;
     }
 
     private void PlayerHurt()
