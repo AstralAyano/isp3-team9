@@ -46,8 +46,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorTilemap: {fileID: 0}
   wallTilemap: {fileID: 0}
-  floorTile: {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
-  wallTop: {fileID: 11400000, guid: 4cce995ee9cda2e4e8dda147281e6dc4, type: 2}
+  floorTile:
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: 1cff49e06283e6b4896a07f65a8ff1d7, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  - {fileID: 11400000, guid: 958e9db0b5c5b4c4a83d35bcca9ff6c1, type: 2}
+  - {fileID: 11400000, guid: dc7f31c0ba9ec3c429b3c2252438fc3a, type: 2}
+  wallTop:
+  - {fileID: 11400000, guid: 2a340f7e58084c04aa4a72d2b52a6c82, type: 2}
+  - {fileID: 11400000, guid: 4cce995ee9cda2e4e8dda147281e6dc4, type: 2}
+  - {fileID: 11400000, guid: 34df034b391bdfe45ab9696b27dec73c, type: 2}
+  - {fileID: 11400000, guid: cf4f7d6200a70c64e852a993eaac4049, type: 2}
+  - {fileID: 11400000, guid: 2a340f7e58084c04aa4a72d2b52a6c82, type: 2}
+  - {fileID: 11400000, guid: cf4f7d6200a70c64e852a993eaac4049, type: 2}
+  - {fileID: 11400000, guid: 4cce995ee9cda2e4e8dda147281e6dc4, type: 2}
   wallSideRight: {fileID: 11400000, guid: 0d537c0290f0dbc4aaca868bd83286dc, type: 2}
   wallSideLeft: {fileID: 11400000, guid: 0abcd990a7bb96145a72097769d67964, type: 2}
   wallBottom: {fileID: 11400000, guid: 4d6987d2df93e814bbe9540475605ee3, type: 2}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class MapTilemapRenderer : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class MapTilemapRenderer : MonoBehaviour
     private Tilemap floorTilemap, wallTilemap;
 
     [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
+    private List<TileBase> floorTile, wallTop;
+    [SerializeField]
+    private TileBase wallSideRight, wallSideLeft, wallBottom, wallFull,
         wallInnerCornerDownLeft, wallInnerCornerDownRight,
         wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
@@ -19,11 +22,11 @@ public class MapTilemapRenderer : MonoBehaviour
         PaintTiles(floorPos, floorTilemap, floorTile);
     }
 
-    private void PaintTiles(IEnumerable<Vector2Int> pos, Tilemap tilemap, TileBase tile)
+    private void PaintTiles(IEnumerable<Vector2Int> pos, Tilemap tilemap, List<TileBase> tile)
     {
         foreach (var position in pos)
         {
-            PaintSingleTile(tilemap, tile, position);
+            PaintSingleTile(tilemap, tile[Random.Range(0, tile.Count - 1)], position);
         }
     }
 
@@ -39,7 +42,7 @@ public class MapTilemapRenderer : MonoBehaviour
         TileBase tile = null;
         if (MapWallTypeManager.wallTop.Contains(typeAsInt))
         {
-            tile = wallTop;
+            tile = wallTop[Random.Range(0, wallTop.Count - 1)];
         }
         else if (MapWallTypeManager.wallSideRight.Contains(typeAsInt))
         {
