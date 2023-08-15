@@ -9,8 +9,9 @@ public class PlayerMenuController : MonoBehaviour
 {
 
     [SerializeField] private CanvasGroup uiCanvasGroup;
-    [SerializeField] private Animator playerAnimController;
     [SerializeField] private new Light2D light;
+
+    public Animator playerAnimController;
 
     private Rigidbody2D rb;
 
@@ -24,6 +25,8 @@ public class PlayerMenuController : MonoBehaviour
     float lastSum = 0;
 
     private bool startWalking = false;
+    private float counter = 0;
+    public int lightStatus = 3;
 
     public void Reset()
     {
@@ -52,16 +55,48 @@ public class PlayerMenuController : MonoBehaviour
             return; 
         }
         
-        while (smoothQueue.Count >= smoothing)
+        if (lightStatus == 1)
         {
-            lastSum -= smoothQueue.Dequeue();
+            counter += Time.deltaTime;
+
+            if (light.intensity > 0f)
+            {
+                light.intensity = Mathf.Lerp(1f, 0f, counter / 0.5f);
+            }
+            else
+            {
+                counter = 0;
+                lightStatus = 0;
+            }
+        }
+        else if (lightStatus == 2)
+        {
+            counter += Time.deltaTime;
+
+            if (light.intensity < 1f)
+            {
+                light.intensity = Mathf.Lerp(0f, 1f, counter / 0.5f);
+            }
+            else
+            {
+                counter = 0;
+                lightStatus = 3;
+            }
+        }
+        else if (lightStatus == 3)
+        {
+            while (smoothQueue.Count >= smoothing)
+            {
+                lastSum -= smoothQueue.Dequeue();
+            }
+
+            float newVal = Random.Range(minIntensity, maxIntensity);
+            smoothQueue.Enqueue(newVal);
+            lastSum += newVal;
+
+            light.intensity = lastSum / (float)smoothQueue.Count;
         }
 
-        float newVal = Random.Range(minIntensity, maxIntensity);
-        smoothQueue.Enqueue(newVal);
-        lastSum += newVal;
-
-        light.intensity = lastSum / (float)smoothQueue.Count;
     }
 
     void LateUpdate()
@@ -93,6 +128,9 @@ public class PlayerMenuController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Door"))
         {
+            lightStatus = 1;
+
+            playerAnimController.SetBool("walkStart", false);
             startWalking = false;
 
             UIMenuController uiMenu = GameObject.Find("UIMenu").GetComponent<UIMenuController>();

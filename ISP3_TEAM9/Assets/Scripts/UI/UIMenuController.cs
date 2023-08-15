@@ -268,17 +268,20 @@ public class UIMenuController : MonoBehaviour
 
     public IEnumerator DoorTouched()
     {
-
         fadeOutLight = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         gridMenu.SetActive(false);
         gridLoad.SetActive(true);
+
         GameObject.Find("Player").transform.position = new Vector3(0, -5, 0);
-        
-        yield return new WaitForSeconds(0.5f);
 
         fadeInLight = true;
+        GameObject.Find("Player").GetComponent<PlayerMenuController>().lightStatus = 2;
+
+        yield return new WaitForSeconds(1.0f);
+
+        GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLevel");
     }
 }
