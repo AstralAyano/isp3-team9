@@ -7,6 +7,9 @@ using TMPro;
 
 public class UIMenuController : MonoBehaviour
 {
+    [Header("Player")]
+    [SerializeField] private GameObject lightObj;
+
     [Header("Canvas Group")]
     [SerializeField] private CanvasGroup uiCanvasGroup;
 
@@ -34,7 +37,6 @@ public class UIMenuController : MonoBehaviour
     private bool fadeInStartButton = false;
     private bool fadeInExitButton = false;
     private bool maxGlowReached = false;
-    private bool startButtonClicked = false;
 
     private float counter = 0;
     private float titleCounter = 0;
@@ -72,8 +74,6 @@ public class UIMenuController : MonoBehaviour
         FadeIn();
 
         TitleGlow();
-
-        Debug.Log(startButtonClicked);
     }
 
     private IEnumerator MenuFadeIn()
@@ -147,7 +147,6 @@ public class UIMenuController : MonoBehaviour
             {
                 counter = 0;
                 fadeInStartButton = false;
-                startButton.GetComponent<Button>().interactable = true;
             }
         }
 
@@ -163,7 +162,6 @@ public class UIMenuController : MonoBehaviour
             {
                 counter = 0;
                 fadeInExitButton = false;
-                exitButton.GetComponent<Button>().interactable = true;
             }
         }
         
@@ -180,6 +178,11 @@ public class UIMenuController : MonoBehaviour
             {
                 counter = 0;
                 fadeInCompanyVer = false;
+
+                StartCoroutine(DelayBeforeTorch());
+                
+                startButton.GetComponent<Button>().interactable = true;
+                exitButton.GetComponent<Button>().interactable = true;
             }
         }
     }
@@ -214,5 +217,12 @@ public class UIMenuController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         maxGlowReached = false;
+    }
+
+    private IEnumerator DelayBeforeTorch()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        lightObj.SetActive(true);
     }
 }
