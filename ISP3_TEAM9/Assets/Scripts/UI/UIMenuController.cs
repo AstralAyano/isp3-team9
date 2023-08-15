@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class UIMenuController : MonoBehaviour
+public class UIMenuController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [Header("Canvas Group")]
     [SerializeField] private CanvasGroup uiCanvasGroup;
 
+    [Header("Text")]
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text companyText;
     [SerializeField] private TMP_Text versionText;
+    
+    [Header("Buttons")]
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private Sprite[] startButtonSprites;
 
+    [Header("Light")]
     [SerializeField] private Light2D globalLight;
 
+    [Header("Variables")]
     [SerializeField] private float fadeDuration;
 
     private static Material textBaseMaterial;
@@ -23,7 +32,9 @@ public class UIMenuController : MonoBehaviour
     private bool fadeInLight = false;
     private bool fadeInTitle = false;
     private bool fadeInCompanyVer = false;
+    private bool fadeInButton = false;
     private bool maxGlowReached = false;
+    private bool startButtonClicked = false;
 
     private float counter = 0;
     private float titleCounter = 0;
@@ -42,7 +53,9 @@ public class UIMenuController : MonoBehaviour
 
         textBaseMaterial = titleText.fontSharedMaterial;
         textHighlightMaterial = new Material(textBaseMaterial);
-        textHighlightMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0.75f);
+        textHighlightMaterial.SetFloat(ShaderUtilities.ID_GlowPower, 0f);
+    
+        startButton.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     void Start()
@@ -72,6 +85,10 @@ public class UIMenuController : MonoBehaviour
 
         yield return fade;
 
+        fadeInButton = true;
+
+        yield return fade;
+        
         fadeInCompanyVer = true;
     }
 
@@ -105,6 +122,21 @@ public class UIMenuController : MonoBehaviour
             {
                 counter = 0;
                 fadeInTitle = false;
+            }
+        }
+
+        if (fadeInButton)
+        {
+            counter += Time.deltaTime;
+
+            if (startButton.GetComponent<CanvasGroup>().alpha < 1.0f)
+            {
+                startButton.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0, 1, counter / fadeDuration);
+            }
+            else
+            {
+                counter = 0;
+                fadeInButton = false;
             }
         }
         
@@ -156,4 +188,25 @@ public class UIMenuController : MonoBehaviour
 
         maxGlowReached = false;
     }
+
+    public void StartButtonClick()
+    {
+        startButtonClicked = true;
+    }
+
+    public void OnPointerDown (PointerEventData eventData) 
+	{
+		if (startButtonClicked)
+        {
+            startButton.GetComponent<Image>().sprite = startButtonSprites[1];
+        }
+	}
+
+    public void OnPointerUp (PointerEventData eventData) 
+	{
+		if (startButtonClicked)
+        {
+            startButton.GetComponent<Image>().sprite = startButtonSprites[0];
+        }
+	}
 }
