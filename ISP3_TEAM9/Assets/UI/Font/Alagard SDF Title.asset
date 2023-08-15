@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Alagard SDF
+  m_Name: Alagard SDF Title
   m_EditorClassIdentifier: 
-  hashCode: 700851085
+  hashCode: 1028653453
   material: {fileID: 1153623899841523571}
-  materialHashCode: -17918707
+  materialHashCode: 238072589
   m_Version: 1.1.0
   m_SourceFontFileGUID: 33ddd6abd5e785e4b87770d4075bd180
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 33ddd6abd5e785e4b87770d4075bd180, type: 3}
@@ -1055,7 +1055,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Alagard Atlas Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - GLOW_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -1104,8 +1105,8 @@ Material:
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.25
     - _GlowOffset: 0
-    - _GlowOuter: 0.411
-    - _GlowPower: 0.75
+    - _GlowOuter: 0.5
+    - _GlowPower: -0.20148134
     - _GradientScale: 10
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
