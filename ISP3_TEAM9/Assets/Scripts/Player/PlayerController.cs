@@ -55,7 +55,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (newPos != currentPos)
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentState = playerStates.Attack;
+            Debug.Log("Attacking");
+        }
+        else if (newPos != currentPos)
         {
             currentState = playerStates.Walk;
             Debug.Log("Walking");
@@ -65,6 +70,7 @@ public class PlayerController : MonoBehaviour
             currentState = playerStates.Idle;
             Debug.Log("Idle");
         }
+
     }
 
     // Update is called once per frame
@@ -88,35 +94,40 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnim()
     {
-        switch (currentState)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
-            case playerStates.Idle:
-                PlayAnim("AnimPlayerIdle");
-                break;
-            case playerStates.Walk:
-                //Moving right
-                if (Input.GetKey("d"))
-                {
-                    PlayAnim("AnimPlayerWalkRight");
-                }
-                //Moving left
-                else if (Input.GetKey("a"))
-                {
-                    PlayAnim("AnimPlayerWalkLeft");
-                }
-                //Moving up
-                else if (Input.GetKey("w"))
-                {
-                    PlayAnim("AnimPlayerWalkUp");
-                }
-                //Moving down
-                else if (Input.GetKey("s"))
-                {
-                    PlayAnim("AnimPlayerWalkDown");
-                }
-                break;
+            switch (currentState)
+            {
+                case playerStates.Idle:
+                    PlayAnim("AnimPlayerIdle");
+                    break;
+                case playerStates.Walk:
+                    //Moving right
+                    if (Input.GetKey("d"))
+                    {
+                        PlayAnim("AnimPlayerWalkRight");
+                    }
+                    //Moving left
+                    else if (Input.GetKey("a"))
+                    {
+                        PlayAnim("AnimPlayerWalkLeft");
+                    }
+                    //Moving up
+                    else if (Input.GetKey("w"))
+                    {
+                        PlayAnim("AnimPlayerWalkUp");
+                    }
+                    //Moving down
+                    else if (Input.GetKey("s"))
+                    {
+                        PlayAnim("AnimPlayerWalkDown");
+                    }
+                    break;
+                case playerStates.Attack:
+                    PlayerAttack();
+                    break;
+            }
         }
-
     }
 
     //Find a specific animation type by giving part of its name and play it e.g. AnimPlayerWalk for all class' walking animations
@@ -137,6 +148,40 @@ public class PlayerController : MonoBehaviour
     private void PlayerAttack()
     {
         //Play different attack animation based on chosenClass
+        switch (playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Archer:
+                //Moving right
+                //if (newPos.x - currentPos.x > 0)
+                //{
+                    PlayAnim("AnimPlayerShootRight");
+                //}
+                //Moving left
+                if (newPos.x - currentPos.x < 0)
+                {
+                    PlayAnim("AnimPlayerShootLeft");
+                }
+                //Moving up
+                else if (newPos.y - currentPos.y > 0)
+                {
+                    PlayAnim("AnimPlayerShootUp");
+                }
+                //Moving down
+                else if (newPos.y - currentPos.y < 0)
+                {
+                    PlayAnim("AnimPlayerShootDown");
+                }
+                break;
+            default:
+                break;
+        }
+
+        
+    }
+
+    private void SpawnArrow()
+    {
+
     }
 
     private void PlayerHurt()
