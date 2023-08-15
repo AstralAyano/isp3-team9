@@ -83,96 +83,64 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        updateAnim();
+        UpdateAnim();
     }
 
-    private void updateAnim()
+    private void UpdateAnim()
     {
         switch (currentState)
         {
             case playerStates.Idle:
-                //Find the correct animation
-                for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
-                {
-                    //Any class's animation can be played this way
-                    if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("AnimPlayerIdle"))
-                    {
-                        //ToString() does not give only the name, so need to get rid of the part at the end
-                        animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
-                    }
-                }
+                PlayAnim("AnimPlayerIdle");
                 break;
             case playerStates.Walk:
                 //Moving right
                 if (Input.GetKey("d"))
                 {
-                    //Find the correct animation
-                    for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
-                    {
-                        //Any class's animation can be played this way
-                        if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("AnimPlayerWalkRight"))
-                        {
-                            //ToString() does not give only the name, so need to get rid of the part at the end
-                            animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
-                        }
-                    }
+                    PlayAnim("AnimPlayerWalkRight");
                 }
                 //Moving left
                 else if (Input.GetKey("a"))
                 {
-                    //Find the correct animation
-                    for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
-                    {
-                        if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("AnimPlayerWalkLeft"))
-                        {
-                            //This way, any class's animation can be played
-                            //ToString() does not give only the name, so need to get rid of the part at the end
-                            animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
-                        }
-                    }
+                    PlayAnim("AnimPlayerWalkLeft");
                 }
                 //Moving up
                 else if (Input.GetKey("w"))
                 {
-                    //Find the correct animation
-                    for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
-                    {
-                        if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("AnimPlayerWalkUp"))
-                        {
-                            //This way, any class's animation can be played
-                            //ToString() does not give only the name, so need to get rid of the part at the end
-                            animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
-                        }
-                    }
+                    PlayAnim("AnimPlayerWalkUp");
                 }
                 //Moving down
                 else if (Input.GetKey("s"))
                 {
-                    //Find the correct animation
-                    for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
-                    {
-                        if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("AnimPlayerWalkDown"))
-                        {
-                            //This way, any class's animation can be played
-                            //ToString() does not give only the name, so need to get rid of the part at the end
-                            animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
-                        }
-                    }
+                    PlayAnim("AnimPlayerWalkDown");
                 }
                 break;
         }
 
     }
 
-    private void playerAttack()
+    //Find a specific animation type by giving part of its name and play it e.g. AnimPlayerWalk for all class' walking animations
+    private void PlayAnim(string animName)
     {
-
+        //Find the correct animation
+        for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
+        {
+            if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains(animName))
+            {
+                //This way, any class's animation can be played
+                //ToString() does not give only the name, so need to get rid of the part at the end
+                animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
+            }
+        }
     }
 
-    private void playerHurt()
+    private void PlayerAttack()
     {
-
+        //Play different attack animation based on chosenClass
     }
 
-
+    private void PlayerHurt()
+    {
+        PlayAnim("AnimPlayerHurt");
+    }
 }
