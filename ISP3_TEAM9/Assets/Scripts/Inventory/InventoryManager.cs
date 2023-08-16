@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] invSlots;
     public GameObject invItemPrefab;
 
+    public Item testItem;
+
     //public SystemText sysText;
 
     int selectedSlot = -1;
@@ -25,6 +27,8 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        AddItem(testItem);
     }
 
     void Update()
