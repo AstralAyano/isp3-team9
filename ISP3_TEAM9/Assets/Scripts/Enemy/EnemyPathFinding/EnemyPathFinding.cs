@@ -53,10 +53,7 @@ public class EnemyPathFinding : MonoBehaviour
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            if (rb.velocity.magnitude > 0)
-            {
-                reachedEndOfPath = true;
-            }
+            reachedEndOfPath = true;
             return;
         }
         else
@@ -67,6 +64,11 @@ public class EnemyPathFinding : MonoBehaviour
         Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = dir * enemy.speed * Time.deltaTime;
         rb.velocity = force;
+
+        if (enemy.attackToResolve)
+        {
+            rb.velocity = Vector2.zero;
+        }
 
         float dist = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

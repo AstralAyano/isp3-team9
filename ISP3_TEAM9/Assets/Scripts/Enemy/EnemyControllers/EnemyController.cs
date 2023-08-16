@@ -21,7 +21,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float health = 50;
     [SerializeField] public float speed = 100f;
 
-    protected bool attackToResolve = false;
+    public bool attackToResolve = false;
     protected float attackTimer = 0;
     [SerializeField] protected GameObject spawnPos;
     public string animToPlay = "AnimEnemyDownIdle", animDir = "Down";
@@ -69,17 +69,23 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Attack()
     {
-        // play anim
-        ar.Play(animToPlay);
-
         if (attackToResolve) // else wait till attack over
         {
             attackTimer += Time.deltaTime;
 
-            if (attackTimer < 0.1f)
+            // play anim
+            ar.Play("AnimEnemy" + animDir + "Attack");
+
+            if (attackTimer > 0.667f)
             {
                 attackToResolve = false;
+                attackTimer = 0;
             }
+        }
+        else
+        {
+            // play anim
+            ar.Play(animToPlay);
         }
     }
 
@@ -106,9 +112,6 @@ public abstract class EnemyController : MonoBehaviour
             {
                 attackToResolve = true;
 
-                // play anim
-
-
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
                 //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
             }
@@ -121,7 +124,7 @@ public abstract class EnemyController : MonoBehaviour
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {
                 // go back to following player
-
+                attackToResolve = false;
             }
         }
     }
