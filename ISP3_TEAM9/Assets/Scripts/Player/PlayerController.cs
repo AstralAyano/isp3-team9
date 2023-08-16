@@ -314,15 +314,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //Spawn archer arrows
+    //Spawn archer arrows. Called in animation events
     private void SpawnArrow()
     {
-        //Return if class is not archer or shooting animation is not done
-        if (playerStats.chosenClass != ScriptablePlayerStats.playerClass.Archer)
-        {
-            return;
-        }
-
         //left
         if (prevDir.x < 0)
         {
@@ -345,6 +339,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Called in animation events
     private bool ShootArrow()
     {
         return true;
