@@ -16,12 +16,12 @@ public class PickUpItem : MonoBehaviour
         
         if (other.gameObject.name.Contains("Health Potion") && invManager.AddItem(itemsToPickup[0]))
         {
-            gameObject.GetComponentInParent<PlayerController>().playSFX(11);
+            //gameObject.GetComponentInParent<PlayerController>().playSFX(11);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.name.Contains("Mana Potion") && invManager.AddItem(itemsToPickup[1]))
         {
-            gameObject.GetComponentInParent<PlayerController>().playSFX(11);
+            //gameObject.GetComponentInParent<PlayerController>().playSFX(11);
             Destroy(other.gameObject);
         }
     }
