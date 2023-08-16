@@ -25,9 +25,10 @@ public class EnemyPathFinding : MonoBehaviour
         enemy = GetComponent<BasicMeleeEnemy>();
         initialScale = transform.localScale.x;
         invertScale = -transform.localScale.x;
-
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
+
+    
 
     void UpdatePath()
     {

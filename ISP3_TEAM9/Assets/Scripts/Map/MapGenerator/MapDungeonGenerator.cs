@@ -27,6 +27,7 @@ public class MapDungeonGenerator : MapRoomGenerator
     protected override void RunProceduralGeneration()
     {
         CorridorFirstGeneration();
+        AstarPath.active.UpdateGraphs(new Bounds(new Vector3(0, 0, 0), new Vector3(400, 400, 0)), 0);
     }
 
     private void CorridorFirstGeneration()
