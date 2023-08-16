@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveDir;
+    private Vector2 prevDir; //To record player direction before idle
 
     [SerializeField]
     private GameObject[] arrowPrefab;
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour
         //Get direction
         moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveDir = Vector2.ClampMagnitude(moveDir, 1); //To ensure vector is unit length
-        Debug.Log(moveDir);
+        //Debug.Log(moveDir);
 
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
@@ -99,7 +100,26 @@ public class PlayerController : MonoBehaviour
             switch (currentState)
             {
                 case playerStates.Idle:
-                    PlayAnim("AnimPlayerIdleDown");
+                    //Moving right
+                    if (prevDir.x > 0)
+                    {
+                        PlayAnim("AnimPlayerIdleRight");
+                    }
+                    //Moving left
+                    else if (prevDir.x < 0)
+                    {
+                        PlayAnim("AnimPlayerIdleLeft");
+                    }
+                    //Moving up
+                    else if (prevDir.y > 0)
+                    {
+                        PlayAnim("AnimPlayerIdleUp");
+                    }
+                    //Moving down
+                    else if (prevDir.y < 0)
+                    {
+                        PlayAnim("AnimPlayerIdleDown");
+                    }
                     break;
                 case playerStates.Walk:
                     //Moving right
@@ -122,6 +142,7 @@ public class PlayerController : MonoBehaviour
                     {
                         PlayAnim("AnimPlayerWalkDown");
                     }
+                    prevDir = moveDir;
                     break;
                 case playerStates.Attack:
                     PlayerAttack();
