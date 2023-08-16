@@ -35,7 +35,7 @@ public class HomingMissile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("EnemyHitbox"))
+        if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
         {
            Instantiate(explosionEffect, transform.position, transform.rotation);
             Destroy(gameObject);

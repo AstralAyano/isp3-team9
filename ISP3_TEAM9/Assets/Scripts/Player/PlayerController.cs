@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveDir;
     private Vector2 prevDir; //To record player direction before idle
+    private Vector2 lookDir;
+    private float lookAngle;
 
     [SerializeField]
-    private GameObject[] arrowPrefab; 
-    private List<Rigidbody2D> arrowPrefabrbs = new List<Rigidbody2D>(); //0 - Up, 1 - Left, 2 - Down, 3 - Right
+    private GameObject arrowPrefab;
 
     public GameObject MagicArrowPrefab;
 
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentState = playerStates.Attack;
-            //SpawnArrow();
+            ShootArrow();
             //Debug.Log("Attacking");
         }
         else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
@@ -106,7 +108,6 @@ public class PlayerController : MonoBehaviour
                 {
                     Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
                 }
-
             }
         }
         else if (Input.GetKeyDown("q"))
@@ -125,33 +126,12 @@ public class PlayerController : MonoBehaviour
 
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
-
-        if (ShootArrow())
-        {
-            for (int i = 0; i < arrowPrefabrbs.Count; i++)
-            {
-                if (arrowPrefabrbs[i].gameObject.name.Contains("Up"))
-                {
-                    arrowPrefabrbs[i].AddForce(new Vector2(0, playerStats.chosenStats.projectileSpeed));
-                }
-                else if (arrowPrefabrbs[i].gameObject.name.Contains("Left"))
-                {
-                    arrowPrefabrbs[i].AddForce(new Vector2(-playerStats.chosenStats.projectileSpeed, 0));
-                }
-                else if (arrowPrefabrbs[i].gameObject.name.Contains("Down"))
-                {
-                    arrowPrefabrbs[i].AddForce(new Vector2(0, -playerStats.chosenStats.projectileSpeed));
-                }
-                else
-                {
-                    arrowPrefabrbs[i].AddForce(new Vector2(playerStats.chosenStats.projectileSpeed, 0));
-                }
-            }
-        }
     }
 
     private void LateUpdate()
     {
+        lookDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         UpdateAnim();
     }
 
@@ -163,44 +143,44 @@ public class PlayerController : MonoBehaviour
             {
                 case playerStates.Idle:
                     //Moving right
-                    if (prevDir.x > 0)
+                    if (lookAngle < 45 && lookAngle > -45)
                     {
                         PlayAnim("AnimPlayerIdleRight");
                     }
                     //Moving left
-                    else if (prevDir.x < 0)
+                    else if (lookAngle > 135 || lookAngle < -135)
                     {
                         PlayAnim("AnimPlayerIdleLeft");
                     }
                     //Moving up
-                    else if (prevDir.y > 0)
+                    else if (lookAngle > 45 && lookAngle < 135)
                     {
                         PlayAnim("AnimPlayerIdleUp");
                     }
                     //Moving down
-                    else if (prevDir.y < 0)
+                    else if (lookAngle < -45 && lookAngle > -135)
                     {
                         PlayAnim("AnimPlayerIdleDown");
                     }
                     break;
                 case playerStates.Walk:
                     //Moving right
-                    if (moveDir.x > 0)
+                    if (lookAngle < 45 && lookAngle > -45)
                     {
                         PlayAnim("AnimPlayerWalkRight");
                     }
                     //Moving left
-                    else if (moveDir.x < 0)
+                    else if (lookAngle > 135 || lookAngle < -135)
                     {
                         PlayAnim("AnimPlayerWalkLeft");
                     }
                     //Moving up
-                    else if (moveDir.y > 0)
+                    else if (lookAngle > 45 && lookAngle < 135)
                     {
                         PlayAnim("AnimPlayerWalkUp");
                     }
                     //Moving down
-                    else if (moveDir.y < 0)
+                    else if (lookAngle < -45 && lookAngle > -135)
                     {
                         PlayAnim("AnimPlayerWalkDown");
                     }
@@ -244,69 +224,69 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
+                //Moving right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerShootRight");
+                }
                 //Moving left
-                if (prevDir.x < 0)
+                else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerShootLeft");
                 }
                 //Moving up
-                else if (prevDir.y > 0)
+                else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerShootUp");
                 }
                 //Moving down
-                else if (prevDir.y < 0)
+                else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerShootDown");
                 }
-                //Moving right
-                else
-                {
-                    PlayAnim("AnimPlayerShootRight");
-                }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
+                //Moving right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerCastRight");
+                }
                 //Moving left
-                if (prevDir.x < 0)
+                else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerCastLeft");
                 }
                 //Moving up
-                else if (prevDir.y > 0)
+                else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerCastUp");
                 }
                 //Moving down
-                else if (prevDir.y < 0)
+                else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerCastDown");
                 }
-                //Moving right
-                else
-                {
-                    PlayAnim("AnimPlayerCastRight");
-                }
                 break;
             default:
+                //Moving right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerSlashRight");
+                }
                 //Moving left
-                if (prevDir.x < 0)
+                else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerSlashLeft");
                 }
                 //Moving up
-                else if (prevDir.y > 0)
+                else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerSlashUp");
                 }
                 //Moving down
-                else if (prevDir.y < 0)
+                else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerSlashDown");
-                }
-                //Moving right
-                else
-                {
-                    PlayAnim("AnimPlayerSlashRight");
                 }
                 break;
         }
@@ -314,35 +294,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //Spawn archer arrows. Called in animation events
-    private void SpawnArrow()
-    {
-        //left
-        if (prevDir.x < 0)
-        {
-            arrowPrefabrbs.Add(Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>());
-        }
-        //up
-        else if (prevDir.y > 0)
-        {
-            arrowPrefabrbs.Add(Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>());
-        }
-        //down
-        else if (prevDir.y < 0)
-        {
-            arrowPrefabrbs.Add(Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>());
-        }
-        //right
-        else
-        {
-            arrowPrefabrbs.Add(Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>());
-        }
-    }
-
     //Called in animation events
-    private bool ShootArrow()
+    private void ShootArrow()
     {
-        return true;
+        Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
     }
 
     private void PlayerHurt()
