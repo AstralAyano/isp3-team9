@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 1058805174}
   m_Layer: 6
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36737,22 +36737,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6768884923863432177, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
-      propertyPath: waypoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 466693640}
-    - target: {fileID: 6768884923863432177, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
-      propertyPath: waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 89690583}
-    - target: {fileID: 6768884923863432177, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
-      propertyPath: waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 247322761}
-    - target: {fileID: 6768884923863432178, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
-      propertyPath: graph
-      value: 
-      objectReference: {fileID: 1144343079}
     - target: {fileID: 6768884923863432182, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
       propertyPath: m_Name
       value: Enemy

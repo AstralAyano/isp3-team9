@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: 5371368685524783123, guid: 37b885fbd6d0ccf40b178ccf12e4a1d0, type: 3}
   - {fileID: 5084154083036631405, guid: 7a9ce73cb65838f438bb6f6ceb73b8d7, type: 3}
   - {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
-  MagicArrowPrefab: {fileID: 2449804098602134871, guid: b64962719be2e5741ad68dd9ec9a3550, type: 3}
+  MagicArrowPrefab: {fileID: 2449804098602134871, guid: 437d5bd72a9e25449b3c09c1db8f83ad, type: 3}
   currentState: 0
 --- !u!61 &7963520640230783044
 BoxCollider2D:

@@ -11,8 +11,6 @@ public class EnemyPathFinding : MonoBehaviour
 
     private Path path;
     private int currentWaypoint = 0;
-    private float initialScale = 0f;
-    private float invertScale = 0f;
 
     private Seeker seeker;
     private Rigidbody2D rb;
@@ -23,8 +21,6 @@ public class EnemyPathFinding : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         enemy = GetComponent<BasicMeleeEnemy>();
-        initialScale = transform.localScale.x;
-        invertScale = -transform.localScale.x;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
@@ -79,13 +75,23 @@ public class EnemyPathFinding : MonoBehaviour
             currentWaypoint++;
         }
 
-        if (rb.velocity.x >= 0.001f)
+        if (rb.velocity.x >= 0.5f) // left
         {
-            transform.localScale = new Vector3(initialScale, transform.localScale.y, transform.localScale.z);
+            enemy.animDir = "Right";
         }
-        if (rb.velocity.x <= -0.001f)
+        else if (rb.velocity.x <= -0.5f) // right
         {
-            transform.localScale = new Vector3(invertScale, transform.localScale.y, transform.localScale.z);
+            enemy.animDir = "Left";
         }
+        else if (rb.velocity.y >= 0.5f) // up
+        {
+            enemy.animDir = "Up";
+        }
+        else if (rb.velocity.y <= -0.5f) // down
+        {
+            enemy.animDir = "Down";
+        }
+
+        enemy.animToPlay = "AnimEnemy" + enemy.animDir + "Walk";
     }
 }

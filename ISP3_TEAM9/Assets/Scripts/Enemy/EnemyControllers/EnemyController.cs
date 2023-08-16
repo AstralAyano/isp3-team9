@@ -24,6 +24,7 @@ public abstract class EnemyController : MonoBehaviour
     protected bool attackToResolve = false;
     protected float attackTimer = 0;
     [SerializeField] protected GameObject spawnPos;
+    public string animToPlay = "AnimEnemyDownIdle", animDir = "Down";
 
     public void ChangeState(State next)
     {
@@ -50,13 +51,14 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Idle()
     {
-
+        // play anim
+        ar.Play(animToPlay);
     }
 
     protected void Patrol()
     {
         // play anim
-
+        ar.Play(animToPlay);
 
         // if reached waypoint, swap to idle
         if (enemyPF.reachedEndOfPath)
@@ -67,6 +69,9 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Attack()
     {
+        // play anim
+        ar.Play(animToPlay);
+
         if (attackToResolve) // else wait till attack over
         {
             attackTimer += Time.deltaTime;
