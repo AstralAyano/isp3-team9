@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 prevDir; //To record player direction before idle
 
     [SerializeField]
-    private GameObject[] arrowPrefab;
+    private GameObject[] arrowPrefab; //0 - Up, 1 - Left, 2 - Down, 3 - Right
 
     public enum playerStates
     {
