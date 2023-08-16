@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4663417192561133090}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4663417193853334200}
   - component: {fileID: 4663417193853334201}
   - component: {fileID: 4663417193853334202}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AggroRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4663417193853334215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c878de3262bba458fa00076105db40, type: 3}
+  m_Script: {fileID: 11500000, guid: d0a7abd8e497d524faa2bed426f9eb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4663417193871873328
@@ -273,7 +273,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4663417193871873329}
-  m_Layer: 8
+  - component: {fileID: 6310422782647285094}
+  m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +296,18 @@ Transform:
   m_Father: {fileID: 4663417192561133103}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6310422782647285094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663417193871873328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39127e370093b0e47978998c984d854c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4663417194375912052
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,9 +318,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4663417194375912053}
   - component: {fileID: 4663417194375912054}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EnemyHitbox
-  m_TagString: PlayerHitbox
+  m_TagString: EnemyHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
