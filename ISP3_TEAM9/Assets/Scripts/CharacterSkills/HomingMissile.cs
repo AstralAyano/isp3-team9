@@ -33,9 +33,13 @@ public class HomingMissile : MonoBehaviour
         rb.velocity = transform.up * speed;
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("EnemyHitbox"))
+        {
+           Instantiate(explosionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        
     }
 }
