@@ -16,33 +16,24 @@ public abstract class EnemyController : MonoBehaviour
 
     [SerializeField] protected Animator ar;
     [SerializeField] protected State currentState;
-    [SerializeField] protected List<GameObject> waypoints = new List<GameObject>();
     [SerializeField] protected EnemyPathFinding enemyPF;
 
     [SerializeField] protected float health = 50;
     [SerializeField] public float speed = 100f;
 
-    protected int targetIndex;
-
-    protected float idleTime;
-
     protected bool attackToResolve = false;
     protected float attackTimer = 0;
+    [SerializeField] protected GameObject spawnPos;
 
     public void ChangeState(State next)
     {
         if (next == State.IDLE)
         {
-            idleTime = 0.0f;
+
         }
         else if (next == State.PATROL)
         {
-            targetIndex++;
-            if (targetIndex > waypoints.Count - 1)
-            {
-                targetIndex = 0;
-            }
-            enemyPF.target = waypoints[targetIndex].transform;
+            enemyPF.target = spawnPos.transform;
             enemyPF.reachedEndOfPath = false;
         }
         else if (next == State.ATTACK)
@@ -59,18 +50,7 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Idle()
     {
-        // play anim
 
-
-        // start timer
-        idleTime += Time.deltaTime;
-
-        // swap to partrol after waiting
-        if (idleTime >= 1.5f)
-        {
-            idleTime = 0f;
-            ChangeState(State.PATROL);
-        }
     }
 
     protected void Patrol()
