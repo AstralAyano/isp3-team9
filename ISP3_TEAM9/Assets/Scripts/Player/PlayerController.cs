@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour
             SpawnArrow();
             //Debug.Log("Attacking");
         }
-        else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
+        
+        if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
         {
             currentState = playerStates.Walk;
             //Debug.Log("Walking");
@@ -73,6 +74,11 @@ public class PlayerController : MonoBehaviour
         {
             currentState = playerStates.Idle;
             //Debug.Log("Idle");
+        }
+
+        if (Input.GetKeyDown("e"))
+        {
+
         }
     }
 
