@@ -282,26 +282,37 @@ public class PlayerController : MonoBehaviour
         if (prevDir.x < 0)
         {
             Rigidbody2D arrowLeftrb = Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>();
-            arrowLeftrb.AddForce(new Vector2(-10 * playerStats.chosenStats.projectileSpeed, 0));
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                arrowLeftrb.AddForce(new Vector2(-5 * playerStats.chosenStats.projectileSpeed, 0));
+            }
         }
         //Moving up
         else if (prevDir.y > 0)
         {
-
             Rigidbody2D arrowUprb = Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>();
-            arrowUprb.AddForce(new Vector2(0, 10 * playerStats.chosenStats.projectileSpeed));
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                arrowUprb.AddForce(new Vector2(0, 5 * playerStats.chosenStats.projectileSpeed));
+            }
         }
         //Moving down
         else if (prevDir.y < 0)
         {
             Rigidbody2D arrowDownrb = Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>();
-            arrowDownrb.AddForce(new Vector2(0, -10 * playerStats.chosenStats.projectileSpeed));
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                arrowDownrb.AddForce(new Vector2(0, -5 * playerStats.chosenStats.projectileSpeed));
+            }
         }
         //Moving right
         else
         {
             Rigidbody2D arrowRightrb = Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>();
-            arrowRightrb.AddForce(new Vector2(10 * playerStats.chosenStats.projectileSpeed, 0));
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                arrowRightrb.AddForce(new Vector2(5 * playerStats.chosenStats.projectileSpeed, 0));
+            }
         }
     }
 
