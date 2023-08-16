@@ -19,7 +19,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
     [SerializeField] private EnemyPathFinding enemyPF; 
 
-    [SerializeField] private float health;
+    [SerializeField] private float health = 50;
+    [SerializeField] public float speed = 100f;
 
     private int targetIndex;
 

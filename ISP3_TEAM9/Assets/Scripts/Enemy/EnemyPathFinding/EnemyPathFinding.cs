@@ -4,8 +4,8 @@ using Pathfinding;
 public class EnemyPathFinding : MonoBehaviour
 {
     [HideInInspector] public Transform target;
+    [HideInInspector] private EnemyController enemy;
 
-    public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public bool reachedEndOfPath = false;
 
@@ -22,6 +22,7 @@ public class EnemyPathFinding : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        enemy = GetComponent<EnemyController>();
         initialScale = transform.localScale.x;
         invertScale = -transform.localScale.x;
 
@@ -68,7 +69,7 @@ public class EnemyPathFinding : MonoBehaviour
         }
 
         Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = dir * speed * Time.deltaTime;
+        Vector2 force = dir * enemy.speed * Time.deltaTime;
         rb.AddForce(force);
 
         float dist = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
