@@ -198,17 +198,17 @@ public class PlayerController : MonoBehaviour
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 //Moving left
-                if (moveDir.x < 0)
+                if (prevDir.x < 0)
                 {
                     PlayAnim("AnimPlayerShootLeft");
                 }
                 //Moving up
-                else if (moveDir.y > 0)
+                else if (prevDir.y > 0)
                 {
                     PlayAnim("AnimPlayerShootUp");
                 }
                 //Moving down
-                else if (moveDir.y < 0)
+                else if (prevDir.y < 0)
                 {
                     PlayAnim("AnimPlayerShootDown");
                 }
@@ -220,17 +220,17 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
                 //Moving left
-                if (moveDir.x < 0)
+                if (prevDir.x < 0)
                 {
                     PlayAnim("AnimPlayerCastLeft");
                 }
                 //Moving up
-                else if (moveDir.y > 0)
+                else if (prevDir.y > 0)
                 {
                     PlayAnim("AnimPlayerCastUp");
                 }
                 //Moving down
-                else if (moveDir.y < 0)
+                else if (prevDir.y < 0)
                 {
                     PlayAnim("AnimPlayerCastDown");
                 }
@@ -242,17 +242,17 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 //Moving left
-                if (moveDir.x < 0)
+                if (prevDir.x < 0)
                 {
                     PlayAnim("AnimPlayerSlashLeft");
                 }
                 //Moving up
-                else if (moveDir.y > 0)
+                else if (prevDir.y > 0)
                 {
                     PlayAnim("AnimPlayerSlashUp");
                 }
                 //Moving down
-                else if (moveDir.y < 0)
+                else if (prevDir.y < 0)
                 {
                     PlayAnim("AnimPlayerSlashDown");
                 }
@@ -279,20 +279,20 @@ public class PlayerController : MonoBehaviour
         }
 
         //Moving left
-        if (moveDir.x < 0)
+        if (prevDir.x < 0)
         {
             Rigidbody2D arrowLeftrb = Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>();
             arrowLeftrb.AddForce(new Vector2(-10 * playerStats.chosenStats.projectileSpeed, 0));
         }
         //Moving up
-        else if (moveDir.y > 0)
+        else if (prevDir.y > 0)
         {
 
             Rigidbody2D arrowUprb = Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>();
             arrowUprb.AddForce(new Vector2(0, 10 * playerStats.chosenStats.projectileSpeed));
         }
         //Moving down
-        else if (moveDir.y < 0)
+        else if (prevDir.y < 0)
         {
             Rigidbody2D arrowDownrb = Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>();
             arrowDownrb.AddForce(new Vector2(0, -10 * playerStats.chosenStats.projectileSpeed));
