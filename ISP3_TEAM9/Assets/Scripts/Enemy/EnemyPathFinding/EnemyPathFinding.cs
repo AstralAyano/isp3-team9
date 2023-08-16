@@ -26,7 +26,7 @@ public class EnemyPathFinding : MonoBehaviour
         initialScale = transform.localScale.x;
         invertScale = -transform.localScale.x;
 
-        InvokeRepeating("UpdatePath", 0f, 1.0f);
+        InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
     void UpdatePath()
@@ -59,7 +59,6 @@ public class EnemyPathFinding : MonoBehaviour
             if (rb.velocity.magnitude > 0)
             {
                 reachedEndOfPath = true;
-                rb.velocity = Vector2.zero;
             }
             return;
         }
@@ -70,7 +69,7 @@ public class EnemyPathFinding : MonoBehaviour
 
         Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = dir * enemy.speed * Time.deltaTime;
-        rb.AddForce(force);
+        rb.velocity = force;
 
         float dist = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

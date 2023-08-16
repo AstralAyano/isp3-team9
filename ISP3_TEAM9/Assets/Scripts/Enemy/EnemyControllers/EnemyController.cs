@@ -90,7 +90,7 @@ public class EnemyController : MonoBehaviour
         idleTime += Time.deltaTime;
 
         // swap to partrol after waiting
-        if (idleTime >= 2.0f)
+        if (idleTime >= 1.5f)
         {
             idleTime = 0f;
             ChangeState(State.PATROL);
