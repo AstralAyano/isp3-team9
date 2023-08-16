@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 prevDir; //To record player direction before idle
 
     [SerializeField]
-    private GameObject[] arrowPrefab; //0 - Up, 1 - Left, 2 - Down, 3 - Right
+    private GameObject[] arrowPrefab; 
+    private List<Rigidbody2D> arrowPrefabrbs = new List<Rigidbody2D>(); //0 - Up, 1 - Left, 2 - Down, 3 - Right
 
     public GameObject MagicArrowPrefab;
+
+    private int attackCooldownTimer = 0;
+    private int skillCooldownTimer = 0;
 
     public enum playerStates
     {
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentState = playerStates.Attack;
-            SpawnArrow();
+            //SpawnArrow();
             //Debug.Log("Attacking");
         }
         else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
@@ -80,9 +84,29 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             currentState = playerStates.Skill;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                if (i == 1)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 2)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 3)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 4)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 5)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+
             }
         }
         else if (Input.GetKeyDown("q"))
@@ -101,6 +125,29 @@ public class PlayerController : MonoBehaviour
 
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
+
+        if (ShootArrow())
+        {
+            for (int i = 0; i < arrowPrefabrbs.Count; i++)
+            {
+                if (arrowPrefabrbs[i].gameObject.name.Contains("Up"))
+                {
+                    arrowPrefabrbs[i].AddForce(new Vector2(0, playerStats.chosenStats.projectileSpeed));
+                }
+                else if (arrowPrefabrbs[i].gameObject.name.Contains("Left"))
+                {
+                    arrowPrefabrbs[i].AddForce(new Vector2(-playerStats.chosenStats.projectileSpeed, 0));
+                }
+                else if (arrowPrefabrbs[i].gameObject.name.Contains("Down"))
+                {
+                    arrowPrefabrbs[i].AddForce(new Vector2(0, -playerStats.chosenStats.projectileSpeed));
+                }
+                else
+                {
+                    arrowPrefabrbs[i].AddForce(new Vector2(playerStats.chosenStats.projectileSpeed, 0));
+                }
+            }
+        }
     }
 
     private void LateUpdate()
@@ -271,49 +318,36 @@ public class PlayerController : MonoBehaviour
     private void SpawnArrow()
     {
         //Return if class is not archer or shooting animation is not done
-        if ((playerStats.chosenClass != ScriptablePlayerStats.playerClass.Archer) ||
-            ((animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0) && 
-            (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)))
+        if (playerStats.chosenClass != ScriptablePlayerStats.playerClass.Archer)
         {
             return;
         }
 
-        //Moving left
+        //left
         if (prevDir.x < 0)
         {
-            Rigidbody2D arrowLeftrb = Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>();
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            {
-                arrowLeftrb.AddForce(new Vector2(-5 * playerStats.chosenStats.projectileSpeed, 0));
-            }
+            arrowPrefabrbs.Add(Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>());
         }
-        //Moving up
+        //up
         else if (prevDir.y > 0)
         {
-            Rigidbody2D arrowUprb = Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>();
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            {
-                arrowUprb.AddForce(new Vector2(0, 5 * playerStats.chosenStats.projectileSpeed));
-            }
+            arrowPrefabrbs.Add(Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>());
         }
-        //Moving down
+        //down
         else if (prevDir.y < 0)
         {
-            Rigidbody2D arrowDownrb = Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>();
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            {
-                arrowDownrb.AddForce(new Vector2(0, -5 * playerStats.chosenStats.projectileSpeed));
-            }
+            arrowPrefabrbs.Add(Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>());
         }
-        //Moving right
+        //right
         else
         {
-            Rigidbody2D arrowRightrb = Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>();
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-            {
-                arrowRightrb.AddForce(new Vector2(5 * playerStats.chosenStats.projectileSpeed, 0));
-            }
+            arrowPrefabrbs.Add(Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>());
         }
+    }
+
+    private bool ShootArrow()
+    {
+        return true;
     }
 
     private void PlayerHurt()
