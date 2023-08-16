@@ -180,11 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370760086c96efc469706c66016a8fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ar: {fileID: 0}
+  ar: {fileID: 1741255159}
   currentState: 0
   enemyPF: {fileID: 6768884923863432178}
   health: 10
   speed: 100
+  attackToResolve: 0
   spawnPos: {fileID: 752521045}
   animToPlay: 
   animDir: 
@@ -266,6 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6768884924376721268}
   - component: {fileID: 6768884924376721269}
+  - component: {fileID: 1948837319}
   m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
@@ -300,6 +302,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39127e370093b0e47978998c984d854c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &1948837319
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6768884924376721259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &6768884925160866255
 GameObject:
   m_ObjectHideFlags: 0

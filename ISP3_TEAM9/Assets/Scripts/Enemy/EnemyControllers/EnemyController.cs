@@ -21,10 +21,10 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float health = 50;
     [SerializeField] public float speed = 100f;
 
-    public bool attackToResolve = false;
+    [HideInInspector] public bool attackToResolve = false;
     protected float attackTimer = 0;
     [SerializeField] protected GameObject spawnPos;
-    public string animToPlay = "AnimEnemyDownIdle", animDir = "Down";
+    [HideInInspector] public string animToPlay = "AnimEnemyDownIdle", animDir = "Down";
 
     public void ChangeState(State next)
     {

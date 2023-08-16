@@ -8,7 +8,6 @@ public class BasicMeleeEnemy : EnemyController
 {
     void Start()
     {
-        ar = GetComponentInChildren<Animator>();
         spawnPos.transform.parent = null;
         enemyPF.target = spawnPos.transform;
         Debug.Log(spawnPos);
