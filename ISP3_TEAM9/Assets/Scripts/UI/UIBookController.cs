@@ -30,6 +30,8 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Vector2 iconStartPos;
     [SerializeField] private Vector2[] iconCurrPos;
 
+    private int currPageNo = 0;
+    private int nextPageNo = 0;
     private float xOffset = 30;
 
     void Start()
@@ -43,6 +45,8 @@ public class UIBookController : MonoBehaviour
             rightButtons[i].image.sprite = bookmark[1];
             leftButtons[i - 1].gameObject.SetActive(false);
         }
+
+        currPageNo = 1;
     }
 
     public void BookButtons(int page_type)
@@ -54,6 +58,8 @@ public class UIBookController : MonoBehaviour
 
         int page = page_type / 10;
         int type = page_type % 10;
+
+        nextPageNo = page;
 
         switch (page)
         {
@@ -89,14 +95,23 @@ public class UIBookController : MonoBehaviour
             rightIcons[i].GetComponent<RectTransform>().anchoredPosition = iconCurrPos[i];
         }
 
-        switch (dir)
+        int timeToFlip = Mathf.Abs(nextPageNo - currPageNo);
+
+        for (int i = 0; i < timeToFlip; i++)
         {
-            case 0:
-                animController.SetTrigger("flipLeft");
-                break;
-            case 1:
-                animController.SetTrigger("flipRight");
-                break;
+            animController.SetFloat("SpeedMultiplier", timeToFlip);
+
+            switch (dir)
+            {
+                case 0:
+                    animController.SetTrigger("flipLeft");
+                    break;
+                case 1:
+                    animController.SetTrigger("flipRight");
+                    break;
+            }
+
+            yield return new WaitForSeconds(1f / timeToFlip);
         }
 
         switch (currPage)
@@ -104,8 +119,6 @@ public class UIBookController : MonoBehaviour
             case "Status":
                 rightButtons[0].gameObject.transform.localPosition -= new Vector3(xOffset, 0, 0);
                 rightIcons[0].transform.localPosition += new Vector3(27.5f, 0, 0);
-
-                yield return new WaitForSeconds(1);
 
                 ShowAllButtons(false);
 
@@ -115,12 +128,12 @@ public class UIBookController : MonoBehaviour
                 rightButtons[3].image.sprite = bookmark[1];
                 
                 statusPage.SetActive(true);
+
+                currPageNo = 1;
                 break;
             case "Inventory":
                 rightButtons[1].gameObject.transform.localPosition -= new Vector3(xOffset, 0, 0);
                 rightIcons[1].transform.localPosition += new Vector3(27.5f, 0, 0);
-
-                yield return new WaitForSeconds(1);
 
                 ShowAllButtons(false);
 
@@ -132,13 +145,13 @@ public class UIBookController : MonoBehaviour
                 leftButtons[0].gameObject.SetActive(true);
 
                 inventoryPage.SetActive(true);
+                
+                currPageNo = 2;
                 break;
             case "Skill":
                 rightButtons[2].gameObject.transform.localPosition -= new Vector3(xOffset, 0, 0);
                 rightIcons[2].transform.localPosition += new Vector3(27.5f, 0, 0);
                 
-                yield return new WaitForSeconds(1);
-
                 ShowAllButtons(false);
 
                 rightButtons[0].gameObject.SetActive(false);
@@ -150,12 +163,12 @@ public class UIBookController : MonoBehaviour
                 leftButtons[1].gameObject.SetActive(true);
 
                 skillPage.SetActive(true);
+                
+                currPageNo = 3;
                 break;
             case "Setting":
                 rightButtons[3].gameObject.transform.localPosition -= new Vector3(xOffset, 0, 0);
                 rightIcons[3].transform.localPosition += new Vector3(27.5f, 0, 0);
-
-                yield return new WaitForSeconds(1);
 
                 ShowAllButtons(false);
 
@@ -169,6 +182,8 @@ public class UIBookController : MonoBehaviour
                 leftButtons[2].gameObject.SetActive(true);
 
                 settingPage.SetActive(true);
+                
+                currPageNo = 4;
                 break;
         }
     }
