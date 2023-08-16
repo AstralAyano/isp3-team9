@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject[] arrowPrefab; //0 - Up, 1 - Left, 2 - Down, 3 - Right
 
+    public GameObject MagicArrowPrefab;
+
     public enum playerStates
     {
         Idle,
@@ -79,6 +81,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             currentState = playerStates.Skill;
+            for (int i = 0; i < 5; i++)
+            {
+                Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            }
         }
         else if (Input.GetKeyDown("q"))
         {

@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9187127078638063367, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: MagicArrowPrefab
+      value: 
+      objectReference: {fileID: 2449804098602134871, guid: 395659177c54a3b41b526af5e85138e2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
 --- !u!1 &1058805169
@@ -48403,7 +48407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254670143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d8f06c0455d8ed4d91d2b5fdd1d6bf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 26c878de3262bba458fa00076105db40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1810012044
