@@ -127,6 +127,11 @@ MonoBehaviour:
   - {fileID: 9100000, guid: e334803a87081de43b09a582d549fef5, type: 2}
   - {fileID: 9100000, guid: 03f439972d16c0f4bad688ef57c16dc4, type: 2}
   - {fileID: 9100000, guid: b5624c865611cdb48bf7d6857d83eb10, type: 2}
+  arrowPrefab:
+  - {fileID: 6054155301654630595, guid: 95a8afa056afefc43a4a2f6a856a9d47, type: 3}
+  - {fileID: 5371368685524783123, guid: 37b885fbd6d0ccf40b178ccf12e4a1d0, type: 3}
+  - {fileID: 5084154083036631405, guid: 7a9ce73cb65838f438bb6f6ceb73b8d7, type: 3}
+  - {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
   currentState: 0
 --- !u!61 &7963520640230783044
 BoxCollider2D:

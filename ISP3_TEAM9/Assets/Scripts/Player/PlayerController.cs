@@ -99,32 +99,42 @@ public class PlayerController : MonoBehaviour
             switch (currentState)
             {
                 case playerStates.Idle:
-                    PlayAnim("AnimPlayerIdle");
+                    PlayAnim("AnimPlayerIdleDown");
                     break;
                 case playerStates.Walk:
                     //Moving right
-                    if (Input.GetKey("d"))
+                    if (moveDir.x > 0)
                     {
                         PlayAnim("AnimPlayerWalkRight");
                     }
                     //Moving left
-                    else if (Input.GetKey("a"))
+                    else if (moveDir.x < 0)
                     {
                         PlayAnim("AnimPlayerWalkLeft");
                     }
                     //Moving up
-                    else if (Input.GetKey("w"))
+                    else if (moveDir.y > 0)
                     {
                         PlayAnim("AnimPlayerWalkUp");
                     }
                     //Moving down
-                    else if (Input.GetKey("s"))
+                    else if (moveDir.y < 0)
                     {
                         PlayAnim("AnimPlayerWalkDown");
                     }
                     break;
                 case playerStates.Attack:
                     PlayerAttack();
+                    break;
+                case playerStates.Hurt:
+                    PlayerHurt();
+                    break;
+                //case playerStates.Skill:
+                //    break;
+                //case playerStates.Ultimate:
+                //    break;
+                case playerStates.Death:
+                    PlayerDeath();
                     break;
             }
         }
@@ -262,5 +272,17 @@ public class PlayerController : MonoBehaviour
     private void PlayerHurt()
     {
         PlayAnim("AnimPlayerHurt");
+        //playerStats.chosenStats.health -= ;
+    }
+
+    private void PlayerDeath()
+    {
+        PlayAnim("AnimPlayerHurt");
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            Destroy(gameObject, 0);
+            //Switch scene
+
+        }
     }
 }

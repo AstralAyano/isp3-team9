@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimPlayerIdle_Mage
+  m_Name: AnimPlayerIdleRight_Paladin
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1051124669, guid: ffb81f35a804a754e91abf5bd79796bf, type: 3}
+      value: {fileID: 575484590, guid: 805b0c96d9572dd49ac01874ca3dea0f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,7 +40,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1051124669, guid: ffb81f35a804a754e91abf5bd79796bf, type: 3}
+    - {fileID: 575484590, guid: 805b0c96d9572dd49ac01874ca3dea0f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
