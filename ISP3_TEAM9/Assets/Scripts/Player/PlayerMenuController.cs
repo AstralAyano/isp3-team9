@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class PlayerMenuController : MonoBehaviour
 {
+    [Header("Camera")]
+    [SerializeField] private CinemachineVirtualCamera virtualCam;
 
     [SerializeField] private CanvasGroup uiCanvasGroup;
     [SerializeField] private new Light2D light;
@@ -25,6 +28,7 @@ public class PlayerMenuController : MonoBehaviour
     float lastSum = 0;
 
     private bool startWalking = false;
+    private bool cameraZoom = false;
     private float counter = 0;
     public int lightStatus = 3;
 
@@ -32,6 +36,11 @@ public class PlayerMenuController : MonoBehaviour
     {
         smoothQueue.Clear();
         lastSum = 0;
+    }
+
+    void Awake()
+    {
+        virtualCam.m_Lens.OrthographicSize = 5f;
     }
 
     void Start()
@@ -97,6 +106,17 @@ public class PlayerMenuController : MonoBehaviour
             light.intensity = lastSum / (float)smoothQueue.Count;
         }
 
+        if (cameraZoom)
+        {
+            if (virtualCam.m_Lens.OrthographicSize > 2.5f)
+            {
+                virtualCam.m_Lens.OrthographicSize = Mathf.Lerp(virtualCam.m_Lens.OrthographicSize, 2.5f, 2 * Time.deltaTime);
+            }
+            else
+            {
+                cameraZoom = false;
+            }
+        }
     }
 
     void LateUpdate()
@@ -116,6 +136,8 @@ public class PlayerMenuController : MonoBehaviour
     private IEnumerator StartSequence()
     {
         GameObject.Find("UIMenu").GetComponent<UIMenuController>().fadeOutCanvasGroup = true;
+
+        cameraZoom = true;
 
         yield return new WaitForSeconds(2.0f);
 

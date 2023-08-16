@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 using TMPro;
+using Cinemachine;
 
 public class UIMenuController : MonoBehaviour
 {
