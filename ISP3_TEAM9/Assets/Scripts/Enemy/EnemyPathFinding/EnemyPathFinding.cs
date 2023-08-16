@@ -4,7 +4,7 @@ using Pathfinding;
 public class EnemyPathFinding : MonoBehaviour
 {
     [HideInInspector] public Transform target;
-    [HideInInspector] private EnemyController enemy;
+    [HideInInspector] private BasicMeleeEnemy enemy;
 
     public float nextWaypointDistance = 3f;
     public bool reachedEndOfPath = false;
@@ -22,7 +22,7 @@ public class EnemyPathFinding : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        enemy = GetComponent<EnemyController>();
+        enemy = GetComponent<BasicMeleeEnemy>();
         initialScale = transform.localScale.x;
         invertScale = -transform.localScale.x;
 
