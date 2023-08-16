@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HomingMissile : MonoBehaviour
 {
-    public Transform Target;
+    public GameObject Target;
 
     public float speed = 5f;
     public float rotateSpeed = 200f;
@@ -22,7 +22,7 @@ public class HomingMissile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 direction = (Vector2)Target.position - rb.position;
+        Vector2 direction = (Vector2)Target.transform.position - rb.position;
 
         direction.Normalize();
 

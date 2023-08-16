@@ -84,9 +84,29 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             currentState = playerStates.Skill;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                if (i == 1)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 2)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 3)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 4)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (i == 5)
+                {
+                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+
             }
         }
         else if (Input.GetKeyDown("q"))
