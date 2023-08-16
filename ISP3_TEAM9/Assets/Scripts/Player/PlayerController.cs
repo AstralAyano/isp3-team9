@@ -78,7 +78,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-
+            currentState = playerStates.Skill;
+        }
+        else if (Input.GetKeyDown("q"))
+        {
+            currentState = playerStates.Ultimate;
         }
     }
 
@@ -156,10 +160,10 @@ public class PlayerController : MonoBehaviour
                 case playerStates.Hurt:
                     PlayerHurt();
                     break;
-                //case playerStates.Skill:
-                //    break;
-                //case playerStates.Ultimate:
-                //    break;
+                case playerStates.Skill:
+                    break;
+                case playerStates.Ultimate:
+                    break;
                 case playerStates.Death:
                     PlayerDeath();
                     break;
