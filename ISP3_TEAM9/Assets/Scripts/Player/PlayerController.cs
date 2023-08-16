@@ -151,25 +151,70 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                //Moving right
+                //Moving left
                 if (moveDir.x < 0)
                 {
                     PlayAnim("AnimPlayerShootLeft");
                 }
+                //Moving up
                 else if (moveDir.y > 0)
                 {
                     PlayAnim("AnimPlayerShootUp");
                 }
+                //Moving down
                 else if (moveDir.y < 0)
                 {
                     PlayAnim("AnimPlayerShootDown");
                 }
+                //Moving right
                 else
                 {
                     PlayAnim("AnimPlayerShootRight");
                 }
                 break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                //Moving left
+                if (moveDir.x < 0)
+                {
+                    PlayAnim("AnimPlayerCastLeft");
+                }
+                //Moving up
+                else if (moveDir.y > 0)
+                {
+                    PlayAnim("AnimPlayerCastUp");
+                }
+                //Moving down
+                else if (moveDir.y < 0)
+                {
+                    PlayAnim("AnimPlayerCastDown");
+                }
+                //Moving right
+                else
+                {
+                    PlayAnim("AnimPlayerCastRight");
+                }
+                break;
             default:
+                //Moving left
+                if (moveDir.x < 0)
+                {
+                    PlayAnim("AnimPlayerSlashLeft");
+                }
+                //Moving up
+                else if (moveDir.y > 0)
+                {
+                    PlayAnim("AnimPlayerSlashUp");
+                }
+                //Moving down
+                else if (moveDir.y < 0)
+                {
+                    PlayAnim("AnimPlayerSlashDown");
+                }
+                //Moving right
+                else
+                {
+                    PlayAnim("AnimPlayerSlashRight");
+                }
                 break;
         }
 
@@ -179,39 +224,39 @@ public class PlayerController : MonoBehaviour
     //Spawn archer arrows
     private void SpawnArrow()
     {
-        //Return if animation is not done
-        if ((animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0) && (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
+        //Return if class is not archer or shooting animation is not done
+        if ((playerStats.chosenClass != ScriptablePlayerStats.playerClass.Archer) ||
+            ((animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0) && 
+            (animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1)))
         {
             return;
         }
 
+        //Moving left
         if (moveDir.x < 0)
         {
             Rigidbody2D arrowLeftrb = Instantiate(arrowPrefab[1], transform).GetComponent<Rigidbody2D>();
-            arrowLeftrb.AddForce(new Vector2(-1000, 0));
+            arrowLeftrb.AddForce(new Vector2(-10 * playerStats.chosenStats.projectileSpeed, 0));
         }
+        //Moving up
         else if (moveDir.y > 0)
         {
 
             Rigidbody2D arrowUprb = Instantiate(arrowPrefab[0], transform).GetComponent<Rigidbody2D>();
-            arrowUprb.AddForce(new Vector2(0, 1000));
+            arrowUprb.AddForce(new Vector2(0, 10 * playerStats.chosenStats.projectileSpeed));
         }
+        //Moving down
         else if (moveDir.y < 0)
         {
             Rigidbody2D arrowDownrb = Instantiate(arrowPrefab[2], transform).GetComponent<Rigidbody2D>();
-            arrowDownrb.AddForce(new Vector2(0, -1000));
+            arrowDownrb.AddForce(new Vector2(0, -10 * playerStats.chosenStats.projectileSpeed));
         }
+        //Moving right
         else
         {
             Rigidbody2D arrowRightrb = Instantiate(arrowPrefab[3], transform).GetComponent<Rigidbody2D>();
-            arrowRightrb.AddForce(new Vector2(1000, 0));
+            arrowRightrb.AddForce(new Vector2(10 * playerStats.chosenStats.projectileSpeed, 0));
         }
-    }
-
-    private void ShootArrow(string dir)
-    {
-        //GameObject arrow = GetComponentInChildren<GameObject>();
-        //arrow.transform.position = arrow.transform.position + moveDir;
     }
 
     private void PlayerHurt()
