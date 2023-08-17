@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown("q"))
         {
             currentState = playerStates.Ultimate;
-            Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+            
         }
 
         skillCooldownTimer -= 1 * Time.deltaTime;
@@ -235,27 +235,8 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                //Moving right
-                if (lookAngle < 45 && lookAngle > -45)
-                {
-                    PlayAnim("AnimPlayerCastRight");
-                }
-                //Moving left
-                else if (lookAngle > 135 || lookAngle < -135)
-                {
-                    PlayAnim("AnimPlayerCastLeft");
-                }
-                //Moving up
-                else if (lookAngle > 45 && lookAngle < 135)
-                {
-                    PlayAnim("AnimPlayerCastUp");
-                }
-                //Moving down
-                else if (lookAngle < -45 && lookAngle > -135)
-                {
-                    PlayAnim("AnimPlayerCastDown");
-                }
-                break;
+                //Mage has no normal attack
+                return;
             default:
                 //Moving right
                 if (lookAngle < 45 && lookAngle > -45)
@@ -299,6 +280,16 @@ public class PlayerController : MonoBehaviour
         switch(playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
+                //Return if skill is still on cooldown
+                if (skillCooldownTimer > 0)
+                {
+                    return;
+                }
+                else if (skillCooldownTimer <= 0)
+                {
+                    skillCooldownTimer = 20;
+                }
+
                 for (int i = 0; i < 6; i++)
                 {
                     if (i == 1)
@@ -377,7 +368,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                PlayAnim("AniimPlayerCastRight");
+                PlayAnim("AnimPlayerCastRight");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 PlayAnim("AnimPlayerSlashRight");
@@ -386,6 +377,11 @@ public class PlayerController : MonoBehaviour
                 PlayAnim("AnimPlayerCastRight");
                 break;
         }
+    }
+
+    private void SummonFireball()
+    {
+        Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
     }
 
     private void PlayerHurt()
