@@ -8,11 +8,22 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class UIBookController : MonoBehaviour
 {
+    [Header("Player Variables")]
+    [SerializeField] private ScriptablePlayerStats playerStats;
+    [SerializeField] private TMP_Text[] statsValueText;
+    [SerializeField] private float[] statsValue;
+    [SerializeField] private TMP_Text[] statusValueText;
+    [SerializeField] private float[] statusValue;
+    [SerializeField] private TMP_Text classText;
+
     [Header("References")]
     [SerializeField] private Animator animController;
     [SerializeField] private Button[] rightButtons;
     [SerializeField] private Button[] leftButtons;
     [SerializeField] private GameObject[] rightIcons;
+    [SerializeField] private Slider[] statusSliders;
+    [SerializeField] private GridLayoutGroup statsGroup;
+    [SerializeField] private GameObject projectileStat;
 
     [Header("Pages")]
     [SerializeField] private GameObject statusPage;
@@ -21,6 +32,8 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private GameObject settingPage;
 
     [Header("Sprites")]
+    [SerializeField] private Image equipmentPlayer;
+    [SerializeField] private Sprite[] playerSprites;
     [SerializeField] private Sprite[] bookmark;
 
     [Header("Variables")]
@@ -47,6 +60,70 @@ public class UIBookController : MonoBehaviour
         }
 
         currPageNo = 1;
+
+        GetPlayerStats();
+        SetPlayerStatsInBook();
+    }
+
+    void GetPlayerStats()
+    {
+        switch (playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Barbarian:
+                equipmentPlayer.sprite = playerSprites[0];
+                HideProjectileSpeedStat();
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                equipmentPlayer.sprite = playerSprites[1];
+                HideProjectileSpeedStat();
+                break;
+            case ScriptablePlayerStats.playerClass.Archer:
+                equipmentPlayer.sprite = playerSprites[2];
+                ShowProjectileSpeedStat();
+                break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                equipmentPlayer.sprite = playerSprites[3];
+                ShowProjectileSpeedStat();
+                break;
+        }
+
+        statsValue[0] = playerStats.chosenStats.health;
+        statsValue[1] = playerStats.chosenStats.attack;
+        statsValue[2] = playerStats.chosenStats.attackInterval;
+        statsValue[3] = playerStats.chosenStats.moveSpeed;
+        statsValue[4] = playerStats.chosenStats.projectileSpeed;
+
+        for (int i = 0; i < statusSliders.Length; i++)
+        {
+            statusSliders[i].maxValue = statsValue[i];
+        }
+    }
+
+    void SetPlayerStatsInBook()
+    {
+        classText.text = "Class : " + playerStats.chosenClass.ToString();
+
+        for (int i = 0; i < statsValueText.Length; i++)
+        {
+            statsValueText[i].text = statsValue[i].ToString();
+        }
+
+        for (int i = 0; i < statusValueText.Length; i++)
+        {
+            statusValueText[i].text = statusSliders[i].value.ToString() + "/" + statusSliders[i].maxValue.ToString();
+        }
+    }
+
+    void HideProjectileSpeedStat()
+    {
+        statsGroup.spacing = new Vector2(0, 30);
+        projectileStat.SetActive(false);
+    }
+
+    void ShowProjectileSpeedStat()
+    {
+        statsGroup.spacing = new Vector2(0, 10);
+        projectileStat.SetActive(true);
     }
 
     public void BookButtons(int page_type)
@@ -55,6 +132,9 @@ public class UIBookController : MonoBehaviour
         inventoryPage.SetActive(false);
         skillPage.SetActive(false);
         settingPage.SetActive(false);
+
+        GetPlayerStats();
+        SetPlayerStatsInBook();
 
         int page = page_type / 10;
         int type = page_type % 10;
@@ -220,6 +300,9 @@ public class UIBookController : MonoBehaviour
         inventoryPage.SetActive(false);
         skillPage.SetActive(false);
         settingPage.SetActive(false);
+
+        GetPlayerStats();
+        SetPlayerStatsInBook();
 
         switch (page)
         {
