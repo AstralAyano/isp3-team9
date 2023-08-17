@@ -21,7 +21,7 @@ public class FireballUlt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * 1, ForceMode2D.Impulse);
+        rb.AddForce(dir * 0.1f, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,6 +29,14 @@ public class FireballUlt : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GameObject.FindWithTag("FireBall2ndRadius") && GetComponentInChildren<CircleCollider2D>())
+        {
+            GetComponentInChildren<CircleCollider2D>().gameObject.SetActive(true);
         }
     }
 }
