@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentState = playerStates.Attack;
-            ShootArrow();
             //Debug.Log("Attacking");
         }
         else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
