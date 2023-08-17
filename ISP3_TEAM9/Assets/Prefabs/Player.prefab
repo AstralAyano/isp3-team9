@@ -273,6 +273,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b5624c865611cdb48bf7d6857d83eb10, type: 2}
   arrowPrefab: {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
   MagicArrowPrefab: {fileID: 2449804098602134871, guid: 437d5bd72a9e25449b3c09c1db8f83ad, type: 3}
+  FireBallPrefab: {fileID: 236943370349818624, guid: 2d9a1f87d55d6b14db22746c7d8e1a34, type: 3}
   currentState: 0
 --- !u!61 &7963520640230783044
 BoxCollider2D:
