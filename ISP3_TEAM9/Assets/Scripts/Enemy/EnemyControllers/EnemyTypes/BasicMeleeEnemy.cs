@@ -10,7 +10,6 @@ public class BasicMeleeEnemy : EnemyController
     {
         spawnPos.transform.parent = null;
         enemyPF.target = spawnPos.transform;
-        Debug.Log(spawnPos);
     }
 
     void Update()
