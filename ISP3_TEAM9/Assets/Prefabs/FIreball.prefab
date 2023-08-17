@@ -108,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236943369153726417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236943369409788283}
   - component: {fileID: 236943369409788282}
+  - component: {fileID: 612039406872573141}
   m_Layer: 0
   m_Name: Fireball2ndRadius
   m_TagString: FireBall2ndRadius
@@ -273,6 +274,18 @@ CircleCollider2D:
   m_Offset: {x: 0.025721312, y: 0}
   serializedVersion: 2
   m_Radius: 2.5677426
+--- !u!114 &612039406872573141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236943369409788276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277dfef540debe046991853ad44ab309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236943370349818624
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d680c59c8613c40897b415d77c833a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondCollider: {fileID: 236943369409788276}
+  FireBallGFX: {fileID: 236943368682528284}
 --- !u!50 &8222015409187846376
 Rigidbody2D:
   serializedVersion: 4
@@ -432,7 +447,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -304355675, guid: 77c4469b8d5490f4c9664f54e2d7b798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
