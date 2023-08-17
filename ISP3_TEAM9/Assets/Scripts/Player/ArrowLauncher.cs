@@ -10,7 +10,7 @@ public class ArrowLauncher : MonoBehaviour
     private Vector2 dir;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
 

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject arrowPrefab;
+    private GameObject spawnedArrow;
 
     public GameObject MagicArrowPrefab;
 
@@ -283,9 +284,14 @@ public class PlayerController : MonoBehaviour
     }
 
     //Called in animation events
+    private void SpawnArrow()
+    {
+        spawnedArrow = Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+    }
+
     private void ShootArrow()
     {
-        Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+        spawnedArrow.GetComponent<ArrowLauncher>().enabled = true;
     }
 
     private void PlayerSkill()
