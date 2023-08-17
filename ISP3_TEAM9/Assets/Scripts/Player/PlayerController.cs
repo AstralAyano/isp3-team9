@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject MagicArrowPrefab;
 
+    public GameObject FireBallPrefab;
+
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown("q"))
         {
             currentState = playerStates.Ultimate;
+            Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
         }
 
         skillCooldownTimer -= 1 * Time.deltaTime;
