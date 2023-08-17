@@ -99,9 +99,7 @@ public class PlayerController : MonoBehaviour
         }
 
         skillCooldownTimer -= 1 * Time.deltaTime;
-        Debug.Log("Cooldown" + skillCooldownTimer);
         skillDurationTimer -= 1 * Time.deltaTime;
-        Debug.Log("Duration" + skillDurationTimer);
 
         if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
         {

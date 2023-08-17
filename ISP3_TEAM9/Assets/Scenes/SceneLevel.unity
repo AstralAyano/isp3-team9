@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: arrowPrefab
       value: 
       objectReference: {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
+    - target: {fileID: 9187127078638063367, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: FireBallPrefab
+      value: 
+      objectReference: {fileID: 236943370349818624, guid: 2d9a1f87d55d6b14db22746c7d8e1a34, type: 3}
     - target: {fileID: 9187127078638063384, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
       propertyPath: m_Controller
       value: 
