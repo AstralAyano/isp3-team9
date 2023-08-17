@@ -149,8 +149,7 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         roomColors.Add(UnityEngine.Random.ColorHSV());
     }
 
-    private void CreateCorridors(HashSet<Vector2Int> floorPositions, 
-        HashSet<Vector2Int> potentialRoomPositions)
+    private void CreateCorridors(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> potentialRoomPositions)
     {
         var currentPosition = startPosition;
         potentialRoomPositions.Add(currentPosition);

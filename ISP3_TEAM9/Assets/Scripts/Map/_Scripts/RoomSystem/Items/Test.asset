@@ -15,4 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: ed70b4a5770ee274e94f6825362fdbfe, type: 3}
   size: {x: 1, y: 1}
   placementType: 0
-  addOffset: 0
+  addOffset: 1
