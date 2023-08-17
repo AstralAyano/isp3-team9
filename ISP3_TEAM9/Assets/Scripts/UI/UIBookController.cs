@@ -213,4 +213,33 @@ public class UIBookController : MonoBehaviour
             }
         }
     }
+
+    public void HUDButtons(int page)
+    {
+        statusPage.SetActive(false);
+        inventoryPage.SetActive(false);
+        skillPage.SetActive(false);
+        settingPage.SetActive(false);
+
+        switch (page)
+        {
+            case 1:
+                currPage = "Status";
+                break;
+            case 2:
+                currPage = "Inventory";
+                break;
+            case 3:
+                currPage = "Skill";
+                break;
+            case 4:
+                currPage = "Setting";
+                break;
+        }
+
+        currPageNo = page;
+        nextPageNo = page;
+
+        StartCoroutine(AnimationStart(0));
+    }
 }
