@@ -283,6 +283,6 @@ public class UIMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
-        GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLevel");
+        GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLobby");
     }
 }
