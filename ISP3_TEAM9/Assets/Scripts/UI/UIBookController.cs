@@ -87,15 +87,19 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
+        playerStats.chosenStats = playerStats.stats[playerStats.chosenClass];
+
         statsValue[0] = playerStats.chosenStats.health;
         statsValue[1] = playerStats.chosenStats.attack;
         statsValue[2] = playerStats.chosenStats.attackInterval;
         statsValue[3] = playerStats.chosenStats.moveSpeed;
         statsValue[4] = playerStats.chosenStats.projectileSpeed;
 
+        statusValue[0] = statsValue[0];
+
         for (int i = 0; i < statusSliders.Length; i++)
         {
-            statusSliders[i].maxValue = statsValue[i];
+            statusSliders[i].maxValue = statusValue[i];
         }
     }
 
@@ -108,7 +112,7 @@ public class UIBookController : MonoBehaviour
             statsValueText[i].text = statsValue[i].ToString();
         }
 
-        for (int i = 0; i < statusValueText.Length; i++)
+        for (int i = 0; i < statusSliders.Length; i++)
         {
             statusValueText[i].text = statusSliders[i].value.ToString() + "/" + statusSliders[i].maxValue.ToString();
         }
