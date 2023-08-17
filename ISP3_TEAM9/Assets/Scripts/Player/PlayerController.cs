@@ -102,6 +102,11 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Cooldown" + skillCooldownTimer);
         skillDurationTimer -= 1 * Time.deltaTime;
         Debug.Log("Duration" + skillDurationTimer);
+
+        if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
+        {
+            ClearSkillEffects();
+        }
     }
 
     // Update is called once per frame
@@ -264,16 +269,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    //Called in animation events
-    private void SpawnArrow()
-    {
-        spawnedArrow = Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
-    }
-
-    private void ShootArrow()
-    {
-        spawnedArrow.GetComponent<ArrowLauncher>().enabled = true;
-    }
 
     private void PlayerSkill()
     {
@@ -281,38 +276,16 @@ public class PlayerController : MonoBehaviour
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 //Return if skill is still on cooldown
-                if (skillCooldownTimer > 0)
-                {
-                    return;
-                }
-                else if (skillCooldownTimer <= 0)
-                {
-                    skillCooldownTimer = 20;
-                }
+                //if (skillCooldownTimer > 0)
+                //{
+                //    return;
+                //}
+                //else if (skillCooldownTimer <= 0)
+                //{
+                //    skillCooldownTimer = 20;
+                //}
 
-                for (int i = 0; i < 6; i++)
-                {
-                    if (i == 1)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 2)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 3)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 4)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 5)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
-                    }
-                }
+                
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AniimPlayerCastRight");
@@ -379,9 +352,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SummonFireball()
+    private void ClearSkillEffects()
     {
-        Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+        switch (playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Archer:
+                break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                break;
+            case ScriptablePlayerStats.playerClass.Barbarian:
+                sr.color = Color.white;
+                playerStats.chosenStats.attack = 10;
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                break;
+        }
     }
 
     private void PlayerHurt()
@@ -400,4 +385,21 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    //Called in animation events
+    private void SpawnArrow()
+    {
+        spawnedArrow = Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+    }
+
+    private void ShootArrow()
+    {
+        spawnedArrow.GetComponent<ArrowLauncher>().enabled = true;
+    }
+
+    private void SummonFireball()
+    {
+        Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+    }
+
 }
