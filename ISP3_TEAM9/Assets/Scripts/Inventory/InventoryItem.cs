@@ -67,13 +67,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //ui.nameText.text = item.itemName;
-        //ui.descText.text = item.itemDesc;
+        ToolTipManager.instance.SetAndShowToolTip(item.itemName, item.itemDesc);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //ui.nameText.text = "";
-        //ui.descText.text = "";
+        ToolTipManager.instance.HideToolTip();
     }
 }

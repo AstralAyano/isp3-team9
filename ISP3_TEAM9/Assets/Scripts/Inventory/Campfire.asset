@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Campfire
   m_EditorClassIdentifier: 
   image: {fileID: -1321363736, guid: bcc8d5119f9ffa04ab073cbbaeaedd35, type: 3}
-  stackable: 1
+  stackable: 0
   itemName: Campfire Kit
   itemDesc: A
