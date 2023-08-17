@@ -20,7 +20,10 @@ public class FireballUlt : MonoBehaviour
     [SerializeField]
     private GameObject FireBallGFX;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject FireBallGFX2;
+
+   // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +56,7 @@ public class FireballUlt : MonoBehaviour
             IsExploded = true;
             secondCollider.SetActive(true);
             FireBallGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            FireBallGFX2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
             ActivateTimer = true;
             Debug.Log("die fire part 1");
         }

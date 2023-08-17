@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 84b8485d0238d6b46b17474d3f5f598b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondCollider: {fileID: 236943369409788276}
   FireBallGFX: {fileID: 236943368682528284}
+  FireBallGFX2: {fileID: 3034994265324498927}
 --- !u!50 &8222015409187846376
 Rigidbody2D:
   serializedVersion: 4
@@ -447,7 +448,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: -304355675, guid: 77c4469b8d5490f4c9664f54e2d7b798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
