@@ -9,6 +9,8 @@ public class FireballUlt : MonoBehaviour
     private float angleInRad;
     private Vector2 dir;
 
+    private float LastEF;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +30,17 @@ public class FireballUlt : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
-        }
-    }
+            if (GameObject.FindWithTag("FireBall2ndRadius") && GetComponentInChildren<CircleCollider2D>())
+            {
+                GetComponentInChildren<CircleCollider2D>().gameObject.SetActive(true);
+            }
 
-    private void OnDestroy()
-    {
-        if (GameObject.FindWithTag("FireBall2ndRadius") && GetComponentInChildren<CircleCollider2D>())
-        {
-            GetComponentInChildren<CircleCollider2D>().gameObject.SetActive(true);
+            LastEF += Time.deltaTime;
+            if (LastEF >= 5)
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

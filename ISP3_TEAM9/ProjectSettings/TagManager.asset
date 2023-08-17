@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - EnemySpawn
   - Wall
+  - FireBall2ndRadius
   layers:
   - Default
   - TransparentFX
