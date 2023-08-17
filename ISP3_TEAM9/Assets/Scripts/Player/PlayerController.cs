@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveDir;
-    private Vector2 prevDir; //To record player direction before idle
     private Vector2 lookDir;
     private float lookAngle;
 
@@ -24,8 +23,11 @@ public class PlayerController : MonoBehaviour
 
     public GameObject MagicArrowPrefab;
 
-    private int attackCooldownTimer = 0;
-    private int skillCooldownTimer = 0;
+    private float attackCooldownTimer = 0f;
+    private float skillCooldownTimer = 0f;
+    private float skillDurationTimer = 0f;
+
+    private SpriteRenderer sr;
 
     public enum playerStates
     {
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
 
         //Set the animator controller to use
         switch (playerStats.chosenClass)
@@ -85,34 +88,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             currentState = playerStates.Skill;
-            for (int i = 0; i < 6; i++)
-            {
-                if (i == 1)
-                {
-                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                }
-                else if (i == 2)
-                {
-                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-                }
-                else if (i == 3)
-                {
-                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
-                }
-                else if (i == 4)
-                {
-                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
-                }
-                else if (i == 5)
-                {
-                    Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
-                }
-            }
         }
         else if (Input.GetKeyDown("q"))
         {
             currentState = playerStates.Ultimate;
         }
+
+        skillCooldownTimer -= 1 * Time.deltaTime;
+        Debug.Log("Cooldown" + skillCooldownTimer);
+        skillDurationTimer -= 1 * Time.deltaTime;
+        Debug.Log("Duration" + skillDurationTimer);
     }
 
     // Update is called once per frame
@@ -183,7 +168,6 @@ public class PlayerController : MonoBehaviour
                     {
                         PlayAnim("AnimPlayerWalkDown");
                     }
-                    prevDir = moveDir;
                     break;
                 case playerStates.Attack:
                     PlayerAttack();
@@ -192,8 +176,10 @@ public class PlayerController : MonoBehaviour
                     PlayerHurt();
                     break;
                 case playerStates.Skill:
+                    PlayerSkill();
                     break;
                 case playerStates.Ultimate:
+                    PlayerUltimate();
                     break;
                 case playerStates.Death:
                     PlayerDeath();
@@ -297,6 +283,100 @@ public class PlayerController : MonoBehaviour
     private void ShootArrow()
     {
         Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+    }
+
+    private void PlayerSkill()
+    {
+        switch(playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Archer:
+                for (int i = 0; i < 6; i++)
+                {
+                    if (i == 1)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 2)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 3)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 4)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 5)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                PlayAnim("AniimPlayerCastRight");
+                break;
+            case ScriptablePlayerStats.playerClass.Barbarian:
+                //Return if skill is still on cooldown
+                if (skillCooldownTimer > 0)
+                {
+                    return;
+                }
+                else if (skillCooldownTimer <= 0)
+                {
+                    skillCooldownTimer = 20;
+                }
+                skillDurationTimer = 10;
+
+                sr.color = Color.red;
+                playerStats.chosenStats.attack += 10;
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                PlayAnim("AnimPlayerCastRight");
+                break;
+        }
+    }
+
+    private void PlayerUltimate()
+    {
+        switch (playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Archer:
+                for (int i = 0; i < 6; i++)
+                {
+                    if (i == 1)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 2)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 3)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 4)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                    else if (i == 5)
+                    {
+                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                    }
+                }
+                break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                PlayAnim("AniimPlayerCastRight");
+                break;
+            case ScriptablePlayerStats.playerClass.Barbarian:
+                PlayAnim("AnimPlayerSlashRight");
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                PlayAnim("AnimPlayerCastRight");
+                break;
+        }
     }
 
     private void PlayerHurt()
