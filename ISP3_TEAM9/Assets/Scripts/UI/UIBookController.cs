@@ -8,7 +8,7 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class UIBookController : MonoBehaviour
 {
-    [Header("Player Variables")]
+    [Header("Player Stats")]
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
     [SerializeField] private float[] statsValue;
@@ -43,9 +43,66 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Vector2 iconStartPos;
     [SerializeField] private Vector2[] iconCurrPos;
 
+    [Header("Settings")]
+    [SerializeField] private Resolution[] resolutions;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private List<Resolution> filteredResolutions;
+    [Space(10)]
+    [SerializeField] private Toggle fullscreenToggle;
+    [Space(10)]
+    [SerializeField] private TMP_Text volumeText;
+    [SerializeField] private Slider volumeSlider;
+
+    [Header("Settings Variables")]
+    [SerializeField] public int defaultResolution;
+    [SerializeField] private bool defaultFullscreen = true;
+    [SerializeField] private float defaultVolume = 0.5f;
+    [SerializeField] private float currentVolume;
+
     private int currPageNo = 0;
     private int nextPageNo = 0;
     private float xOffset = 30;
+
+    void Awake()
+    {
+        currentVolume = defaultVolume;
+
+        int currResolutionIndex = 0;
+        float currRefreshRate;
+
+        resolutions = Screen.resolutions;
+        filteredResolutions = new List<Resolution>();
+
+        resolutionDropdown.ClearOptions();
+        currRefreshRate = Screen.currentResolution.refreshRate;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].refreshRate == currRefreshRate)
+            {
+                filteredResolutions.Add(resolutions[i]);
+            }
+        }
+
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < filteredResolutions.Count; i++)
+        {
+            string resolutionOption = filteredResolutions[i].width + " x " + filteredResolutions[i].height + " [" + filteredResolutions[i].refreshRate + " Hz]";
+            options.Add(resolutionOption);
+
+            if (filteredResolutions[i].width == Screen.width && filteredResolutions[i].height == Screen.height)
+            {
+                currResolutionIndex = i;
+            }
+        }
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = PlayerPrefs.GetInt("resolutionIndex");
+        resolutionDropdown.RefreshShownValue();
+
+        defaultResolution = PlayerPrefs.GetInt("resolutionIndex");
+    }
 
     void Start()
     {
@@ -328,5 +385,40 @@ public class UIBookController : MonoBehaviour
         nextPageNo = page;
 
         StartCoroutine(AnimationStart(0));
+    }
+
+    public void ResolutionApply(int resolutionIndex)
+    {
+        Resolution resolution = filteredResolutions[resolutionIndex];
+
+        PlayerPrefs.SetInt("resolutionIndex", resolutionIndex);
+        PlayerPrefs.SetInt("resolutionWidth", resolution.width);
+        PlayerPrefs.SetInt("resolutionHeight", resolution.height);
+        Debug.Log(PlayerPrefs.GetInt("resolutionIndex"));
+
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        Debug.Log("Resolution Applied");
+    }
+
+    public void FullscreenApply(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+        Debug.Log("Fullscreen Applied");
+    }
+
+    public void ResetButton(string settingType)
+    {
+        if (settingType == "Graphics")
+        {
+            Resolution resolution = filteredResolutions[defaultResolution];
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+            resolutionDropdown.value = defaultResolution;
+            resolutionDropdown.RefreshShownValue();
+
+            fullscreenToggle.isOn = defaultFullscreen;
+
+            Debug.Log($"Reset Applied : {resolution.width} x {resolution.height} : {fullscreenToggle.isOn}");
+        }
     }
 }
