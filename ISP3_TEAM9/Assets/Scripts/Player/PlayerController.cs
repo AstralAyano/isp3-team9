@@ -26,11 +26,17 @@ public class PlayerController : MonoBehaviour
 
     public GameObject FireBallPrefab;
 
+    [SerializeField]
+    private GameObject magicPrefab;
+
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
     private const int maxUltCharge = 60;
+
+    private bool mageAttack = false;
+    private bool mageSkill = false;
 
     private SpriteRenderer sr;
 
@@ -277,7 +283,27 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-
+                //Moving right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerCastRight");
+                }
+                //Moving left
+                else if (lookAngle > 135 || lookAngle < -135)
+                {
+                    PlayAnim("AnimPlayerCastLeft");
+                }
+                //Moving up
+                else if (lookAngle > 45 && lookAngle < 135)
+                {
+                    PlayAnim("AnimPlayerCastUp");
+                }
+                //Moving down
+                else if (lookAngle < -45 && lookAngle > -135)
+                {
+                    PlayAnim("AnimPlayerCastDown");
+                }
+                mageAttack = true;
                 break;
             default:
                 //Moving right
@@ -329,6 +355,7 @@ public class PlayerController : MonoBehaviour
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
+                mageSkill = true;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 skillCooldownTimer = 20;
@@ -466,12 +493,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SummonFireball()
+    private void MageAttack()
     {
-        if (ultCharge >= maxUltCharge)
+        if ((ultCharge >= maxUltCharge) && !mageAttack && !mageSkill)
         {
             Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
             ultCharge = 0;
+        }
+
+        if (mageSkill && !mageAttack && (ultCharge < maxUltCharge))
+        {
+            mageSkill = false;
+        }
+
+        if (mageAttack && !mageSkill && (ultCharge < maxUltCharge))
+        {
+            Instantiate(magicPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+            mageAttack = false;
         }
     }
 
