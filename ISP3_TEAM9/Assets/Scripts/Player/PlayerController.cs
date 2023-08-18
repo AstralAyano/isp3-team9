@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        InteractWithNPC();
+        
         if (Input.GetMouseButton(0))
         {
             currentState = playerStates.Attack;
@@ -131,6 +133,23 @@ public class PlayerController : MonoBehaviour
         lookDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         UpdateAnim();
+    }
+    
+    private void InteractWithNPC()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            float interactRange = 1.5f;
+            Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, interactRange);
+
+            foreach (Collider2D col in colArr)
+            {
+                if (col.TryGetComponent(out NPCController npcController))
+                {
+                    npcController.Interact();
+                }
+            }
+        }
     }
 
     private void UpdateAnim()

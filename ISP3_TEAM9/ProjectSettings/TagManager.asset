@@ -11,6 +11,8 @@ TagManager:
   - EnemySpawn
   - Wall
   - FireBall2ndRadius
+  - ArtefactSlot
+  - DialogueManager
   layers:
   - Default
   - TransparentFX
