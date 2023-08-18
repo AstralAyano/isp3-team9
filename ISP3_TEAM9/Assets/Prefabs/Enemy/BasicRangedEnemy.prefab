@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8572195380922931001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.38, y: 0, z: 15.180896}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -253,6 +253,9 @@ MonoBehaviour:
   target: {fileID: 0}
   nextWaypointDistance: 1
   reachedEndOfPath: 0
+  speed: 150
+  attackToResolve: 0
+  animDir: Down
 --- !u!114 &2933157066100211070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,11 +272,8 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 8572195380922931005}
   health: 30
-  speed: 150
-  attackToResolve: 0
   spawnPos: {fileID: 3105626331021124506}
   animToPlay: AnimEnemyDownIdle
-  animDir: Down
   Arrow: {fileID: 7680283238694298140, guid: 403be1c4da9393143bc737a2c45b78ec, type: 3}
 --- !u!61 &8572195380922931007
 BoxCollider2D:
@@ -389,9 +389,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 4.5
 --- !u!114 &8572195381791845638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,4 +522,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 2.5

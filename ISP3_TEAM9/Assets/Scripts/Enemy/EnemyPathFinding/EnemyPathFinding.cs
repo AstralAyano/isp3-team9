@@ -1,10 +1,10 @@
 using UnityEngine;
 using Pathfinding;
+using System.Runtime.CompilerServices;
 
 public class EnemyPathFinding : MonoBehaviour
 {
     [HideInInspector] public Transform target;
-    [HideInInspector] private BasicMeleeEnemy enemy;
 
     public float nextWaypointDistance = 3f;
     public bool reachedEndOfPath = false;
@@ -15,12 +15,15 @@ public class EnemyPathFinding : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
 
+    [SerializeField] private float speed = 100f;
+    [HideInInspector] public bool attackToResolve = false;
+    [HideInInspector] public string animDir = "Down";
+
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        enemy = GetComponent<BasicMeleeEnemy>();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
@@ -62,10 +65,10 @@ public class EnemyPathFinding : MonoBehaviour
         }
 
         Vector2 dir = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = dir * enemy.speed * Time.deltaTime;
+        Vector2 force = dir * speed * Time.deltaTime;
         rb.velocity = force;
 
-        if (enemy.attackToResolve)
+        if (attackToResolve)
         {
             rb.velocity = Vector2.zero;
         }
@@ -79,21 +82,19 @@ public class EnemyPathFinding : MonoBehaviour
 
         if (rb.velocity.x >= 0.5f) // left
         {
-            enemy.animDir = "Right";
+            animDir = "Right";
         }
         else if (rb.velocity.x <= -0.5f) // right
         {
-            enemy.animDir = "Left";
+            animDir = "Left";
         }
         else if (rb.velocity.y >= 0.5f) // up
         {
-            enemy.animDir = "Up";
+            animDir = "Up";
         }
         else if (rb.velocity.y <= -0.5f) // down
         {
-            enemy.animDir = "Down";
+            animDir = "Down";
         }
-
-        enemy.animToPlay = "AnimEnemy" + enemy.animDir + "Walk";
     }
 }

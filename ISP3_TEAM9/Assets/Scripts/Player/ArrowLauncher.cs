@@ -9,6 +9,7 @@ public class ArrowLauncher : MonoBehaviour
     private float angleInRad;
     private Vector2 dir;
     public bool shotByEnemy;
+    public float speed;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -22,7 +23,7 @@ public class ArrowLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * 4, ForceMode2D.Impulse);
+        rb.AddForce(dir * speed, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,7 +43,7 @@ public class ArrowLauncher : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
+            if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
             {
                 Destroy(gameObject);
             }

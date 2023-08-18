@@ -27,5 +27,20 @@ public class BasicMeleeEnemy : EnemyController
                 Attack();
                 break;
         }
+        animToPlay = "AnimEnemy" + enemyPF.animDir + "Walk";
+    }
+
+    public override void PlayerInAttackRange(Collider2D other)
+    {
+        if (!enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
+        {
+            if (other.gameObject.CompareTag("PlayerHitbox"))
+            {
+                enemyPF.attackToResolve = true;
+
+                // call TakeDamage func in player using the child collider (PlayerHitbox)
+                //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
+            }
+        }
     }
 }

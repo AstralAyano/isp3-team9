@@ -19,12 +19,10 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected EnemyPathFinding enemyPF;
 
     [SerializeField] protected float health = 50;
-    [SerializeField] public float speed = 100f;
-
-    [HideInInspector] public bool attackToResolve = false;
+    
     protected float attackTimer = 0;
     [SerializeField] protected GameObject spawnPos;
-    [HideInInspector] public string animToPlay = "AnimEnemyDownIdle", animDir = "Down";
+    [HideInInspector] public string animToPlay = "AnimEnemyDownIdle";
 
     public void ChangeState(State next)
     {
@@ -67,18 +65,18 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    protected virtual void Attack()
+    protected void Attack()
     {
-        if (attackToResolve) // else wait till attack over
+        if (enemyPF.attackToResolve) // else wait till attack over
         {
             attackTimer += Time.deltaTime;
 
             // play anim
-            ar.Play("AnimEnemy" + animDir + "Attack");
+            ar.Play("AnimEnemy" + enemyPF.animDir + "Attack");
 
             if (attackTimer > 0.667f)
             {
-                attackToResolve = false;
+                enemyPF.attackToResolve = false;
                 attackTimer = 0;
             }
         }
@@ -104,27 +102,15 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    public virtual void PlayerInAttackRange(Collider2D other) // called by child (AttackRange)
-    {
-        if (!attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
-        {
-            if (other.gameObject.CompareTag("PlayerHitbox"))
-            {
-                attackToResolve = true;
-
-                // call TakeDamage func in player using the child collider (PlayerHitbox)
-                //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
-            }
-        }
-    }
+    public abstract void PlayerInAttackRange(Collider2D other); // called by child (AttackRange)
     public void PlayerExitAttackRange(Collider2D other) // called by child (AttackRange)
     {
-        if (!attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
+        if (!enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
         {
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {
                 // go back to following player
-                attackToResolve = false;
+                enemyPF.attackToResolve = false;
             }
         }
     }

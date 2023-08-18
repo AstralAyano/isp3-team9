@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotByEnemy: 1
+  speed: 0.1
 --- !u!61 &1465729417990424367
 BoxCollider2D:
   m_ObjectHideFlags: 0
