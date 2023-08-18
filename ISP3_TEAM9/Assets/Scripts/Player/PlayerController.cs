@@ -306,7 +306,7 @@ public class PlayerController : MonoBehaviour
                 animator.speed += 0.3f;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                PlayAnim("AnimPlayerCastRight");
+                PlayAnim("AnimPlayerCastDown");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 //Return if skill is still on cooldown
@@ -324,7 +324,7 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attack += 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
-                PlayAnim("AnimPlayerCastRight");
+                PlayAnim("AnimPlayerCastDown");
                 break;
         }
     }
