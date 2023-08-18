@@ -44,7 +44,8 @@ public class MapDungeonGenerator : MapRoomGenerator
             corridorPositions = this.corridorPositions,
             floorPositions = this.floorPositions
         };
-        OnDungeonFloorReady?.Invoke(data);
+        AstarPath.active.UpdateGraphs(new Bounds(new Vector3(0, 0, 0), new Vector3(500, 500, 0)), 0);
+        OnDungeonFloorReady?.Invoke(data); 
     }
 
     private void CorridorFirstGeneration()

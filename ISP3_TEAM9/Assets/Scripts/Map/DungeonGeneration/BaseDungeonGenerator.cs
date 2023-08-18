@@ -14,6 +14,7 @@ public abstract class BaseDungeonGenerator : MonoBehaviour
     {
         tilemapVisualizer.Clear();
         RunProceduralGeneration();
+        AstarPath.active.UpdateGraphs(new Bounds(new Vector3(0, 0, 0), new Vector3(500, 500, 0)), 0);
     }
 
     protected abstract void RunProceduralGeneration();
