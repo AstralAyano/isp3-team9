@@ -13,10 +13,11 @@ public class DialogueManager : MonoBehaviour
     public enum npcType
     {
         Tutorial = 0,
-        Barbarian = 1,
-        Paladin = 2,
-        Archer = 3,
-        Mage = 4
+        Skill = 1,
+        Barbarian = 2,
+        Paladin = 3,
+        Archer = 4,
+        Mage = 5
     }
 
     [Header("References")]
@@ -24,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image dialoguePortrait;
     [SerializeField] private TMP_Text dialogueName;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private Image autoButton;
 
     [Header("Dialogue Variables")]
     [SerializeField] private Sprite[] npcPortrait;
@@ -34,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     [Header("First Time Lines")]
     private List<string[]> firstLinesArrays;
     [SerializeField] private string[] tutorialFirst;
+    [SerializeField] private string[] skillFirst;
     [SerializeField] private string[] barbarianFirst;
     [SerializeField] private string[] paladinFirst;
     [SerializeField] private string[] archerFirst;
@@ -42,6 +45,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Repeated Lines")]
     private List<string[]> repeatedLinesArrays;
     [SerializeField] private string[] tutorialLines;
+    [SerializeField] private string[] skillLines;
     [SerializeField] private string[] barbarianLines;
     [SerializeField] private string[] paladinLines;
     [SerializeField] private string[] archerLines;
@@ -54,6 +58,7 @@ public class DialogueManager : MonoBehaviour
     private bool playLine = false;
     private bool typingLine = false;
     private bool stopTyping = false;
+    private bool autoPlay = false;
 
     void Awake()
     {
@@ -69,6 +74,7 @@ public class DialogueManager : MonoBehaviour
 
         firstLinesArrays = new List<string[]>();
         firstLinesArrays.Add(tutorialFirst);
+        firstLinesArrays.Add(skillFirst);
         firstLinesArrays.Add(barbarianFirst);
         firstLinesArrays.Add(paladinFirst);
         firstLinesArrays.Add(archerFirst);
@@ -76,6 +82,7 @@ public class DialogueManager : MonoBehaviour
 
         repeatedLinesArrays = new List<string[]>();
         repeatedLinesArrays.Add(tutorialLines);
+        repeatedLinesArrays.Add(skillLines);
         repeatedLinesArrays.Add(barbarianLines);
         repeatedLinesArrays.Add(paladinLines);
         repeatedLinesArrays.Add(archerLines);
@@ -92,6 +99,16 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePortrait.sprite = npcPortrait[(int)triggeredNPC];
         dialogueName.text = triggeredNPC.ToString();
+
+        switch (triggeredNPC)
+        {
+            case npcType.Tutorial:
+                dialogueName.text = "Johna Tan";
+                break;
+            case npcType.Skill:
+                dialogueName.text = "Goku Jo";
+                break;
+        }
 
         dialogueUI.gameObject.SetActive(true);
 
@@ -161,6 +178,13 @@ public class DialogueManager : MonoBehaviour
         }
 
         typingLine = false;
+
+        if (autoPlay)
+        {
+            yield return new WaitForSeconds(2);
+
+            NextLineOrSkipTyping();
+        }
     }
 
     public void NextLineOrSkipTyping()
@@ -175,16 +199,65 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public void ToggleAutoplay()
+    {
+        if (!autoPlay)
+        {
+            autoPlay = true;
+            autoButton.color = new Color32(128, 128, 128, 255);
+        }
+        else
+        {
+            autoPlay = false;
+            autoButton.color = new Color32(255, 255, 255, 255);
+        }
+        
+        if (!typingLine)
+        {
+            playLine = true;
+        }
+    }
+
+    void StartNextLine()
     {
         if (dialogueStarted)
         {
-            if (playLine && !typingLine)
+            if (currLineNo <= maxLineNo)
             {
-                StartCoroutine("DisplayLine", thisDialogueLines[currLineNo]);
-                currLineNo++;
+                if (playLine && !typingLine)
+                {   
+                    currLineNo++;
+                    
+                    try
+                    {
+                        StartCoroutine("DisplayLine", thisDialogueLines[currLineNo - 1]);
+                    }
+                    catch
+                    {
+                        // Ignore Error Please
+                    }
+
+                    playLine = false;
+                }
+            }
+            else if (currLineNo > maxLineNo)
+            {
+                autoButton.color = new Color32(255, 255, 255, 255);
+                currLineNo = 0;
+                maxLineNo = 0;
                 playLine = false;
+                typingLine = false;
+                stopTyping = false;
+                autoPlay = false;
+
+                dialogueStarted = false;
+                dialogueUI.gameObject.SetActive(false);
             }
         }
+    }
+
+    void Update()
+    {
+        StartNextLine();
     }
 }
