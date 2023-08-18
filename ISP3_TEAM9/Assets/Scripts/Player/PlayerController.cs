@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
             
         }
 
+        //Spawned arrow follows player
         if ((spawnedArrow != null) && (!spawnedArrow.GetComponent<ArrowLauncher>().enabled))
         {
             spawnedArrow.transform.position = transform.position;
@@ -206,7 +207,7 @@ public class PlayerController : MonoBehaviour
                     PlayerAttack();
                     break;
                 case playerStates.Hurt:
-                    PlayerHurt();
+                    PlayAnim("AnimPlayerHurt");
                     break;
                 case playerStates.Skill:
                     PlayerSkill();
@@ -215,7 +216,7 @@ public class PlayerController : MonoBehaviour
                     PlayerUltimate();
                     break;
                 case playerStates.Death:
-                    PlayerDeath();
+                    PlayAnim("AnimPlayerHurt");
                     break;
             }
         }
@@ -344,6 +345,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlayAnim("AnimPlayerCastDown");
+
+                playerStats.chosenStats.defense += playerStats.chosenStats.defense * 125/100;
                 break;
         }
     }
@@ -430,19 +433,19 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerHurt()
     {
-        PlayAnim("AnimPlayerHurt");
+        
         //playerStats.chosenStats.health -= ;
     }
 
     private void PlayerDeath()
     {
-        PlayAnim("AnimPlayerHurt");
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (playerStats.chosenStats.health <= 0)
         {
             Destroy(gameObject, 0);
-            //Switch scene
+            //Switch to end scene
 
         }
+        return;
     }
 
     //Called in animation events
