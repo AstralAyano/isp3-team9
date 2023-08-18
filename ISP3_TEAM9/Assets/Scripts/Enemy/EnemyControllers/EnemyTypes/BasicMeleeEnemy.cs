@@ -8,7 +8,8 @@ public class BasicMeleeEnemy : EnemyController
 {
     void Start()
     {
-        spawnPos.transform.parent = null;
+        GameObject tempGO = GameObject.Find("DungeonContentContainer");
+        spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
     }
 

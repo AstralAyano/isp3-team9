@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicRangedEnemy : MonoBehaviour
+public class BasicRangedEnemy : EnemyController
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject tempGO = GameObject.Find("DungeonContentContainer");
+        spawnPos.transform.parent = tempGO.transform;
+        enemyPF.target = spawnPos.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        switch (currentState)
+        {
+            case State.IDLE:
+                Idle();
+                break;
+            case State.PATROL:
+                Patrol();
+                break;
+            case State.ATTACK:
+                Attack();
+                break;
+        }
     }
 }
