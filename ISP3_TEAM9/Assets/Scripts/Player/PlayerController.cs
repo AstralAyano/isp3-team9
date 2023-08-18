@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
+    private const int maxUltCharge = 60;
 
     private SpriteRenderer sr;
 
@@ -75,20 +76,21 @@ public class PlayerController : MonoBehaviour
     {
         InteractWithNPC();
         
-        if (Input.GetMouseButton(0))
-        {
-            currentState = playerStates.Attack;
-            //Debug.Log("Attacking");
-        }
-        else if (Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f)
+        if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))
         {
             currentState = playerStates.Walk;
             //Debug.Log("Walking");
         }
-        else
+        else if (!Input.anyKeyDown)
         {
             currentState = playerStates.Idle;
             //Debug.Log("Idle");
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            currentState = playerStates.Attack;
+            //Debug.Log("Attacking");
         }
 
         if (Input.GetKeyDown("e"))
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Spawned arrow follows player
-        if ((spawnedArrow != null) && (!spawnedArrow.GetComponent<ArrowLauncher>().enabled))
+        if ((spawnedArrow != null) && (!spawnedArrow.GetComponent<ProjectileLauncher>().enabled))
         {
             spawnedArrow.transform.position = transform.position;
         }
@@ -275,8 +277,8 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                
-                return;
+
+                break;
             default:
                 //Moving right
                 if (lookAngle < 45 && lookAngle > -45)
@@ -307,56 +309,41 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerSkill()
     {
-        switch(playerStats.chosenClass)
+        //Return if skill is still on cooldown
+        if (skillCooldownTimer > 0)
         {
+            return;
+        }
+
+        switch (playerStats.chosenClass)
+        {
+            //Increase attack speed
             case ScriptablePlayerStats.playerClass.Archer:
-                //Return if skill is still on cooldown
-                if (skillCooldownTimer > 0)
-                {
-                    return;
-                }
-                else if (skillCooldownTimer <= 0)
-                {
-                    skillCooldownTimer = 20;
-                }
+                skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
                 sr.color = Color.yellow;
                 playerStats.chosenStats.attackInterval -= 0.3f;
                 animator.speed += 0.3f;
                 break;
+            //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                //Return if skill is still on cooldown
-                if (skillCooldownTimer > 0)
-                {
-                    return;
-                }
-                else if (skillCooldownTimer <= 0)
-                {
-                    skillCooldownTimer = 20;
-                }
+                skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
                 sr.color = Color.red;
                 playerStats.chosenStats.attack += 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
-                //Return if skill is still on cooldown
-                if (skillCooldownTimer > 0)
-                {
-                    return;
-                }
-                else if (skillCooldownTimer <= 0)
-                {
-                    skillCooldownTimer = 20;
-                }
+                skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
                 PlayAnim("AnimPlayerCastDown");
 
+                sr.color = Color.cyan;
                 playerStats.chosenStats.defense *= 125/100;
                 break;
         }
@@ -364,6 +351,12 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerUltimate()
     {
+        //Return if ultimate is not charged
+        if (ultCharge < maxUltCharge)
+        {
+            return;
+        }
+
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
@@ -390,9 +383,10 @@ public class PlayerController : MonoBehaviour
                         Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
                     }
                 }
+                ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                PlayAnim("AnimPlayerCastRight");
+                PlayAnim("AnimPlayerCastDown");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 //Moving right
@@ -415,26 +409,25 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerUltDown");
                 }
+                ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
-                PlayAnim("AnimPlayerCastRight");
+                PlayAnim("AnimPlayerCastDown");
+                ultCharge = 0;
                 break;
         }
     }
 
     private void ClearSkillEffects()
     {
+        sr.color = Color.white;
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                sr.color = Color.white;
                 playerStats.chosenStats.attackInterval = 1f;
                 animator.speed = 1f;
                 break;
-            case ScriptablePlayerStats.playerClass.Mage:
-                break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                sr.color = Color.white;
                 playerStats.chosenStats.attack = 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
@@ -445,7 +438,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerHurt()
     {
-        
         //playerStats.chosenStats.health -= ;
     }
 
@@ -468,12 +460,19 @@ public class PlayerController : MonoBehaviour
 
     private void ShootArrow()
     {
-        spawnedArrow.GetComponent<ArrowLauncher>().enabled = true;
+        if (spawnedArrow != null)
+        {
+            spawnedArrow.GetComponent<ProjectileLauncher>().enabled = true;
+        }
     }
 
     private void SummonFireball()
     {
-        Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+        if (ultCharge >= maxUltCharge)
+        {
+            Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+            ultCharge = 0;
+        }
     }
 
 }
