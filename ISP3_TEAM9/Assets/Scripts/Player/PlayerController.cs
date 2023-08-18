@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject FireBallPrefab;
 
+    public GameObject ArcaneShotPrefab;
+
     [SerializeField]
     private GameObject magicPrefab;
 
@@ -33,7 +35,11 @@ public class PlayerController : MonoBehaviour
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
-    private const int maxUltCharge = 60;
+    private const int maxUltCharge = 0;
+
+    float interactRange = 5f;
+
+    float MaxArrow = 0;
 
     private bool mageAttack = false;
     private bool mageSkill = false;
@@ -101,6 +107,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
+            Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
             currentState = playerStates.Skill;
         }
         else if (Input.GetKeyDown("q"))
@@ -387,29 +394,24 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                for (int i = 0; i < 6; i++)
+                Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, interactRange);
+                while (MaxArrow <= 5)
                 {
-                    if (i == 1)
+                    foreach (Collider2D col in colArr)
                     {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 2)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 3)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 4)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), Quaternion.identity);
-                    }
-                    else if (i == 5)
-                    {
-                        Instantiate(MagicArrowPrefab, new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z), Quaternion.identity);
+                        if (col.gameObject.CompareTag("Enemy"))
+                        {
+                            if (MaxArrow <= 5)
+                            {
+                                GameObject arrow = Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, lookAngle));
+                                arrow.GetComponent<HomingMissile>().Target = col.gameObject;
+                              
+                                MaxArrow++;
+                            }
+                        }
                     }
                 }
+                MaxArrow = 0;
                 ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:

@@ -274,6 +274,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
   MagicArrowPrefab: {fileID: 2449804098602134871, guid: 437d5bd72a9e25449b3c09c1db8f83ad, type: 3}
   FireBallPrefab: {fileID: 236943370349818624, guid: 2d9a1f87d55d6b14db22746c7d8e1a34, type: 3}
+  ArcaneShotPrefab: {fileID: 5370231168562721538, guid: 13a49697a6d220b468ef9e92073c5dfd, type: 3}
   magicPrefab: {fileID: 1536097474418395924, guid: 844cef7de47bdac438fc60cf741a7677, type: 3}
   currentState: 0
 --- !u!61 &7963520640230783044

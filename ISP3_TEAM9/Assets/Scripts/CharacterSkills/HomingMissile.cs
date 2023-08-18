@@ -8,11 +8,15 @@ public class HomingMissile : MonoBehaviour
     [SerializeField]
     private ScriptablePlayerStats playerStats;
 
-    public GameObject Target;
+    float interactRange = 5f;
+
+    float MaxArrow = 0;
 
     public float rotateSpeed = 200f;
 
     public GameObject explosionEffect;
+
+    public GameObject Target;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -24,6 +28,7 @@ public class HomingMissile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         Vector2 direction = (Vector2)Target.transform.position - rb.position;
 
         direction.Normalize();
@@ -33,6 +38,7 @@ public class HomingMissile : MonoBehaviour
         rb.angularVelocity = -rotateAmount * rotateSpeed;
 
         rb.velocity = transform.up * playerStats.chosenStats.projectileSpeed;
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
