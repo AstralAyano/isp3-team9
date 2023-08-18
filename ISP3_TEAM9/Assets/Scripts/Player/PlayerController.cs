@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
             currentState = playerStates.Skill;
         }
         else if (Input.GetKeyDown("q"))
@@ -505,6 +504,7 @@ public class PlayerController : MonoBehaviour
 
         if (mageSkill && !mageAttack && (ultCharge < maxUltCharge))
         {
+            Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
             mageSkill = false;
         }
 
