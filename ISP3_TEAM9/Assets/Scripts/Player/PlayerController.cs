@@ -464,9 +464,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerHurt()
+    public void PlayerTakeDamage(int dmg)
     {
-        //playerStats.chosenStats.health -= ;
+        playerStats.chosenStats.health -= dmg;
+        Debug.Log(playerStats.chosenStats.health);
     }
 
     private void PlayerDeath()

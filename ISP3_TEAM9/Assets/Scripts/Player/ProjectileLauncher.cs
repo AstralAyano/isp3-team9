@@ -43,7 +43,7 @@ public class ProjectileLauncher : MonoBehaviour
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
+                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
                 Destroy(gameObject);
             }
             else if (other.gameObject.CompareTag("Wall"))

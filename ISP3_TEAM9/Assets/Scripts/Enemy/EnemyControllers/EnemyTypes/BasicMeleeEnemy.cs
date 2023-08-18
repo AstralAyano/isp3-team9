@@ -39,7 +39,7 @@ public class BasicMeleeEnemy : EnemyController
                 enemyPF.attackToResolve = true;
 
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
+                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
             }
         }
     }

@@ -43,7 +43,7 @@ public class BasicRangedEnemy : EnemyController
             {
                 lookDir = other.gameObject.transform.position - transform.position;
                 lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-                enemyPF.attackToResolve = true;
+                enemyPF.attackToResolve = true; 
 
                 Instantiate(Arrow, transform.position, Quaternion.Euler(0, 0, lookAngle));
             }
