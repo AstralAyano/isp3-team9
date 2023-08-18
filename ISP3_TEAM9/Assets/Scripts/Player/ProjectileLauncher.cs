@@ -11,8 +11,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     private float angleInRad;
     private Vector2 dir;
-    [HideInInspector]
     public bool shotByEnemy;
+    public float speed;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -26,7 +26,14 @@ public class ProjectileLauncher : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
+        if (shotByEnemy)
+        {
+            rb.AddForce(dir * speed, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
