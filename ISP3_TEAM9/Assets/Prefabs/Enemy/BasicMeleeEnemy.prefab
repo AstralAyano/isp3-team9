@@ -272,6 +272,8 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 6768884923863432178}
   health: 50
+  attackCD: 0.75
+  attackDuration: 0.667
   spawnPos: {fileID: 752521045}
   animToPlay: 
 --- !u!61 &6768884923863432176

@@ -37,7 +37,7 @@ public class BasicRangedEnemy : EnemyController
 
     public override void PlayerInAttackRange(Collider2D other)
     {
-        if (!enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
+        if (attackDelay > attackCD && !enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
         {
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {

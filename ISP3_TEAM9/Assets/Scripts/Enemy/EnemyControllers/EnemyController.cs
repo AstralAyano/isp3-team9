@@ -19,8 +19,10 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected EnemyPathFinding enemyPF;
 
     [SerializeField] protected float health = 50;
-    
-    protected float attackTimer = 0;
+    [SerializeField] protected float attackCD = 0.5f;
+    [SerializeField] protected float attackDuration = 0.5f;
+
+    protected float attackTimer, attackDelay;
     [SerializeField] protected GameObject spawnPos;
     [HideInInspector] public string animToPlay = "AnimEnemyDownIdle";
 
@@ -28,7 +30,7 @@ public abstract class EnemyController : MonoBehaviour
     {
         if (next == State.IDLE)
         {
-
+            
         }
         else if (next == State.PATROL)
         {
@@ -74,14 +76,16 @@ public abstract class EnemyController : MonoBehaviour
             // play anim
             ar.Play("AnimEnemy" + enemyPF.animDir + "Attack");
 
-            if (attackTimer > 0.667f)
+            if (attackTimer > attackDuration)
             {
                 enemyPF.attackToResolve = false;
                 attackTimer = 0;
+                attackDelay = 0;
             }
         }
         else
         {
+            attackDelay += Time.deltaTime;
             // play anim
             ar.Play(animToPlay);
         }
@@ -105,7 +109,7 @@ public abstract class EnemyController : MonoBehaviour
     public abstract void PlayerInAttackRange(Collider2D other); // called by child (AttackRange)
     public void PlayerExitAttackRange(Collider2D other) // called by child (AttackRange)
     {
-        if (!enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
+        if (enemyPF.attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
         {
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {

@@ -272,6 +272,8 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 8572195380922931005}
   health: 30
+  attackCD: 1.5
+  attackDuration: 1
   spawnPos: {fileID: 3105626331021124506}
   animToPlay: AnimEnemyDownIdle
   Arrow: {fileID: 7680283238694298140, guid: 403be1c4da9393143bc737a2c45b78ec, type: 3}
