@@ -20,7 +20,7 @@ public class ArrowLauncher : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         rb.AddForce(dir * 4, ForceMode2D.Impulse);
     }

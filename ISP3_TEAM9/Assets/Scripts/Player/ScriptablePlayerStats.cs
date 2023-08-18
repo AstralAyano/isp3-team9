@@ -30,7 +30,7 @@ public class ScriptablePlayerStats : ScriptableObject
     {
         { playerClass.Barbarian, new playerStats{ health = 80, attack = 10, attackInterval = 0.5f, moveSpeed = 4, projectileSpeed = 0} },
         { playerClass.Mage, new playerStats{ health = 60, attack = 15, attackInterval = 1.5f, moveSpeed = 7, projectileSpeed = 100} },
-        { playerClass.Archer, new playerStats{ health = 60, attack = 10, attackInterval = 1f, moveSpeed = 10, projectileSpeed = 100} },
+        { playerClass.Archer, new playerStats{ health = 60, attack = 10, attackInterval = 1f, moveSpeed = 8, projectileSpeed = 100} },
         { playerClass.Paladin, new playerStats{ health = 100, attack = 7, attackInterval = 0.5f, moveSpeed = 5, projectileSpeed = 0} }
     };
 

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject arrowPrefab;
-    private GameObject spawnedArrow;
+    private GameObject spawnedArrow = null;
 
     public GameObject MagicArrowPrefab;
 
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             currentState = playerStates.Attack;
             //Debug.Log("Attacking");
@@ -99,8 +99,10 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        skillCooldownTimer -= 1 * Time.deltaTime;
-        skillDurationTimer -= 1 * Time.deltaTime;
+        if ((spawnedArrow != null) && (!spawnedArrow.GetComponent<ArrowLauncher>().enabled))
+        {
+            spawnedArrow.transform.position = transform.position;
+        }
 
         if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
         {
@@ -118,6 +120,10 @@ public class PlayerController : MonoBehaviour
 
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
+
+        attackCooldownTimer -= Time.deltaTime;
+        skillCooldownTimer -= Time.deltaTime;
+        skillDurationTimer -= Time.deltaTime;
     }
 
     private void LateUpdate()
@@ -213,6 +219,16 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
+        //Return if cooldown is not over yet
+        if (attackCooldownTimer > 0)
+        {
+            return;
+        }
+        else
+        {
+            attackCooldownTimer = playerStats.chosenStats.attackInterval;
+        }
+
         //Play different attack animation based on chosenClass
         switch (playerStats.chosenClass)
         {
@@ -239,7 +255,7 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                //Mage has no normal attack
+                
                 return;
             default:
                 //Moving right
@@ -275,19 +291,22 @@ public class PlayerController : MonoBehaviour
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 //Return if skill is still on cooldown
-                //if (skillCooldownTimer > 0)
-                //{
-                //    return;
-                //}
-                //else if (skillCooldownTimer <= 0)
-                //{
-                //    skillCooldownTimer = 20;
-                //}
+                if (skillCooldownTimer > 0)
+                {
+                    return;
+                }
+                else if (skillCooldownTimer <= 0)
+                {
+                    skillCooldownTimer = 20;
+                }
+                skillDurationTimer = 10;
 
-                
+                sr.color = Color.yellow;
+                playerStats.chosenStats.attackInterval -= 0.3f;
+                animator.speed += 0.3f;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                PlayAnim("AniimPlayerCastRight");
+                PlayAnim("AnimPlayerCastRight");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 //Return if skill is still on cooldown
@@ -375,6 +394,9 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
+                sr.color = Color.white;
+                playerStats.chosenStats.attackInterval = 1f;
+                animator.speed = 1f;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
                 break;
