@@ -8,6 +8,7 @@ public class ArrowLauncher : MonoBehaviour
 
     private float angleInRad;
     private Vector2 dir;
+    public bool shotByEnemy;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -26,9 +27,25 @@ public class ArrowLauncher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
+        if (shotByEnemy)
         {
-            Destroy(gameObject);
+            if (other.gameObject.CompareTag("PlayerHitbox"))
+            {
+                // call TakeDamage func in player using the child collider (PlayerHitbox)
+                //other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
+                Destroy(gameObject);
+            }
+            else if (other.gameObject.CompareTag("Wall"))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

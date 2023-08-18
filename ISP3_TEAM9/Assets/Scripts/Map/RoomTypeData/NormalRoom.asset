@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa4a23ba7bfa2d4eb4d04f79e9dac11, type: 3}
   m_Name: NormalRoom
   m_EditorClassIdentifier: 
-  iterations: 200
-  walkLength: 15
+  iterations: 500
+  walkLength: 20
   startRandomlyEachIteration: 0

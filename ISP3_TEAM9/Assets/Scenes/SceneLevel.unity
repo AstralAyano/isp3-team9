@@ -22463,7 +22463,7 @@ MonoBehaviour:
   tilemapVisualizer: {fileID: 419124310}
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: ab9c0291b1d520b48841f954ea173358, type: 2}
-  corridorLength: 20
+  corridorLength: 30
   corridorCount: 10
   roomPercent: 1
   showRoomGizmo: 0

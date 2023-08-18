@@ -67,7 +67,7 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    protected void Attack()
+    protected virtual void Attack()
     {
         if (attackToResolve) // else wait till attack over
         {
@@ -104,7 +104,7 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-    public void PlayerInAttackRange(Collider2D other) // called by child (AttackRange)
+    public virtual void PlayerInAttackRange(Collider2D other) // called by child (AttackRange)
     {
         if (!attackToResolve && currentState == State.ATTACK && currentState != State.DEAD)
         {
