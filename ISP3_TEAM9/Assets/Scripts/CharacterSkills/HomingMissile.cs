@@ -5,9 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HomingMissile : MonoBehaviour
 {
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
     public GameObject Target;
 
-    public float speed = 5f;
     public float rotateSpeed = 200f;
 
     public GameObject explosionEffect;
@@ -30,7 +32,7 @@ public class HomingMissile : MonoBehaviour
 
         rb.angularVelocity = -rotateAmount * rotateSpeed;
 
-        rb.velocity = transform.up * speed;
+        rb.velocity = transform.up * playerStats.chosenStats.projectileSpeed;
     }
 
     void OnTriggerEnter2D(Collider2D other)

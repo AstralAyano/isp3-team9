@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81008a88de3dbda46860b637d939ad68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
   Target: {fileID: 6768884923863432182, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
-  speed: 5
   rotateSpeed: 300
   explosionEffect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!1 &2449804098947288606

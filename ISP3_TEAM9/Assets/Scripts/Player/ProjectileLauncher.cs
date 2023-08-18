@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowLauncher : MonoBehaviour
+public class ProjectileLauncher : MonoBehaviour
 {
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
     private Rigidbody2D rb;
 
     private float angleInRad;
     private Vector2 dir;
+    [HideInInspector]
     public bool shotByEnemy;
-    public float speed;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -23,7 +26,7 @@ public class ArrowLauncher : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(dir * speed, ForceMode2D.Impulse);
+        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
