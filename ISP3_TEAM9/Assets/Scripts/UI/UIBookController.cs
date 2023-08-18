@@ -87,7 +87,7 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
-        playerStats.chosenStats = playerStats.stats[playerStats.chosenClass];
+        playerStats.chosenStats = playerStats.currentStats[playerStats.chosenClass];
 
         statsValue[0] = playerStats.chosenStats.health;
         statsValue[1] = playerStats.chosenStats.attack;
