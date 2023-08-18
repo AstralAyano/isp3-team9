@@ -344,9 +344,20 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attack += 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
+                //Return if skill is still on cooldown
+                if (skillCooldownTimer > 0)
+                {
+                    return;
+                }
+                else if (skillCooldownTimer <= 0)
+                {
+                    skillCooldownTimer = 20;
+                }
+                skillDurationTimer = 10;
+
                 PlayAnim("AnimPlayerCastDown");
 
-                playerStats.chosenStats.defense += playerStats.chosenStats.defense * 125/100;
+                playerStats.chosenStats.defense *= 125/100;
                 break;
         }
     }
@@ -427,6 +438,7 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attack = 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
+                playerStats.chosenStats.defense *= 75/100;
                 break;
         }
     }
