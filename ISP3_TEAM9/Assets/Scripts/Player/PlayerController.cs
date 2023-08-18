@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
+    private float ultCharge = 0f;
 
     private SpriteRenderer sr;
 
@@ -342,7 +343,26 @@ public class PlayerController : MonoBehaviour
                 PlayAnim("AnimPlayerCastRight");
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                PlayAnim("AnimPlayerSlashRight");
+                //Moving right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerUltRight");
+                }
+                //Moving left
+                else if (lookAngle > 135 || lookAngle < -135)
+                {
+                    PlayAnim("AnimPlayerUltLeft");
+                }
+                //Moving up
+                else if (lookAngle > 45 && lookAngle < 135)
+                {
+                    PlayAnim("AnimPlayerUltUp");
+                }
+                //Moving down
+                else if (lookAngle < -45 && lookAngle > -135)
+                {
+                    PlayAnim("AnimPlayerUltDown");
+                }
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlayAnim("AnimPlayerCastRight");
