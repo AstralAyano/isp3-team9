@@ -120,6 +120,7 @@ public class UIBookController : MonoBehaviour
 
         GetPlayerStats();
         SetPlayerStatsInBook();
+        UpdateStatusBars();
     }
 
     void GetPlayerStats()
@@ -146,11 +147,12 @@ public class UIBookController : MonoBehaviour
 
         playerStats.chosenStats = playerStats.currentStats[playerStats.chosenClass];
 
-        statsValue[0] = playerStats.chosenStats.health;
-        statsValue[1] = playerStats.chosenStats.attack;
-        statsValue[2] = playerStats.chosenStats.attackInterval;
-        statsValue[3] = playerStats.chosenStats.moveSpeed;
-        statsValue[4] = playerStats.chosenStats.projectileSpeed;
+        statsValue[0] = playerStats.chosenStats.maxHealth;
+        statsValue[1] = playerStats.chosenStats.defense;
+        statsValue[2] = playerStats.chosenStats.attack;
+        statsValue[3] = playerStats.chosenStats.attackInterval;
+        statsValue[4] = playerStats.chosenStats.moveSpeed;
+        statsValue[5] = playerStats.chosenStats.projectileSpeed;
 
         statusValue[0] = statsValue[0];
 
@@ -168,16 +170,20 @@ public class UIBookController : MonoBehaviour
         {
             statsValueText[i].text = statsValue[i].ToString();
         }
+    }
 
+    void UpdateStatusBars()
+    {
         for (int i = 0; i < statusSliders.Length; i++)
         {
-            statusValueText[i].text = statusSliders[i].value.ToString() + "/" + statusSliders[i].maxValue.ToString();
+            statusSliders[i].value = playerStats.chosenStats.health;
+            statusValueText[i].text = playerStats.chosenStats.health.ToString() + "/" + statusSliders[i].maxValue.ToString();
         }
     }
 
     void HideProjectileSpeedStat()
     {
-        statsGroup.spacing = new Vector2(0, 30);
+        statsGroup.spacing = new Vector2(0, 22.5f);
         projectileStat.SetActive(false);
     }
 
@@ -196,6 +202,7 @@ public class UIBookController : MonoBehaviour
 
         GetPlayerStats();
         SetPlayerStatsInBook();
+        UpdateStatusBars();
 
         int page = page_type / 10;
         int type = page_type % 10;
@@ -364,6 +371,7 @@ public class UIBookController : MonoBehaviour
 
         GetPlayerStats();
         SetPlayerStatsInBook();
+        UpdateStatusBars();
 
         switch (page)
         {
