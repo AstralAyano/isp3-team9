@@ -89,8 +89,6 @@ public class DialogueManager : MonoBehaviour
         repeatedLinesArrays.Add(mageLines);
 
         dialogueUI.gameObject.SetActive(false);
-
-        ResetFirstTime();
     }
 
     public void TriggerDialogue(npcType triggeredNPC)
@@ -259,5 +257,12 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         StartNextLine();
+
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            ResetFirstTime();
+
+            Debug.Log("Reset Dialogue to First Time interaction.");
+        }
     }
 }
