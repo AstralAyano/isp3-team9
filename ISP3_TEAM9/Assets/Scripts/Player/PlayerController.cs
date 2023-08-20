@@ -22,12 +22,12 @@ public class PlayerController : MonoBehaviour
     private GameObject arrowPrefab;
     private GameObject spawnedArrow = null;
 
-    public GameObject MagicArrowPrefab;
-
-    public GameObject FireBallPrefab;
-
-    public GameObject ArcaneShotPrefab;
-
+    [SerializeField]
+    private GameObject MagicArrowPrefab;
+    [SerializeField]
+    private GameObject FireBallPrefab;
+    [SerializeField]
+    private GameObject ArcaneShotPrefab;
     [SerializeField]
     private GameObject magicPrefab;
 
@@ -516,4 +516,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void PlayerAttack(int dmg)
+    {
+        transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
+    }
 }

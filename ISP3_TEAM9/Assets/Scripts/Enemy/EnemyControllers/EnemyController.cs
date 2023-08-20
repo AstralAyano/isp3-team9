@@ -126,9 +126,6 @@ public abstract class EnemyController : MonoBehaviour
             ChangeState(State.DEAD);
             health = 0;
 
-            // toggle collision with player
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyShield"), LayerMask.NameToLayer("Player"), true);
-
             // play anim
 
 
