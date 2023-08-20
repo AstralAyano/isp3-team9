@@ -67,7 +67,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ToolTipManager.instance.SetAndShowToolTip(item.itemName, item.itemDesc);
+        ToolTipManager.instance.SetAndShowToolTip(item.itemName, item.itemType.ToString(), item.itemDesc);
     }
 
     public void OnPointerExit(PointerEventData eventData)

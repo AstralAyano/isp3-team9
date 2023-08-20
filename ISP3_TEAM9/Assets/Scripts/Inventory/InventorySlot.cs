@@ -12,7 +12,33 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (transform.childCount == 0)
         {
             InventoryItem invItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            invItem.parentAfterDrag = transform;
+
+            if (invItem.item.itemType.ToString() == "Artefact")
+            {
+                if (transform.gameObject.CompareTag("ArtefactSlot"))
+                {
+                    invItem.parentAfterDrag = transform;
+                }
+                else if (transform.gameObject.CompareTag("InvSlot"))
+                {
+                    invItem.parentAfterDrag = transform;
+                }
+            }
+            else if (invItem.item.itemType.ToString() == "Consumable")
+            {
+                if (transform.gameObject.CompareTag("ConsumableSlot"))
+                {
+                    invItem.parentAfterDrag = transform;
+                }
+                else if (transform.gameObject.CompareTag("InvSlot"))
+                {
+                    invItem.parentAfterDrag = transform;
+                }
+            }
+            else if (transform.gameObject.CompareTag("InvSlot"))
+            {
+                invItem.parentAfterDrag = transform;
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject invItemPrefab;
 
     public Item testItem;
+    public Item testArtefact;
 
     //public SystemText sysText;
 
@@ -29,6 +30,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         AddItem(testItem);
+        AddItem(testArtefact);
     }
 
     void Update()

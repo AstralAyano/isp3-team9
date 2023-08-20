@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class UIBookController : MonoBehaviour
 {
@@ -49,6 +49,9 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private List<Resolution> filteredResolutions;
     [Space(10)]
     [SerializeField] private Toggle fullscreenToggle;
+    [Space(10)]
+    [SerializeField] private Slider brightnessSlider;
+    private Volume globalBrightness;
     [Space(10)]
     [SerializeField] private TMP_Text volumeText;
     [SerializeField] private Slider volumeSlider;
@@ -98,10 +101,15 @@ public class UIBookController : MonoBehaviour
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = PlayerPrefs.GetInt("resolutionIndex");
+        resolutionDropdown.value = currResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        defaultResolution = PlayerPrefs.GetInt("resolutionIndex");
+        defaultResolution = currResolutionIndex;
+
+        if (GameObject.FindWithTag("PostProcessor").TryGetComponent(out Volume componentVol))
+        {
+            globalBrightness = componentVol;
+        }
     }
 
     void Start()
@@ -405,13 +413,23 @@ public class UIBookController : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt("resolutionIndex"));
 
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-        Debug.Log("Resolution Applied");
+        Debug.Log("Resolution Applied : " + resolutionIndex);
     }
 
-    public void FullscreenApply(bool isFullscreen)
+    public void FullscreenApply()
     {
-        Screen.fullScreen = isFullscreen;
-        Debug.Log("Fullscreen Applied");
+        Screen.fullScreen = fullscreenToggle.isOn;
+        Debug.Log("Fullscreen Applied : " + fullscreenToggle.isOn);
+    }
+
+    public void BrightnessApply()
+    {
+        ColorAdjustments colorAdjust;
+
+        if (globalBrightness.profile.TryGet<ColorAdjustments>(out colorAdjust))
+        {
+            colorAdjust.postExposure.value = brightnessSlider.value;
+        }
     }
 
     public void ResetButton(string settingType)

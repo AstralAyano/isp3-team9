@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
-  m_Name: Campfire
+  m_Name: ArtefactTest
   m_EditorClassIdentifier: 
-  image: {fileID: -1321363736, guid: bcc8d5119f9ffa04ab073cbbaeaedd35, type: 3}
+  image: {fileID: 21300004, guid: c8260d15cb31d3d49a251f7cdb4d1777, type: 3}
   stackable: 0
-  itemType: 1
-  itemName: Campfire Kit
-  itemDesc: A
+  itemType: 0
+  itemName: Fireball of Halos
+  itemDesc: B

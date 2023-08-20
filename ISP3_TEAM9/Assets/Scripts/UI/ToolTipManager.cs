@@ -8,10 +8,14 @@ public class ToolTipManager : MonoBehaviour
     public static ToolTipManager instance;
 
     public TextMeshProUGUI selectedName;
+    public TextMeshProUGUI selectedType;
     public TextMeshProUGUI selectedDesc;
 
     private CanvasGroup cg;
     private bool fadeIn = false, fadeOut = false;
+
+    private Color artefactColor;
+    private Color consumableColor;
 
     void Awake()
     {
@@ -30,6 +34,9 @@ public class ToolTipManager : MonoBehaviour
         gameObject.SetActive(false);
         cg = gameObject.GetComponent<CanvasGroup>();
         cg.alpha = 0.0f;
+
+        ColorUtility.TryParseHtmlString("#E05E72", out artefactColor);
+        ColorUtility.TryParseHtmlString("#5E7AE0", out consumableColor);
     }
 
     void Update()
@@ -60,13 +67,33 @@ public class ToolTipManager : MonoBehaviour
         }
     }
 
-    public void SetAndShowToolTip(string name, string desc)
+    public void SetAndShowToolTip(string name, string type, string desc)
     {
         fadeOut = false;
         cg.alpha = 0.0f;
         gameObject.SetActive(true);
+        
         selectedName.text = name;
         selectedDesc.text = desc;
+
+        if (type == "Artefact")
+        {
+            selectedType.color = artefactColor;
+        }
+        else if (type == "Consumable")
+        {
+            selectedType.color = consumableColor;
+        }
+
+        if (type != "None")
+        {
+            selectedType.text = type;
+        }
+        else
+        {
+            selectedType.text = "";
+        }
+
         fadeIn = true;
     }
 

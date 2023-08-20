@@ -13,6 +13,10 @@ TagManager:
   - FireBall2ndRadius
   - ArtefactSlot
   - DialogueManager
+  - ConsumableSlot
+  - InvSlot
+  - LockedSlot
+  - PostProcessor
   layers:
   - Default
   - TransparentFX
