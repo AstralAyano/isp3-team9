@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class MapRoomContentPrefabPlacer : MonoBehaviour
 {
@@ -52,7 +54,6 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
 
                 if (possiblePlacementSpot.HasValue)
                 {
-
                     placedObjects.Add(PlaceItem(placementData.itemData, possiblePlacementSpot.Value));
                 }
             }
@@ -62,6 +63,7 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
     private GameObject PlaceItem(MapContentData item, Vector2 placementPosition)
     {
         GameObject newItem = Instantiate(itemPrefab, placementPosition, Quaternion.identity);
+        newItem.GetComponent<MapContent>().Initialize(item);
         return newItem;
     }
 
