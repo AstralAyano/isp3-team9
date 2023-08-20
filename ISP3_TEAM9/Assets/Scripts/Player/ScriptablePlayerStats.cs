@@ -34,6 +34,16 @@ public class playerStatPoints
     public int projectileSpeed; //For mage and archer
 }
 
+public class playerStatMultipliers
+{
+    public int health;
+    public int defense;
+    public int attackPower;
+    public int attackSpeed;
+    public int moveSpeed;
+    public int projectileSpeed; //For mage and archer
+}
+
 [CreateAssetMenu]
 public class ScriptablePlayerStats : ScriptableObject
 {
@@ -49,6 +59,7 @@ public class ScriptablePlayerStats : ScriptableObject
     public playerBaseStats chosenBaseStats;
     public playerStats chosenStats;
     public playerStatPoints chosenStatPoints;
+    public playerStatMultipliers chosenStatMultipliers;
 
     //Dictionaries to store all class stats
     public Dictionary<playerClass, playerBaseStats> baseStats = new Dictionary<playerClass, playerBaseStats>()
@@ -74,11 +85,20 @@ public class ScriptablePlayerStats : ScriptableObject
         { playerClass.Archer, new playerStatPoints{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} },
         { playerClass.Paladin, new playerStatPoints{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} }
     };
+    
+    public Dictionary<playerClass, playerStatMultipliers> statMultipliers = new Dictionary<playerClass, playerStatMultipliers>()
+    {
+        { playerClass.Barbarian, new playerStatMultipliers{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} },
+        { playerClass.Mage, new playerStatMultipliers{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} },
+        { playerClass.Archer, new playerStatMultipliers{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} },
+        { playerClass.Paladin, new playerStatMultipliers{ health = 1, defense = 1, attackPower = 1, attackSpeed = 1, moveSpeed = 1, projectileSpeed = 1} }
+    };
 
     private void OnEnable()
     {
         chosenBaseStats = baseStats[chosenClass];
         chosenStats = currentStats[chosenClass];
         chosenStatPoints = currentStatPoints[chosenClass];
+        chosenStatMultipliers = statMultipliers[chosenClass];
     }
 }

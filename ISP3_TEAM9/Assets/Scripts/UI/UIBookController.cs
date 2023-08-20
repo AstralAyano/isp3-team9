@@ -5,16 +5,24 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
+using UnityEditor.ShaderKeywordFilter;
+using System;
 
 public class UIBookController : MonoBehaviour
 {
     [Header("Player Stats")]
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
+    [SerializeField] private int[] statPoints;
     [SerializeField] private float[] statsValue;
+    [SerializeField] private float[] statsBaseValue;
+    [SerializeField] private float[] statsMultiplier;
     [SerializeField] private TMP_Text[] statusValueText;
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
+    [SerializeField] private int statPointAmt;
+    [SerializeField] private TMP_Text StatPointsText;
 
     [Header("References")]
     [SerializeField] private Animator animController;
@@ -129,6 +137,7 @@ public class UIBookController : MonoBehaviour
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
+        statsBaseValue[0] = statsValue[6];
     }
 
     void GetPlayerStats()
@@ -153,36 +162,98 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
+        // Get base player stat values
+        playerStats.chosenBaseStats = playerStats.baseStats[playerStats.chosenClass];
+        statsBaseValue[0] = playerStats.chosenBaseStats.health;
+        statsBaseValue[1] = playerStats.chosenBaseStats.defense;
+        statsBaseValue[2] = playerStats.chosenBaseStats.attack;
+        statsBaseValue[3] = playerStats.chosenBaseStats.attackInterval;
+        statsBaseValue[4] = playerStats.chosenBaseStats.moveSpeed;
+        statsBaseValue[5] = playerStats.chosenBaseStats.projectileSpeed;
+        // Get current player stat values
         playerStats.chosenStats = playerStats.currentStats[playerStats.chosenClass];
-
-        statsValue[0] = playerStats.chosenStats.maxHealth;
+        statsValue[0] = playerStats.chosenStats.health;
         statsValue[1] = playerStats.chosenStats.defense;
         statsValue[2] = playerStats.chosenStats.attack;
         statsValue[3] = playerStats.chosenStats.attackInterval;
         statsValue[4] = playerStats.chosenStats.moveSpeed;
         statsValue[5] = playerStats.chosenStats.projectileSpeed;
+        statsValue[6] = playerStats.chosenStats.maxHealth;
+        // Get stat point multipliers
+        playerStats.chosenStatMultipliers = playerStats.statMultipliers[playerStats.chosenClass];
+        statsMultiplier[0] = playerStats.chosenStatMultipliers.health;
+        statsMultiplier[1] = playerStats.chosenStatMultipliers.defense;
+        statsMultiplier[2] = playerStats.chosenStatMultipliers.attackPower;
+        statsMultiplier[3] = playerStats.chosenStatMultipliers.attackSpeed;
+        statsMultiplier[4] = playerStats.chosenStatMultipliers.moveSpeed;
+        statsMultiplier[5] = playerStats.chosenStatMultipliers.projectileSpeed;
+        // Get stat points
+        playerStats.chosenStatPoints = playerStats.currentStatPoints[playerStats.chosenClass];
+        statPoints[0] = playerStats.chosenStatPoints.health;
+        statPoints[1] = playerStats.chosenStatPoints.defense;
+        statPoints[2] = playerStats.chosenStatPoints.attackPower;
+        statPoints[3] = playerStats.chosenStatPoints.attackSpeed;
+        statPoints[4] = playerStats.chosenStatPoints.moveSpeed;
+        statPoints[5] = playerStats.chosenStatPoints.projectileSpeed;
 
-        statusValue[0] = statsValue[0];
+        statusValue[0] = statsValue[6];
 
-        for (int i = 0; i < statusSliders.Length; i++)
+        for (int i = 1; i < statusSliders.Length; i++)
         {
             statusSliders[i].maxValue = statusValue[i];
         }
     }
 
-    void SetPlayerStatsInBook()
+    void SetPlayerStatsInBook() 
     {
         classText.text = "Class : " + playerStats.chosenClass.ToString();
 
         for (int i = 0; i < statsValueText.Length; i++)
         {
-            statsValueText[i].text = statsValue[i].ToString();
+            statsValueText[i].text = statPoints[i].ToString();
+        }
+
+        if (statPointAmt == 1)
+        {
+            StatPointsText.gameObject.transform.parent.gameObject.SetActive(true);
+            StatPointsText.text = "You have " + statPointAmt + " Stat Point Available !";
+        }
+        else if (statPointAmt > 1)
+        {
+            StatPointsText.gameObject.transform.parent.gameObject.SetActive(true);
+            StatPointsText.text = "You have " + statPointAmt + " Stat Points Available !";
+        }
+        else
+        {
+            StatPointsText.gameObject.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    public void IncreaseStat(int type) // Adds a stat point to a stat and updates the stat value
+    {
+        if (statPointAmt > 0)
+        {
+            statPointAmt--;
+            statPoints[type]++;
+
+            // Update stat value
+            statsValue[type] += statPoints[type] * statsMultiplier[type] * statsBaseValue[type];
+            // If increased HP, increase Max HP too
+            if (type == 0)
+            {
+                statsValue[6] += statPoints[type] * statsMultiplier[type] * statsBaseValue[type];
+                statusSliders[0].value = statsValue[0];
+                statusSliders[0].maxValue = statsValue[6];
+            }
+            SetPlayerStatsInBook();
+            UpdateStatusBars();
         }
     }
 
     void UpdateStatusBars()
     {
-        for (int i = 0; i < statusSliders.Length; i++)
+        statusValueText[0].text = statusSliders[0].value.ToString() + "/" + statusSliders[0].maxValue.ToString();
+        for (int i = 1; i < statusSliders.Length; i++)
         {
             statusSliders[i].value = playerStats.chosenStats.health;
             statusValueText[i].text = playerStats.chosenStats.health.ToString() + "/" + statusSliders[i].maxValue.ToString();

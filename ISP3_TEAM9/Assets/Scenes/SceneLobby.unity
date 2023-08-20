@@ -8699,7 +8699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 294087666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &294087666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18605,7 +18617,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 617883924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &617883924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21171,7 +21195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 703199140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &703199140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29149,7 +29185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1016492364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1016492364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33422,7 +33470,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.756482
+      m_AnimationSpeed: 5.725549
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -33434,7 +33482,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.3211412
+      m_AnimationSpeed: 5.148486
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -35148,7 +35196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1182206005}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1182710786
 GameObject:
   m_ObjectHideFlags: 0
@@ -61248,7 +61308,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2093537094}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2095936060}
+        m_TargetAssemblyTypeName: UIBookController, Assembly-CSharp
+        m_MethodName: IncreaseStat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2093537094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61414,6 +61486,7 @@ MonoBehaviour:
   - {fileID: 2013583347}
   - {fileID: 1110429090}
   - {fileID: 1052722546}
+  statPoints: 
   statsValue:
   - 0
   - 0
@@ -61421,6 +61494,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  statsBaseValue: []
+  statsMultiplier: []
   statusValueText:
   - {fileID: 1035072168}
   - {fileID: 890927071}
@@ -61430,6 +61505,8 @@ MonoBehaviour:
   - 100
   - 100
   classText: {fileID: 1188169773}
+  statPointAmt: 0
+  StatPointsText: {fileID: 0}
   animController: {fileID: 0}
   rightButtons:
   - {fileID: 523330366}
