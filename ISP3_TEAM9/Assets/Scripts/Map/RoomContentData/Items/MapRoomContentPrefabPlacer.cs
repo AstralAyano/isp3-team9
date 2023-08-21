@@ -54,7 +54,13 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
 
                 if (possiblePlacementSpot.HasValue)
                 {
-                    placedObjects.Add(PlaceItem(placementData.itemData, possiblePlacementSpot.Value));
+                    GameObject newPlacedObject;
+                    newPlacedObject = PlaceItem(placementData.itemData, possiblePlacementSpot.Value);
+                    placedObjects.Add(newPlacedObject);
+                    if (newPlacedObject.TryGetComponent(out MapContent mapContent))
+                    {
+                        mapContent.Initialize(placementData.itemData, possiblePlacementSpot.Value);
+                    }
                 }
             }
         }
@@ -63,7 +69,6 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
     private GameObject PlaceItem(MapContentData item, Vector2 placementPosition)
     {
         GameObject newItem = Instantiate(itemPrefab, placementPosition, Quaternion.identity);
-        newItem.GetComponent<MapContent>().Initialize(item);
         return newItem;
     }
 
