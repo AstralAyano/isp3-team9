@@ -9941,7 +9941,7 @@ RectTransform:
   - {fileID: 866314097}
   - {fileID: 1037456073}
   m_Father: {fileID: 1210659006}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -33617,7 +33617,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.303019
+      m_AnimationSpeed: 4.355671
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -33629,7 +33629,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.8290286
+      m_AnimationSpeed: 4.255135
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -35987,8 +35987,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 630976643}
-  - {fileID: 377198590}
   - {fileID: 1657039120}
+  - {fileID: 377198590}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48246,7 +48246,7 @@ RectTransform:
   - {fileID: 637335495}
   - {fileID: 241509670}
   m_Father: {fileID: 1210659006}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
