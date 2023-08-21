@@ -390,7 +390,7 @@ public class UIBookController : MonoBehaviour
             }
 
             // Adds a delay to each flip based on 1 divided by the number of times to flip
-            yield return new WaitForSeconds(1f / timeToFlip);
+            yield return new WaitForSecondsRealtime(1f / timeToFlip);
         }
 
         // Checks which page is flipped to

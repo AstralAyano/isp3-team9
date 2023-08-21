@@ -45,7 +45,7 @@ public class ToolTipManager : MonoBehaviour
 
         if (fadeIn)
         {
-            cg.alpha += Time.deltaTime * 4;
+            cg.alpha += Time.unscaledDeltaTime * 4;
 
             if (cg.alpha >= 1.0f)
             {
@@ -55,7 +55,7 @@ public class ToolTipManager : MonoBehaviour
 
         if (fadeOut)
         {
-            cg.alpha -= Time.deltaTime * 6;
+            cg.alpha -= Time.unscaledDeltaTime * 6;
 
             if (cg.alpha <= 0.0f)
             {

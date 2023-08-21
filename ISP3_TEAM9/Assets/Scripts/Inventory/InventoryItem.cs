@@ -10,8 +10,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
     [Header("UI")]
     public Image image;
     public TMP_Text countText;
-    public GameObject invUI;
-    public InventoryUI ui;
 
     [HideInInspector] public Item item;
     [HideInInspector] public int count = 1;
@@ -19,8 +17,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
 
     void Start()
     {
-        invUI = GameObject.Find("InventoryUI");
-        ui = invUI.GetComponent<InventoryUI>();
+        
     }
 
     public void InitialiseItem(Item newItem)

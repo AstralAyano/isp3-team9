@@ -3204,7 +3204,7 @@ RectTransform:
   m_Children:
   - {fileID: 912345049}
   m_Father: {fileID: 2095936059}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10487,6 +10487,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1575168334}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: CloseInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &386611959
 GameObject:
   m_ObjectHideFlags: 0
@@ -13236,6 +13248,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1575168333}
   - {fileID: 1637545725}
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -18873,6 +18886,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1575168334}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OpenInventory
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26697,7 +26722,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 734b8326faa49ed418424fa028f43383, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -33592,7 +33617,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.1806707
+      m_AnimationSpeed: 5.4396725
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -33604,7 +33629,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.7636037
+      m_AnimationSpeed: 4.8129387
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -34868,7 +34893,7 @@ RectTransform:
   - {fileID: 1190385905}
   - {fileID: 392161081}
   m_Father: {fileID: 2095936059}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -35231,7 +35256,7 @@ GameObject:
   - component: {fileID: 1194218348}
   m_Layer: 5
   m_Name: RightPage
-  m_TagString: Untagged
+  m_TagString: InventoryRightPage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35389,7 +35414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195184780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35880,6 +35905,7 @@ GameObject:
   - component: {fileID: 1210659005}
   - component: {fileID: 1210659004}
   - component: {fileID: 1210659003}
+  - component: {fileID: 1210659007}
   m_Layer: 5
   m_Name: LobbyHUD
   m_TagString: Untagged
@@ -35971,6 +35997,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1210659007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210659002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964ce3d78a8b9d4449519233bff38e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
+  healthBar: {fileID: 1096581540}
 --- !u!1 &1210893644
 GameObject:
   m_ObjectHideFlags: 0
@@ -44492,6 +44533,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1575168334}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OpenInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1509064070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45905,13 +45958,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2095936059}
-  m_RootOrder: 1
+  m_Father: {fileID: 476576425}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575168334
 MonoBehaviour:
@@ -45925,27 +45978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f47766e89ae54f4aa7b1e5d95212bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invBarSlot:
-  - {fileID: 413522782}
-  - {fileID: 1834109667}
-  - {fileID: 576270478}
-  invBarSlotStartPos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  invBarImg:
-  - {fileID: 713857510}
-  - {fileID: 436997808}
-  - {fileID: 2083492477}
-  invBarParent: {fileID: 1953221949}
-  invParent: {fileID: 126212988}
-  openInvBtn: {fileID: 0}
-  closeInvBtn: {fileID: 0}
-  nameText: {fileID: 0}
-  descText: {fileID: 0}
-  invBarLocalX: 0
-  invBarLocalY: 0
-  barInInv: {fileID: 0}
+  inventoryBar: {fileID: 637335494}
+  bookUI: {fileID: 1194218347}
+  hudUI: {fileID: 1657039119}
+  bookUIBarPos: {x: 0, y: -245}
+  hudUIBarPos: {x: 0, y: 55}
 --- !u!1 &1578307946
 GameObject:
   m_ObjectHideFlags: 0
@@ -47661,7 +47698,7 @@ RectTransform:
   - {fileID: 1684867890}
   - {fileID: 1998475843}
   m_Father: {fileID: 476576425}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -48189,7 +48226,7 @@ GameObject:
   - component: {fileID: 1657039120}
   m_Layer: 5
   m_Name: BottomBar
-  m_TagString: Untagged
+  m_TagString: InventoryBottomBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51383,6 +51420,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1575168334}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OpenInventory
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -54982,6 +55031,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1575168334}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: OpenInventory
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -61004,7 +61065,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 384729099}
-  - {fileID: 1575168333}
   - {fileID: 114244832}
   - {fileID: 1188044863}
   m_Father: {fileID: 0}
