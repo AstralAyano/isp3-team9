@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b16e639c94e584abe3b29ff07f6c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highestValue: 0
 --- !u!4 &506356200
 Transform:
   m_ObjectHideFlags: 0
@@ -13133,6 +13134,16 @@ CompositeCollider2D:
         Y: -540000000
       - X: -1440000000
         Y: -540000000
+    - - X: -1490000000
+        Y: -590000000
+      - X: -1499374976
+        Y: -590000000
+      - X: -1500000000
+        Y: -590625024
+      - X: -1500000000
+        Y: -600000000
+      - X: -1490000000
+        Y: -600000000
     - - X: -1460000000
         Y: -650000000
       - X: -1470000000
@@ -14109,6 +14120,11 @@ CompositeCollider2D:
       - {x: -144.00003, y: -53}
       - {x: -145, y: -53.00003}
       - {x: -144.99997, y: -54}
+    - - {x: -149.00003, y: -60}
+      - {x: -149.00003, y: -59}
+      - {x: -149.93752, y: -59.000008}
+      - {x: -150, y: -59.062515}
+      - {x: -149.99997, y: -60}
     - - {x: -146.00003, y: -66}
       - {x: -146.00003, y: -65}
       - {x: -147, y: -65.00003}
@@ -36712,6 +36728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRoom: {fileID: 6896796617414109631, guid: efa9ce044706df1439d46a7efee9dd6e, type: 3}
+  EndPointRoom: {fileID: 8179193814338401251, guid: bdffeec8bd8a2cd468c84c3ddef67f3e, type: 3}
   defaultRoom: {fileID: 4646956272834488505, guid: 9cf054d6a62a81e47b53c70c5bcdc726, type: 3}
   graphTest: {fileID: 506356199}
   itemParent: {fileID: 354819254}

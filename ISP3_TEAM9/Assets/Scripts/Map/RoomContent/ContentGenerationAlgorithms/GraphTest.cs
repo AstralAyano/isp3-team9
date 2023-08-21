@@ -9,8 +9,8 @@ public class GraphTest : MonoBehaviour
 
     bool graphReady = false;
 
-    Dictionary<Vector2Int, int> dijkstraResult;
-    int highestValue;
+    public Dictionary<Vector2Int, int> dijkstraResult;
+    public int highestValue;
 
     public void RunDijkstraAlgorithm(Vector2Int playerPosition,IEnumerable<Vector2Int> floorPositions)
     {
