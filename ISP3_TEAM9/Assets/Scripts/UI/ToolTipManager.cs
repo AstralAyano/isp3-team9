@@ -16,6 +16,8 @@ public class ToolTipManager : MonoBehaviour
 
     private Color artefactColor;
     private Color consumableColor;
+    private Color skillColor;
+    private Color ultimateColor;
 
     void Awake()
     {
@@ -35,8 +37,10 @@ public class ToolTipManager : MonoBehaviour
         cg = gameObject.GetComponent<CanvasGroup>();
         cg.alpha = 0.0f;
 
-        ColorUtility.TryParseHtmlString("#E05E72", out artefactColor);
+        ColorUtility.TryParseHtmlString("#cb7a09", out artefactColor);
         ColorUtility.TryParseHtmlString("#5E7AE0", out consumableColor);
+        ColorUtility.TryParseHtmlString("#1ea6a8", out skillColor);
+        ColorUtility.TryParseHtmlString("#1ea6a8", out ultimateColor);
     }
 
     void Update()
@@ -83,6 +87,14 @@ public class ToolTipManager : MonoBehaviour
         else if (type == "Consumable")
         {
             selectedType.color = consumableColor;
+        }
+        else if (type == "Skill")
+        {
+            selectedType.color = skillColor;
+        }
+        else if (type == "Ultimate")
+        {
+            selectedType.color = ultimateColor;
         }
 
         if (type != "None")

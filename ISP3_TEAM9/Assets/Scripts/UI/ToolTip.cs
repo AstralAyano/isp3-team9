@@ -8,7 +8,9 @@ public class ToolTip : MonoBehaviour
     {
         None,
         Artefact,
-        Consumable
+        Consumable,
+        Skill,
+        Ultimate
     }
 
     public string objName;

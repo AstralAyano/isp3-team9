@@ -135,18 +135,6 @@ public class UIBookController : MonoBehaviour
         // Getting the animator controller in children
         animController = GetComponentInChildren<Animator>();
 
-        rightButtons[0].image.sprite = bookmark[0];
-
-        // Defaults the button to Status Page selected
-        for (int i = 1; i < rightButtons.Length; i++)
-        {
-            rightButtons[i].image.sprite = bookmark[1];
-            leftButtons[i - 1].gameObject.SetActive(false);
-        }
-
-        // Defaults the page to Status Page
-        currPageNo = 1;
-
         // Get the stats of player and set it to the Status and Stats Page
         GetPlayerStats();
         SetPlayerStatsInBook();
