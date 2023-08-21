@@ -18054,7 +18054,7 @@ GameObject:
   - component: {fileID: 630976643}
   m_Layer: 5
   m_Name: TopBar
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33617,7 +33617,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.355671
+      m_AnimationSpeed: 4.9823046
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -33629,7 +33629,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.255135
+      m_AnimationSpeed: 4.583331
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -48226,7 +48226,7 @@ GameObject:
   - component: {fileID: 1657039120}
   m_Layer: 5
   m_Name: BottomBar
-  m_TagString: InventoryBottomBar
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52574,6 +52574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d3fb9e146051e4caa262655387f7b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookUI: {fileID: 2095936055}
+  hudUI: []
   dialogueUI: {fileID: 377198591}
   dialoguePortrait: {fileID: 646637673}
   dialogueName: {fileID: 1879863493}

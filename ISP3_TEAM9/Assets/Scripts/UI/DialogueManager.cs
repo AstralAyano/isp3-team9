@@ -21,6 +21,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     [Header("References")]
+    [SerializeField] private GameObject bookUI;
+    [SerializeField] private GameObject[] hudUI;
     [SerializeField] private CanvasGroup dialogueUI;
     [SerializeField] private Image dialoguePortrait;
     [SerializeField] private TMP_Text dialogueName;
@@ -89,6 +91,8 @@ public class DialogueManager : MonoBehaviour
         repeatedLinesArrays.Add(mageLines);
 
         dialogueUI.gameObject.SetActive(false);
+
+        hudUI = GameObject.FindGameObjectsWithTag("HUD");
     }
 
     public void TriggerDialogue(npcType triggeredNPC)
@@ -108,6 +112,12 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
+        for (int i = 0; i < hudUI.Length; i++)
+        {
+            hudUI[i].gameObject.SetActive(false);
+        }
+
+        bookUI.gameObject.SetActive(false);
         dialogueUI.gameObject.SetActive(true);
 
         playLine = true;
@@ -250,6 +260,11 @@ public class DialogueManager : MonoBehaviour
 
                 dialogueStarted = false;
                 dialogueUI.gameObject.SetActive(false);
+                
+                for (int i = 0; i < hudUI.Length; i++)
+                {
+                    hudUI[i].gameObject.SetActive(true);
+                }
             }
         }
     }

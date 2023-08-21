@@ -19,6 +19,7 @@ TagManager:
   - PostProcessor
   - InventoryRightPage
   - InventoryBottomBar
+  - HUD
   layers:
   - Default
   - TransparentFX
