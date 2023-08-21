@@ -559,6 +559,7 @@ public class UIBookController : MonoBehaviour
 
     public void FullscreenApply()
     {
+        // Sets the fullscreen option based on the toggle boolean
         Screen.fullScreen = fullscreenToggle.isOn;
         Debug.Log("Fullscreen Applied : " + fullscreenToggle.isOn);
     }
@@ -567,6 +568,7 @@ public class UIBookController : MonoBehaviour
     {
         ColorAdjustments colorAdjust;
 
+        // Try to get the ColorAdjustment component and sets the post exposure value based on the brightness slider's value
         if (globalBrightness.profile.TryGet<ColorAdjustments>(out colorAdjust))
         {
             colorAdjust.postExposure.value = brightnessSlider.value;
@@ -575,6 +577,7 @@ public class UIBookController : MonoBehaviour
 
     public void ResetButton(string settingType)
     {
+        // Resets all graphics options to default values
         if (settingType == "Graphics")
         {
             Resolution resolution = filteredResolutions[defaultResolution];
