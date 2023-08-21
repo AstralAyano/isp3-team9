@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a83f2a5bea8447489822be80764763e, type: 3}
-  m_Name: Test
+  m_Name: Box
   m_EditorClassIdentifier: 
   sprite: {fileID: -1108878443, guid: b50c9c64a5d49c64e94c16827bafbb7c, type: 3}
   size: {x: 1, y: 1}
   placementType: 0
-  addOffset: 1
+  addOffset: 0
