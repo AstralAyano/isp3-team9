@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: Ancient Coin
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: b73a488fc123a6d4d8d52b04796f7761, type: 3}
   stackable: 1
   itemType: 0
-  itemName: 
-  itemDesc: 
+  itemName: Ancient Coin
+  itemDesc: Increase defense by 1. This item can stack.

@@ -105,11 +105,11 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Attacking");
         }
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             currentState = playerStates.Skill;
         }
-        else if (Input.GetKeyDown("q"))
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
             currentState = playerStates.Ultimate;
             

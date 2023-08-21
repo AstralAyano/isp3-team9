@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: Divine Goblet
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: 21300000, guid: 70d67cdd384da544ca2f4a035a7e9df6, type: 3}
+  stackable: 0
   itemType: 0
-  itemName: 
-  itemDesc: 
+  itemName: Divine Goblet
+  itemDesc: Increase max health by 2 but decrease attack by 1. If the player is of
+    the paladin class, additionally increase defense by 1

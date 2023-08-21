@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: Magic Scepter
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: 21300000, guid: 7f7109a20f0cb4a4ebb033bf3b8c6130, type: 3}
+  stackable: 0
   itemType: 0
-  itemName: 
-  itemDesc: 
+  itemName: Magic Scepter
+  itemDesc: Increase attack by 1. If the player is of the mage class, additionally
+    increase attack by 1.

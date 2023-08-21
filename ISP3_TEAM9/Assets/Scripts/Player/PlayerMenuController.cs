@@ -130,6 +130,8 @@ public class PlayerMenuController : MonoBehaviour
 
     public void StartButtonClicked()
     {
+        GameTimer.startClicked = true;
+        GameTimer.timer = 0;
         StartCoroutine(StartSequence());
     }
 

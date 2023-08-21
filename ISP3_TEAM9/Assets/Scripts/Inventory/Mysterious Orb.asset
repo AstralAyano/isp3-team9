@@ -16,4 +16,5 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Mysterious Orb
-  itemDesc: e
+  itemDesc: When obtaining this item, 40% chance to increase a random stat by 1 but
+    a 20% chance to decrease a random stat by 1

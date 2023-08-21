@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: Golden Rod
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: 21300000, guid: c6e270b39ca8789429f3e772583aa8ed, type: 3}
+  stackable: 0
   itemType: 0
-  itemName: 
-  itemDesc: 
+  itemName: Golden Rod
+  itemDesc: If the player is of the archer class, increase projectile speed by 0.1.
+    If the player is of the mage class, increase attack by 1. Does not work on other
+    classes.

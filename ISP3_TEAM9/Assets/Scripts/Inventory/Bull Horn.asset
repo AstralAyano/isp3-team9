@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: Bull Horn
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: 21300000, guid: 3e54f96457d3a654ab64a24cd512c256, type: 3}
+  stackable: 0
   itemType: 0
-  itemName: 
-  itemDesc: 
+  itemName: Bull Horn
+  itemDesc: Increase attack speed by 0.2. If the player is of the barbarian class,
+    additionally increase attack by 1
