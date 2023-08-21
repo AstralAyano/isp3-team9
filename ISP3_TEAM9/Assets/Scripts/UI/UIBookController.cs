@@ -204,7 +204,7 @@ public class UIBookController : MonoBehaviour
                     statsValueText[i].text = playerStats.chosenStatPoints.defense.ToString();
                     break;
                 case 2:
-                    statsValueText[i].text = playerStats.chosenStatPoints.attackPower.ToString();
+                    statsValueText[i].text = playerStats.chosenStatPoints.attack.ToString();
                     break;
                 case 3:
                     statsValueText[i].text = playerStats.chosenStatPoints.attackSpeed.ToString();
@@ -256,7 +256,7 @@ public class UIBookController : MonoBehaviour
                     playerStats.chosenStats.defense += valueIncrease;
                     break;
                 case 2:
-                    playerStats.chosenStatPoints.attackPower++;
+                    playerStats.chosenStatPoints.attack++;
                     valueIncrease = (int)(playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack);
                     playerStats.chosenStats.attack += valueIncrease;
                     break;
