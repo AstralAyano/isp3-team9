@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController[] animControllers; //Store animator controllers
 
+    [SerializeField]
+    private GameObject PalaRange;
+
     private Rigidbody2D rb;
     private Vector2 moveDir;
     private Vector2 lookDir;
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 animator.runtimeAnimatorController = animControllers[3];
+                PalaRange.SetActive(true);
                 break;
         }
     }
