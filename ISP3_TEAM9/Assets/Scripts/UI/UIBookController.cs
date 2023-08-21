@@ -15,7 +15,6 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
-
     [SerializeField] private TMP_Text[] statusValueText;
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
