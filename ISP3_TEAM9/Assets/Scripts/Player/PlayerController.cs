@@ -520,4 +520,14 @@ public class PlayerController : MonoBehaviour
     {
         transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
     }
+
+    public float GetUltCharge()
+    {
+        return ultCharge;
+    }
+
+    public float GetMaxUltCharge()
+    {
+        return maxUltCharge;
+    }
 }

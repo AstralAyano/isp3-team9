@@ -12,6 +12,7 @@ using System;
 public class UIBookController : MonoBehaviour
 {
     [Header("Player Stats")]
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
     [SerializeField] private int[] statPoints;
@@ -76,17 +77,21 @@ public class UIBookController : MonoBehaviour
 
     void Awake()
     {
+        // Set volume and resolution index to default values
         currentVolume = defaultVolume;
 
         int currResolutionIndex = 0;
         float currRefreshRate;
 
+        // Get and store all available resolutions that the monitor supports
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
 
+        // Resets the dropdown options in cases of monitor changes, and get the refresh rate of the current monitor
         resolutionDropdown.ClearOptions();
         currRefreshRate = Screen.currentResolution.refreshRate;
 
+        // To filter the resolutions that allows the same refresh rate as the monitor
         for (int i = 0; i < resolutions.Length; i++)
         {
             if (resolutions[i].refreshRate == currRefreshRate)
@@ -97,6 +102,7 @@ public class UIBookController : MonoBehaviour
 
         List<string> options = new List<string>();
 
+        // To add the filtered resolution to a list and find the default resolution based on the screen size and refresh rate
         for (int i = 0; i < filteredResolutions.Count; i++)
         {
             string resolutionOption = filteredResolutions[i].width + " x " + filteredResolutions[i].height + " [" + filteredResolutions[i].refreshRate + " Hz]";
@@ -108,40 +114,56 @@ public class UIBookController : MonoBehaviour
             }
         }
 
+        // Adds the list of filtered resolutions to the dropdown options
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
+        // Sets the default resolution found in the for loop
         defaultResolution = currResolutionIndex;
 
+        // Find for objects with tag and try to get a component from it
         if (GameObject.FindWithTag("PostProcessor").TryGetComponent(out Volume componentVol))
         {
             globalBrightness = componentVol;
+        }
+
+        if (GameObject.FindWithTag("Player").TryGetComponent(out PlayerController componentPlayer))
+        {
+            playerController = componentPlayer;
         }
     }
 
     void Start()
     {
+        // Getting the animator controller in children
         animController = GetComponentInChildren<Animator>();
 
         rightButtons[0].image.sprite = bookmark[0];
 
+        // Defaults the button to Status Page selected
         for (int i = 1; i < rightButtons.Length; i++)
         {
             rightButtons[i].image.sprite = bookmark[1];
             leftButtons[i - 1].gameObject.SetActive(false);
         }
 
+        // Defaults the page to Status Page
         currPageNo = 1;
 
+        // Get the stats of player and set it to the Status and Stats Page
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
+
         statsBaseValue[0] = statsValue[6];
     }
 
     void GetPlayerStats()
     {
+        // To check which class the player is currently playing
+        // Then set the portrait in Inventory Page
+        // Then hide Projectile Speed stat if its not a ranged class
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Barbarian:
@@ -170,6 +192,7 @@ public class UIBookController : MonoBehaviour
         statsBaseValue[3] = playerStats.chosenBaseStats.attackInterval;
         statsBaseValue[4] = playerStats.chosenBaseStats.moveSpeed;
         statsBaseValue[5] = playerStats.chosenBaseStats.projectileSpeed;
+
         // Get current player stat values
         playerStats.chosenStats = playerStats.currentStats[playerStats.chosenClass];
         statsValue[0] = playerStats.chosenStats.health;
@@ -179,6 +202,7 @@ public class UIBookController : MonoBehaviour
         statsValue[4] = playerStats.chosenStats.moveSpeed;
         statsValue[5] = playerStats.chosenStats.projectileSpeed;
         statsValue[6] = playerStats.chosenStats.maxHealth;
+
         // Get stat point multipliers
         playerStats.chosenStatMultipliers = playerStats.statMultipliers[playerStats.chosenClass];
         statsMultiplier[0] = playerStats.chosenStatMultipliers.health;
@@ -187,6 +211,7 @@ public class UIBookController : MonoBehaviour
         statsMultiplier[3] = playerStats.chosenStatMultipliers.attackSpeed;
         statsMultiplier[4] = playerStats.chosenStatMultipliers.moveSpeed;
         statsMultiplier[5] = playerStats.chosenStatMultipliers.projectileSpeed;
+
         // Get stat points
         playerStats.chosenStatPoints = playerStats.currentStatPoints[playerStats.chosenClass];
         statPoints[0] = playerStats.chosenStatPoints.health;
@@ -197,6 +222,7 @@ public class UIBookController : MonoBehaviour
         statPoints[5] = playerStats.chosenStatPoints.projectileSpeed;
 
         statusValue[0] = statsValue[6];
+        statusValue[1] = playerController.GetMaxUltCharge();
 
         for (int i = 1; i < statusSliders.Length; i++)
         {
@@ -206,13 +232,16 @@ public class UIBookController : MonoBehaviour
 
     void SetPlayerStatsInBook() 
     {
+        // Sets the class of the player to the Stats Page
         classText.text = "Class : " + playerStats.chosenClass.ToString();
 
+        // Sets the stats value to the text boxes
         for (int i = 0; i < statsValueText.Length; i++)
         {
             statsValueText[i].text = statPoints[i].ToString();
         }
 
+        // Notification message banner if there is stat point(s) availble
         if (statPointAmt == 1)
         {
             StatPointsText.gameObject.transform.parent.gameObject.SetActive(true);
@@ -229,8 +258,9 @@ public class UIBookController : MonoBehaviour
         }
     }
 
-    public void IncreaseStat(int type) // Adds a stat point to a stat and updates the stat value
+    public void IncreaseStat(int type) 
     {
+        // Adds a stat point to a stat and updates the stat value
         if (statPointAmt > 0)
         {
             statPointAmt--;
@@ -238,6 +268,7 @@ public class UIBookController : MonoBehaviour
 
             // Update stat value
             statsValue[type] += statPoints[type] * statsMultiplier[type] * statsBaseValue[type];
+            
             // If increased HP, increase Max HP too
             if (type == 0)
             {
@@ -245,6 +276,7 @@ public class UIBookController : MonoBehaviour
                 statusSliders[0].value = statsValue[0];
                 statusSliders[0].maxValue = statsValue[6];
             }
+
             SetPlayerStatsInBook();
             UpdateStatusBars();
         }
@@ -252,42 +284,53 @@ public class UIBookController : MonoBehaviour
 
     void UpdateStatusBars()
     {
+        statusSliders[0].value = playerStats.chosenStats.health;
         statusValueText[0].text = statusSliders[0].value.ToString() + "/" + statusSliders[0].maxValue.ToString();
-        for (int i = 1; i < statusSliders.Length; i++)
-        {
-            statusSliders[i].value = playerStats.chosenStats.health;
-            statusValueText[i].text = playerStats.chosenStats.health.ToString() + "/" + statusSliders[i].maxValue.ToString();
-        }
+
+        statusSliders[1].value = playerController.GetUltCharge();
+        statusValueText[1].text = statusSliders[1].value.ToString() + "/" + statusSliders[1].maxValue.ToString();
+    
+        //statusSliders[2].value = playerController.GetExperiencePoint()??????
+        //statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
     }
 
     void HideProjectileSpeedStat()
     {
+        // Hides the projectile stat if not needed and changes the stat grid layout gaps
         statsGroup.spacing = new Vector2(0, 22.5f);
         projectileStat.SetActive(false);
     }
 
     void ShowProjectileSpeedStat()
     {
+        // Show the projectile stat if needed and changes the stat grid layout gaps
         statsGroup.spacing = new Vector2(0, 10);
         projectileStat.SetActive(true);
     }
 
     public void BookButtons(int page_type)
     {
+        // Defaults all pages to be false
         statusPage.SetActive(false);
         inventoryPage.SetActive(false);
         skillPage.SetActive(false);
         settingPage.SetActive(false);
 
+        // Get and update all status bars and stats
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
 
+        // To get the page number and flip left or right
+        // Page Number : 1 to 4
+        // Page Type : 0 is Left, 1 is Right
         int page = page_type / 10;
         int type = page_type % 10;
 
+        // Sets the nextPageNo to the Page Number (Button pressing is to flip the page to next page etc)
         nextPageNo = page;
 
+        // Check which page the player wants to go to
         switch (page)
         {
             case 1:
@@ -304,13 +347,16 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
+        // Start the flipping animation based on the type (left or right)
         StartCoroutine(AnimationStart(type));
     }
 
     private IEnumerator AnimationStart(int dir)
     {
+        // Hides all the buttons (left and right)
         HideAllButtons(true);
 
+        // Resets the position of the icons in the buttons
         for (int i = 0; i < rightButtons.Length; i++)
         {
             buttonCurrPos[i] = rightButtons[i].GetComponent<RectTransform>().anchoredPosition;
@@ -322,12 +368,17 @@ public class UIBookController : MonoBehaviour
             rightIcons[i].GetComponent<RectTransform>().anchoredPosition = iconCurrPos[i];
         }
 
+        // Calculates the number of time to flip depending on current page and next page
         int timeToFlip = Mathf.Abs(nextPageNo - currPageNo);
 
+        // Loops the amount of time to flip
         for (int i = 0; i < timeToFlip; i++)
         {
+            // Change the animation speed's multiplier based on the number of time to flip
+            // This allows the animation to always be the same amount of time
             animController.SetFloat("SpeedMultiplier", timeToFlip);
 
+            // Checks which direction to flip and triggers the animation
             switch (dir)
             {
                 case 0:
@@ -338,9 +389,13 @@ public class UIBookController : MonoBehaviour
                     break;
             }
 
+            // Adds a delay to each flip based on 1 divided by the number of times to flip
             yield return new WaitForSeconds(1f / timeToFlip);
         }
 
+        // Checks which page is flipped to
+        // Then sets the page to active and shows all buttons based on left or right
+        // Also sets the icon in button position to fit the binded sprite
         switch (currPage)
         {
             case "Status":
@@ -417,10 +472,13 @@ public class UIBookController : MonoBehaviour
 
     void HideAllButtons(bool includeLeft)
     {
+        // Hides the buttons
+        // Loops based on right button's length (4)
         for (int i = 0; i < rightButtons.Length; i++)
         {
             rightButtons[i].gameObject.SetActive(false);
 
+            // Checks if left is also to be hidden
             if (includeLeft && i < leftButtons.Length)
             {
                 leftButtons[i].gameObject.SetActive(false);
@@ -430,10 +488,13 @@ public class UIBookController : MonoBehaviour
 
     void ShowAllButtons(bool includeLeft)
     {
+        // Shows the buttons
+        // Loops based on right button's length (4)
         for (int i = 0; i < rightButtons.Length; i++)
         {
             rightButtons[i].gameObject.SetActive(true);
 
+            // Checks if left is also to be be shown
             if (includeLeft && i < leftButtons.Length)
             {
                 leftButtons[i].gameObject.SetActive(false);
@@ -443,15 +504,20 @@ public class UIBookController : MonoBehaviour
 
     public void HUDButtons(int page)
     {
+        // When player presses the HUD buttons to open the book
+
+        // Sets all pages to inactive
         statusPage.SetActive(false);
         inventoryPage.SetActive(false);
         skillPage.SetActive(false);
         settingPage.SetActive(false);
 
+        // Get and update all status bars and stats in Status and Stats Page
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
 
+        // Checks which page they opened into
         switch (page)
         {
             case 1:
@@ -468,6 +534,7 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
+        // Just sets both currPageNo and nextPageNo so no animation would occur in AnimationStart coroutine
         currPageNo = page;
         nextPageNo = page;
 
@@ -476,13 +543,16 @@ public class UIBookController : MonoBehaviour
 
     public void ResolutionApply(int resolutionIndex)
     {
+        // Get the resolution based on the player's selection with index
         Resolution resolution = filteredResolutions[resolutionIndex];
 
+        // Sets the applied resolution to 3 playerprefs to allow loading of options
         PlayerPrefs.SetInt("resolutionIndex", resolutionIndex);
         PlayerPrefs.SetInt("resolutionWidth", resolution.width);
         PlayerPrefs.SetInt("resolutionHeight", resolution.height);
         Debug.Log(PlayerPrefs.GetInt("resolutionIndex"));
 
+        // Applies the resolution the player selected
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         Debug.Log("Resolution Applied : " + resolutionIndex);
     }
