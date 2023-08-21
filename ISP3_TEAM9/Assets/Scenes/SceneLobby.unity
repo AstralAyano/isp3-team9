@@ -33617,7 +33617,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.4396725
+      m_AnimationSpeed: 4.303019
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -33629,7 +33629,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.8129387
+      m_AnimationSpeed: 5.8290286
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -52594,10 +52594,26 @@ MonoBehaviour:
   skillFirst:
   - Oh?
   - You seem to possess quite the potential
-  barbarianFirst: []
-  paladinFirst: []
-  archerFirst: []
-  mageFirst: []
+  - 'yoWaAi Mo '
+  barbarianFirst:
+  - HurUR hURhRUr, ROARRRRR!
+  - Oh Sorry, It seems like you're normal.
+  - Hello! I am the Barbarian.
+  - HurUR hURhRUr, ROARRRRR!
+  paladinFirst:
+  - Our Father Who Artd In Heaven, Hallowed be thy name
+  - Thy kingdom come, Thy will be done on earth, As it is on heaven.
+  - Oh Sorry, I didn't see you there.
+  - The role's Paladin, and my cause is for the lord.
+  - If Thou art searching for skills from thy heavens, look for me.
+  archerFirst:
+  - Let The Wind Guide You!
+  - Hello! I am the Archer of the Elf Forest.
+  - With any form of guidance on your skills, Talk to me. *smiles*
+  mageFirst:
+  - "Koko wa d\u014Dkutsudesu."
+  - I am a mage of Maigc and Sorcercy.
+  - If you require assitance on your control of magic, do approach me.
   tutorialLines: []
   skillLines: []
   barbarianLines: []
