@@ -36,12 +36,12 @@ public class playerStatPoints
 
 public class playerStatMultipliers
 {
-    public int health;
-    public int defense;
-    public int attackPower;
-    public int attackSpeed;
-    public int moveSpeed;
-    public int projectileSpeed; //For mage and archer
+    public float health;
+    public float defense;
+    public float attackPower;
+    public float attackSpeed;
+    public float moveSpeed;
+    public float projectileSpeed; //For mage and archer
 }
 
 [CreateAssetMenu]

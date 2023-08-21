@@ -15,10 +15,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
-    [SerializeField] private int[] statPoints;
-    [SerializeField] private float[] statsValue;
-    [SerializeField] private float[] statsBaseValue;
-    [SerializeField] private float[] statsMultiplier;
+
     [SerializeField] private TMP_Text[] statusValueText;
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
@@ -74,7 +71,7 @@ public class UIBookController : MonoBehaviour
     private int currPageNo = 0;
     private int nextPageNo = 0;
     private float xOffset = 30;
-
+    
     void Awake()
     {
         // Set volume and resolution index to default values
@@ -155,8 +152,6 @@ public class UIBookController : MonoBehaviour
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
-
-        statsBaseValue[0] = statsValue[6];
     }
 
     void GetPlayerStats()
@@ -184,44 +179,7 @@ public class UIBookController : MonoBehaviour
                 break;
         }
 
-        // Get base player stat values
-        playerStats.chosenBaseStats = playerStats.baseStats[playerStats.chosenClass];
-        statsBaseValue[0] = playerStats.chosenBaseStats.health;
-        statsBaseValue[1] = playerStats.chosenBaseStats.defense;
-        statsBaseValue[2] = playerStats.chosenBaseStats.attack;
-        statsBaseValue[3] = playerStats.chosenBaseStats.attackInterval;
-        statsBaseValue[4] = playerStats.chosenBaseStats.moveSpeed;
-        statsBaseValue[5] = playerStats.chosenBaseStats.projectileSpeed;
-
-        // Get current player stat values
-        playerStats.chosenStats = playerStats.currentStats[playerStats.chosenClass];
-        statsValue[0] = playerStats.chosenStats.health;
-        statsValue[1] = playerStats.chosenStats.defense;
-        statsValue[2] = playerStats.chosenStats.attack;
-        statsValue[3] = playerStats.chosenStats.attackInterval;
-        statsValue[4] = playerStats.chosenStats.moveSpeed;
-        statsValue[5] = playerStats.chosenStats.projectileSpeed;
-        statsValue[6] = playerStats.chosenStats.maxHealth;
-
-        // Get stat point multipliers
-        playerStats.chosenStatMultipliers = playerStats.statMultipliers[playerStats.chosenClass];
-        statsMultiplier[0] = playerStats.chosenStatMultipliers.health;
-        statsMultiplier[1] = playerStats.chosenStatMultipliers.defense;
-        statsMultiplier[2] = playerStats.chosenStatMultipliers.attackPower;
-        statsMultiplier[3] = playerStats.chosenStatMultipliers.attackSpeed;
-        statsMultiplier[4] = playerStats.chosenStatMultipliers.moveSpeed;
-        statsMultiplier[5] = playerStats.chosenStatMultipliers.projectileSpeed;
-
-        // Get stat points
-        playerStats.chosenStatPoints = playerStats.currentStatPoints[playerStats.chosenClass];
-        statPoints[0] = playerStats.chosenStatPoints.health;
-        statPoints[1] = playerStats.chosenStatPoints.defense;
-        statPoints[2] = playerStats.chosenStatPoints.attackPower;
-        statPoints[3] = playerStats.chosenStatPoints.attackSpeed;
-        statPoints[4] = playerStats.chosenStatPoints.moveSpeed;
-        statPoints[5] = playerStats.chosenStatPoints.projectileSpeed;
-
-        statusValue[0] = statsValue[6];
+        statusValue[0] = playerStats.chosenBaseStats.maxHealth;
         statusValue[1] = playerController.GetMaxUltCharge();
 
         for (int i = 1; i < statusSliders.Length; i++)
@@ -238,7 +196,27 @@ public class UIBookController : MonoBehaviour
         // Sets the stats value to the text boxes
         for (int i = 0; i < statsValueText.Length; i++)
         {
-            statsValueText[i].text = statPoints[i].ToString();
+            switch (i)
+            {
+                case 0:
+                    statsValueText[i].text = playerStats.chosenStatPoints.health.ToString();
+                    break;
+                case 1:
+                    statsValueText[i].text = playerStats.chosenStatPoints.defense.ToString();
+                    break;
+                case 2:
+                    statsValueText[i].text = playerStats.chosenStatPoints.attackPower.ToString();
+                    break;
+                case 3:
+                    statsValueText[i].text = playerStats.chosenStatPoints.attackSpeed.ToString();
+                    break;
+                case 4:
+                    statsValueText[i].text = playerStats.chosenStatPoints.moveSpeed.ToString();
+                    break;
+                case 5:
+                    statsValueText[i].text = playerStats.chosenStatPoints.projectileSpeed.ToString();
+                    break;
+            }
         }
 
         // Notification message banner if there is stat point(s) availble
@@ -258,23 +236,45 @@ public class UIBookController : MonoBehaviour
         }
     }
 
-    public void IncreaseStat(int type) 
+    public void IncreaseStat(int type)
     {
         // Adds a stat point to a stat and updates the stat value
         if (statPointAmt > 0)
         {
             statPointAmt--;
-            statPoints[type]++;
-
-            // Update stat value
-            statsValue[type] += statPoints[type] * statsMultiplier[type] * statsBaseValue[type];
-            
-            // If increased HP, increase Max HP too
-            if (type == 0)
+            int valueIncrease;
+            switch (type)
             {
-                statsValue[6] += statPoints[type] * statsMultiplier[type] * statsBaseValue[type];
-                statusSliders[0].value = statsValue[0];
-                statusSliders[0].maxValue = statsValue[6];
+                case 0:
+                    playerStats.chosenStatPoints.health++;
+                    valueIncrease = (int)(playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth);
+                    playerStats.chosenStats.health += valueIncrease;
+                    playerStats.chosenStats.maxHealth += valueIncrease;
+                    break;
+                case 1:
+                    playerStats.chosenStatPoints.defense++;
+                    valueIncrease = (int)(playerStats.chosenStatMultipliers.defense * (float)playerStats.chosenBaseStats.defense);
+                    playerStats.chosenStats.defense += valueIncrease;
+                    break;
+                case 2:
+                    playerStats.chosenStatPoints.attackPower++;
+                    valueIncrease = (int)(playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack);
+                    playerStats.chosenStats.attack += valueIncrease;
+                    break;
+                case 3:
+                    playerStats.chosenStatPoints.attackSpeed++;
+                    playerStats.chosenStats.attackInterval += playerStats.chosenStatMultipliers.attackSpeed * playerStats.chosenBaseStats.attackInterval;
+                    break;
+                case 4:
+                    playerStats.chosenStatPoints.moveSpeed++;
+                    valueIncrease = (int)(playerStats.chosenStatMultipliers.moveSpeed * (float)playerStats.chosenBaseStats.moveSpeed);
+                    playerStats.chosenStats.moveSpeed += valueIncrease;
+                    break;
+                case 5:
+                    playerStats.chosenStatPoints.projectileSpeed++;
+                    valueIncrease = (int)(playerStats.chosenStatMultipliers.projectileSpeed * (float)playerStats.chosenBaseStats.projectileSpeed);
+                    playerStats.chosenStats.projectileSpeed += valueIncrease;
+                    break;
             }
 
             SetPlayerStatsInBook();
@@ -284,6 +284,7 @@ public class UIBookController : MonoBehaviour
 
     void UpdateStatusBars()
     {
+        statusSliders[0].maxValue = playerStats.chosenStats.maxHealth;
         statusSliders[0].value = playerStats.chosenStats.health;
         statusValueText[0].text = statusSliders[0].value.ToString() + "/" + statusSliders[0].maxValue.ToString();
 
