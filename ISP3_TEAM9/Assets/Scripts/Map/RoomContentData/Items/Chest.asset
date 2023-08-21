@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a83f2a5bea8447489822be80764763e, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: -498998739, guid: b50c9c64a5d49c64e94c16827bafbb7c, type: 3}
   size: {x: 1, y: 1}
   placementType: 0
   addOffset: 0
