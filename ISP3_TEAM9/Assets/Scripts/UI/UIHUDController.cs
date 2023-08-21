@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIHUDController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerController playerController;
+    public PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
 
     [Header("Health, Skill and Ultimate Bar")]

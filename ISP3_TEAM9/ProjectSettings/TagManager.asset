@@ -20,6 +20,10 @@ TagManager:
   - InventoryRightPage
   - InventoryBottomBar
   - HUD
+  - OverlayUI
+  - BookUI
+  - HUDUI
+  - UI
   layers:
   - Default
   - TransparentFX

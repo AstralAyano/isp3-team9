@@ -11,8 +11,10 @@ using System;
 
 public class UIBookController : MonoBehaviour
 {
+    //public static UIBookController instance;
+
     [Header("Player Stats")]
-    [SerializeField] private PlayerController playerController;
+    public PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private TMP_Text[] statsValueText;
     [SerializeField] private TMP_Text[] statusValueText;
@@ -73,6 +75,7 @@ public class UIBookController : MonoBehaviour
     
     void Awake()
     {
+
         // Set volume and resolution index to default values
         currentVolume = defaultVolume;
 
@@ -128,6 +131,8 @@ public class UIBookController : MonoBehaviour
         {
             playerController = componentPlayer;
         }
+
+        gameObject.SetActive(false);
     }
 
     void Start()
