@@ -17,6 +17,7 @@ TagManager:
   - InvSlot
   - LockedSlot
   - PostProcessor
+  - InventoryRightPage
   layers:
   - Default
   - TransparentFX
