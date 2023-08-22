@@ -75,7 +75,6 @@ public class UIBookController : MonoBehaviour
     
     void Awake()
     {
-
         // Set volume and resolution index to default values
         currentVolume = defaultVolume;
 
@@ -131,6 +130,9 @@ public class UIBookController : MonoBehaviour
         {
             playerController = componentPlayer;
         }
+
+        // Sets Slider PlayerPrefs
+        brightnessSlider.value = PlayerPrefs.GetFloat("brightness");
 
         gameObject.SetActive(false);
     }
@@ -553,18 +555,21 @@ public class UIBookController : MonoBehaviour
     public void FullscreenApply()
     {
         // Sets the fullscreen option based on the toggle boolean
+        PlayerPrefs.SetString("fullscreen", fullscreenToggle.isOn.ToString());
+
         Screen.fullScreen = fullscreenToggle.isOn;
         Debug.Log("Fullscreen Applied : " + fullscreenToggle.isOn);
     }
 
     public void BrightnessApply()
     {
-        ColorAdjustments colorAdjust;
-
         // Try to get the ColorAdjustment component and sets the post exposure value based on the brightness slider's value
-        if (globalBrightness.profile.TryGet<ColorAdjustments>(out colorAdjust))
+        if (globalBrightness.profile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjust))
         {
-            colorAdjust.postExposure.value = brightnessSlider.value;
+            PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
+            colorAdjust.postExposure.value = PlayerPrefs.GetFloat("brightness");
+
+            Debug.Log("Brightness Applied : " + PlayerPrefs.GetFloat("brightness"));
         }
     }
 
