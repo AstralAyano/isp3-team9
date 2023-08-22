@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ancient Coin
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: b73a488fc123a6d4d8d52b04796f7761, type: 3}
-  stackable: 1
-  itemType: 2
+  stackable: 0
+  itemType: 0
   itemName: Ancient Coin
-  itemDesc: Used to buy upgrades.
+  itemDesc: Increase defense by 1.

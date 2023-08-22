@@ -1625,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9187127078638063365, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1105210302, guid: d417f3edd3f227f46ac59c3f925e45f3, type: 3}
     - target: {fileID: 9187127078638063366, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -19911,7 +19915,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.3414326
+      m_AnimationSpeed: 5.1602316
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -20809,7 +20813,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.1637106
+      m_AnimationSpeed: 4.6540112
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

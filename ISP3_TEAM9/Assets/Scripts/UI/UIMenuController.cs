@@ -267,22 +267,22 @@ public class UIMenuController : MonoBehaviour
         lightObj.SetActive(true);
     }
 
-    public IEnumerator DoorTouched()
-    {
-        fadeOutLight = true;
+    //public IEnumerator DoorTouched()
+    //{
+    //    fadeOutLight = true;
 
-        yield return new WaitForSeconds(1.0f);
+    //    yield return new WaitForSeconds(1.0f);
 
-        gridMenu.SetActive(false);
-        gridLoad.SetActive(true);
+    //    gridMenu.SetActive(false);
+    //    gridLoad.SetActive(true);
 
-        GameObject.Find("Player").transform.position = new Vector3(0, -5, 0);
+    //    GameObject.Find("Player").transform.position = new Vector3(0, -5, 0);
 
-        fadeInLight = true;
-        GameObject.Find("Player").GetComponent<PlayerMenuController>().lightStatus = 2;
+    //    fadeInLight = true;
+    //    GameObject.Find("Player").GetComponent<PlayerMenuController>().lightStatus = 2;
 
-        yield return new WaitForSeconds(1.0f);
+    //    yield return new WaitForSeconds(1.0f);
 
-        GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLobby");
-    }
+    //    GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLobby");
+    //}
 }

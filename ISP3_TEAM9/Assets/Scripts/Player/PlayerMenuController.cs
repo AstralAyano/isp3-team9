@@ -14,6 +14,9 @@ public class PlayerMenuController : MonoBehaviour
     [SerializeField] private CanvasGroup uiCanvasGroup;
     [SerializeField] private new Light2D light;
 
+    [SerializeField] private ScriptablePlayerStats playerStats;
+    [SerializeField] private SceneLoader sceneLoader;
+
     public Animator playerAnimController;
 
     private Rigidbody2D rb;
@@ -133,6 +136,7 @@ public class PlayerMenuController : MonoBehaviour
         GameTimer.startClicked = true;
         GameTimer.timer = 0;
         EndController.roomsCleared = 0;
+        playerStats.chosenClass = ScriptablePlayerStats.playerClass.None;
         StartCoroutine(StartSequence());
     }
 
@@ -160,7 +164,7 @@ public class PlayerMenuController : MonoBehaviour
 
             UIMenuController uiMenu = GameObject.Find("UIMenu").GetComponent<UIMenuController>();
 
-            uiMenu.StartCoroutine(uiMenu.DoorTouched());
+            sceneLoader.LoadScene("SceneLobby");
         }
     }
 }
