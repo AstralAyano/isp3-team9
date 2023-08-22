@@ -9,7 +9,8 @@ public class Item : ScriptableObject
     public enum types
     {
         Artefact,
-        Consumable
+        Consumable,
+        Currency
     }
 
     public Sprite image;

@@ -16,4 +16,5 @@ MonoBehaviour:
   stackable: 1
   itemType: 0
   itemName: Ancient Coin
-  itemDesc: Increase defense by 1. This item can stack.
+  itemDesc: Increase defense by 1. This item can stack. Can be used to upgrade the
+    skill tree.

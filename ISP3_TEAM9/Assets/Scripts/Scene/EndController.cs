@@ -57,7 +57,8 @@ public class EndController : MonoBehaviour
         uiCanvasGroup = uiCanvasGroup.GetComponent<CanvasGroup>();
 
         statsText.text = "Stats:\n" + 
-                         "Time Taken:\n" + DisplayTime() + "\n" + "|\n" + "|\n" + "|\n";
+                         "Time Taken:\n" + DisplayTime() + "\n" +
+                         "Rooms Cleared: " + /*roomsCleared + */ "\n" + "|\n" + "|\n";
 
         titleText.alpha = 0;
         statsText.alpha = 0;
