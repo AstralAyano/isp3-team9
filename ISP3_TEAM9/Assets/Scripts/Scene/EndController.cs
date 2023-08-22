@@ -44,6 +44,7 @@ public class EndController : MonoBehaviour
     private float titleCounter = 0;
 
     public static int timeSpent;
+    public static int roomsCleared;
 
     void Awake()
     {
@@ -56,9 +57,12 @@ public class EndController : MonoBehaviour
 
         uiCanvasGroup = uiCanvasGroup.GetComponent<CanvasGroup>();
 
-        statsText.text = "Stats:\n" + 
+        statsText.text = "	     Stats:\n" + 
+                         "--------------------------\n" +
                          "Time Taken:\n" + DisplayTime() + "\n" +
-                         "Rooms Cleared: " + /*roomsCleared + */ "\n" + "|\n" + "|\n";
+                         "Rooms Cleared: " + roomsCleared + "\n" +
+                         "" + "|\n" +
+                         "--------------------------\n";
 
         titleText.alpha = 0;
         statsText.alpha = 0;

@@ -132,6 +132,7 @@ public class PlayerMenuController : MonoBehaviour
     {
         GameTimer.startClicked = true;
         GameTimer.timer = 0;
+        EndController.roomsCleared = 0;
         StartCoroutine(StartSequence());
     }
 

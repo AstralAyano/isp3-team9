@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimEnemyDownAttack2_Boss
+  m_Name: AnimEnemyRightAttack2
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1187436675, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
+      value: {fileID: 1487452142, guid: 9926c217a12e5e746878766c11072abe, type: 3}
     - time: 0.083333336
-      value: {fileID: 514180919, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
+      value: {fileID: 773905030, guid: 9926c217a12e5e746878766c11072abe, type: 3}
     - time: 0.16666667
-      value: {fileID: -1016222643, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
+      value: {fileID: -704285959, guid: 9926c217a12e5e746878766c11072abe, type: 3}
     - time: 0.25
-      value: {fileID: -2101998635, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
+      value: {fileID: 433939631, guid: 9926c217a12e5e746878766c11072abe, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1187436675, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
-    - {fileID: 514180919, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
-    - {fileID: -1016222643, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
-    - {fileID: -2101998635, guid: 82fc5950d088423458c42f59886d15ea, type: 3}
+    - {fileID: 1487452142, guid: 9926c217a12e5e746878766c11072abe, type: 3}
+    - {fileID: 773905030, guid: 9926c217a12e5e746878766c11072abe, type: 3}
+    - {fileID: -704285959, guid: 9926c217a12e5e746878766c11072abe, type: 3}
+    - {fileID: 433939631, guid: 9926c217a12e5e746878766c11072abe, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
