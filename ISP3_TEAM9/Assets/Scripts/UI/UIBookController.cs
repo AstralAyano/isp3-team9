@@ -60,8 +60,9 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Slider brightnessSlider;
     private Volume globalBrightness;
     [Space(10)]
-    [SerializeField] private TMP_Text volumeText;
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider masterVolSlider;
+    [SerializeField] private Slider bgmVolSlider;
+    [SerializeField] private Slider sfxVolSlider;
 
     [Header("Settings Variables")]
     [SerializeField] public int defaultResolution;
