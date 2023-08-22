@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class BasicMeleeEnemy : EnemyController
 {
+    private bool damagePlayer = false;
+    private Collider2D triggerCollider = null;
+
     void Start()
     {
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
@@ -38,9 +41,21 @@ public class BasicMeleeEnemy : EnemyController
             {
                 enemyPF.attackToResolve = true;
 
-                // call TakeDamage func in player using the child collider (PlayerHitbox)
-                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
+                damagePlayer = true;
+                triggerCollider = other;
             }
+        }
+    }
+
+    //Called in animation events
+    private void DamagePlayer()
+    {
+        if ((triggerCollider != null) && (damagePlayer))
+        {
+            // call TakeDamage func in player using the child collider (PlayerHitbox)
+            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
+            //Debug.Log("Hit");
+            damagePlayer = false;
         }
     }
 }

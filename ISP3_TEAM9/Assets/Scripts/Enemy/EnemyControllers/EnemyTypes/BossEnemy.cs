@@ -6,6 +6,9 @@ public class BossEnemy : EnemyController
 {
     private int attackToUse;
 
+    private bool damagePlayer = false;
+    private Collider2D triggerCollider = null;
+
     void Start()
     {
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
@@ -39,8 +42,8 @@ public class BossEnemy : EnemyController
             {
                 enemyPF.attackToResolve = true;
 
-                // call TakeDamage func in player using the child collider (PlayerHitbox)
-                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(15);
+                damagePlayer = true;
+                triggerCollider = other;
             }
         }
     }
@@ -52,6 +55,13 @@ public class BossEnemy : EnemyController
             attackTimer += Time.deltaTime;
 
             ar.Play("AnimEnemy" + enemyPF.animDir + "Attack" + attackToUse);
+
+            //Second attack is spinning, so the player constantly takes damage
+            if (attackToUse == 2)
+            {
+                // call TakeDamage func in player using the child collider (PlayerHitbox)
+                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(1);
+            }
 
             if (attackTimer > attackDuration)
             {
@@ -72,5 +82,16 @@ public class BossEnemy : EnemyController
     private void newRandomAttack()
     {
         attackToUse = Random.Range(1, 3);
+    }
+
+    //Called in animation events
+    private void DamagePlayer()
+    {
+        if ((triggerCollider != null) && (damagePlayer))
+        {
+            // call TakeDamage func in player using the child collider (PlayerHitbox)
+            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(15);
+            damagePlayer = false;
+        }
     }
 }

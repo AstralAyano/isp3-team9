@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    [SerializeField]
+    private SceneLoader sceneLoader;
+
     public enum playerStates
     {
         Idle,
@@ -492,6 +495,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
+        currentState = playerStates.Hurt;
         playerStats.chosenStats.health -= dmg;
     }
 
@@ -506,9 +510,8 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject, 0);
             //Switch to end scene
-
+            sceneLoader.LoadScene("SceneEnd");
         }
-        return;
     }
 
     private void ShootArrow()
