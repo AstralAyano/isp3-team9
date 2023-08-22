@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private GameObject ArcaneShotPrefab;
     [SerializeField]
     private GameObject magicPrefab;
+    [SerializeField]
+    private GameObject PaladinAuraPrefab;
 
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
@@ -382,6 +385,8 @@ public class PlayerController : MonoBehaviour
 
                 PlayAnim("AnimPlayerCastDown");
 
+                Instantiate(PaladinAuraPrefab, transform);
+
                 sr.color = Color.cyan;
                 playerStats.chosenStats.defense *= 125/100;
                 break;
@@ -456,6 +461,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlayAnim("AnimPlayerCastDown");
+                PaladinUlt();
                 ultCharge = 0;
                 break;
         }
@@ -519,6 +525,11 @@ public class PlayerController : MonoBehaviour
                 Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
                 break;
         }
+    }
+
+    private void PaladinUlt()
+    {
+
     }
 
     private void PlayerAttack(int dmg)
