@@ -41,11 +41,7 @@ public class HomingMissile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
         {
-            Instantiate(explosionEffect, transform.position, transform.rotation);
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-                other.gameObject.GetComponent<EnemyController>().TakeDamage(30);
-            }
+            Instantiate(explosionEffect, transform.position, transform.rotation);   
             Destroy(gameObject);
         }
         
