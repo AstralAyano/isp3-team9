@@ -34,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Image autoButton;
 
     [Header("Player")]
+    [SerializeField] private PlayerController player;
     [SerializeField] private ScriptablePlayerStats playerStats;
     [SerializeField] private GameObject classPrompt;
     [SerializeField] private npcType currNPC;
@@ -109,6 +110,8 @@ public class DialogueManager : MonoBehaviour
         classPrompt.SetActive(false);
 
         hudUI = GameObject.FindGameObjectsWithTag("HUD");
+
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void TriggerDialogue(npcType triggeredNPC)
@@ -330,6 +333,8 @@ public class DialogueManager : MonoBehaviour
         classPrompt.SetActive(false);
 
         uiHUD.GetSkillUltNames();
+
+        player.SetAnimator();
     }
 
     public void PromptNo()

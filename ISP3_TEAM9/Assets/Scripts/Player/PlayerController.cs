@@ -68,6 +68,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
 
+        SetAnimator();
+    }
+
+    public void SetAnimator()
+    {
         //Set the animator controller to use
         switch (playerStats.chosenClass)
         {
