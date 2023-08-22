@@ -11,6 +11,11 @@ public class UISkillNode : MonoBehaviour
     private List<UISkillNode> adjacentNodes = new List<UISkillNode>();
     private Button btn;
 
+    [SerializeField] private int statIndex;
+
+    [SerializeField] private Sprite[] spriteLists;
+    [SerializeField] private Image[] childrenImage;
+
     [SerializeField]
     private bool isActivatable = false;
     public bool isActivated = false;
@@ -35,6 +40,16 @@ public class UISkillNode : MonoBehaviour
             btn.colors = cb;
             book.statPointAmt++;
         }
+
+        childrenImage = GetComponentsInChildren<Image>();
+
+        for (int i = 0; i < childrenImage.Length; i++)
+        {
+            if (childrenImage[i].gameObject != this.gameObject)
+            {
+                childrenImage[i].sprite = spriteLists[statIndex];
+            }
+        }
     }
 
     void Update()
@@ -50,7 +65,7 @@ public class UISkillNode : MonoBehaviour
         }
     }
     
-    public void ActivateNode(int statToUpgrade)
+    public void ActivateNode()
     {
         if (isActivatable && !isActivated)
         {
@@ -68,9 +83,9 @@ public class UISkillNode : MonoBehaviour
             btn.colors = cb;
 
             book.statPointAmt++;
-            if (statToUpgrade >= 0 && statToUpgrade <= 5)
+            if (statIndex >= 0 && statIndex <= 5)
             {
-                book.IncreaseStat(statToUpgrade);
+                book.IncreaseStat(statIndex);
             }
         }
     }
