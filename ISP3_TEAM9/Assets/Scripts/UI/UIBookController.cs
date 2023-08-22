@@ -114,11 +114,33 @@ public class UIBookController : MonoBehaviour
 
         // Adds the list of filtered resolutions to the dropdown options
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currResolutionIndex;
+        if (PlayerPrefs.HasKey("resolutionIndex"))
+        {
+            resolutionDropdown.value = PlayerPrefs.GetInt("resolutionIndex");
+        }
+        else
+        {
+            resolutionDropdown.value = currResolutionIndex;
+        }
         resolutionDropdown.RefreshShownValue();
 
         // Sets the default resolution found in the for loop
         defaultResolution = currResolutionIndex;
+
+        // Sets the toggle to true or false if PlayerPrefs exist
+        if (PlayerPrefs.HasKey("fullscreen"))
+        {
+            string stringFullscreen = PlayerPrefs.GetString("fullscreen");
+
+            if (stringFullscreen.ToLower() == "true")
+            {
+                fullscreenToggle.isOn = true;
+            }
+            else if (stringFullscreen.ToLower() == "false")
+            {
+                fullscreenToggle.isOn = false;
+            }
+        }
 
         // Find for objects with tag and try to get a component from it
         if (GameObject.FindWithTag("PostProcessor").TryGetComponent(out Volume componentVol))
