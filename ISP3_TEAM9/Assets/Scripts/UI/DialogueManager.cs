@@ -29,6 +29,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image autoButton;
 
+    [Header("Tile Maps")]
+    [SerializeField] private GameObject[] tents;
+    [SerializeField] private GameObject[] tentDetails;
+    [SerializeField] private GameObject[] building;
+    [SerializeField] private GameObject[] buildingDetails;
+
     [Header("Dialogue Variables")]
     [SerializeField] private Sprite[] npcPortrait;
 
