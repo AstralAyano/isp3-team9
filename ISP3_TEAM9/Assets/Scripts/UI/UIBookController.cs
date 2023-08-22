@@ -20,7 +20,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private TMP_Text[] statusValueText;
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
-    [SerializeField] private int statPointAmt;
+    [SerializeField] public int statPointAmt;
     [SerializeField] private TMP_Text StatPointsText;
 
     [Header("References")]

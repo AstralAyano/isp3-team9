@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UISkillNode : MonoBehaviour
 {
     [SerializeField]
+    private UIBookController book;
+    [SerializeField]
     private List<UISkillNode> adjacentNodes = new List<UISkillNode>();
     private Button btn;
 
@@ -13,11 +15,11 @@ public class UISkillNode : MonoBehaviour
     private bool isActivatable = false;
     public bool isActivated = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         btn = GetComponent<Button>();
 
+        // for first node
         if (isActivated)
         {
             for (int i = 0; i < adjacentNodes.Count; i++)
@@ -30,10 +32,10 @@ public class UISkillNode : MonoBehaviour
             cb.highlightedColor = selectedColor;
             cb.selectedColor = selectedColor;
             btn.colors = cb;
+            book.statPointAmt++;
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isActivatable && !isActivated)
@@ -47,9 +49,9 @@ public class UISkillNode : MonoBehaviour
         }
     }
     
-    public void ActivateNode()
+    public void ActivateNode(int statToUpgrade)
     {
-        if (isActivatable)
+        if (isActivatable && !isActivated)
         {
             isActivated = true;
             for (int i = 0; i < adjacentNodes.Count; i++)
@@ -62,6 +64,12 @@ public class UISkillNode : MonoBehaviour
             cb.highlightedColor = selectedColor;
             cb.selectedColor = selectedColor;
             btn.colors = cb;
+
+            book.statPointAmt++;
+            if (statToUpgrade >= 0 && statToUpgrade <= 5)
+            {
+                book.IncreaseStat(statToUpgrade);
+            }
         }
     }
 }

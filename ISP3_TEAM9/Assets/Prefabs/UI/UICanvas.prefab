@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904129932248}
   - {fileID: 1560821905592357239}
@@ -1329,11 +1330,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821903884746042}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5569,6 +5570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905209159080}
   - {fileID: 1560821904551183979}
@@ -5625,7 +5627,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904025452640}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6169,6 +6171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905481728695}
   - {fileID: 1560821905209159080}
@@ -6225,11 +6228,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904051628813}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6809,6 +6812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905362649148}
   - {fileID: 1560821905655930447}
@@ -8807,6 +8811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904051628813}
   - {fileID: 1560821904025452640}
@@ -8863,11 +8868,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904129932248}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15493,6 +15498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905032572196}
   - {fileID: 1560821905592357239}
@@ -16838,6 +16844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904867363625}
   - {fileID: 1560821905570142846}
@@ -16890,11 +16897,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904425048748}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -19745,6 +19752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821903884746042}
   - {fileID: 1560821905702123167}
@@ -19799,11 +19807,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904541423161}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20337,6 +20345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905123990244}
   - {fileID: 1560821905416860325}
@@ -20393,11 +20402,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904551183979}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20779,6 +20788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904872977531}
   - {fileID: 1560821905261459356}
@@ -20832,11 +20842,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904565654007}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -23736,6 +23746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905362649148}
   - {fileID: 1560821905268390924}
@@ -23788,11 +23799,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904675543755}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -30218,6 +30229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904565654007}
   - {fileID: 1560821905261459356}
@@ -30273,11 +30285,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904867363625}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -30664,6 +30676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905047755312}
   - {fileID: 1560821905481728695}
@@ -30719,11 +30732,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821904872977531}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -34351,6 +34364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904551183979}
   - {fileID: 1560821905137011233}
@@ -34406,11 +34420,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905032572196}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -34885,6 +34899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905268390924}
   - {fileID: 1560821905481728695}
@@ -34938,11 +34953,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905047755312}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -36633,6 +36648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904076179127}
   - {fileID: 1560821905655930447}
@@ -36689,7 +36705,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905123990244}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -37130,6 +37146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905702123167}
   - {fileID: 1560821904541423161}
@@ -37182,11 +37199,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905135148832}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -37357,6 +37374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905416860325}
   - {fileID: 1560821904551183979}
@@ -37410,7 +37428,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905137011233}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -39168,6 +39186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905601789711}
   - {fileID: 1560821905123990244}
@@ -39224,11 +39243,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905209159080}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -40165,6 +40184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904872977531}
   - {fileID: 1560821904051628813}
@@ -40221,11 +40241,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905261459356}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -40435,6 +40455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904675543755}
   - {fileID: 1560821905362649148}
@@ -40490,11 +40511,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905268390924}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -44155,6 +44176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904675543755}
   - {fileID: 1560821904076179127}
@@ -44209,11 +44231,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905362649148}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -45463,6 +45485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905655930447}
   - {fileID: 1560821905959234718}
@@ -45518,11 +45541,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905416860325}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -46649,6 +46672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905268390924}
   - {fileID: 1560821905601789711}
@@ -46705,11 +46729,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905481728695}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -49384,6 +49408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904867363625}
   - {fileID: 1560821905877601300}
@@ -49438,11 +49463,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905570142846}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -50413,6 +50438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904025452640}
   - {fileID: 1560821905032572196}
@@ -50469,11 +50495,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905592357239}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -51089,6 +51115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905362649148}
   - {fileID: 1560821904076179127}
@@ -51145,11 +51172,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905601789711}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -53407,6 +53434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821904076179127}
   - {fileID: 1560821905959234718}
@@ -53461,7 +53489,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905655930447}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -54228,6 +54256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905592357239}
   - {fileID: 1560821904395228152}
@@ -54283,7 +54312,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905702123167}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -58563,6 +58592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905261459356}
   - {fileID: 1560821904129932248}
@@ -58619,11 +58649,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905877601300}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -58946,6 +58976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905877601300}
   - {fileID: 1560821903884746042}
@@ -59000,11 +59031,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905890047324}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -60556,6 +60587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a31b42e019224dba3e8874c1d7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 1560821905512271899}
   adjacentNodes:
   - {fileID: 1560821905655930447}
   - {fileID: 1560821905416860325}
@@ -60608,7 +60640,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1560821905959234718}
         m_TargetAssemblyTypeName: UISkillNode, Assembly-CSharp
         m_MethodName: ActivateNode
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
