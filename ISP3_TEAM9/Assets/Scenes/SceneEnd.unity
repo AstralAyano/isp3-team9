@@ -3242,6 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287a6b837d92a484ab1270348d7b57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeProfile: {fileID: 0}
   bookController: {fileID: 0}
   canUse: 1
   resolutionDropdown: {fileID: 0}
