@@ -291,8 +291,8 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 5125891212960096399}
   health: 100
-  attackCD: 0.5
-  attackDuration: 0.5
+  attackCD: 1
+  attackDuration: 1.5
   spawnPos: {fileID: 8485566968446511441}
   animToPlay: AnimEnemyDownIdle
 --- !u!95 &6866303674557658723

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BossEnemy : EnemyController
 {
+    private int attackToUse;
+
     void Start()
     {
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
+        attackToUse = Random.Range(1, 3);
     }
 
     void Update()
@@ -22,7 +25,7 @@ public class BossEnemy : EnemyController
                 Patrol();
                 break;
             case State.ATTACK:
-                Attack();
+                BossAttack();
                 break;
         }
         animToPlay = "AnimEnemy" + enemyPF.animDir + "Walk";
@@ -40,5 +43,34 @@ public class BossEnemy : EnemyController
                 other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(15);
             }
         }
+    }
+
+    private void BossAttack()
+    {
+        if (enemyPF.attackToResolve)
+        {
+            attackTimer += Time.deltaTime;
+
+            ar.Play("AnimEnemy" + enemyPF.animDir + "Attack" + attackToUse);
+
+            if (attackTimer > attackDuration)
+            {
+                enemyPF.attackToResolve = false;
+                attackTimer = 0;
+                attackDelay = 0;
+            }
+        }
+        else
+        {
+            attackDelay += Time.deltaTime;
+            // play anim
+            ar.Play(animToPlay);
+            newRandomAttack();
+        }
+    }
+
+    private void newRandomAttack()
+    {
+        attackToUse = Random.Range(1, 3);
     }
 }
