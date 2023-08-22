@@ -31,6 +31,7 @@ public class UISkillNode : MonoBehaviour
             cb.normalColor = selectedColor;
             cb.highlightedColor = selectedColor;
             cb.selectedColor = selectedColor;
+            cb.pressedColor = selectedColor;
             btn.colors = cb;
             book.statPointAmt++;
         }
@@ -41,10 +42,10 @@ public class UISkillNode : MonoBehaviour
         if (isActivatable && !isActivated)
         {
             ColorBlock cb = btn.colors;
-            Color unlockedColor = new Color32(150, 150, 150, 255);
+            Color unlockedColor = new Color32(220, 220, 220, 255);
             cb.normalColor = unlockedColor;
-            cb.highlightedColor = unlockedColor;
-            cb.selectedColor = unlockedColor;
+            cb.highlightedColor = new Color32(200, 200, 200, 255);
+            cb.selectedColor = unlockedColor;                           
             btn.colors = cb;
         }
     }
@@ -63,6 +64,7 @@ public class UISkillNode : MonoBehaviour
             cb.normalColor = selectedColor;
             cb.highlightedColor = selectedColor;
             cb.selectedColor = selectedColor;
+            cb.pressedColor = selectedColor;
             btn.colors = cb;
 
             book.statPointAmt++;
