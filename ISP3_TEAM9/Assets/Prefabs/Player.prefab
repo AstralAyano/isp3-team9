@@ -472,6 +472,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: e334803a87081de43b09a582d549fef5, type: 2}
   - {fileID: 9100000, guid: 03f439972d16c0f4bad688ef57c16dc4, type: 2}
   - {fileID: 9100000, guid: b5624c865611cdb48bf7d6857d83eb10, type: 2}
+  - {fileID: 9100000, guid: 8205d1c8be79e9b44abcf5a02dacae08, type: 2}
   PalaRange: {fileID: 5083840682566912394}
   arrowPrefab: {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
   MagicArrowPrefab: {fileID: 2449804098602134871, guid: 437d5bd72a9e25449b3c09c1db8f83ad, type: 3}

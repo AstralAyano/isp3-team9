@@ -85,6 +85,9 @@ public class PlayerController : MonoBehaviour
                 animator.runtimeAnimatorController = animControllers[3];
                 PalaRange.SetActive(true);
                 break;
+            default:
+                animator.runtimeAnimatorController = animControllers[4];
+                break;
         }
     }
 
@@ -101,6 +104,11 @@ public class PlayerController : MonoBehaviour
         {
             currentState = playerStates.Idle;
             //Debug.Log("Idle");
+        }
+
+        if (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None)
+        {
+            return;
         }
 
         if (Input.GetMouseButton(0))

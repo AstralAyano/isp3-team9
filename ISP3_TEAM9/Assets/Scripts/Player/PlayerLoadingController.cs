@@ -32,6 +32,9 @@ public class PlayerLoadingController : MonoBehaviour
             case ScriptablePlayerStats.playerClass.Paladin:
                 animator.runtimeAnimatorController = animControllers[3];
                 break;
+            default:
+                animator.runtimeAnimatorController = animControllers[4];
+                break;
         }
     }
 
