@@ -11,8 +11,6 @@ using System;
 
 public class UIBookController : MonoBehaviour
 {
-    //public static UIBookController instance;
-
     [Header("Player Stats")]
     public PlayerController playerController;
     [SerializeField] private ScriptablePlayerStats playerStats;
@@ -49,6 +47,10 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Vector2[] buttonCurrPos;
     [SerializeField] private Vector2 iconStartPos;
     [SerializeField] private Vector2[] iconCurrPos;
+
+    [Header("Skills")]
+    [SerializeField] private TMP_Text nodeNameText;
+    [SerializeField] private TMP_Text nodeDescText;
 
     [Header("Settings")]
     [SerializeField] private Resolution[] resolutions;
@@ -164,6 +166,10 @@ public class UIBookController : MonoBehaviour
     {
         // Getting the animator controller in children
         animController = GetComponentInChildren<Animator>();
+
+        // Resets Skill Name and Description
+        nodeNameText.text = "";
+        nodeDescText.text = "";
 
         // Get the stats of player and set it to the Status and Stats Page
         GetPlayerStats();
@@ -609,7 +615,26 @@ public class UIBookController : MonoBehaviour
 
             fullscreenToggle.isOn = defaultFullscreen;
 
+            brightnessSlider.value = 0;
+            if (globalBrightness.profile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjust))
+            {
+                PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
+                colorAdjust.postExposure.value = brightnessSlider.value;
+            }
+
             Debug.Log($"Reset Applied : {resolution.width} x {resolution.height} : {fullscreenToggle.isOn}");
         }
+    }
+
+    public void ShowNodeNameDesc(string name, string desc)
+    {
+        nodeNameText.text = name;
+        nodeDescText.text = desc;
+    }
+
+    public void ResetNodeNameDesc()
+    {
+        nodeNameText.text = "";
+        nodeDescText.text = "";
     }
 }

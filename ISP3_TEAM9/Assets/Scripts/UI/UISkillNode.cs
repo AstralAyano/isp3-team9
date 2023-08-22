@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UISkillNode : MonoBehaviour
+public class UISkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     private UIBookController book;
@@ -12,6 +14,8 @@ public class UISkillNode : MonoBehaviour
     private Button btn;
 
     [SerializeField] private int statIndex;
+    [SerializeField] private string statName;
+    [SerializeField] private string statDesc;
 
     [SerializeField] private Sprite[] spriteLists;
     [SerializeField] private Image[] childrenImage;
@@ -50,6 +54,8 @@ public class UISkillNode : MonoBehaviour
                 childrenImage[i].sprite = spriteLists[statIndex];
             }
         }
+
+        CheckNode();
     }
 
     void Update()
@@ -88,5 +94,50 @@ public class UISkillNode : MonoBehaviour
                 book.IncreaseStat(statIndex);
             }
         }
+    }
+
+    void CheckNode()
+    {
+        switch (statIndex)
+        {
+            case 0:
+                statName = "Health Node";
+                statDesc = "Activating this node increases the player's max health.";
+                break;
+            case 1:
+                statName = "Defense Node";
+                statDesc = "Activating this node increases the player's defensive capabilities.";
+                break;
+            case 2:
+                statName = "Attack Node";
+                statDesc = "Activating this node increases the player's offensive capabilities.";
+                break;
+            case 3:
+                statName = "Attack Speed Node";
+                statDesc = "Activating this node increases the player's attack speed.";
+                break;
+            case 4:
+                statName = "Movement Speed Node";
+                statDesc = "Activating this node increases the player's movement speed.";
+                break;
+            case 5:
+                statName = "Projectile Speed Node";
+                statDesc = "Activating this node increases the player's projectile speed.";
+                break;
+            case 6:
+                statName = "Stat Point Node";
+                statDesc = "Activating this node provides 1 stat point to the player.";
+                break;
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        book.ShowNodeNameDesc(statName, statDesc);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        book.ResetNodeNameDesc();
     }
 }
