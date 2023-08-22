@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: b73a488fc123a6d4d8d52b04796f7761, type: 3}
   stackable: 1
-  itemType: 0
+  itemType: 2
   itemName: Ancient Coin
-  itemDesc: Increase defense by 1. This item can stack. Can be used to upgrade the
-    skill tree.
+  itemDesc: Used to buy upgrades.
