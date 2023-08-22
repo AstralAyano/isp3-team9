@@ -45,7 +45,9 @@ public class ToolTipManager : MonoBehaviour
 
     void Update()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(1.4f, 0.6f, 0);
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 5;
+        transform.position = Camera.main.ScreenToWorldPoint(mousePos);
 
         if (fadeIn)
         {
