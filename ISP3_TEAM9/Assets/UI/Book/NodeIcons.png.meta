@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73607d1fc1ab01e4994586052bf82f5a
-      internalID: 1981107320
+      spriteID: 7be09f65a6717344ab1e986493876a18
+      internalID: 969910674
       vertices: []
       indices: 
       edges: []
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94487f2d59010774d932723351adcea6
-      internalID: -248480500
+      spriteID: 21deb592eca75324eacf421c545d93cd
+      internalID: -1943658633
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
       name: NodeIcons_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 32
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7caf571f3ea8d9846b7a414f41123545
-      internalID: 1915145154
+      spriteID: 37c2a21dfea82c94186ead170a80dc25
+      internalID: 1757262629
       vertices: []
       indices: 
       edges: []
@@ -183,6 +183,27 @@ TextureImporter:
       name: NodeIcons_3
       rect:
         serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821a93b1d89060a4b8d9972b65fcf18e
+      internalID: 339625236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NodeIcons_4
+      rect:
+        serializedVersion: 2
         x: 16
         y: 16
         width: 16
@@ -194,14 +215,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b36459ee1404640b6bf14a0899603d
-      internalID: 289079889
+      spriteID: acc27cbf6a72e1a44817b2f6f47224b7
+      internalID: -2085687905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NodeIcons_4
+      name: NodeIcons_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3faf1a346dece7940b848b7c4832dda7
+      internalID: 1178940445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NodeIcons_6
       rect:
         serializedVersion: 2
         x: 0
@@ -215,29 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58e6b778d6e49a743b2ed77a566ec758
-      internalID: -1906149466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NodeIcons_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1c8dbe576ae10d4285941c979252bba
-      internalID: 1594780707
+      spriteID: 737324e32e619c64b9a9f5fc49d0a6fa
+      internalID: -702730334
       vertices: []
       indices: 
       edges: []
@@ -253,12 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NodeIcons_0: 1981107320
-      NodeIcons_1: -248480500
-      NodeIcons_2: 1915145154
-      NodeIcons_3: 289079889
-      NodeIcons_4: -1906149466
-      NodeIcons_5: 1594780707
+      NodeIcons_0: 969910674
+      NodeIcons_1: -1943658633
+      NodeIcons_2: 1757262629
+      NodeIcons_3: 339625236
+      NodeIcons_4: -2085687905
+      NodeIcons_5: 1178940445
+      NodeIcons_6: -702730334
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
