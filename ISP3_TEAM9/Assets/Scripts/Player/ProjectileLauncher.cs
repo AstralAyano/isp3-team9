@@ -23,7 +23,11 @@ public class ProjectileLauncher : MonoBehaviour
         dir = new Vector2(Mathf.Cos(angleInRad), Mathf.Sin(angleInRad));
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        Destroy(gameObject, 2f);
+    }
+
     void FixedUpdate()
     {
         if (shotByEnemy)
@@ -53,7 +57,12 @@ public class ProjectileLauncher : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
+            if (other.gameObject.CompareTag("EnemyHitbox"))
+            {
+                other.gameObject.GetComponentInParent<EnemyController>().TakeDamage(10);
+                Destroy(gameObject);
+            }
+            else if (other.gameObject.CompareTag("Wall"))
             {
                 Destroy(gameObject);
             }

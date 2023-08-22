@@ -24,26 +24,35 @@ public class HomingMissile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Target != null)
+        {
+            Vector2 direction = (Vector2)Target.transform.position - rb.position;
 
-        Vector2 direction = (Vector2)Target.transform.position - rb.position;
+            direction.Normalize();
 
-        direction.Normalize();
+            float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+            rb.angularVelocity = -rotateAmount * rotateSpeed;
 
-        rb.angularVelocity = -rotateAmount * rotateSpeed;
-
-        rb.velocity = transform.up * playerStats.chosenStats.projectileSpeed;
-        
+            rb.velocity = transform.up * playerStats.chosenStats.projectileSpeed;
+        }
+        else
+        {
+            rb.angularVelocity = 0;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("EnemyHitbox"))
         {
-            Instantiate(explosionEffect, transform.position, transform.rotation);   
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            other.gameObject.GetComponentInParent<EnemyController>().TakeDamage(10);
             Destroy(gameObject);
         }
-        
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

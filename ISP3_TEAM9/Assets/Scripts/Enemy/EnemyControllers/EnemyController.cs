@@ -19,6 +19,7 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected EnemyPathFinding enemyPF;
 
     [SerializeField] protected float health = 50;
+    [SerializeField] protected int expDropped = 10;
     [SerializeField] protected float attackCD = 0.5f;
     [SerializeField] protected float attackDuration = 0.5f;
 
@@ -121,13 +122,16 @@ public abstract class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if ((health - damage) <= 0)
+        if ((health - damage) <= 0 && currentState != State.DEAD)
         {
             ChangeState(State.DEAD);
             health = 0;
 
-            // play anim
+            GameObject player = GameObject.FindWithTag("Player");
+            player.GetComponent<PlayerController>().GainXP(expDropped);
 
+            // play anim
+            ar.Play("AnimEnemyDeath");
 
             // destroy self
             Destroy(gameObject, 0.75f);

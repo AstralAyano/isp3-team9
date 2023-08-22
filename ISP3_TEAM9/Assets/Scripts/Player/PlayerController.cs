@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController[] animControllers; //Store animator controllers
 
-    [SerializeField]
-    private GameObject PalaRange;
-
     private Rigidbody2D rb;
     private Vector2 moveDir;
     private Vector2 lookDir;
@@ -44,8 +41,7 @@ public class PlayerController : MonoBehaviour
 
     float MaxArrow = 0;
 
-    private bool mageAttack = false;
-    private bool mageSkill = false;
+    private string mageAttacktype;
 
     private SpriteRenderer sr;
 
@@ -83,7 +79,6 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 animator.runtimeAnimatorController = animControllers[3];
-                PalaRange.SetActive(true);
                 break;
             default:
                 animator.runtimeAnimatorController = animControllers[4];
@@ -321,7 +316,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerCastDown");
                 }
-                mageAttack = true;
+                mageAttacktype = "attack";
                 break;
             default:
                 //Moving right
@@ -350,7 +345,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-
     private void PlayerSkill()
     {
         //Return if skill is still on cooldown
@@ -373,7 +367,7 @@ public class PlayerController : MonoBehaviour
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
-                mageSkill = true;
+                mageAttacktype = "skill";
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 skillCooldownTimer = 20;
@@ -406,7 +400,15 @@ public class PlayerController : MonoBehaviour
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 Collider2D[] colArr = Physics2D.OverlapCircleAll(transform.position, interactRange);
-                while (MaxArrow <= 5)
+                int count = 0;
+                foreach (Collider2D col in colArr)
+                {
+                    if (col.gameObject.CompareTag("Enemy"))
+                    {
+                        count++;
+                    }
+                }
+                while (MaxArrow <= 5 && count > 0)
                 {
                     foreach (Collider2D col in colArr)
                     {
@@ -416,7 +418,7 @@ public class PlayerController : MonoBehaviour
                             {
                                 GameObject arrow = Instantiate(MagicArrowPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, lookAngle));
                                 arrow.GetComponent<HomingMissile>().Target = col.gameObject;
-                              
+                                
                                 MaxArrow++;
                             }
                         }
@@ -427,6 +429,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
+                mageAttacktype = "ultimate";
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 //Moving right
@@ -479,7 +482,11 @@ public class PlayerController : MonoBehaviour
     public void PlayerTakeDamage(int dmg)
     {
         playerStats.chosenStats.health -= dmg;
-        Debug.Log(playerStats.chosenStats.health);
+    }
+
+    public void GainXP(int amount)
+    {
+        playerStats.chosenStats.exp += amount;
     }
 
     private void PlayerDeath()
@@ -493,38 +500,24 @@ public class PlayerController : MonoBehaviour
         return;
     }
 
-    //Called in animation events
-    private void SpawnArrow()
-    {
-        spawnedArrow = Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
-    }
-
     private void ShootArrow()
     {
-        if (spawnedArrow != null)
-        {
-            spawnedArrow.GetComponent<ProjectileLauncher>().enabled = true;
-        }
+        Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
     }
 
     private void MageAttack()
     {
-        if ((ultCharge >= maxUltCharge) && !mageAttack && !mageSkill)
+        switch (mageAttacktype)
         {
-            Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
-            ultCharge = 0;
-        }
-
-        if (mageSkill && !mageAttack && (ultCharge < maxUltCharge))
-        {
-            Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
-            mageSkill = false;
-        }
-
-        if (mageAttack && !mageSkill && (ultCharge < maxUltCharge))
-        {
-            Instantiate(magicPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
-            mageAttack = false;
+            case "attack":
+                Instantiate(magicPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                break;
+            case "skill":
+                Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                break;
+            case "ultimate":
+                Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                break;
         }
     }
 

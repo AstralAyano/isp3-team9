@@ -12,6 +12,8 @@ public class playerStats
     public int attackSpeed; //(int)(attackInterval - 1) * 10. For display
     public int moveSpeed;
     public int projectileSpeed; //For mage and archer
+    public int exp;
+    public int level;
 }
 
 public class playerStatMultipliers
@@ -54,11 +56,11 @@ public class ScriptablePlayerStats : ScriptableObject
 
     public Dictionary<playerClass, playerStats> currentStats = new()
     {
-        { playerClass.Barbarian, new playerStats{ health = 80, maxHealth = 80, attack = 10, defense = 3, attackInterval = 0.5f, moveSpeed = 4, projectileSpeed = 0} },
-        { playerClass.Mage, new playerStats{ health = 60, maxHealth = 60, attack = 15, defense = 2, attackInterval = 1.5f, moveSpeed = 6, projectileSpeed = 4} },
-        { playerClass.Archer, new playerStats{ health = 60, maxHealth = 60, attack = 10, defense = 2, attackInterval = 1f, moveSpeed = 7, projectileSpeed = 5} },
-        { playerClass.Paladin, new playerStats{ health = 100, maxHealth = 100, attack = 7, defense = 5, attackInterval = 0.5f, moveSpeed = 5, projectileSpeed = 0} },
-        { playerClass.None, new playerStats { health = 1, maxHealth = 1, attack = 1, defense = 1, attackInterval = 1f, moveSpeed = 3, projectileSpeed = 0 } }
+        { playerClass.Barbarian, new playerStats{ health = 80, maxHealth = 80, attack = 10, defense = 3, attackInterval = 0.5f, moveSpeed = 4, projectileSpeed = 0, exp = 0, level = 1} },
+        { playerClass.Mage, new playerStats{ health = 60, maxHealth = 60, attack = 15, defense = 2, attackInterval = 1.5f, moveSpeed = 6, projectileSpeed = 4, exp = 0, level = 1} },
+        { playerClass.Archer, new playerStats{ health = 60, maxHealth = 60, attack = 10, defense = 2, attackInterval = 1f, moveSpeed = 7, projectileSpeed = 5, exp = 0, level = 1} },
+        { playerClass.Paladin, new playerStats{ health = 100, maxHealth = 100, attack = 7, defense = 5, attackInterval = 0.5f, moveSpeed = 5, projectileSpeed = 0, exp = 0, level = 1} },
+        { playerClass.None, new playerStats { health = 1, maxHealth = 1, attack = 1, defense = 1, attackInterval = 1f, moveSpeed = 3, projectileSpeed = 0, exp = 0, level = 1} }
     };
 
     public Dictionary<playerClass, playerStats> currentStatPoints = new()

@@ -115,13 +115,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6675312301872718806}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6156e2129157af4409b0aa81df5b28d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
   shotByEnemy: 0
+  speed: 0
 --- !u!61 &2477526123165075173
 BoxCollider2D:
   m_ObjectHideFlags: 0
