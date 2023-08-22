@@ -25,9 +25,10 @@ public class UISkillNode : MonoBehaviour
                 adjacentNodes[i].isActivatable = true;
             }
             ColorBlock cb = btn.colors;
-            cb.normalColor = new Color32(150, 150, 150, 255);
-            cb.highlightedColor = new Color32(150, 150, 150, 255);
-            cb.selectedColor = new Color32(150, 150, 150, 255);
+            Color selectedColor = new Color32(0, 255, 0, 255);
+            cb.normalColor = selectedColor;
+            cb.highlightedColor = selectedColor;
+            cb.selectedColor = selectedColor;
             btn.colors = cb;
         }
     }
@@ -35,9 +36,17 @@ public class UISkillNode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isActivatable && !isActivated)
+        {
+            ColorBlock cb = btn.colors;
+            Color unlockedColor = new Color32(150, 150, 150, 255);
+            cb.normalColor = unlockedColor;
+            cb.highlightedColor = unlockedColor;
+            cb.selectedColor = unlockedColor;
+            btn.colors = cb;
+        }
     }
-
+    
     public void ActivateNode()
     {
         if (isActivatable)
@@ -48,9 +57,10 @@ public class UISkillNode : MonoBehaviour
                 adjacentNodes[i].isActivatable = true;
             }
             ColorBlock cb = btn.colors;
-            cb.normalColor = new Color32(150, 150, 150, 255);
-            cb.highlightedColor = new Color32(150, 150, 150, 255);
-            cb.selectedColor = new Color32(150, 150, 150, 255);
+            Color selectedColor = new Color32(0, 255, 0, 255);
+            cb.normalColor = selectedColor;
+            cb.highlightedColor = selectedColor;
+            cb.selectedColor = selectedColor;
             btn.colors = cb;
         }
     }
