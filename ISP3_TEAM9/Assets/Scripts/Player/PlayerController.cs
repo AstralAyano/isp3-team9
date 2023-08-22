@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
-    private const int maxUltCharge = 60;
+    private const int maxUltCharge = 0;
 
     float interactRange = 5f;
 

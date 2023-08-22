@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ArcaneShotPart2 : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject secondCollider;
 
     [SerializeField]
     private GameObject ArcaneGFX;
@@ -37,8 +35,13 @@ public class ArcaneShotPart2 : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || TimeBeforeActivate == 1.5f)
         {
             gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            secondCollider.SetActive(true);
-            //ArcaneGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            ArcaneGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(20);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
         }
     }
 }

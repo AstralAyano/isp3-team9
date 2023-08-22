@@ -11,6 +11,7 @@ public class FireballUlt : MonoBehaviour
     private Vector2 dir;
 
     private float LastEF = 0.0f;
+    private float DmgOverTimeTimer = 0.0f; 
     private bool IsExploded;
     private bool ActivateTimer = false;
 
@@ -59,6 +60,7 @@ public class FireballUlt : MonoBehaviour
             FireBallGFX2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
             ActivateTimer = true;
             Debug.Log("die fire part 1");
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(30);
         }
     }
 
@@ -66,6 +68,15 @@ public class FireballUlt : MonoBehaviour
     {
         if (IsExploded)
         {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                DmgOverTimeTimer += Time.deltaTime;
+                if (DmgOverTimeTimer >= 1.5f)
+                {
+                    other.gameObject.GetComponent<EnemyController>().TakeDamage(5);
+                    DmgOverTimeTimer = 0;
+                }
+            }
             //do the if gameobject.comparetag<"enemy">
             //if enemy, set a timer for enemy to dmg over time
         }

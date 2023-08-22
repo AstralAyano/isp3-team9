@@ -8,10 +8,6 @@ public class HomingMissile : MonoBehaviour
     [SerializeField]
     private ScriptablePlayerStats playerStats;
 
-    float interactRange = 5f;
-
-    float MaxArrow = 0;
-
     public float rotateSpeed = 200f;
 
     public GameObject explosionEffect;
@@ -45,7 +41,11 @@ public class HomingMissile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyHitbox") || other.gameObject.CompareTag("Wall"))
         {
-           Instantiate(explosionEffect, transform.position, transform.rotation);
+            Instantiate(explosionEffect, transform.position, transform.rotation);
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<EnemyController>().TakeDamage(30);
+            }
             Destroy(gameObject);
         }
         

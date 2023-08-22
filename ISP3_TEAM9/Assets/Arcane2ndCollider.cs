@@ -15,7 +15,7 @@ public class Arcane2ndCollider : MonoBehaviour
     {
         if (Limit == 0)
         {
-            Instantiate(ArcaneShotPrefab, EnemyPos, Quaternion.identity);
+            Instantiate(ArcaneShotPrefab);
             Limit = 1;
         }
         else if (Limit == 1)
