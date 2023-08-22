@@ -20,7 +20,11 @@ public class DialogueManager : MonoBehaviour
         Mage = 5
     }
 
+    [Header("NPCs")]
+    [SerializeField] private GameObject[] npcObj;
+
     [Header("References")]
+    [SerializeField] private UIHUDController uiHUD;
     [SerializeField] private GameObject bookUI;
     [SerializeField] private GameObject[] hudUI;
     [SerializeField] private CanvasGroup dialogueUI;
@@ -28,6 +32,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueName;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image autoButton;
+
+    [Header("Player")]
+    [SerializeField] private ScriptablePlayerStats playerStats;
+    [SerializeField] private GameObject classPrompt;
+    [SerializeField] private npcType currNPC;
 
     [Header("Tile Maps")]
     [SerializeField] private GameObject[] tents;
@@ -97,6 +106,7 @@ public class DialogueManager : MonoBehaviour
         repeatedLinesArrays.Add(mageLines);
 
         dialogueUI.gameObject.SetActive(false);
+        classPrompt.SetActive(false);
 
         hudUI = GameObject.FindGameObjectsWithTag("HUD");
     }
@@ -120,13 +130,15 @@ public class DialogueManager : MonoBehaviour
 
         for (int i = 0; i < hudUI.Length; i++)
         {
-            hudUI[i].gameObject.SetActive(false);
+            hudUI[i].SetActive(false);
         }
 
-        bookUI.gameObject.SetActive(false);
+        bookUI.SetActive(false);
         dialogueUI.gameObject.SetActive(true);
 
         playLine = true;
+
+        currNPC = triggeredNPC;
 
         if (PlayerPrefs.GetInt(triggeredNPC.ToString() + "Dialogue", 1) == 1)
         {
@@ -269,10 +281,62 @@ public class DialogueManager : MonoBehaviour
                 
                 for (int i = 0; i < hudUI.Length; i++)
                 {
-                    hudUI[i].gameObject.SetActive(true);
+                    hudUI[i].SetActive(true);
                 }
+
+                classPrompt.SetActive(true);
+
+                Time.timeScale = 0;
             }
         }
+    }
+
+    public void PromptYes()
+    {
+        switch (currNPC)
+        {
+            case npcType.Barbarian:
+                playerStats.chosenClass = ScriptablePlayerStats.playerClass.Barbarian;
+                npcObj[0].SetActive(false);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(true);
+                break;
+            case npcType.Paladin:
+                playerStats.chosenClass = ScriptablePlayerStats.playerClass.Paladin;
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(false);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(true);
+                break;
+            case npcType.Archer:
+                playerStats.chosenClass = ScriptablePlayerStats.playerClass.Archer;
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(false);
+                npcObj[3].SetActive(true);
+                break;
+            case npcType.Mage:
+                playerStats.chosenClass = ScriptablePlayerStats.playerClass.Mage;
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(false);
+                break;
+        }
+
+        Time.timeScale = 1;
+
+        classPrompt.SetActive(false);
+
+        uiHUD.GetSkillUltNames();
+    }
+
+    public void PromptNo()
+    {
+        Time.timeScale = 1;
+
+        classPrompt.SetActive(false);
     }
 
     void Update()

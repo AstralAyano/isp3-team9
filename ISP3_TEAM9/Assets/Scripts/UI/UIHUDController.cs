@@ -57,7 +57,7 @@ public class UIHUDController : MonoBehaviour
                 skillDesc = "The player goes into a frenzied rage, increasing all damage dealt by the player but taking more damage while in this state.";
                 
                 ultName = "Earthsplitter";
-                ultDesc = "The player swings their axe to rupture the ground in front of them, dealing a large amount of damage to enemies in an area and stunning them briefly.";
+                ultDesc = "The player swings their axe to rupture the ground in front of them, dealing a large amount of damage to enemies infront and stunning them briefly.";
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 skillIcon.sprite = skillSprites[1];
