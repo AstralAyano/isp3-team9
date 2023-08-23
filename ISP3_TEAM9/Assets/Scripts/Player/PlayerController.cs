@@ -528,7 +528,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        playerStats.chosenStats.health -= dmg;
+        playerStats.chosenStats.health -= dmg * (int)Mathf.Clamp((1 - playerStats.chosenStats.defense/100), 0.1f, 0.9f);
         if (playerStats.chosenStats.health > 0)
         {
             currentState = playerStates.Hurt;
