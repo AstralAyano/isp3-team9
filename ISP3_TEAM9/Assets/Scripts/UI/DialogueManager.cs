@@ -287,9 +287,12 @@ public class DialogueManager : MonoBehaviour
                     hudUI[i].SetActive(true);
                 }
 
-                classPrompt.SetActive(true);
+                if ((int)currNPC >= 2 && (int)currNPC <= 5)
+                {
+                    classPrompt.SetActive(true);
 
-                Time.timeScale = 0;
+                    Time.timeScale = 0;
+                }
             }
         }
     }
@@ -333,6 +336,7 @@ public class DialogueManager : MonoBehaviour
         classPrompt.SetActive(false);
 
         uiHUD.GetSkillUltNames();
+        uiHUD.SetToolTip();
 
         player.SetAnimator();
     }
