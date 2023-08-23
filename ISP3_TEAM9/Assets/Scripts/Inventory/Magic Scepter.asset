@@ -18,10 +18,21 @@ MonoBehaviour:
   itemName: Magic Scepter
   itemDesc: Increase attack by 1. If the player is of the mage class, this effect
     is doubled.
+  classResonance: mage
   health: 0
-  maxHealth: 0
   attack: 1
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 1
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 0
+  HealPercent: 0
+  AttackPercent: 0
+  DefensePercent: 0
+  MovementSpdPercent: 0
+  AttackSpdPercent: 0

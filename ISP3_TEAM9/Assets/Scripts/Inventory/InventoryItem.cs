@@ -19,9 +19,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
     [SerializeField] private Item[] soItems;
     [SerializeField] private ScriptablePlayerStats playerStats;
 
+    [SerializeField] private UIBookController uiBook;
+
     void Start()
     {
-        
+        uiBook = GameObject.FindWithTag("UI").GetComponentInChildren<UIBookController>(true);
     }
 
     public void InitialiseItem(Item newItem)
@@ -75,13 +77,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
                 if (soItems[i].itemType.ToString() == "Artefact" &&
                     item.name == soItems[i].itemName)
                 {
-                    playerStats.chosenStatPoints.health += soItems[i].health;
-                    playerStats.chosenStatPoints.maxHealth += soItems[i].maxHealth;
-                    playerStats.chosenStatPoints.attack += soItems[i].attack;
-                    playerStats.chosenStatPoints.defense += soItems[i].defense;
-                    playerStats.chosenStatPoints.attackSpeed += soItems[i].attackSpeed;
-                    playerStats.chosenStatPoints.moveSpeed += soItems[i].moveSpeed;
-                    playerStats.chosenStatPoints.projectileSpeed += soItems[i].projectileSpeed;
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 0, soItems[i].health, soItems[i].healthMulti);
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 1, soItems[i].defense, soItems[i].defenseMulti);
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 2, soItems[i].attack, soItems[i].attackMulti);
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 3, soItems[i].attackSpeed, soItems[i].attackSpeedMulti);
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 4, soItems[i].moveSpeed, soItems[i].moveSpeedMulti);
+                    uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 5, soItems[i].projectileSpeed, soItems[i].projectileSpeedMulti);
                 }
             }
         }
@@ -93,13 +94,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
                 if (soItems[i].itemType.ToString() == "Artefact" &&
                     item.name == soItems[i].itemName)
                 {
-                    playerStats.chosenStatPoints.health -= soItems[i].health;
-                    playerStats.chosenStatPoints.maxHealth -= soItems[i].maxHealth;
-                    playerStats.chosenStatPoints.attack -= soItems[i].attack;
-                    playerStats.chosenStatPoints.defense -= soItems[i].defense;
-                    playerStats.chosenStatPoints.attackSpeed -= soItems[i].attackSpeed;
-                    playerStats.chosenStatPoints.moveSpeed -= soItems[i].moveSpeed;
-                    playerStats.chosenStatPoints.projectileSpeed -= soItems[i].projectileSpeed;
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 0, soItems[i].health, soItems[i].healthMulti);
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 1, soItems[i].defense, soItems[i].defenseMulti);
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 2, soItems[i].attack, soItems[i].attackMulti);
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 3, soItems[i].attackSpeed, soItems[i].attackSpeedMulti);
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 4, soItems[i].moveSpeed, soItems[i].moveSpeedMulti);
+                    uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 5, soItems[i].projectileSpeed, soItems[i].projectileSpeedMulti);
                 }
             }
         }
