@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
     private string mageAttacktype;
 
+    private bool PalaActivateUlt = false;
+    private float IntervalOfHeal;
+    private int MaxHealCount = 0;
+
     private SpriteRenderer sr;
 
     public enum playerStates
@@ -103,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
 
         InteractWithNPC();
-        
+
         if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))
         {
             currentState = playerStates.Walk;
@@ -133,7 +137,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             currentState = playerStates.Ultimate;
-            
+
         }
 
         //Spawned arrow follows player
@@ -145,6 +149,31 @@ public class PlayerController : MonoBehaviour
         if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
         {
             ClearSkillEffects();
+        }
+
+        if (PalaActivateUlt)
+        {
+            sr.color = Color.green;
+            IntervalOfHeal += Time.deltaTime;
+            if (MaxHealCount < 6)
+            {
+                if (IntervalOfHeal >= 0.5f)
+                {
+                    int HealAmt = 5;
+                    playerStats.chosenStats.health += HealAmt;
+                    MaxHealCount++;
+                    IntervalOfHeal = 0;
+                    Debug.Log("Heal");
+                }
+            }
+            else if (MaxHealCount > 5)
+            {
+                PalaActivateUlt = false;
+                IntervalOfHeal = 0;
+                sr.color = Color.white;
+                Debug.Log("Reset");
+                MaxHealCount = 0;
+            }
         }
     }
 
@@ -472,7 +501,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlayAnim("AnimPlayerCastDown");
-                PaladinUlt();
+                PalaActivateUlt = true;
+                //PaladinUlt();
                 ultCharge = 0;
                 break;
         }
@@ -542,7 +572,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PaladinUlt()
+    private void ClearPalaUlt()
     {
 
     }
