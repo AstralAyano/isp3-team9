@@ -43,7 +43,7 @@ public class EndController : MonoBehaviour
     private float counter = 0;
     private float titleCounter = 0;
 
-    public static int timeSpent;
+    private int timeSpent;
     public static int roomsCleared;
 
     void Awake()
@@ -286,4 +286,8 @@ public class EndController : MonoBehaviour
         SceneManager.LoadScene("SceneMenu");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

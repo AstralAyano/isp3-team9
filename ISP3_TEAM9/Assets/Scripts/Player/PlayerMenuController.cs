@@ -167,4 +167,9 @@ public class PlayerMenuController : MonoBehaviour
             sceneLoader.LoadScene("SceneLobby");
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
