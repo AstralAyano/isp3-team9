@@ -16,9 +16,9 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Stun Seed
-  itemDesc: Increase max health by 1
-  health: 0
-  maxHealth: 1
+  itemDesc: Increase max health by 5 but the player takes 5 damage
+  health: -5
+  maxHealth: 5
   attack: 0
   defense: 0
   attackSpeed: 0
