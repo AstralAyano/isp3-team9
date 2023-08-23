@@ -61,6 +61,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
+
+        if (parentAfterDrag.CompareTag("ArtefactSlot"))
+        {
+            //if (item.itemName == "")
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

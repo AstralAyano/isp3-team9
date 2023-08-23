@@ -21722,26 +21722,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1850937376}
-    - target: {fileID: 1560821904430974897, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560821904430974897, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1560821904574232867, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1850937376}
-    - target: {fileID: 1560821904656414274, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560821904656414274, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1560821904817832322, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -21834,14 +21818,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1517724503}
-    - target: {fileID: 1560821904833005398, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560821904833005398, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
 --- !u!1 &1517724501
@@ -36770,7 +36746,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.8633714
+      m_AnimationSpeed: 4.5412207
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -37669,7 +37645,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.6478157
+      m_AnimationSpeed: 4.8949738
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
