@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927bb5e235c4af44faebb764ab6aab28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightSource: {fileID: 145135264189320877, guid: a7bf03bd9d01bf845980d2f68041b8fc, type: 3}
   prefabPlacer: {fileID: 8966017215838158861, guid: d7f9ffacfc88b2043ada0f1a0bb34ba8, type: 3}
   enemyPlacementData:
   - minQuantity: 1

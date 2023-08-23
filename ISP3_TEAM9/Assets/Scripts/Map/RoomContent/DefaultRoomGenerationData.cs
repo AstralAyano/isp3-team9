@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DefaultRoomGenerationData : BaseRoomGenerationData
 {
+    public GameObject lightSource;
+
     [SerializeField]
     private MapRoomContentPrefabPlacer prefabPlacer;
 
@@ -20,7 +22,14 @@ public class DefaultRoomGenerationData : BaseRoomGenerationData
         List<GameObject> placedObjects =
             prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
 
+        Vector2Int lightSpawnPoint = roomCenter;
+
+        GameObject lightObject
+            = prefabPlacer.CreateObject(lightSource, lightSpawnPoint + new Vector2(0.5f, 0.5f));
+
         placedObjects.AddRange(prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper));
+
+        placedObjects.Add(lightObject);
 
         return placedObjects;
     }

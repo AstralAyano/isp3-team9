@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerRoomGenerationData : BaseRoomGenerationData
 {
+    public GameObject lightSource;
     public GameObject player;
 
     public List<ItemPlacementData> itemData;
@@ -24,6 +25,13 @@ public class PlayerRoomGenerationData : BaseRoomGenerationData
 
         List<GameObject> placedObjects = 
             prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
+
+        Vector2Int lightSpawnPoint = roomCenter;
+
+        GameObject lightObject
+            = prefabPlacer.CreateObject(lightSource, lightSpawnPoint + new Vector2(0.5f, 0.5f));
+
+        placedObjects.Add(lightObject);
 
         Vector2Int playerSpawnPoint = roomCenter;
 

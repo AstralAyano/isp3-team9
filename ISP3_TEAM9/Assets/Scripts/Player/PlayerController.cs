@@ -439,9 +439,9 @@ public class PlayerController : MonoBehaviour
                             }
                         }
                     }
+                    ultCharge = 0;
                 }
                 MaxArrow = 0;
-                ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
