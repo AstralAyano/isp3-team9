@@ -26131,6 +26131,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1560821905512271899, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: maxExp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1560821905518468797, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -42063,7 +42067,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.055454
+      m_AnimationSpeed: 5.4296517
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -42962,7 +42966,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.1685143
+      m_AnimationSpeed: 5.944446
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
