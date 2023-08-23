@@ -48,10 +48,13 @@ public class EndController : MonoBehaviour
 
     void Awake()
     {
-        GameObject gameTimer = FindObjectOfType<GameTimer>().gameObject;
+        if (FindObjectOfType<GameTimer>() != null)
+        {
+            GameObject gameTimer = FindObjectOfType<GameTimer>().gameObject;
 
-        timeSpent = (int)GameTimer.timer;
-        Destroy(gameTimer, 0);
+            timeSpent = (int)GameTimer.timer;
+            Destroy(gameTimer, 0);
+        }
 
         gridMenu.SetActive(true);
 
