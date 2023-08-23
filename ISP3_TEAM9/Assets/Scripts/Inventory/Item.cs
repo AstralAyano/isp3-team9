@@ -30,7 +30,7 @@ public class Item : ScriptableObject
     public int moveSpeed;
     public int projectileSpeed;
 
-    [Header("Stat Changes")]
+    [Header("Additional Stat Changes")]
     public int healthMulti;
     public int attackMulti;
     public int defenseMulti;
