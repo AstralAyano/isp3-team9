@@ -27,6 +27,9 @@ public class SceneLoader : MonoBehaviour
         };
         
         SceneManager.LoadScene("SceneLoading");
+
+        UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+        uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneLoading"));
     }
 
     public static void LoaderCallback()
@@ -47,10 +50,10 @@ public class SceneLoader : MonoBehaviour
 
         await Task.Delay(100);
         Debug.Log("Start coroutine");
-        StartCoroutine(LoadAsync(targetScene));
+        StartCoroutine(LoadAsync(targetScene, sceneName));
     }
 
-    private IEnumerator LoadAsync(AsyncOperation targetScene)
+    private IEnumerator LoadAsync(AsyncOperation targetScene, string target)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
@@ -75,6 +78,11 @@ public class SceneLoader : MonoBehaviour
 
         Destroy(gameObject);
         targetScene.allowSceneActivation = true;
+
+        UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+        uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+
+        Debug.Log("Next Scene : " + target);
 
         yield return new WaitForSeconds(0.2f);
     }

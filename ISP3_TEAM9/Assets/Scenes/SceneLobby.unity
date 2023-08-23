@@ -415,6 +415,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &355313862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1560821903893960834, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+  m_PrefabInstance: {fileID: 1511749725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &372760133
 GameObject:
   m_ObjectHideFlags: 0
@@ -11318,7 +11323,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1560821905306505880, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
   m_PrefabInstance: {fileID: 1511749725}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1771076651}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 964ce3d78a8b9d4449519233bff38e46, type: 3}
@@ -24812,6 +24817,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1560821904817832333, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: uiList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560821904817832333, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: uiList.Array.data[0]
+      value: 
+      objectReference: {fileID: 355313862}
+    - target: {fileID: 1560821904817832333, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: uiList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1941707731}
+    - target: {fileID: 1560821904817832333, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: uiList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1771076651}
     - target: {fileID: 1560821904817832334, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27595,6 +27616,11 @@ SpriteRenderer:
 --- !u!1 &1738268778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1738268778, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+  m_PrefabInstance: {fileID: 1511749725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1771076651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1560821905306505885, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
   m_PrefabInstance: {fileID: 1511749725}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1787570547 stripped
@@ -42185,7 +42211,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.1064377
+      m_AnimationSpeed: 5.2130604
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -43084,7 +43110,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.7957387
+      m_AnimationSpeed: 4.524084
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
