@@ -291,6 +291,8 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 5125891212960096399}
   health: 100
+  expDropped: 10
+  attack: 15
   attackCD: 1
   attackDuration: 1.5
   spawnPos: {fileID: 8485566968446511441}

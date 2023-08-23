@@ -7,6 +7,9 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField]
     private ScriptablePlayerStats playerStats;
 
+    [SerializeField]
+    private BasicRangedEnemy rangedEnemy;
+
     private Rigidbody2D rb;
 
     private float angleInRad;
@@ -47,7 +50,7 @@ public class ProjectileLauncher : MonoBehaviour
             if (other.gameObject.CompareTag("PlayerHitbox"))
             {
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
+                other.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(rangedEnemy.attack);
                 Destroy(gameObject);
             }
             else if (other.gameObject.CompareTag("Wall"))
@@ -59,7 +62,7 @@ public class ProjectileLauncher : MonoBehaviour
         {
             if (other.gameObject.CompareTag("EnemyHitbox"))
             {
-                other.gameObject.GetComponentInParent<EnemyController>().TakeDamage(10);
+                other.gameObject.GetComponentInParent<EnemyController>().TakeDamage(playerStats.chosenStats.attack);
                 Destroy(gameObject);
             }
             else if (other.gameObject.CompareTag("Wall"))

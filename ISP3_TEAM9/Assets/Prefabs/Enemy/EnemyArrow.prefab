@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
+  rangedEnemy: {fileID: 2933157066100211070, guid: e6678653cd4429f46946a1a16c9f154f, type: 3}
   shotByEnemy: 1
   speed: 0.1
 --- !u!61 &1465729417990424367

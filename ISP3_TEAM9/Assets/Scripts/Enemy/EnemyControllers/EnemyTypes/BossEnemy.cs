@@ -60,7 +60,7 @@ public class BossEnemy : EnemyController
             if (attackToUse == 2)
             {
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(1);
+                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack/10);
             }
 
             if (attackTimer > attackDuration)
@@ -90,7 +90,7 @@ public class BossEnemy : EnemyController
         if ((triggerCollider != null) && (damagePlayer))
         {
             // call TakeDamage func in player using the child collider (PlayerHitbox)
-            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(15);
+            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack);
             damagePlayer = false;
         }
     }

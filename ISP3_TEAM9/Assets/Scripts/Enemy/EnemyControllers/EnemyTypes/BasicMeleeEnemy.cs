@@ -53,7 +53,7 @@ public class BasicMeleeEnemy : EnemyController
         if ((triggerCollider != null) && (damagePlayer))
         {
             // call TakeDamage func in player using the child collider (PlayerHitbox)
-            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(10);
+            triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack);
             //Debug.Log("Hit");
             damagePlayer = false;
         }
