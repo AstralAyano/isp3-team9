@@ -19,6 +19,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
     [SerializeField] public int statPointAmt;
+    [SerializeField] public int maxExp;
     [SerializeField] private TMP_Text StatPointsText;
 
     [Header("References")]
@@ -204,6 +205,7 @@ public class UIBookController : MonoBehaviour
 
         statusValue[0] = playerStats.chosenBaseStats.maxHealth;
         statusValue[1] = playerController.GetMaxUltCharge();
+        statusValue[2] = maxExp;
 
         for (int i = 1; i < statusSliders.Length; i++)
         {
@@ -313,9 +315,15 @@ public class UIBookController : MonoBehaviour
 
         statusSliders[1].value = playerController.GetUltCharge();
         statusValueText[1].text = statusSliders[1].value.ToString() + "/" + statusSliders[1].maxValue.ToString();
-    
-        //statusSliders[2].value = playerController.GetExperiencePoint()??????
-        //statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
+
+        if (playerStats.chosenStats.exp >= statusSliders[2].maxValue)
+        {
+            playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
+            playerStats.chosenStats.level++;
+            statPointAmt++;
+        }
+        statusSliders[2].value = playerStats.chosenStats.exp;
+        statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
     }
 
     void HideProjectileSpeedStat()
