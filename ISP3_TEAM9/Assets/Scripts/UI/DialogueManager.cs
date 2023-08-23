@@ -339,6 +339,7 @@ public class DialogueManager : MonoBehaviour
                 npcObj[3].SetActive(false);
                 break;
         }
+        playerStats.UpdateClass();
 
         Time.timeScale = 1;
 

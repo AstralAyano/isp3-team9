@@ -88,4 +88,12 @@ public class ScriptablePlayerStats : ScriptableObject
         chosenStatPoints = currentStatPoints[chosenClass];
         chosenStatMultipliers = statMultipliers[chosenClass];
     }
+
+    public void UpdateClass()
+    {
+        chosenBaseStats = baseStats[chosenClass];
+        chosenStats = currentStats[chosenClass];
+        chosenStatPoints = currentStatPoints[chosenClass];
+        chosenStatMultipliers = statMultipliers[chosenClass];
+    }
 }
