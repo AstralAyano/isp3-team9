@@ -51,7 +51,7 @@ public class ToolTipManager : MonoBehaviour
 
         if (fadeIn)
         {
-            cg.alpha += Time.unscaledDeltaTime * 4;
+            cg.alpha += Time.unscaledDeltaTime * 6;
 
             if (cg.alpha >= 1.0f)
             {
