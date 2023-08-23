@@ -17,3 +17,10 @@ MonoBehaviour:
   itemType: 0
   itemName: Stun Seed
   itemDesc: Increase max health by 1
+  health: 0
+  maxHealth: 1
+  attack: 0
+  defense: 0
+  attackSpeed: 0
+  moveSpeed: 0
+  projectileSpeed: 0

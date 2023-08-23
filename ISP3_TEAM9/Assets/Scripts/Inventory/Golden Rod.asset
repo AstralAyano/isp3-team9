@@ -16,6 +16,13 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Golden Rod
-  itemDesc: If the player is of the archer class, increase projectile speed by 0.1.
+  itemDesc: If the player is of the archer class, increase projectile speed by 1.
     If the player is of the mage class, increase attack by 1. Does not work on other
     classes.
+  health: 0
+  maxHealth: 0
+  attack: 1
+  defense: 0
+  attackSpeed: 0
+  moveSpeed: 0
+  projectileSpeed: 1

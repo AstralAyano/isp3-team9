@@ -16,5 +16,12 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Bull Horn
-  itemDesc: Increase attack speed by 0.2. If the player is of the barbarian class,
+  itemDesc: Increase attack speed by 2. If the player is of the barbarian class,
     additionally increase attack by 1
+  health: 0
+  maxHealth: 0
+  attack: 1
+  defense: 0
+  attackSpeed: 2
+  moveSpeed: 0
+  projectileSpeed: 0

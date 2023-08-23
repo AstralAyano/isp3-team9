@@ -17,3 +17,10 @@ MonoBehaviour:
   itemType: 0
   itemName: Broken Mask
   itemDesc: Increase defense by 1.
+  health: 0
+  maxHealth: 0
+  attack: 0
+  defense: 1
+  attackSpeed: 0
+  moveSpeed: 0
+  projectileSpeed: 0
