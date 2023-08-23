@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8179193814338401250}
-  - component: {fileID: 8179193814338401251}
+  - component: {fileID: 3530853505607314489}
   m_Layer: 0
   m_Name: EndPointRoom
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8179193814338401251
+--- !u!114 &3530853505607314489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8179193814338401253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a939f640e5ebc4d922d55b80e42224, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dbe1ca5d3545c74994c8f8619d45376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 145135264189320877, guid: a7bf03bd9d01bf845980d2f68041b8fc, type: 3}
+  lightSource: {fileID: 145135264189320877, guid: a7bf03bd9d01bf845980d2f68041b8fc, type: 3}
+  prefabPlacer: {fileID: 8966017215838158861, guid: d7f9ffacfc88b2043ada0f1a0bb34ba8, type: 3}
+  chestPlacementData: []
   itemData:
-  - minQuantity: 6
+  - minQuantity: 3
     maxQuantity: 6
     itemData: {fileID: 11400000, guid: 086f63cae08315e4d9e51664627a7aeb, type: 2}
-  - minQuantity: 1
-    maxQuantity: 1
-    itemData: {fileID: 11400000, guid: c416adcd9f872a04db5192055ecbfdf8, type: 2}
-  prefabPlacer: {fileID: 8966017215838158861, guid: d7f9ffacfc88b2043ada0f1a0bb34ba8, type: 3}

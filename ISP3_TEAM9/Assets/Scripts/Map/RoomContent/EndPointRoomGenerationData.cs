@@ -1,18 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class EndPointRoomGenerationData : MonoBehaviour
+public class EndPointRoomGenerationData : BaseRoomGenerationData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject lightSource;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private MapRoomContentPrefabPlacer prefabPlacer;
+
+    public List<EnemyPlacementData> chestPlacementData;
+    public List<ItemPlacementData> itemData;
+
+    public override List<GameObject> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors)
     {
-        
+        ContentPlacementHelper itemPlacementHelper =
+            new ContentPlacementHelper(roomFloor, roomFloorNoCorridors);
+
+        List<GameObject> placedObjects =
+            prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
+
+        Vector2Int lightSpawnPoint = roomCenter;
+
+        GameObject lightObject
+            = prefabPlacer.CreateObject(lightSource, lightSpawnPoint + new Vector2(0.5f, 0.5f));
+
+        placedObjects.AddRange(prefabPlacer.PlaceEnemies(chestPlacementData, itemPlacementHelper));
+
+        placedObjects.Add(lightObject);
+
+        return placedObjects;
     }
 }

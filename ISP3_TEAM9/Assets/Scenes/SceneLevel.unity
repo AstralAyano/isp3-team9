@@ -37931,7 +37931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRoom: {fileID: 6896796617414109631, guid: efa9ce044706df1439d46a7efee9dd6e, type: 3}
-  EndPointRoom: {fileID: 8179193814338401251, guid: bdffeec8bd8a2cd468c84c3ddef67f3e, type: 3}
+  EndPointRoom: {fileID: 3530853505607314489, guid: bdffeec8bd8a2cd468c84c3ddef67f3e, type: 3}
   defaultRoom: {fileID: 4646956272834488505, guid: 9cf054d6a62a81e47b53c70c5bcdc726, type: 3}
   graphTest: {fileID: 506356199}
   itemParent: {fileID: 354819254}
