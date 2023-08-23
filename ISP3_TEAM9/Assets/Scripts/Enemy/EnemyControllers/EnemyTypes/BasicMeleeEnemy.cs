@@ -14,6 +14,10 @@ public class BasicMeleeEnemy : EnemyController
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
+
+        health += (UIController.floorNum - 1) * 10;
+        attack += (UIController.floorNum - 1) * 2;
+        expDropped += (UIController.floorNum - 1) * 5;
     }
 
     void Update()

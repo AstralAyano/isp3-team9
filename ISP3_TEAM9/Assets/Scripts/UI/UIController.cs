@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public static int floorNum = 2;
+    public static int floorNum = 1;
 
     [SerializeField] private List<GameObject> uiList = new List<GameObject>();
 

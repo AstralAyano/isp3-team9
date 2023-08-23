@@ -15,6 +15,10 @@ public class BossEnemy : EnemyController
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
         attackToUse = Random.Range(1, 3);
+
+        health += (UIController.floorNum - 1) * 10;
+        attack += (UIController.floorNum - 1) * 2;
+        expDropped += (UIController.floorNum - 1) * 5;
     }
 
     void Update()
