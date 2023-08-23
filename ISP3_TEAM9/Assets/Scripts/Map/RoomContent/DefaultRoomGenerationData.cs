@@ -11,7 +11,7 @@ public class DefaultRoomGenerationData : BaseRoomGenerationData
     [SerializeField]
     private MapRoomContentPrefabPlacer prefabPlacer;
 
-    public List<EnemyPlacementData> enemyPlacementData;
+    public List<ContentPlacementData> chestPlacementData;
     public List<ItemPlacementData> itemData;
 
     public override List<GameObject> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors)
@@ -27,7 +27,7 @@ public class DefaultRoomGenerationData : BaseRoomGenerationData
         GameObject lightObject
             = prefabPlacer.CreateObject(lightSource, lightSpawnPoint + new Vector2(0.5f, 0.5f));
 
-        placedObjects.AddRange(prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper));
+        placedObjects.AddRange(prefabPlacer.PlaceContent(chestPlacementData, itemPlacementHelper));
 
         placedObjects.Add(lightObject);
 

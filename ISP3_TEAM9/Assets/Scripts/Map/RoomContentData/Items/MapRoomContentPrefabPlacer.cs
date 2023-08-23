@@ -35,6 +35,30 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
         return placedObjects;
     }
 
+    public List<GameObject> PlaceContent(List<ContentPlacementData> contentPlacementData, ContentPlacementHelper itemPlacementHelper)
+    {
+        List<GameObject> placedObjects = new List<GameObject>();
+
+        foreach (var placementData in contentPlacementData)
+        {
+            for (int i = 0; i < placementData.Quantity; i++)
+            {
+                Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
+                    PlacementType.OpenSpace,
+                    100,
+                    placementData.contentSize,
+                    false
+                    );
+                if (possiblePlacementSpot.HasValue)
+                {
+
+                    placedObjects.Add(CreateObject(placementData.contentPrefab, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f))); //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
+                }
+            }
+        }
+        return placedObjects;
+    }
+
     public List<GameObject> PlaceAllItems(List<ItemPlacementData> itemPlacementData, ContentPlacementHelper itemPlacementHelper)
     {
         List<GameObject> placedObjects = new List<GameObject>();
