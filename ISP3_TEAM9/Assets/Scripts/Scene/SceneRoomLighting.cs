@@ -40,11 +40,17 @@ public class SceneRoomLighting : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        fadeIn = true;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            fadeIn = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        fadeOut = true;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            fadeOut = true;
+        }
     }
 }
