@@ -309,6 +309,100 @@ public class UIBookController : MonoBehaviour
         }
     }
 
+    public void ArtefactIncreaseStats(string classItem, int type, int amt, int multi)
+    {
+        int valueIncrease;
+        
+        if (classItem.ToLower() != playerStats.chosenClass.ToString().ToLower())
+        {
+            multi = 0;
+        }
+
+        switch (type)
+        {
+            case 0:
+                playerStats.chosenStatPoints.health += (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth) * (amt + multi);
+                playerStats.chosenStats.health += valueIncrease;
+                playerStats.chosenStats.maxHealth += valueIncrease;
+                break;
+            case 1:
+                playerStats.chosenStatPoints.defense += (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.defense * (float)playerStats.chosenBaseStats.defense) * (amt + multi);
+                playerStats.chosenStats.defense += valueIncrease;
+                break;
+            case 2:
+                playerStats.chosenStatPoints.attack += (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack) * (amt + multi);
+                playerStats.chosenStats.attack += valueIncrease;
+                break;
+            case 3:
+                playerStats.chosenStatPoints.attackSpeed += (amt + multi);
+                playerStats.chosenStats.attackInterval += playerStats.chosenStatMultipliers.attackSpeed * playerStats.chosenBaseStats.attackInterval * (amt + multi);
+                break;
+            case 4:
+                playerStats.chosenStatPoints.moveSpeed += (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.moveSpeed * (float)playerStats.chosenBaseStats.moveSpeed) * (amt + multi);
+                playerStats.chosenStats.moveSpeed += valueIncrease;
+                break;
+            case 5:
+                playerStats.chosenStatPoints.projectileSpeed += (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.projectileSpeed * (float)playerStats.chosenBaseStats.projectileSpeed) * (amt + multi);
+                playerStats.chosenStats.projectileSpeed += valueIncrease;
+                break;
+        }
+
+        SetPlayerStatsInBook();
+        UpdateStatusBars();
+    }
+
+    public void ArtefactDecreaseStats(string classItem, int type, int amt, int multi)
+    {
+        int valueIncrease;
+
+        if (classItem.ToLower() != playerStats.chosenClass.ToString().ToLower())
+        {
+            multi = 0;
+        }
+
+        switch (type)
+        {
+            case 0:
+                playerStats.chosenStatPoints.health -= (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth) * (amt + multi);
+                playerStats.chosenStats.health -= valueIncrease;
+                playerStats.chosenStats.maxHealth -= valueIncrease;
+                break;
+            case 1:
+                playerStats.chosenStatPoints.defense -= (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.defense * (float)playerStats.chosenBaseStats.defense) * (amt + multi);
+                playerStats.chosenStats.defense -= valueIncrease;
+                break;
+            case 2:
+                playerStats.chosenStatPoints.attack -= (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack) * (amt + multi);
+                playerStats.chosenStats.attack -= valueIncrease;
+                break;
+            case 3:
+                playerStats.chosenStatPoints.attackSpeed -= (amt + multi);
+                playerStats.chosenStats.attackInterval -= playerStats.chosenStatMultipliers.attackSpeed * playerStats.chosenBaseStats.attackInterval * (amt + multi);
+                break;
+            case 4:
+                playerStats.chosenStatPoints.moveSpeed -= (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.moveSpeed * (float)playerStats.chosenBaseStats.moveSpeed) * (amt + multi);
+                playerStats.chosenStats.moveSpeed -= valueIncrease;
+                break;
+            case 5:
+                playerStats.chosenStatPoints.projectileSpeed -= (amt + multi);
+                valueIncrease = (int)(playerStats.chosenStatMultipliers.projectileSpeed * (float)playerStats.chosenBaseStats.projectileSpeed) * (amt + multi);
+                playerStats.chosenStats.projectileSpeed -= valueIncrease;
+                break;
+        }
+
+        SetPlayerStatsInBook();
+        UpdateStatusBars();
+    }
+
     void UpdateStatusBars()
     {
         statusSliders[0].maxValue = playerStats.chosenStats.maxHealth;

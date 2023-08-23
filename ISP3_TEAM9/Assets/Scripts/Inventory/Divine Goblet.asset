@@ -18,10 +18,21 @@ MonoBehaviour:
   itemName: Divine Goblet
   itemDesc: Increase max health by 5 but decrease attack by 1. If the player is of
     the paladin class, additionally increase defense by 1
-  health: 0
-  maxHealth: 5
+  classResonance: paladin
+  health: 5
   attack: -1
   defense: 1
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 0
+  defenseMulti: 1
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 0
+  HealPercent: 0
+  AttackPercent: 0
+  DefensePercent: 0
+  MovementSpdPercent: 0
+  AttackSpdPercent: 0

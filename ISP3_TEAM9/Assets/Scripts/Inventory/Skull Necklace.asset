@@ -18,10 +18,21 @@ MonoBehaviour:
   itemName: Skull Necklace
   itemDesc: Increase movement speed by 1. If the player is of the archer class, additionally
     increase projectile speed by 1.
+  classResonance: archer
   health: 0
-  maxHealth: 0
   attack: 0
   defense: 0
   attackSpeed: 0
   moveSpeed: 1
-  projectileSpeed: 1
+  projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 0
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 1
+  HealPercent: 0
+  AttackPercent: 0
+  DefensePercent: 0
+  MovementSpdPercent: 0
+  AttackSpdPercent: 0

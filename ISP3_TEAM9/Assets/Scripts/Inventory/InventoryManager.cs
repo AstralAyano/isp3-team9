@@ -8,8 +8,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] invSlots;
     public GameObject invItemPrefab;
 
-    public Item testItem;
-    public Item testArtefact;
+    public Item lastItemAdded;
 
     //public SystemText sysText;
 
@@ -17,8 +16,7 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
-        AddItem(testItem);
-        AddItem(testArtefact);
+        
     }
 
     void Update()
@@ -51,6 +49,7 @@ public class InventoryManager : MonoBehaviour
             {
                 itemSlot.count++;
                 itemSlot.UpdateCount();
+                lastItemAdded = item;
                 return true;
             }
         }
@@ -62,6 +61,7 @@ public class InventoryManager : MonoBehaviour
             if (slot.GetComponentInChildren<InventoryItem>() == null)
             {
                 SpawnNewItem(item, slot);
+                lastItemAdded = item;
                 return true;
             }
         }

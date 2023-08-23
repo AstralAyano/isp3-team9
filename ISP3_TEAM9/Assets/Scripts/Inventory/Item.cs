@@ -19,14 +19,24 @@ public class Item : ScriptableObject
     public string itemName;
     [TextArea] public string itemDesc;
 
+    [Header("Class Type")]
+    public string classResonance;
+
     [Header("Stat Changes")]
     public int health;
-    public int maxHealth;
     public int attack;
     public int defense;
     public int attackSpeed;
     public int moveSpeed;
     public int projectileSpeed;
+
+    [Header("Stat Changes")]
+    public int healthMulti;
+    public int attackMulti;
+    public int defenseMulti;
+    public int attackSpeedMulti;
+    public int moveSpeedMulti;
+    public int projectileSpeedMulti;
 
     [Header("Item Percentage Buff")]
     public int HealPercent;
