@@ -6,13 +6,16 @@ public class MapLadderController : MonoBehaviour
 {
     private bool playerWithinRange = false;
 
+    [SerializeField]
+    private SceneLoader sceneLoader;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && playerWithinRange)
         {
             // swap scene
-
+            sceneLoader.LoadScene("SceneLevel");
         }
     }
 
