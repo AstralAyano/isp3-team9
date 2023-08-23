@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7408060636792464648}
   - component: {fileID: 5886203306183186137}
   - component: {fileID: 7432538213049953833}
+  - component: {fileID: -5738921223592113179}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -111,4 +112,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a626fed5e8109504da340b8ced9751ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: []
+  itemList:
+  - {fileID: 2516570985206370329, guid: 5ed8ee28e21800341a694fa5a4fc4aeb, type: 3}
+  - {fileID: 3996643350480449760, guid: 39c4cb11c6543dc4685a003a44e0e5c4, type: 3}
+  - {fileID: 1360858308708252018, guid: 102a28cad926b7143aea655a61817320, type: 3}
+  - {fileID: 2847760132740669591, guid: 59e6183e94dd333479bbddf8fada721d, type: 3}
+  - {fileID: 1121303107136023842, guid: 360c7586a04c6b241829500f2f8efe4e, type: 3}
+  - {fileID: 9005421783302620016, guid: 1ac0691ce54875b43baaea708dc76dea, type: 3}
+  - {fileID: 6562683436599917997, guid: f1b36f82f20dbc9488cc045b85344f92, type: 3}
+  - {fileID: 2056089991425422182, guid: ee30932ae70365a42bc68f0712f4b4da, type: 3}
+  - {fileID: 7441341852364688950, guid: 4cd4916b721cf6c408b764f9a03b12d6, type: 3}
+  - {fileID: 4914579078191058035, guid: 869e29b38dd8cc8408c7446ea820c5cb, type: 3}
+--- !u!58 &-5738921223592113179
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763116818131168714}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
