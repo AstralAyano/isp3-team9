@@ -16,7 +16,6 @@ public class UIMenuController : MonoBehaviour
 
     [Header("Grid Group")]
     [SerializeField] private GameObject gridMenu;
-    [SerializeField] private GameObject gridLoad;
 
     [Header("Text")]
     [SerializeField] private TMP_Text titleText;
@@ -50,7 +49,6 @@ public class UIMenuController : MonoBehaviour
 
     void Awake()
     {
-        gridLoad.SetActive(false);
         gridMenu.SetActive(true);
 
         uiCanvasGroup = GetComponent<CanvasGroup>();
@@ -266,23 +264,4 @@ public class UIMenuController : MonoBehaviour
         
         lightObj.SetActive(true);
     }
-
-    //public IEnumerator DoorTouched()
-    //{
-    //    fadeOutLight = true;
-
-    //    yield return new WaitForSeconds(1.0f);
-
-    //    gridMenu.SetActive(false);
-    //    gridLoad.SetActive(true);
-
-    //    GameObject.Find("Player").transform.position = new Vector3(0, -5, 0);
-
-    //    fadeInLight = true;
-    //    GameObject.Find("Player").GetComponent<PlayerMenuController>().lightStatus = 2;
-
-    //    yield return new WaitForSeconds(1.0f);
-
-    //    GameObject.Find("Player").GetComponent<SceneLoadMenuToLobby>().LoadScene("SceneLobby");
-    //}
 }
