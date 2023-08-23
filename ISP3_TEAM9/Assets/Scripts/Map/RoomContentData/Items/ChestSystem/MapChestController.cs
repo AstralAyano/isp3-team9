@@ -12,8 +12,8 @@ public class MapChestController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && playerWithinRange)
         {
-            Instantiate(itemList.GetRandomItem(), transform);
-            Destroy(gameObject, 0.75f);
+            Instantiate(itemList.GetRandomItem(), transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.5f);
         }
     }
 
