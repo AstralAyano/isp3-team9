@@ -28,6 +28,13 @@ public class Item : ScriptableObject
     public int moveSpeed;
     public int projectileSpeed;
 
+    [Header("Item Percentage Buff")]
+    public int HealPercent;
+    public int AttackPercent;
+    public int DefensePercent;
+    public int MovementSpdPercent;
+    public int AttackSpdPercent;
+
     //public ItemType type;
     //public ActionType actionType;
     //public Vector2Int range = new Vector2Int(5, 4);
