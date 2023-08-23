@@ -27692,6 +27692,7 @@ MonoBehaviour:
   - {fileID: -995680699, guid: 805b0c96d9572dd49ac01874ca3dea0f, type: 3}
   - {fileID: -1797921695, guid: 49ab4068569af244fa91991fadf6c4e2, type: 3}
   - {fileID: -1018618932, guid: ffb81f35a804a754e91abf5bd79796bf, type: 3}
+  - {fileID: 1559732200, guid: 9679218be6bda174d8e1be69b13772d6, type: 3}
   typeSpeed: 0.05
   tutorialFirst:
   - Why are you here?
@@ -27738,7 +27739,9 @@ MonoBehaviour:
   mageLines:
   - Skills desuga?
   - Here you go, Graze into it.
-  doorLines: []
+  doorLines:
+  - Uh, you haven't chosen a class yet.
+  - Please go back and choose a class
   currLineNo: 0
   maxLineNo: 0
 --- !u!1 &1855717781
@@ -42185,7 +42188,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.0939884
+      m_AnimationSpeed: 5.4678936
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -43084,7 +43087,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.968841
+      m_AnimationSpeed: 5.832908
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
