@@ -121,6 +121,17 @@ public class DialogueManager : MonoBehaviour
     {
         currLineNo = 0;
 
+        if ((int)triggeredNPC >= 2 && (int)triggeredNPC <= 5)
+        {
+            RectTransform dialoguePortraitRect = dialoguePortrait.GetComponent<RectTransform>();
+            dialoguePortraitRect.sizeDelta = new Vector2(200, 300);
+        }
+        else
+        {
+            RectTransform dialoguePortraitRect = dialoguePortrait.GetComponent<RectTransform>();
+            dialoguePortraitRect.sizeDelta = new Vector2(300, 300);
+        }
+
         dialoguePortrait.sprite = npcPortrait[(int)triggeredNPC];
         dialogueName.text = triggeredNPC.ToString();
 
@@ -339,6 +350,7 @@ public class DialogueManager : MonoBehaviour
                 npcObj[3].SetActive(false);
                 break;
         }
+
         playerStats.UpdateClass();
 
         Time.timeScale = 1;
