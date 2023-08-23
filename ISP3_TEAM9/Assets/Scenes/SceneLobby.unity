@@ -27701,7 +27701,6 @@ MonoBehaviour:
   skillFirst:
   - Oh?
   - You seem to possess quite the potential
-  - 'yoWaAi Mo '
   barbarianFirst:
   - HurUR hURhRUr, ROARRRRR!
   - Oh Sorry, It seems like you're normal.
@@ -27718,13 +27717,11 @@ MonoBehaviour:
   - Hello! I am the Archer of the Elf Forest.
   - With any form of guidance on your skills, Talk to me. *smiles*
   mageFirst:
-  - "Koko wa d\u014Dkutsudesu."
-  - I am a mage of Maigc and Sorcercy.
-  - If you require assitance on your control of magic, do approach me.
+  - I am a mage of Magic and Sorcery.
+  - If you require assistance on your control of magic, do approach me.
   tutorialLines:
   - What are you doing? Get going now!
   skillLines:
-  - YoWaiMo!
   - Here to Look for the skills?
   - Go ahead.
   barbarianLines:
@@ -27737,8 +27734,8 @@ MonoBehaviour:
   - Welcome back from your adventure!
   - Looking for the skills? Here you go !
   mageLines:
-  - Skills desuga?
-  - Here you go, Graze into it.
+  - Skills?
+  - Here you go, Gaze into it.
   doorLines:
   - Uh, you haven't chosen a class yet.
   - Please go back and choose a class
@@ -42188,7 +42185,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.4678936
+      m_AnimationSpeed: 4.1064377
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -43087,7 +43084,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.832908
+      m_AnimationSpeed: 5.7957387
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
