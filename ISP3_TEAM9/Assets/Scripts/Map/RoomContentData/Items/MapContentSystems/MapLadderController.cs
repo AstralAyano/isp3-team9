@@ -14,7 +14,17 @@ public class MapLadderController : MonoBehaviour
             SceneLoader sceneLoader = FindObjectOfType<SceneLoader>();
 
             // swap scene
-            sceneLoader.LoadScene("SceneLevel");
+            if (UIController.floorNum == 2)
+            {
+                UIController.floorNum = 0;
+                sceneLoader.LoadScene("SceneLevelBoss");
+
+            }
+            else
+            {
+                UIController.floorNum++;
+                sceneLoader.LoadScene("SceneLevel");
+            }
         }
     }
 

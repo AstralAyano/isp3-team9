@@ -51,6 +51,10 @@ MonoBehaviour:
     maxQuantity: 1
     contentPrefab: {fileID: 2763116818131168714, guid: f9cb0e5f1f909714b9747214cf7ba579, type: 3}
     contentSize: {x: 1, y: 1}
+  - minQuantity: 1
+    maxQuantity: 1
+    contentPrefab: {fileID: 5859025879655792304, guid: eaa1c8b3597d70044abf33051512b8a7, type: 3}
+    contentSize: {x: 1, y: 1}
   itemData:
   - minQuantity: 3
     maxQuantity: 6

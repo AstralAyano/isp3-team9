@@ -6,6 +6,8 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
+    public static int floorNum = 2;
+
     void Awake()
     {
         if (instance == null)
