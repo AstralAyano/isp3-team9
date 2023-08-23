@@ -13,7 +13,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
 
     [HideInInspector] public Item item;
     [HideInInspector] public int count = 1;
+    [HideInInspector] public Transform parentBeforeDrag;
     [HideInInspector] public Transform parentAfterDrag;
+
+    [SerializeField] private Item[] soItems;
+    [SerializeField] private ScriptablePlayerStats playerStats;
 
     void Start()
     {
@@ -45,6 +49,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         image.raycastTarget = false;
+        parentBeforeDrag = transform.parent;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
     }
@@ -62,9 +67,41 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
 
-        if (parentAfterDrag.CompareTag("ArtefactSlot"))
+        if (parentAfterDrag.gameObject.CompareTag("ArtefactSlot") &&
+            !parentBeforeDrag.gameObject.CompareTag("ArtefactSlot"))
         {
-            //if (item.itemName == "")
+            for (int i = 0; i < soItems.Length; i++)
+            {
+                if (soItems[i].itemType.ToString() == "Artefact" &&
+                    item.name == soItems[i].itemName)
+                {
+                    playerStats.chosenStatPoints.health += soItems[i].health;
+                    playerStats.chosenStatPoints.maxHealth += soItems[i].maxHealth;
+                    playerStats.chosenStatPoints.attack += soItems[i].attack;
+                    playerStats.chosenStatPoints.defense += soItems[i].defense;
+                    playerStats.chosenStatPoints.attackSpeed += soItems[i].attackSpeed;
+                    playerStats.chosenStatPoints.moveSpeed += soItems[i].moveSpeed;
+                    playerStats.chosenStatPoints.projectileSpeed += soItems[i].projectileSpeed;
+                }
+            }
+        }
+        else if (parentAfterDrag.gameObject.CompareTag("InvSlot") &&
+                !parentBeforeDrag.gameObject.CompareTag("InvSlot"))
+        {
+            for (int i = 0; i < soItems.Length; i++)
+            {
+                if (soItems[i].itemType.ToString() == "Artefact" &&
+                    item.name == soItems[i].itemName)
+                {
+                    playerStats.chosenStatPoints.health -= soItems[i].health;
+                    playerStats.chosenStatPoints.maxHealth -= soItems[i].maxHealth;
+                    playerStats.chosenStatPoints.attack -= soItems[i].attack;
+                    playerStats.chosenStatPoints.defense -= soItems[i].defense;
+                    playerStats.chosenStatPoints.attackSpeed -= soItems[i].attackSpeed;
+                    playerStats.chosenStatPoints.moveSpeed -= soItems[i].moveSpeed;
+                    playerStats.chosenStatPoints.projectileSpeed -= soItems[i].projectileSpeed;
+                }
+            }
         }
     }
 
