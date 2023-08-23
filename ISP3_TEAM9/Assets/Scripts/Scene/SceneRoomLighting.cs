@@ -25,6 +25,7 @@ public class SceneRoomLighting : MonoBehaviour
         }
         else if (fadeIn && thisLight.intensity >= 0.75f)
         {
+            thisLight.intensity = 0.75f;
             fadeIn = false;
         }
 
@@ -34,6 +35,7 @@ public class SceneRoomLighting : MonoBehaviour
         }
         else if (fadeOut && thisLight.intensity <= 0f)
         {
+            thisLight.intensity = 0f;
             fadeOut = false;
         }
     }
