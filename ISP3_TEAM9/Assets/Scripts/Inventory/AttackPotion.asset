@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   stackable: 1
-  itemType: 0
-  itemName: 
-  itemDesc: 
+  itemType: 1
+  itemName: Attack Potion
+  itemDesc: Increase attack by 30%
   health: 0
   maxHealth: 0
   attack: 0
@@ -25,6 +25,7 @@ MonoBehaviour:
   moveSpeed: 0
   projectileSpeed: 0
   HealPercent: 0
-  AttackPercent: 50
+  AttackPercent: 30
   DefensePercent: 0
   MovementSpdPercent: 0
+  AttackSpdPercent: 0

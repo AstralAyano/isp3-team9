@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   stackable: 1
-  itemType: 0
-  itemName: 
-  itemDesc: 
+  itemType: 1
+  itemName: Sprint Potion
+  itemDesc: Increase move speed by 30%
   health: 0
   maxHealth: 0
   attack: 0
@@ -27,5 +27,5 @@ MonoBehaviour:
   HealPercent: 0
   AttackPercent: 0
   DefensePercent: 0
-  MovementSpdPercent: 0
+  MovementSpdPercent: 30
   AttackSpdPercent: 0

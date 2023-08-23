@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   stackable: 1
-  itemType: 0
-  itemName: 
-  itemDesc: 
+  itemType: 1
+  itemName: Attack Speed Potion
+  itemDesc: Increase attack speed by 30%
   health: 0
   maxHealth: 0
   attack: 0
@@ -28,4 +28,4 @@ MonoBehaviour:
   AttackPercent: 0
   DefensePercent: 0
   MovementSpdPercent: 0
-  AttackSpdPercent: 0
+  AttackSpdPercent: 30
