@@ -18,6 +18,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private TMP_Text[] statusValueText;
     [SerializeField] private float[] statusValue;
     [SerializeField] private TMP_Text classText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] public int statPointAmt;
     [SerializeField] public int maxExp;
     [SerializeField] private TMP_Text StatPointsText;
@@ -217,6 +218,7 @@ public class UIBookController : MonoBehaviour
     {
         // Sets the class of the player to the Stats Page
         classText.text = "Class : " + playerStats.chosenClass.ToString();
+        levelText.text = "Lvl : " + playerStats.chosenStats.level.ToString();
 
         // Sets the stats value to the text boxes
         for (int i = 0; i < statsValueText.Length; i++)
