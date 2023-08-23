@@ -6,10 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneLobbyManager : MonoBehaviour
 {
-    public SceneLoader sceneLoader;
+    [SerializeField]
+    private SceneLoader sceneLoader;
+
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
+    public static bool doorTouched = false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None)
+        {
+            doorTouched = true;
+            DialogueManager.instance.TriggerDialogue(DialogueManager.npcType.Door);
+            return;
+        }
+
+        doorTouched = false;
         if (other.gameObject.CompareTag("Player"))
         {
             sceneLoader.LoadScene("SceneLevel");

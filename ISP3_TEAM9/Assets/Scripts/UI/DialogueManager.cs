@@ -17,7 +17,8 @@ public class DialogueManager : MonoBehaviour
         Barbarian = 2,
         Paladin = 3,
         Archer = 4,
-        Mage = 5
+        Mage = 5,
+        Door = 6
     }
 
     [Header("NPCs")]
@@ -68,6 +69,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private string[] paladinLines;
     [SerializeField] private string[] archerLines;
     [SerializeField] private string[] mageLines;
+    [SerializeField] private string[] doorLines;
 
     private string[] thisDialogueLines;
     public int currLineNo = 0;
@@ -105,6 +107,7 @@ public class DialogueManager : MonoBehaviour
         repeatedLinesArrays.Add(paladinLines);
         repeatedLinesArrays.Add(archerLines);
         repeatedLinesArrays.Add(mageLines);
+        repeatedLinesArrays.Add(doorLines);
 
         dialogueUI.gameObject.SetActive(false);
         classPrompt.SetActive(false);
@@ -142,6 +145,12 @@ public class DialogueManager : MonoBehaviour
         playLine = true;
 
         currNPC = triggeredNPC;
+
+        if ((SceneLobbyManager.doorTouched) && (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None))
+        {
+            RepeatedDialogue(triggeredNPC);
+            return;
+        }
 
         if (PlayerPrefs.GetInt(triggeredNPC.ToString() + "Dialogue", 1) == 1)
         {
