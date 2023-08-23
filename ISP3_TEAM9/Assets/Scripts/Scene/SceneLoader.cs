@@ -27,7 +27,6 @@ public class SceneLoader : MonoBehaviour
         };
         
         SceneManager.LoadScene("SceneLoading");
-        Debug.Log("Loading screen");
     }
 
     public static void LoaderCallback()
@@ -39,7 +38,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public async void Loading(string sceneName)
+    private async void Loading(string sceneName)
     {
         AsyncOperation targetScene = SceneManager.LoadSceneAsync(sceneName);
         targetScene.allowSceneActivation = false;

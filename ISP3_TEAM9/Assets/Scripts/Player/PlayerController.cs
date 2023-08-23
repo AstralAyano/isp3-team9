@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -47,9 +48,6 @@ public class PlayerController : MonoBehaviour
     private string mageAttacktype;
 
     private SpriteRenderer sr;
-
-    [SerializeField]
-    private SceneLoader sceneLoader;
 
     public enum playerStates
     {
@@ -99,6 +97,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (playerStats.chosenStats.health <= 0)
+        {
+            return;
+        }
+
         InteractWithNPC();
         
         if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))
@@ -248,7 +251,7 @@ public class PlayerController : MonoBehaviour
                     PlayerUltimate();
                     break;
                 case playerStates.Death:
-                    PlayAnim("AnimPlayerHurt");
+                    PlayAnim("AnimPlayerDeath");
                     break;
             }
         }
@@ -495,8 +498,15 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        currentState = playerStates.Hurt;
         playerStats.chosenStats.health -= dmg;
+        if (playerStats.chosenStats.health > 0)
+        {
+            currentState = playerStates.Hurt;
+        }
+        else
+        {
+            currentState = playerStates.Death;
+        }
     }
 
     public void GainXP(int amount)
@@ -506,12 +516,9 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDeath()
     {
-        if (playerStats.chosenStats.health <= 0)
-        {
-            Destroy(gameObject, 0);
-            //Switch to end scene
-            sceneLoader.LoadScene("SceneEnd");
-        }
+        Destroy(gameObject, 0);
+        //Switch to end scene
+        SceneManager.LoadScene("SceneEnd");
     }
 
     private void ShootArrow()
