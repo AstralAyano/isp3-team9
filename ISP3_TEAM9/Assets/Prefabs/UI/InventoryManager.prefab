@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7445095559244600987}
   m_Layer: 0
   m_Name: InventoryManager
-  m_TagString: Untagged
+  m_TagString: InventoryManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,4 +85,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   invItemPrefab: {fileID: 4931020788774058754, guid: 6c5c0302745a74941a96f8bc306e5e43, type: 3}
-  sysText: {fileID: 0}
+  testItem: {fileID: 0}
+  testArtefact: {fileID: 0}

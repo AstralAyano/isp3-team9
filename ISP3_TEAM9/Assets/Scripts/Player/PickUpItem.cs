@@ -9,20 +9,24 @@ public class PickUpItem : MonoBehaviour
 
     [Header("List of Scriptable Objects")]
     public Item[] itemsToPickup;
+    public string[] itemsName;
+
+    void Start()
+    {
+        invManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
-        
-        if (other.gameObject.name.Contains("Health Potion") && invManager.AddItem(itemsToPickup[0]))
+        Debug.Log(other.gameObject.name + " : " + gameObject.name + " : " + Time.time);
+
+        for (int i = 0; i < itemsToPickup.Length; i++)
         {
-            //gameObject.GetComponentInParent<PlayerController>().playSFX(11);
-            Destroy(other.gameObject);
-        }
-        else if (other.gameObject.name.Contains("Mana Potion") && invManager.AddItem(itemsToPickup[1]))
-        {
-            //gameObject.GetComponentInParent<PlayerController>().playSFX(11);
-            Destroy(other.gameObject);
+            if (other.gameObject.name.Contains(itemsName[i]) && invManager.AddItem(itemsToPickup[i]))
+            {
+                //gameObject.GetComponentInParent<PlayerController>().playSFX(11);
+                Destroy(other.gameObject);
+            }
         }
     }
 }

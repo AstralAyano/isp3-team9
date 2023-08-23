@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 9187127078638063365}
   - component: {fileID: 9187127078638063384}
   - component: {fileID: 9187127078638063367}
+  - component: {fileID: 4687964578298751831}
   - component: {fileID: 7963520640230783044}
   - component: {fileID: 394790594}
   m_Layer: 7
@@ -279,6 +280,41 @@ MonoBehaviour:
   magicPrefab: {fileID: 1536097474418395924, guid: 844cef7de47bdac438fc60cf741a7677, type: 3}
   PaladinAuraPrefab: {fileID: 1991311167517984286, guid: af08a047202982c4a815423ce1d2a65a, type: 3}
   currentState: 0
+--- !u!114 &4687964578298751831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187127078638063364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28015a8e4cedcb40978dd89d6a1e7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invManager: {fileID: 0}
+  itemsToPickup:
+  - {fileID: 11400000, guid: 4c12aa93626c4084aac431cc7f24c73a, type: 2}
+  - {fileID: 11400000, guid: ae4ed31268552ea469bd388da1273000, type: 2}
+  - {fileID: 11400000, guid: 0f148b3c2ae7d0b40862d6c7b3492550, type: 2}
+  - {fileID: 11400000, guid: decfb3ae9e149ca4a8d0b28159858634, type: 2}
+  - {fileID: 11400000, guid: 43ba2948f08b1fd4695efdeabeab6114, type: 2}
+  - {fileID: 11400000, guid: b6ead231b3a1c6945b8de55c9b47fbf2, type: 2}
+  - {fileID: 11400000, guid: 34c9554266dca7c4081a9108a2f7fd6a, type: 2}
+  - {fileID: 11400000, guid: 1bba636507958e94c8ba17219b0aa737, type: 2}
+  - {fileID: 11400000, guid: 79033a6746441f848b466502a900bc9e, type: 2}
+  - {fileID: 11400000, guid: d602e4491e6d3114f9cce2414e74d00e, type: 2}
+  itemsName:
+  - ItemAncientCoin
+  - ItemBrokenMask
+  - ItemBullHorn
+  - ItemDivineGoblet
+  - ItemFireRune
+  - ItemGoldenRod
+  - ItemMagicScepter
+  - ItemMysteriousOrb
+  - ItemSkullNecklace
+  - ItemStunSeed
 --- !u!61 &7963520640230783044
 BoxCollider2D:
   m_ObjectHideFlags: 0
