@@ -43,8 +43,8 @@ public class EndController : MonoBehaviour
     private float counter = 0;
     private float titleCounter = 0;
 
-    private int timeSpent;
-    public static int roomsCleared;
+    private int timeSpent = 0;
+    public static int roomsCleared = 0;
 
     [Header("Stats")]
     [SerializeField] private ScriptablePlayerStats playerStats;
