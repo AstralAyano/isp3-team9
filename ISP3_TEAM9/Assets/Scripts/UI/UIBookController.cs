@@ -415,6 +415,8 @@ public class UIBookController : MonoBehaviour
         }
         statusSliders[2].value = playerStats.chosenStats.exp;
         statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
+    
+        
     }
 
     void HideProjectileSpeedStat()

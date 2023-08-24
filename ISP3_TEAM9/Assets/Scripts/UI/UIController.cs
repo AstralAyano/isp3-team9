@@ -31,7 +31,8 @@ public class UIController : MonoBehaviour
 
         if (nextScene == SceneManager.GetSceneByName("SceneMenu") ||
             nextScene == SceneManager.GetSceneByName("SceneLoading") ||
-            nextScene == SceneManager.GetSceneByName("SceneEnd"))
+            nextScene == SceneManager.GetSceneByName("SceneEnd") ||
+            SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SceneEnd"))
         {
             uiList[0].SetActive(false);
             uiList[1].SetActive(false);
