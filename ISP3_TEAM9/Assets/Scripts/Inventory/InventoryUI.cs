@@ -17,17 +17,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Vector2 bookUIBarPos;
     [SerializeField] private Vector2 hudUIBarPos;
 
-    private void Start()
-    {
-        //bookUI = GameObject.FindWithTag("InventoryRightPage");
-        //hudUI = GameObject.FindWithTag("InventoryBottomBar");
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void OpenInventory()
     {
         Time.timeScale = 0;

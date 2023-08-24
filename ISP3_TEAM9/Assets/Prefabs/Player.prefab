@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &258813485
 Transform:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 9187127078638063384}
   - component: {fileID: 9187127078638063367}
   - component: {fileID: 4687964578298751831}
+  - component: {fileID: 8939987646092329873}
   - component: {fileID: 7963520640230783044}
   - component: {fileID: 394790594}
   m_Layer: 7
@@ -908,6 +909,11 @@ MonoBehaviour:
   ArcaneShotPrefab: {fileID: 3925729132500248789, guid: a0206c996a452b343b3eb51a460e79d9, type: 3}
   magicPrefab: {fileID: 1536097474418395924, guid: 844cef7de47bdac438fc60cf741a7677, type: 3}
   PaladinAuraPrefab: {fileID: 1991311167517984286, guid: af08a047202982c4a815423ce1d2a65a, type: 3}
+  IsHealthMax: 0
+  IsSpeedPotionActive: 0
+  IsAtkPotionActive: 0
+  IsAtkSpdPotionActive: 0
+  IsDefensePotionActive: 0
   currentState: 0
 --- !u!114 &4687964578298751831
 MonoBehaviour:
@@ -933,6 +939,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1bba636507958e94c8ba17219b0aa737, type: 2}
   - {fileID: 11400000, guid: 79033a6746441f848b466502a900bc9e, type: 2}
   - {fileID: 11400000, guid: d602e4491e6d3114f9cce2414e74d00e, type: 2}
+  - {fileID: 11400000, guid: 3b5ac90a4a9281a4c9e97cddac957094, type: 2}
+  - {fileID: 11400000, guid: 19db61e8910da964b8d3e750e9fb7b3e, type: 2}
+  - {fileID: 11400000, guid: ddb9d39dd5084cc419a59262016e0cd3, type: 2}
+  - {fileID: 11400000, guid: fec726f38d483a342b3ab2ad92a051de, type: 2}
+  - {fileID: 11400000, guid: f0447f63afd8f0243bb19d288d6607d1, type: 2}
+  - {fileID: 11400000, guid: c4a1dc682d60fca4492b9f38627182e6, type: 2}
   itemsName:
   - ItemA_AncientCoin
   - ItemA_BrokenMask
@@ -944,6 +956,27 @@ MonoBehaviour:
   - ItemA_MysteriousOrb
   - ItemA_SkullNecklace
   - ItemA_StunSeed
+  - ItemC_SmallHealthPotion
+  - ItemC_BigHealthPotion
+  - ItemC_DefensePotion
+  - ItemC_AttackPotion
+  - ItemC_AttackSpeedPotion
+  - ItemC_SprintPotion
+--- !u!114 &8939987646092329873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187127078638063364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96a38e276c855a4eb070a708c148dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invSlots: []
+  invManager: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!61 &7963520640230783044
 BoxCollider2D:
   m_ObjectHideFlags: 0

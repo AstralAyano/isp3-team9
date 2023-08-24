@@ -83,8 +83,8 @@ public class UIHUDController : MonoBehaviour
                 skillIcon.sprite = skillSprites[3];
                 ultIcon.sprite = ultSprites[3];
 
-                skillName = "Lightning";
-                skillDesc = "The player shoots a bolt of lightning, dealing damage in a small area.";
+                skillName = "Arcane Shot";
+                skillDesc = "The player shoots a bolt of arcane energy in a form of a sphere, damaging enemies that it hits.";
                 
                 ultName = "Runic Fireball";
                 ultDesc = "The player draws upon their arcane energies, casting a fireball with runic magic. Dealing a large amount of damage in a large lasting area.";
