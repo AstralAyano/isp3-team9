@@ -12,18 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: ScriptableItemC_BigHealthPotion
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: -478179449, guid: 0d28bf1580154ad47a60c74a77da94b0, type: 3}
+  stackable: 0
   itemType: 1
   itemName: Big Health Potion
   itemDesc: Restores 50% health
+  classResonance: 
   health: 0
-  maxHealth: 0
   attack: 0
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 0
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 0
   HealPercent: 50
   AttackPercent: 0
   DefensePercent: 0
