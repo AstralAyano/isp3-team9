@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController[] animControllers; //Store animator controllers
 
+    [Header("Audio")]
+    public AudioSource[] audSrc;
+    public List<AudioClip> clips;
+    
     private Rigidbody2D rb;
     private Vector2 moveDir;
     private Vector2 lookDir;
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        audSrc = GetComponentsInChildren<AudioSource>();
 
         SetAnimator();
     }
@@ -590,5 +596,18 @@ public class PlayerController : MonoBehaviour
     public float GetMaxUltCharge()
     {
         return maxUltCharge;
+    }
+
+    public void PlaySound(int clip)
+    {
+        for (int i = 0; i < audSrc.Length; i++)
+        {
+            if (!audSrc[i].isPlaying)
+            {
+                audSrc[i].clip = clips[clip];
+                audSrc[i].Play();
+                break;
+            }
+        }
     }
 }
