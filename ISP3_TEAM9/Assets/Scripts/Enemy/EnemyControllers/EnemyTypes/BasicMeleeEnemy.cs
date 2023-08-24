@@ -45,21 +45,21 @@ public class BasicMeleeEnemy : EnemyController
             {
                 enemyPF.attackToResolve = true;
 
-                damagePlayer = true;
+                //damagePlayer = true;
                 triggerCollider = other;
             }
         }
     }
 
     //Called in animation events
-    private void DamagePlayer()
+    public void DamagePlayer()
     {
-        if ((triggerCollider != null) && (damagePlayer))
+        if (enemyPF.attackToResolve)
         {
             // call TakeDamage func in player using the child collider (PlayerHitbox)
             triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack);
             //Debug.Log("Hit");
-            damagePlayer = false;
+            //damagePlayer = false;
         }
     }
 }

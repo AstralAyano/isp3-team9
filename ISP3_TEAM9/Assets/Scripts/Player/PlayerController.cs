@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     private float skillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
-    private const int maxUltCharge = 0;
+    private const int maxUltCharge = 100;
 
     float interactRange = 5f;
 
@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             currentState = playerStates.Attack;
+            PlayerAttack(playerStats.chosenStats.attack, 1f, 10);
             //Debug.Log("Attacking");
         }
 
@@ -165,6 +166,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             currentState = playerStates.Ultimate;
+            PlayerAttack(playerStats.chosenStats.attack, 2f, 0);
 
         }
 
@@ -204,6 +206,8 @@ public class PlayerController : MonoBehaviour
         CheckIsAtkSpdPotionActive();
         CheckIsDefensePotionActive();
         CheckIsSpeedPotionActive();
+
+        Debug.Log(ultCharge);
     }
 
     // Update is called once per frame
@@ -660,9 +664,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlayerAttack(int dmg)
+    private void PlayerAttack(int dmg, float range, int ultCharge)
     {
-        transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("EnemyHitbox"))
+            {
+                collider.transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
+                this.ultCharge += ultCharge;
+            }
+        }
     }
 
     public float GetUltCharge()

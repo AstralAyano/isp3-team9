@@ -5087,7 +5087,7 @@ MonoBehaviour:
   enemyPF: {fileID: 6768884923863432178}
   health: 50
   expDropped: 10
-  attack: 10
+  attack: 100
   attackCD: 0.75
   attackDuration: 0.667
   spawnPos: {fileID: 752521045}
