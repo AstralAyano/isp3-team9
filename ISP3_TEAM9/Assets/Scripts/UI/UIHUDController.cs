@@ -108,6 +108,9 @@ public class UIHUDController : MonoBehaviour
         healthBar.maxValue = playerStats.chosenStats.maxHealth;
         healthBar.value = playerStats.chosenStats.health;
 
+        skillSlider.maxValue = playerController.GetMaxSkillCooldown();
+        skillSlider.value = playerController.GetSkillCooldown();
+
         ultSlider.minValue = -playerController.GetMaxUltCharge();
         ultSlider.value = -playerController.GetUltCharge();
     }
