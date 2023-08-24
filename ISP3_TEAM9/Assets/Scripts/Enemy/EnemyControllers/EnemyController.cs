@@ -15,6 +15,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     [SerializeField] protected Animator ar;
+    [SerializeField] protected ParticleSystem hurtParticles;
     [SerializeField] protected State currentState;
     [SerializeField] protected EnemyPathFinding enemyPF;
 
@@ -140,6 +141,9 @@ public abstract class EnemyController : MonoBehaviour
         else
         {
             health -= damage;
+
+            // Play Particles
+            hurtParticles.Play();
 
             // play anim
 

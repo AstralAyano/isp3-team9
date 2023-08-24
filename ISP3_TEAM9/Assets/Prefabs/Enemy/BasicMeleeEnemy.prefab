@@ -5082,6 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ar: {fileID: 1741255159}
+  hurtParticles: {fileID: 1390753422515205514}
   currentState: 0
   enemyPF: {fileID: 6768884923863432178}
   health: 50
