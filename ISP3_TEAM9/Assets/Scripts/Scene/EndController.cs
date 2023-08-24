@@ -46,6 +46,9 @@ public class EndController : MonoBehaviour
     private int timeSpent;
     public static int roomsCleared;
 
+    [Header("Stats")]
+    [SerializeField] private ScriptablePlayerStats playerStats;
+
     void Awake()
     {
         if (FindObjectOfType<GameTimer>() != null)
@@ -64,7 +67,8 @@ public class EndController : MonoBehaviour
                          "--------------------------\n" +
                          "Time Taken:\n" + DisplayTime() + "\n" +
                          "Rooms Cleared: " + roomsCleared + "\n" +
-                         "" + "|\n" +
+                         "Class: " + playerStats.chosenClass + "\n" +
+                         "Level: " + playerStats.chosenStats.level + "\n" +
                          "--------------------------\n";
 
         titleText.alpha = 0;
