@@ -5,17 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Audio;
 
 public class SceneLoadPreferenceManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private VolumeProfile volumeProfile;
+    [SerializeField] private AudioMixer audMix;
+    [SerializeField] private AudioMixerGroup[] audMixGrp;
 
     [Header("Variables")]
     [SerializeField] private UIBookController bookController;
     [SerializeField] private bool canUse = false;
-
-    [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     private bool localFullscreenBool;
 
@@ -36,10 +37,6 @@ public class SceneLoadPreferenceManager : MonoBehaviour
 
                 //resolutionDropdown.value = localResIndex;
                 //resolutionDropdown.RefreshShownValue();
-            }
-            else
-            {
-                bookController.ResetButton("Graphics");
             }
 
             // FULLSCREEN
@@ -77,32 +74,20 @@ public class SceneLoadPreferenceManager : MonoBehaviour
                 colorAdjust.postExposure.Override(localBrightness);
 
                 Debug.Log("Loaded PlayerPrefs (Brightness) : " + localBrightness);
-
-                /*Volume globalBrightness;
-
-                if (GameObject.FindWithTag("PostProcessor").TryGetComponent(out Volume componentVol))
-                {
-                    globalBrightness = componentVol;
-
-                    
-                }*/
             }
 
-            // VOLUME
-            /*if (PlayerPrefs.HasKey("masterVolume"))
+            // MASTER VOLUME
+            if (PlayerPrefs.HasKey("masterVolume"))
             {
                 float localVolume = PlayerPrefs.GetFloat("masterVolume");
+                audMix.SetFloat("masterVol", localVolume);
 
-                volumeText.text = $"{localVolume * 100:0}";
-                volumeSlider.value = localVolume;
-                AudioListener.volume = localVolume;
-
-                Debug.Log("Loaded Player Prefs.");
+                Debug.Log("Loaded PlayerPrefs (Master Vol) : " + localVolume);
             }
             else
             {
-                bookController.ResetButton("Audio");
-            }*/
+                audMix.SetFloat("masterVol", 0);
+            }
         }
     }
 }
