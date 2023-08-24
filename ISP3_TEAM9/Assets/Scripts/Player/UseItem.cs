@@ -19,7 +19,7 @@ public class UseItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.inputString != null)
+        /*if (Input.inputString != null)
         {
             bool isNumber = int.TryParse(Input.inputString, out int number);
 
@@ -27,52 +27,44 @@ public class UseItem : MonoBehaviour
             {
                 UseSelectedItem(true);
             }
-        }
+        }*/
     }
 
-
-    public Item UseSelectedItem(bool consumable)
+    public void UseSelectedItem(bool consumable)
     {
         Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive, controller.IsDefensePotionActive, controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive);
-        InventorySlot slot = invSlots[selectedSlot];
-        InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
+        //InventorySlot slot = invSlots[selectedSlot];
+        //InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
 
-        if (itemSlot != null)
+        if (usingItem != null)
         {
-            Item item = itemSlot.item;
-
             if (consumable)
             {
-                if (item.name.Contains("Small Health Potion") && !controller.IsHealthMax)
+                if (usingItem.itemName.Contains("Small Health Potion") && !controller.IsHealthMax)
                 {
-                    controller.GainHP(item.HealPercent);
-
+                    controller.GainHP(usingItem.HealPercent);
                 }
-                else if (item.name.Contains("Big Health Potion") && !controller.IsHealthMax)
+                else if (usingItem.itemName.Contains("Big Health Potion") && !controller.IsHealthMax)
                 {
-                    controller.GainHP(item.HealPercent);
+                    controller.GainHP(usingItem.HealPercent);
                 }
-                else if (item.name.Contains("Defense Potion") && !controller.IsDefensePotionActive)
+                else if (usingItem.itemName.Contains("Defense Potion") && !controller.IsDefensePotionActive)
                 {
-                    controller.GainDefenseBoost(item.DefensePercent);
+                    controller.GainDefenseBoost(usingItem.DefensePercent);
                 }
-                else if (item.name.Contains("Attack Speed Potion") && !controller.IsAtkSpdPotionActive)
+                else if (usingItem.itemName.Contains("Attack Speed Potion") && !controller.IsAtkSpdPotionActive)
                 {
-                    controller.GainAtkSpdBoost(item.AttackSpdPercent);
+                    controller.GainAtkSpdBoost(usingItem.AttackSpdPercent);
                 }
-                else if (item.name.Contains("Attack Potion") && !controller.IsAtkPotionActive)
+                else if (usingItem.itemName.Contains("Attack Potion") && !controller.IsAtkPotionActive)
                 {
-                    controller.GainAttackBoost(item.AttackPercent);
+                    controller.GainAttackBoost(usingItem.AttackPercent);
                 }
-                else if (item.name.Contains("Sprint Potion") && !controller.IsSpeedPotionActive)
+                else if (usingItem.itemName.Contains("Sprint Potion") && !controller.IsSpeedPotionActive)
                 {
-                    controller.GainMovementBoost(item.MovementSpdPercent);
+                    controller.GainMovementBoost(usingItem.MovementSpdPercent);
                 }
             }
-
-            return item;
         }
-
-        return null;
     }
 }

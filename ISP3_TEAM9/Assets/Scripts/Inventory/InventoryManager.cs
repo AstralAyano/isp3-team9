@@ -28,6 +28,8 @@ public class InventoryManager : MonoBehaviour
             if (isNumber && number > 0 && number < 4)
             {
                 ChangeSlot(number - 1);
+
+                GameObject.FindWithTag("Player").GetComponent<UseItem>().UseSelectedItem(true);
             }
         }
     }
@@ -57,6 +59,11 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < invSlots.Length; i++)
         {
             InventorySlot slot = invSlots[i];
+
+            if (item.itemType == Item.types.Artefact)
+            {
+                slot = invSlots[i + 3];
+            }
 
             if (slot.GetComponentInChildren<InventoryItem>() == null)
             {
@@ -89,32 +96,32 @@ public class InventoryManager : MonoBehaviour
 
             if (consumable)
             {
-                if (item.name.Contains("Small Health Potion") && isHealthMax)
+                if (item.itemName.Contains("Small Health Potion") && isHealthMax)
                 {
                     Debug.Log("Health is full.");
                     //sysText.DisplayText("A Scroll of Swift is already in effect.");
                 }
-                else if (item.name.Contains("Big Health Potion") && isHealthMax)
+                else if (item.itemName.Contains("Big Health Potion") && isHealthMax)
                 {
                     Debug.Log("Health is full.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
-                else if (item.name.Contains("Defense Potion") && isDefensePotion)
+                else if (item.itemName.Contains("Defense Potion") && isDefensePotion)
                 {
                     Debug.Log("Defense Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
-                else if (item.name.Contains("Attack Speed Potion") && IsAtkSpdPotion)
+                else if (item.itemName.Contains("Attack Speed Potion") && IsAtkSpdPotion)
                 {
                     Debug.Log("Attack Speed Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
-                else if (item.name.Contains("Attack Potion") && isAttackPotion)
+                else if (item.itemName.Contains("Attack Potion") && isAttackPotion)
                 {
                     Debug.Log("Attack Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
-                else if (item.name.Contains("Sprint Potion") && isSprintPotion)
+                else if (item.itemName.Contains("Sprint Potion") && isSprintPotion)
                 {
                     Debug.Log("Sprint Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");

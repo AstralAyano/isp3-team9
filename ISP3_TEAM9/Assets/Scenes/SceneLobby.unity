@@ -11303,6 +11303,18 @@ PrefabInstance:
       propertyPath: invSlots.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8939987646092329873, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: invSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1729789838}
+    - target: {fileID: 8939987646092329873, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: invSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 831015655}
+    - target: {fileID: 8939987646092329873, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
+      propertyPath: invSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1537900438}
     - target: {fileID: 9187127078638063364, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -42858,7 +42870,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.062196
+      m_AnimationSpeed: 4.933793
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -43757,7 +43769,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.449796
+      m_AnimationSpeed: 5.9329524
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
