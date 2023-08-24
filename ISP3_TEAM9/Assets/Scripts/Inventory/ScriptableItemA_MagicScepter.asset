@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
-  m_Name: Golden Rod
+  m_Name: ScriptableItemA_MagicScepter
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: c6e270b39ca8789429f3e772583aa8ed, type: 3}
+  image: {fileID: 21300000, guid: 7f7109a20f0cb4a4ebb033bf3b8c6130, type: 3}
   stackable: 0
   itemType: 0
-  itemName: Golden Rod
-  itemDesc: If the player is of the mage class, increase projectile speed by 1 and
-    increase attack by 1. Does not work on other classes.
-  classResonance: 
+  itemName: Magic Scepter
+  itemDesc: Increase attack by 1. If the player is of the mage class, this effect
+    is doubled.
+  classResonance: mage
   health: 0
-  attack: 0
+  attack: 1
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   defenseMulti: 0
   attackSpeedMulti: 0
   moveSpeedMulti: 0
-  projectileSpeedMulti: 1
+  projectileSpeedMulti: 0
   HealPercent: 0
   AttackPercent: 0
   DefensePercent: 0

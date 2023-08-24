@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
-  m_Name: Divine Goblet
+  m_Name: ScriptableItemA_BullHorn
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 70d67cdd384da544ca2f4a035a7e9df6, type: 3}
+  image: {fileID: 21300000, guid: 3e54f96457d3a654ab64a24cd512c256, type: 3}
   stackable: 0
   itemType: 0
-  itemName: Divine Goblet
-  itemDesc: Increase max health by 5 but decrease attack by 1. If the player is of
-    the paladin class, additionally increase defense by 1
-  classResonance: paladin
-  health: 5
-  attack: -1
-  defense: 1
-  attackSpeed: 0
+  itemName: Bull Horn
+  itemDesc: Increase attack speed by 1. If the player is of the barbarian class,
+    additionally increase attack by 1
+  classResonance: barbarian
+  health: 0
+  attack: 1
+  defense: 0
+  attackSpeed: 1
   moveSpeed: 0
   projectileSpeed: 0
   healthMulti: 0
-  attackMulti: 0
-  defenseMulti: 1
+  attackMulti: 1
+  defenseMulti: 0
   attackSpeedMulti: 0
   moveSpeedMulti: 0
   projectileSpeedMulti: 0

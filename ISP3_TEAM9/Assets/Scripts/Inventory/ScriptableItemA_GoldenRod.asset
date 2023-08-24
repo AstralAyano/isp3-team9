@@ -10,22 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
-  m_Name: AttackPotion
+  m_Name: ScriptableItemA_GoldenRod
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
-  itemType: 1
-  itemName: Attack Potion
-  itemDesc: Increase attack by 30%
+  image: {fileID: 21300000, guid: c6e270b39ca8789429f3e772583aa8ed, type: 3}
+  stackable: 0
+  itemType: 0
+  itemName: Golden Rod
+  itemDesc: If the player is of the mage class, increase projectile speed by 1 and
+    increase attack by 1. Does not work on other classes.
+  classResonance: 
   health: 0
-  maxHealth: 0
   attack: 0
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 1
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 1
   HealPercent: 0
-  AttackPercent: 30
+  AttackPercent: 0
   DefensePercent: 0
   MovementSpdPercent: 0
   AttackSpdPercent: 0
