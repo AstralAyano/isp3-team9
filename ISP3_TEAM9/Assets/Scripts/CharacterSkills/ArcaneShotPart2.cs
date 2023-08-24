@@ -15,6 +15,9 @@ public class ArcaneShotPart2 : MonoBehaviour
 
     public float TimeBeforeActivate = 0;
 
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
     void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,7 +29,7 @@ public class ArcaneShotPart2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * 0.1f, ForceMode2D.Impulse);
+        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
         TimeBeforeActivate += Time.deltaTime;
     }
 
@@ -36,7 +39,7 @@ public class ArcaneShotPart2 : MonoBehaviour
         {
             gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             ArcaneGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(20);
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 1.5f);
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Wall"))

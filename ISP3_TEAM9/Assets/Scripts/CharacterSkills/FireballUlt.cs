@@ -24,6 +24,9 @@ public class FireballUlt : MonoBehaviour
     [SerializeField]
     private GameObject FireBallGFX2;
 
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
    // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +39,7 @@ public class FireballUlt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * 0.1f, ForceMode2D.Impulse);
+        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
         if (ActivateTimer)
         {
             LastEF += Time.deltaTime;
@@ -60,7 +63,7 @@ public class FireballUlt : MonoBehaviour
             FireBallGFX2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
             ActivateTimer = true;
             Debug.Log("die fire part 1");
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(30);
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 2);
         }
         if (other.gameObject.CompareTag("Wall"))
         {
