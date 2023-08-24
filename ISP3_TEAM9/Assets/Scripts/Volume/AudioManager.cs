@@ -6,28 +6,27 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer mixer;
-    public Slider masterSlider;
+    [SerializeField] private AudioMixer audMix;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
+
+    public void MasterVolumeApply()
     {
-        //masterSlider.value =
-        //PlayerPrefsManager.Load("MasterVolume");
-        Debug.Log(masterSlider.value);
-        if (masterSlider.value == 0)
-            masterSlider.value = -20;
+        PlayerPrefs.SetFloat("masterVolume", masterSlider.value);
+        audMix.SetFloat("masterVol", PlayerPrefs.GetFloat("masterVolume"));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BGMVolumeApply()
     {
-
+        PlayerPrefs.SetFloat("bgmVolume", bgmSlider.value);
+        audMix.SetFloat("bgmVol", PlayerPrefs.GetFloat("bgmVolume"));
     }
 
-    public void SetMasterVolume()
+    public void SFXVolumeApply()
     {
-        mixer.SetFloat("MasterVolume", masterSlider.value);
-        //PlayerPrefsManager.Save("MasterVolume", masterSlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
+        audMix.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVolume"));
     }
 }

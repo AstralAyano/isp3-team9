@@ -64,11 +64,7 @@ public class UIBookController : MonoBehaviour
     [Space(10)]
     [SerializeField] private Slider brightnessSlider;
     private Volume globalBrightness;
-    [Space(10)]
-    [SerializeField] private AudioMixer mixer;
-    [SerializeField] private Slider masterVolSlider;
-    [SerializeField] private Slider bgmVolSlider;
-    [SerializeField] private Slider sfxVolSlider;
+    //[Space(10)]
 
     [Header("Settings Variables")]
     [SerializeField] public int defaultResolution;
@@ -705,45 +701,6 @@ public class UIBookController : MonoBehaviour
             colorAdjust.postExposure.value = PlayerPrefs.GetFloat("brightness");
 
             Debug.Log("Brightness Applied : " + PlayerPrefs.GetFloat("brightness"));
-        }
-    }
-
-    public void MasterVolumeApply()
-    {
-        //mixer
-    }
-
-    public void BGMVolumeApply()
-    {
-
-    }
-
-    public void SFXVolumeApply()
-    {
-
-    }
-
-    public void ResetButton(string settingType)
-    {
-        // Resets all graphics options to default values
-        if (settingType == "Graphics")
-        {
-            Resolution resolution = filteredResolutions[defaultResolution];
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-
-            resolutionDropdown.value = defaultResolution;
-            resolutionDropdown.RefreshShownValue();
-
-            fullscreenToggle.isOn = defaultFullscreen;
-
-            brightnessSlider.value = 0;
-            if (globalBrightness.profile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjust))
-            {
-                PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
-                colorAdjust.postExposure.value = brightnessSlider.value;
-            }
-
-            Debug.Log($"Reset Applied : {resolution.width} x {resolution.height} : {fullscreenToggle.isOn}");
         }
     }
 
