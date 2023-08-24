@@ -55,6 +55,17 @@ public class PlayerController : MonoBehaviour
     private float IntervalOfHeal;
     private int MaxHealCount = 0;
 
+    public bool IsHealthMax;
+    public bool IsSpeedPotionActive;
+    public bool IsAtkPotionActive;
+    public bool IsAtkSpdPotionActive;
+    public bool IsDefensePotionActive;
+
+    private float SpdPotionDuration;
+    private float AtkPotionDuration;
+    private float DefensePotionDuration;
+    private float AtkSpdPotionDuration;
+
     private SpriteRenderer sr;
 
     public enum playerStates
@@ -181,6 +192,12 @@ public class PlayerController : MonoBehaviour
                 MaxHealCount = 0;
             }
         }
+
+        CheckIsHealthMax();
+        CheckIsAtkPotionActive();
+        CheckIsAtkSpdPotionActive();
+        CheckIsDefensePotionActive();
+        CheckIsSpeedPotionActive();
     }
 
     // Update is called once per frame
@@ -596,6 +613,66 @@ public class PlayerController : MonoBehaviour
     public float GetMaxUltCharge()
     {
         return maxUltCharge;
+    }
+
+    void CheckIsHealthMax()
+    {
+        if (playerStats.chosenStats.maxHealth == playerStats.chosenStats.health)
+        {
+            IsHealthMax = true;
+        }
+    }
+
+    void CheckIsSpeedPotionActive()
+    {
+        if (IsSpeedPotionActive)
+        {
+            SpdPotionDuration += Time.deltaTime;
+            if (SpdPotionDuration >= 15)
+            {
+                IsSpeedPotionActive = false;
+                SpdPotionDuration = 0;
+            }
+        }
+    }
+
+    void CheckIsAtkSpdPotionActive()
+    {
+        if (IsAtkSpdPotionActive)
+        {
+            AtkSpdPotionDuration += Time.deltaTime;
+            if (AtkSpdPotionDuration >= 15)
+            {
+                IsAtkSpdPotionActive = false;
+                AtkSpdPotionDuration = 0;
+            }
+        }
+    }
+
+    void CheckIsDefensePotionActive()
+    {
+        if (IsDefensePotionActive)
+        {
+            DefensePotionDuration += Time.deltaTime;
+            if (DefensePotionDuration >= 10)
+            {
+                IsDefensePotionActive = false;
+                DefensePotionDuration = 0;
+            }
+        }
+    }
+
+    void CheckIsAtkPotionActive()
+    {
+        if (IsAtkPotionActive)
+        {
+            AtkPotionDuration += Time.deltaTime;
+            if (AtkPotionDuration >= 8)
+            {
+                IsAtkPotionActive = false;
+                AtkPotionDuration = 0;
+            }
+        }
     }
 
     public void PlaySound(int clip)

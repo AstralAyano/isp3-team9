@@ -78,7 +78,7 @@ public class InventoryManager : MonoBehaviour
         invItem.InitialiseItem(item);
     }
 
-    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isManaMax)
+    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isSprintPotiton, bool isDefensePotion, bool isAttackSpdPotion,bool IsAtkSpdPotion)
     {
         InventorySlot slot = invSlots[selectedSlot];
         InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -89,14 +89,14 @@ public class InventoryManager : MonoBehaviour
 
             if (consumable)
             {
-                if (item.name.Contains("Health Potion") && isHealthMax)
+                if (item.name.Contains("Small Health Potion") && isHealthMax)
                 {
                     Debug.Log("Health is full.");
                     //sysText.DisplayText("A Scroll of Swift is already in effect.");
                 }
-                else if (item.name.Contains("Mana Potion") && isManaMax)
+                else if (item.name.Contains("Big Health Potion") && isHealthMax)
                 {
-                    Debug.Log("Mana is full.");
+                    Debug.Log("Health is full.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
                 else
