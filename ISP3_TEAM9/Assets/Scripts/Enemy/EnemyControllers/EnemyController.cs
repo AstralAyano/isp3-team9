@@ -16,6 +16,10 @@ public abstract class EnemyController : MonoBehaviour
 
     [SerializeField] protected Animator ar;
     [SerializeField] protected ParticleSystem hurtParticles;
+    [SerializeField] protected AudioSource hurtdeathAS;
+    [SerializeField] protected AudioClip[] hurtdeathClip;
+    [SerializeField] protected AudioSource attackAS;
+    [SerializeField] protected AudioClip[] attackClip;
     [SerializeField] protected State currentState;
     [SerializeField] protected EnemyPathFinding enemyPF;
 
@@ -135,6 +139,9 @@ public abstract class EnemyController : MonoBehaviour
             // play anim
             ar.Play("AnimEnemyDeath");
 
+            hurtdeathAS.clip = hurtdeathClip[1];
+            hurtdeathAS.Play();
+
             // destroy self
             Destroy(gameObject, 0.75f);
         }
@@ -142,11 +149,20 @@ public abstract class EnemyController : MonoBehaviour
         {
             health -= damage;
 
+            hurtdeathAS.clip = hurtdeathClip[0];
+            hurtdeathAS.Play();
+
             // Play Particles
             hurtParticles.Play();
 
             // play anim
 
         }
+    }
+
+    public void PlayAttackSound(int clip)
+    {
+        attackAS.clip = attackClip[clip];
+        attackAS.Play();
     }
 }
