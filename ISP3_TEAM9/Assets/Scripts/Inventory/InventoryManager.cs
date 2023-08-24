@@ -25,7 +25,7 @@ public class InventoryManager : MonoBehaviour
         {
             bool isNumber = int.TryParse(Input.inputString, out int number);
 
-            if (isNumber && number > 0 && number < 10)
+            if (isNumber && number > 0 && number < 4)
             {
                 ChangeSlot(number - 1);
             }

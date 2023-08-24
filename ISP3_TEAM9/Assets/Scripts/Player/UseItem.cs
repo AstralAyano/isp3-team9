@@ -10,20 +10,20 @@ public class UseItem : MonoBehaviour
     {
         if (Input.GetKeyDown("1"))
         {
-            UseSelectedItem();
+            //UseSelectedItem();
         }
         if (Input.GetKeyDown("2"))
         {
-            UseSelectedItem();
+            //UseSelectedItem();
         }
         if (Input.GetKeyDown("3"))
         {
-            UseSelectedItem();
+            //UseSelectedItem();
         }
-    }
+    } 
 
     public Item GetSelectedItem()
     {
-
+        return null;
     }
 }

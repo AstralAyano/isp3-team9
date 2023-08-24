@@ -8,6 +8,7 @@ using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting;
 using UnityEditor.ShaderKeywordFilter;
 using System;
+using UnityEngine.Audio;
 
 public class UIBookController : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Slider brightnessSlider;
     private Volume globalBrightness;
     [Space(10)]
+    [SerializeField] private AudioMixer mixer;
     [SerializeField] private Slider masterVolSlider;
     [SerializeField] private Slider bgmVolSlider;
     [SerializeField] private Slider sfxVolSlider;
@@ -704,6 +706,21 @@ public class UIBookController : MonoBehaviour
 
             Debug.Log("Brightness Applied : " + PlayerPrefs.GetFloat("brightness"));
         }
+    }
+
+    public void MasterVolumeApply()
+    {
+        //mixer
+    }
+
+    public void BGMVolumeApply()
+    {
+
+    }
+
+    public void SFXVolumeApply()
+    {
+
     }
 
     public void ResetButton(string settingType)
