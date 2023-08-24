@@ -570,6 +570,18 @@ public class PlayerController : MonoBehaviour
     {
         playerStats.chosenStats.exp += amount;
     }
+    public void GainHP(int percentage)
+    {
+        float multiplier = percentage / 100;
+        if (playerStats.chosenStats.health != playerStats.chosenStats.maxHealth)
+        {
+            playerStats.chosenStats.health += (int)((float)playerStats.chosenStats.maxHealth * multiplier);
+
+        }
+        // if player health not equal to max health
+        // health +=
+        // max health * multiplier
+    }
 
     private void PlayerDeath()
     {

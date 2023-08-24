@@ -33,7 +33,7 @@ public class UseItem : MonoBehaviour
 
     public Item UseSelectedItem(bool consumable)
     {
-        Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive ,controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive, controller.IsDefensePotionActive);
+        Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive, controller.IsDefensePotionActive, controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive);
         InventorySlot slot = invSlots[selectedSlot];
         InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
 
@@ -43,28 +43,14 @@ public class UseItem : MonoBehaviour
 
             if (consumable)
             {
-                if (item.name.Contains("Small Health Potion") && controller.IsHealthMax)
+                if (item.name.Contains("Small Health Potion") && !controller.IsHealthMax)
                 {
-                    Debug.Log("Health is full.");
-                    //sysText.DisplayText("A Scroll of Swift is already in effect.");
-                }
-                else if (item.name.Contains("Big Health Potion") && controller.IsHealthMax)
-                {
-                    Debug.Log("Health is full.");
-                    //sysText.DisplayText("You can't use this scroll here.");
-                }
-                else
-                {
-                    itemSlot.count--;
+                    controller.GainHP(item.HealPercent);
 
-                    if (itemSlot.count <= 0)
-                    {
-                        Destroy(itemSlot.gameObject);
-                    }
-                    else
-                    {
-                        itemSlot.UpdateCount();
-                    }
+                }
+                else if (item.name.Contains("Big Health Potion") && !controller.IsHealthMax)
+                {
+                    controller.GainHP(item.HealPercent);
                 }
             }
 
