@@ -88,6 +88,32 @@ public class SceneLoadPreferenceManager : MonoBehaviour
             {
                 audMix.SetFloat("masterVol", 0);
             }
+
+            // BGM VOLUME
+            if (PlayerPrefs.HasKey("bgmVolume"))
+            {
+                float localVolume = PlayerPrefs.GetFloat("bgmVolume");
+                audMix.SetFloat("bgmVol", localVolume);
+
+                Debug.Log("Loaded PlayerPrefs (BGM Vol) : " + localVolume);
+            }
+            else
+            {
+                audMix.SetFloat("bgmVol", 0);
+            }
+
+            // SFX VOLUME
+            if (PlayerPrefs.HasKey("sfxVolume"))
+            {
+                float localVolume = PlayerPrefs.GetFloat("sfxVolume");
+                audMix.SetFloat("sfxVol", localVolume);
+
+                Debug.Log("Loaded PlayerPrefs (SFX Vol) : " + localVolume);
+            }
+            else
+            {
+                audMix.SetFloat("sfxVol", 0);
+            }
         }
     }
 }
