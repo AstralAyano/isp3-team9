@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour
 
     private bool PlayerInBattle()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 5f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 8f);
         foreach (var collider in colliders)
         {
             if (collider.gameObject.CompareTag("EnemyHitbox"))

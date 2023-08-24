@@ -46,9 +46,9 @@ public class SceneLevelAudioManager : MonoBehaviour
         }
     }
 
-    public void NotInCombatRange(Collider2D other)
+    public void NotInCombatRange()
     {
-        if (other.gameObject.CompareTag("PlayerHitbox") && !audSrc[0].isPlaying)
+        if (!audSrc[0].isPlaying)
         {
             int index = 0;
 
@@ -73,10 +73,9 @@ public class SceneLevelAudioManager : MonoBehaviour
         }
     }
 
-    public void InCombatRange(Collider2D other)
+    public void InCombatRange()
     {
-        if (other.gameObject.CompareTag("PlayerHitbox") &&
-            audSrc[0].isPlaying && !audSrc[1].isPlaying && !audSrc[2].isPlaying)
+        if (audSrc[0].isPlaying && !audSrc[1].isPlaying && !audSrc[2].isPlaying)
         {
             int randBGM = Random.Range(0, 2);
 
@@ -90,47 +89,5 @@ public class SceneLevelAudioManager : MonoBehaviour
 
             fadeOut = true;
         }
-    }
-
-    private IEnumerator PlayCombatBGM(int clip)
-    {
-        fadeOut = true;
-
-        if (fadeOut)
-        {
-            while (audSrc[0].volume > 0)
-            {
-                audSrc[0].volume -= Time.unscaledDeltaTime * 5;
-            }
-            while (audSrc[1].volume > 0)
-            {
-                audSrc[1].volume -= Time.unscaledDeltaTime * 5;
-            }
-            while (audSrc[2].volume > 0)
-            {
-                audSrc[2].volume -= Time.unscaledDeltaTime * 5;
-            }
-
-            audSrc[0].Pause();
-            audSrc[1].Stop();
-            audSrc[2].Stop();
-
-            fadeIn = true;
-            fadeOut = false;
-        }
-
-        audSrc[clip].Play();
-
-        if (fadeIn)
-        {
-            while (audSrc[clip].volume < 1)
-            {
-                audSrc[clip].volume += Time.unscaledDeltaTime * 5;
-            }
-
-            fadeIn = false;
-        }
-
-        yield return null;
     }
 }
