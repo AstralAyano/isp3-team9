@@ -33,7 +33,7 @@ public class UseItem : MonoBehaviour
 
     public Item UseSelectedItem(bool consumable)
     {
-        Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive ,controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive, controller,IsDefensePotionActive);
+        Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive ,controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive, controller.IsDefensePotionActive);
         InventorySlot slot = invSlots[selectedSlot];
         InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
 

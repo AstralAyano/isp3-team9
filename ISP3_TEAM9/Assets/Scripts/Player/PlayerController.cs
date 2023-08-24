@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (IntervalOfHeal >= 0.5f)
                 {
+                    PlaySound(2);
                     int HealAmt = 5;
                     playerStats.chosenStats.health += HealAmt;
                     MaxHealCount++;
@@ -423,6 +424,7 @@ public class PlayerController : MonoBehaviour
         {
             //Increase attack speed
             case ScriptablePlayerStats.playerClass.Archer:
+                PlaySound(12);
                 skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
@@ -436,6 +438,7 @@ public class PlayerController : MonoBehaviour
                 mageAttacktype = "skill";
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
+                PlaySound(10);
                 skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
@@ -443,6 +446,7 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attack += 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
+                PlaySound(11);
                 skillCooldownTimer = 20;
                 skillDurationTimer = 10;
 
@@ -585,12 +589,15 @@ public class PlayerController : MonoBehaviour
         {
             case "attack":
                 Instantiate(magicPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                PlaySound(7);
                 break;
             case "skill":
                 Instantiate(ArcaneShotPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                PlaySound(7);
                 break;
             case "ultimate":
                 Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
+                PlaySound(8);
                 break;
         }
     }
