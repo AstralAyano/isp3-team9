@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class BasicMeleeEnemy : EnemyController
 {
-    private bool damagePlayer = false;
     private Collider2D triggerCollider = null;
 
     void Start()

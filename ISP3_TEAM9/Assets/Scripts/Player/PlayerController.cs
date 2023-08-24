@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject arrowPrefab;
-    private GameObject spawnedArrow = null;
 
     [SerializeField]
     private GameObject MagicArrowPrefab;
@@ -442,7 +441,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerSlashDown");
                 }
-                PlayerAttack(playerStats.chosenStats.attack, .5f, 10f);
+                PlayerAttack(playerStats.chosenStats.attack, .5f);
                 break;
         }
 
@@ -469,15 +468,11 @@ public class PlayerController : MonoBehaviour
                 sr.color = Color.yellow;
                 playerStats.chosenStats.attackInterval -= 0.3f;
                 animator.speed += 0.3f;
-                GainUltCharge(20f);
                 break;
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
                 mageAttacktype = "skill";
-                skillCooldownTimer = 20;
-                SetMaxSkillCooldown(skillCooldownTimer);
-                skillDurationTimer = 10;
 
                 GainUltCharge(10f);
                 break;
@@ -489,7 +484,6 @@ public class PlayerController : MonoBehaviour
 
                 sr.color = Color.red;
                 playerStats.chosenStats.attack += 10;
-                GainUltCharge(10f);
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlaySound(11);
@@ -503,7 +497,6 @@ public class PlayerController : MonoBehaviour
 
                 sr.color = Color.cyan;
                 playerStats.chosenStats.defense *= 125/100;
-                GainUltCharge(10f);
                 break;
         }
     }
@@ -572,7 +565,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerUltDown");
                 }
-                PlayerAttack(playerStats.chosenStats.attack * 2, 1.5f, 0f);
+                PlayerAttack(playerStats.chosenStats.attack * 2, 1.5f);
                 ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
@@ -604,7 +597,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        playerStats.chosenStats.health -= dmg * (int)Mathf.Clamp((1 - playerStats.chosenStats.defense/100), 0.1f, 0.9f);
+        playerStats.chosenStats.health -= (int)((float)dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense/100), 0.1f, 0.9f));
         if (playerStats.chosenStats.health > 0)
         {
             currentState = playerStates.Hurt;
@@ -691,7 +684,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlayerAttack(int dmg, float range, float amount)
+    private void PlayerAttack(int dmg, float range)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(lookDir.x, lookDir.y, 0), range);
         foreach (var collider in colliders)
@@ -699,7 +692,6 @@ public class PlayerController : MonoBehaviour
             if (collider.gameObject.CompareTag("EnemyHitbox"))
             {
                 collider.transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
-                GainUltCharge(amount);
             }
         }
     }

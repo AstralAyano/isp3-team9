@@ -21,6 +21,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private TMP_Text classText;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] public int statPointAmt;
+    [SerializeField] public int skillPointAmt;
     [SerializeField] public int maxExp;
     [SerializeField] private TMP_Text StatPointsText;
 
@@ -414,7 +415,8 @@ public class UIBookController : MonoBehaviour
         {
             playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
             playerStats.chosenStats.level++;
-            statPointAmt++;
+            statPointAmt += 2;
+            skillPointAmt++;
         }
         statusSliders[2].value = playerStats.chosenStats.exp;
         statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();

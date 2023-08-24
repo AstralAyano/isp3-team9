@@ -74,11 +74,11 @@ public class ScriptablePlayerStats : ScriptableObject
     
     public Dictionary<playerClass, playerStatMultipliers> statMultipliers = new()
     {
-        { playerClass.Barbarian, new playerStatMultipliers{ health = 1f, defense = 1f, attackPower = 1f, attackSpeed = 1f, moveSpeed = 1f, projectileSpeed = 1f} },
-        { playerClass.Mage, new playerStatMultipliers{ health = 1f, defense = 1f, attackPower = 1f, attackSpeed = 1f, moveSpeed = 1f, projectileSpeed = 1f} },
-        { playerClass.Archer, new playerStatMultipliers{ health = 1f, defense = 1f, attackPower = 1f, attackSpeed = 1f, moveSpeed = 1f, projectileSpeed = 1f} },
-        { playerClass.Paladin, new playerStatMultipliers{ health = 1f, defense = 1f, attackPower = 1f, attackSpeed = 1f, moveSpeed = 1f, projectileSpeed = 1f} },
-        { playerClass.None, new playerStatMultipliers { health = 1f, defense = 1f, attackPower = 1f, attackSpeed = 1f, moveSpeed = 1f, projectileSpeed = 1f } }
+        { playerClass.Barbarian, new playerStatMultipliers{ health = .1f, defense = .5f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
+        { playerClass.Mage, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
+        { playerClass.Archer, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
+        { playerClass.Paladin, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
+        { playerClass.None, new playerStatMultipliers { health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f } }
     };
 
     private void OnEnable()

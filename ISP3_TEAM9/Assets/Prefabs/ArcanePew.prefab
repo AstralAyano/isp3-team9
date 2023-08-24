@@ -86,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArcaneGFX: {fileID: 3925729132881876720}
   TimeBeforeActivate: 0
+  playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
 --- !u!1 &3925729132881876720
 GameObject:
   m_ObjectHideFlags: 0

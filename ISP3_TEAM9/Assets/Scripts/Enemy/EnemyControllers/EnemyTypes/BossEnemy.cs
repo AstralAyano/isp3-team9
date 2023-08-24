@@ -6,7 +6,6 @@ public class BossEnemy : EnemyController
 {
     private int attackToUse;
 
-    private bool damagePlayer = false;
     private Collider2D triggerCollider = null;
 
     [SerializeField] private GameObject ladderPrefab;

@@ -73,7 +73,7 @@ public class UISkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public void ActivateNode()
     {
-        if (isActivatable && !isActivated)
+        if (isActivatable && !isActivated && book.skillPointAmt > 0)
         {
             isActivated = true;
             for (int i = 0; i < adjacentNodes.Count; i++)
@@ -88,6 +88,7 @@ public class UISkillNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             cb.pressedColor = selectedColor;
             btn.colors = cb;
 
+            book.skillPointAmt--;
             book.statPointAmt++;
             if (statIndex >= 0 && statIndex <= 5)
             {

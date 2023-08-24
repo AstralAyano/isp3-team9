@@ -135,6 +135,7 @@ public abstract class EnemyController : MonoBehaviour
 
             GameObject player = GameObject.FindWithTag("Player");
             player.GetComponent<PlayerController>().GainXP(expDropped);
+            player.GetComponent<PlayerController>().GainUltCharge(10);
 
             // play anim
             ar.Play("AnimEnemyDeath");
@@ -155,8 +156,8 @@ public abstract class EnemyController : MonoBehaviour
             // Play Particles
             hurtParticles.Play();
 
-            // play anim
-
+            GameObject player = GameObject.FindWithTag("Player");
+            player.GetComponent<PlayerController>().GainUltCharge(10);
         }
     }
 
