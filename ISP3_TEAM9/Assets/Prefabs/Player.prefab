@@ -909,6 +909,7 @@ MonoBehaviour:
   ArcaneShotPrefab: {fileID: 3925729132500248789, guid: a0206c996a452b343b3eb51a460e79d9, type: 3}
   magicPrefab: {fileID: 1536097474418395924, guid: 844cef7de47bdac438fc60cf741a7677, type: 3}
   PaladinAuraPrefab: {fileID: 1991311167517984286, guid: af08a047202982c4a815423ce1d2a65a, type: 3}
+  ultChargeAdded: 0
   IsHealthMax: 0
   IsSpeedPotionActive: 0
   IsAtkPotionActive: 0
@@ -974,7 +975,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96a38e276c855a4eb070a708c148dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invSlots: []
+  invSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   invManager: {fileID: 0}
   controller: {fileID: 0}
 --- !u!61 &7963520640230783044

@@ -70,8 +70,6 @@ public class UIBookController : MonoBehaviour
     [Header("Settings Variables")]
     [SerializeField] public int defaultResolution;
     [SerializeField] private bool defaultFullscreen = true;
-    [SerializeField] private float defaultVolume = 0.5f;
-    [SerializeField] private float currentVolume;
 
     private int currPageNo = 0;
     private int nextPageNo = 0;
@@ -79,9 +77,6 @@ public class UIBookController : MonoBehaviour
     
     void Awake()
     {
-        // Set volume and resolution index to default values
-        currentVolume = defaultVolume;
-
         int currResolutionIndex = 0;
         float currRefreshRate;
 

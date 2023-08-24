@@ -12,10 +12,15 @@ public class PlayerLoadingController : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController[] animControllers; //Store animator controllers
 
+    [Header("Audio")]
+    public AudioSource[] audSrc;
+    public List<AudioClip> clips;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        audSrc = GetComponentsInChildren<AudioSource>();
 
         //Set the animator controller to use
         switch (playerStats.chosenClass)
@@ -38,8 +43,6 @@ public class PlayerLoadingController : MonoBehaviour
         }
     }
 
-
-
     private void LateUpdate()
     {
         //Find the correct animation
@@ -50,6 +53,19 @@ public class PlayerLoadingController : MonoBehaviour
                 //This way, any class's animation can be played
                 //ToString() does not give only the name, so need to get rid of the part at the end
                 animator.Play(animator.runtimeAnimatorController.animationClips[i].ToString().Replace(" (UnityEngine.AnimationClip)", ""));
+            }
+        }
+    }
+
+    public void PlaySound(int clip)
+    {
+        for (int i = 0; i < audSrc.Length; i++)
+        {
+            if (!audSrc[i].isPlaying)
+            {
+                audSrc[i].clip = clips[clip];
+                audSrc[i].Play();
+                break;
             }
         }
     }

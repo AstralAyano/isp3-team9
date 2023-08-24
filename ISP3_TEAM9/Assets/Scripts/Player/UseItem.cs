@@ -14,28 +14,21 @@ public class UseItem : MonoBehaviour
 
     private void Awake()
     {
+        invManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         controller = GetComponent<PlayerController>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (Input.inputString != null)
-        {
-            bool isNumber = int.TryParse(Input.inputString, out int number);
 
-            if (isNumber && number > 0 && number < 4)
-            {
-                UseSelectedItem(true);
-            }
-        }*/
+        GameObject[] goList = GameObject.FindGameObjectsWithTag("ConsumableSlot");
+
+        for (int i = 0; i < 3; i++)
+        {
+            //invSlots[i] = goList[i].GetComponent<InventorySlot>();
+        }
     }
 
     public void UseSelectedItem(bool consumable)
     {
         Item usingItem = invManager.GetSelectedItem(true, controller.IsHealthMax, controller.IsSpeedPotionActive, controller.IsDefensePotionActive, controller.IsAtkPotionActive, controller.IsAtkSpdPotionActive);
-        //InventorySlot slot = invSlots[selectedSlot];
-        //InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
-
+        
         if (usingItem != null)
         {
             if (consumable)

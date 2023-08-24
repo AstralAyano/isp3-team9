@@ -68,6 +68,11 @@ public class PlayerController : MonoBehaviour
     private float DefensePotionDuration;
     private float AtkSpdPotionDuration;
 
+    private float atkIncreasedBy = 0;
+    private float atkSpdIncreasedBy = 0;
+    private float defIncreasedBy = 0;
+    private float moveSpdIncreasedBy = 0;
+
     private SpriteRenderer sr;
 
     public enum playerStates
@@ -211,7 +216,7 @@ public class PlayerController : MonoBehaviour
         CheckIsDefensePotionActive();
         CheckIsSpeedPotionActive();
 
-        Debug.Log(ultCharge);
+        //Debug.Log(IsHealthMax);
     }
 
     // Update is called once per frame
@@ -612,40 +617,59 @@ public class PlayerController : MonoBehaviour
     {
         playerStats.chosenStats.exp += amount;
     }
+    
     public void GainHP(int percentage)
     {
-        float multiplier = percentage / 100;
-        if (playerStats.chosenStats.health != playerStats.chosenStats.maxHealth)
+        float multiplier = (float)percentage / 100;
+
+        if (playerStats.chosenStats.health < playerStats.chosenStats.maxHealth)
         {
             playerStats.chosenStats.health += (int)((float)playerStats.chosenStats.maxHealth * multiplier);
-
         }
-        // if player health not equal to max health
-        // health +=
-        // max health * multiplier
     }
+
     public void GainAttackBoost(int percentage)
     {
-        float multiplier = percentage / 100;
-        playerStats.chosenStats.attack += (int)((float)playerStats.chosenStats.attack * multiplier);
+        if (IsAtkPotionActive)
+        {
+            IsAtkPotionActive = true;
+            float multiplier = (float)percentage / 100;
+            atkIncreasedBy = playerStats.chosenStats.attack * multiplier;
+            playerStats.chosenStats.attack += (int)atkIncreasedBy;
+        }
     }
 
     public void GainDefenseBoost(int percentage)
     {
-        float multiplier = percentage / 100;
-        playerStats.chosenStats.defense += (int)((float)playerStats.chosenStats.defense * multiplier);
+        if (!IsDefensePotionActive)
+        {
+            IsDefensePotionActive = true;
+            float multiplier = (float)percentage / 100;
+            defIncreasedBy = playerStats.chosenStats.defense * multiplier;
+            playerStats.chosenStats.defense += (int)defIncreasedBy;
+        }
     }
 
     public void GainAtkSpdBoost(int percentage)
     {
-        float multiplier = percentage / 100;
-        playerStats.chosenStats.attackInterval -= (int)((float)playerStats.chosenStats.attackInterval * multiplier);
+        if (!IsAtkSpdPotionActive)
+        {
+            IsAtkSpdPotionActive = true;
+            float multiplier = (float)percentage / 100;
+            atkSpdIncreasedBy = playerStats.chosenStats.attackInterval * multiplier;
+            playerStats.chosenStats.attackInterval -= (int)atkSpdIncreasedBy;
+        }
     }
 
     public void GainMovementBoost(int percentage)
     {
-        float multiplier = percentage / 100;
-        playerStats.chosenStats.moveSpeed += (int)((float)playerStats.chosenStats.moveSpeed * multiplier);
+        if (!IsSpeedPotionActive)
+        {
+            IsSpeedPotionActive = true;
+            float multiplier = (float)percentage / 100;
+            moveSpdIncreasedBy = playerStats.chosenStats.moveSpeed * multiplier;
+            playerStats.chosenStats.moveSpeed += (int)moveSpdIncreasedBy;
+        }
     }
 
     private void PlayerDeath()
@@ -732,21 +756,27 @@ public class PlayerController : MonoBehaviour
 
     void CheckIsHealthMax()
     {
-        if (playerStats.chosenStats.maxHealth == playerStats.chosenStats.health)
+        if (playerStats.chosenStats.health >= playerStats.chosenStats.maxHealth)
         {
             IsHealthMax = true;
         }
+        else
+        {
+            IsHealthMax = false;
+        }
     }
 
-    void CheckIsSpeedPotionActive()
+    void CheckIsAtkPotionActive()
     {
-        if (IsSpeedPotionActive)
+        if (IsAtkPotionActive)
         {
-            SpdPotionDuration += Time.deltaTime;
-            if (SpdPotionDuration >= 15)
+            AtkPotionDuration += Time.deltaTime;
+            if (AtkPotionDuration >= 8)
             {
-                IsSpeedPotionActive = false;
-                SpdPotionDuration = 0;
+                IsAtkPotionActive = false;
+                AtkPotionDuration = 0;
+
+                playerStats.chosenStats.attack -= (int)atkIncreasedBy;
             }
         }
     }
@@ -760,6 +790,8 @@ public class PlayerController : MonoBehaviour
             {
                 IsAtkSpdPotionActive = false;
                 AtkSpdPotionDuration = 0;
+
+                playerStats.chosenStats.attackSpeed += (int)atkSpdIncreasedBy;
             }
         }
     }
@@ -773,19 +805,23 @@ public class PlayerController : MonoBehaviour
             {
                 IsDefensePotionActive = false;
                 DefensePotionDuration = 0;
+
+                playerStats.chosenStats.defense -= (int)defIncreasedBy;
             }
         }
     }
 
-    void CheckIsAtkPotionActive()
+    void CheckIsSpeedPotionActive()
     {
-        if (IsAtkPotionActive)
+        if (IsSpeedPotionActive)
         {
-            AtkPotionDuration += Time.deltaTime;
-            if (AtkPotionDuration >= 8)
+            SpdPotionDuration += Time.deltaTime;
+            if (SpdPotionDuration >= 15)
             {
-                IsAtkPotionActive = false;
-                AtkPotionDuration = 0;
+                IsSpeedPotionActive = false;
+                SpdPotionDuration = 0;
+
+                playerStats.chosenStats.moveSpeed -= (int)moveSpdIncreasedBy;
             }
         }
     }

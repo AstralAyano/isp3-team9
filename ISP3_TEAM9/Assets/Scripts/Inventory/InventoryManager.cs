@@ -85,7 +85,7 @@ public class InventoryManager : MonoBehaviour
         invItem.InitialiseItem(item);
     }
 
-    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isSprintPotion, bool isDefensePotion, bool isAttackPotion,bool IsAtkSpdPotion)
+    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isSprintPotion, bool isDefensePotion, bool isAttackPotion, bool isAtkSpdPotion)
     {
         InventorySlot slot = invSlots[selectedSlot];
         InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -111,7 +111,7 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Defense Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
-                else if (item.itemName.Contains("Attack Speed Potion") && IsAtkSpdPotion)
+                else if (item.itemName.Contains("Attack Speed Potion") && isAtkSpdPotion)
                 {
                     Debug.Log("Attack Speed Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
