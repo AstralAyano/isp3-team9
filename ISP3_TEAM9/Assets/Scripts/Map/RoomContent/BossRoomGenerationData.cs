@@ -39,9 +39,9 @@ public class BossRoomGenerationData : BaseRoomGenerationData
         GameObject playerObject
             = prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
 
+        placedObjects.AddRange(prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper));
         placedObjects.Add(playerObject);
 
-        placedObjects.AddRange(prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper));
 
         return placedObjects;
     }

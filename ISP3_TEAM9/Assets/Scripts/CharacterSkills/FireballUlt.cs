@@ -51,7 +51,7 @@ public class FireballUlt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             IsExploded = true;
@@ -61,6 +61,16 @@ public class FireballUlt : MonoBehaviour
             ActivateTimer = true;
             Debug.Log("die fire part 1");
             other.gameObject.GetComponent<EnemyController>().TakeDamage(30);
+        }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            IsExploded = true;
+            secondCollider.SetActive(true);
+            FireBallGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            FireBallGFX2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
+            ActivateTimer = true;
+            Debug.Log("die fire part 1");
         }
     }
 

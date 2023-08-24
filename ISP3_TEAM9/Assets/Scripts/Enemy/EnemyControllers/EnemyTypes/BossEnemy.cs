@@ -9,6 +9,9 @@ public class BossEnemy : EnemyController
     private bool damagePlayer = false;
     private Collider2D triggerCollider = null;
 
+    [SerializeField] private GameObject ladderPrefab;
+    private bool isLadderSpawned = false;
+
     void Start()
     {
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
@@ -34,8 +37,20 @@ public class BossEnemy : EnemyController
             case State.ATTACK:
                 BossAttack();
                 break;
+            case State.DEAD:
+                BossDeath();
+                break;
         }
         animToPlay = "AnimEnemy" + enemyPF.animDir + "Walk";
+    }
+
+    private void BossDeath()
+    {
+        if (!isLadderSpawned)
+        {
+            isLadderSpawned = true;
+            Instantiate(ladderPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     public override void PlayerInAttackRange(Collider2D other)
