@@ -600,6 +600,29 @@ public class PlayerController : MonoBehaviour
         // health +=
         // max health * multiplier
     }
+    public void GainAttackBoost(int percentage)
+    {
+        float multiplier = percentage / 100;
+        playerStats.chosenStats.attack += (int)((float)playerStats.chosenStats.attack * multiplier);
+    }
+
+    public void GainDefenseBoost(int percentage)
+    {
+        float multiplier = percentage / 100;
+        playerStats.chosenStats.defense += (int)((float)playerStats.chosenStats.defense * multiplier);
+    }
+
+    public void GainAtkSpdBoost(int percentage)
+    {
+        float multiplier = percentage / 100;
+        playerStats.chosenStats.attackInterval -= (int)((float)playerStats.chosenStats.attackInterval * multiplier);
+    }
+
+    public void GainMovementBoost(int percentage)
+    {
+        float multiplier = percentage / 100;
+        playerStats.chosenStats.moveSpeed += (int)((float)playerStats.chosenStats.moveSpeed * multiplier);
+    }
 
     private void PlayerDeath()
     {

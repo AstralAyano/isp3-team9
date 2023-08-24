@@ -78,7 +78,7 @@ public class InventoryManager : MonoBehaviour
         invItem.InitialiseItem(item);
     }
 
-    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isSprintPotiton, bool isDefensePotion, bool isAttackSpdPotion,bool IsAtkSpdPotion)
+    public Item GetSelectedItem(bool consumable, bool isHealthMax, bool isSprintPotion, bool isDefensePotion, bool isAttackPotion,bool IsAtkSpdPotion)
     {
         InventorySlot slot = invSlots[selectedSlot];
         InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -97,6 +97,26 @@ public class InventoryManager : MonoBehaviour
                 else if (item.name.Contains("Big Health Potion") && isHealthMax)
                 {
                     Debug.Log("Health is full.");
+                    //sysText.DisplayText("You can't use this scroll here.");
+                }
+                else if (item.name.Contains("Defense Potion") && isDefensePotion)
+                {
+                    Debug.Log("Defense Potion Is Already Being Used.");
+                    //sysText.DisplayText("You can't use this scroll here.");
+                }
+                else if (item.name.Contains("Attack Speed Potion") && IsAtkSpdPotion)
+                {
+                    Debug.Log("Attack Speed Potion Is Already Being Used.");
+                    //sysText.DisplayText("You can't use this scroll here.");
+                }
+                else if (item.name.Contains("Attack Potion") && isAttackPotion)
+                {
+                    Debug.Log("Attack Potion Is Already Being Used.");
+                    //sysText.DisplayText("You can't use this scroll here.");
+                }
+                else if (item.name.Contains("Sprint Potion") && isSprintPotion)
+                {
+                    Debug.Log("Sprint Potion Is Already Being Used.");
                     //sysText.DisplayText("You can't use this scroll here.");
                 }
                 else

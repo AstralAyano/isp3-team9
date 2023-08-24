@@ -52,6 +52,22 @@ public class UseItem : MonoBehaviour
                 {
                     controller.GainHP(item.HealPercent);
                 }
+                else if (item.name.Contains("Defense Potion") && !controller.IsDefensePotionActive)
+                {
+                    controller.GainDefenseBoost(item.DefensePercent);
+                }
+                else if (item.name.Contains("Attack Speed Potion") && !controller.IsAtkSpdPotionActive)
+                {
+                    controller.GainAtkSpdBoost(item.AttackSpdPercent);
+                }
+                else if (item.name.Contains("Attack Potion") && !controller.IsAtkPotionActive)
+                {
+                    controller.GainAttackBoost(item.AttackPercent);
+                }
+                else if (item.name.Contains("Sprint Potion") && !controller.IsSpeedPotionActive)
+                {
+                    controller.GainMovementBoost(item.MovementSpdPercent);
+                }
             }
 
             return item;
