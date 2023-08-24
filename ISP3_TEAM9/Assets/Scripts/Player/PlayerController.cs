@@ -125,6 +125,17 @@ public class PlayerController : MonoBehaviour
 
         InteractWithNPC();
 
+        if (PlayerInBattle())
+        {
+            Transform audManager = GameObject.Find("SceneLoader").GetComponent<Transform>();
+            audManager.SendMessage("InCombatRange", SendMessageOptions.DontRequireReceiver);
+        }
+        else if (!PlayerInBattle())
+        {
+            Transform audManager = GameObject.Find("SceneLoader").GetComponent<Transform>();
+            audManager.SendMessage("NotInCombatRange", SendMessageOptions.DontRequireReceiver);
+        }
+
         if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))
         {
             currentState = playerStates.Walk;
@@ -155,12 +166,6 @@ public class PlayerController : MonoBehaviour
         {
             currentState = playerStates.Ultimate;
 
-        }
-
-        //Spawned arrow follows player
-        if ((spawnedArrow != null) && (!spawnedArrow.GetComponent<ProjectileLauncher>().enabled))
-        {
-            spawnedArrow.transform.position = transform.position;
         }
 
         if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
@@ -222,6 +227,19 @@ public class PlayerController : MonoBehaviour
         lookDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         UpdateAnim();
+    }
+
+    private bool PlayerInBattle()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 5f);
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("EnemyHitbox"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     private void InteractWithNPC()
