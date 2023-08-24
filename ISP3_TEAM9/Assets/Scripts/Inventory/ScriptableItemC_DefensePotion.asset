@@ -12,18 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: ScriptableItemC_DefensePotion
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  stackable: 1
+  image: {fileID: -1227243603, guid: 505b1514236dc4646af413858585ca34, type: 3}
+  stackable: 0
   itemType: 1
   itemName: Defense Potion
   itemDesc: Increase defense by 30%
+  classResonance: 
   health: 0
-  maxHealth: 0
   attack: 0
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 0
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 0
   HealPercent: 0
   AttackPercent: 0
   DefensePercent: 30

@@ -17,10 +17,21 @@ MonoBehaviour:
   itemType: 0
   itemName: Ancient Coin
   itemDesc: Increase defense by 1.
+  classResonance: 
   health: 0
-  maxHealth: 0
   attack: 0
   defense: 1
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
+  healthMulti: 0
+  attackMulti: 0
+  defenseMulti: 0
+  attackSpeedMulti: 0
+  moveSpeedMulti: 0
+  projectileSpeedMulti: 0
+  HealPercent: 0
+  AttackPercent: 0
+  DefensePercent: 0
+  MovementSpdPercent: 0
+  AttackSpdPercent: 0

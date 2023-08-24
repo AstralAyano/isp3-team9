@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60e16ee135f0224dbd87ab8d19e0a44, type: 3}
   m_Name: ScriptableItemC_SmallHealthPotion
   m_EditorClassIdentifier: 
-  image: {fileID: 1713448524, guid: 15f2136883160a54b9f774ab15a60264, type: 3}
-  stackable: 1
+  image: {fileID: -1466038802, guid: 7bd58442ab368dd4dbf162115b42f8e2, type: 3}
+  stackable: 0
   itemType: 1
   itemName: Small Health Potion
   itemDesc: Restores 20% health
