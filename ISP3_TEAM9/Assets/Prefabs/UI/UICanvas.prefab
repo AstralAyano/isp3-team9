@@ -41872,10 +41872,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cdb7b5c0b79c449aad6bce9fa024e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audMix: {fileID: 0}
+  audMix: {fileID: 24100000, guid: bfc18136353a09c4985fc28d210c50b6, type: 2}
   masterSlider: {fileID: 1560821905071702377}
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  bgmSlider: {fileID: 1560821904823805567}
+  sfxSlider: {fileID: 1560821905496720274}
 --- !u!1 &1560821904823326177
 GameObject:
   m_ObjectHideFlags: 0
@@ -61199,8 +61199,6 @@ MonoBehaviour:
   brightnessSlider: {fileID: 1560821904523141197}
   defaultResolution: 0
   defaultFullscreen: 1
-  defaultVolume: 0.5
-  currentVolume: 0
 --- !u!114 &1941707737
 MonoBehaviour:
   m_ObjectHideFlags: 0

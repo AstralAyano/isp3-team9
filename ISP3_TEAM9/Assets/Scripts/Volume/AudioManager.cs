@@ -17,6 +17,10 @@ public class AudioManager : MonoBehaviour
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume");
         bgmSlider.value = PlayerPrefs.GetFloat("bgmVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+
+        audMix.SetFloat("masterVol", PlayerPrefs.GetFloat("masterVolume"));
+        audMix.SetFloat("bgmVol", PlayerPrefs.GetFloat("bgmVolume"));
+        audMix.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVolume"));
     }
 
     public void MasterVolumeApply()

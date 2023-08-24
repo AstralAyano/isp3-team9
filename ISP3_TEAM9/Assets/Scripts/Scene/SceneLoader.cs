@@ -79,8 +79,11 @@ public class SceneLoader : MonoBehaviour
         Destroy(gameObject);
         targetScene.allowSceneActivation = true;
 
-        UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
-        uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("Menu"))
+        {
+            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+            uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+        }
 
         Debug.Log("Next Scene : " + target);
 

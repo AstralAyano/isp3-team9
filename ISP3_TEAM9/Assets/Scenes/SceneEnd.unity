@@ -3609,6 +3609,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c86da33b7c976f4fbc067071dfb4640, type: 3}
+--- !u!114 &525134220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3695674662089268182, guid: 8c86da33b7c976f4fbc067071dfb4640, type: 3}
+  m_PrefabInstance: {fileID: 525134219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &719795286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4004,7 +4015,7 @@ MonoBehaviour:
   statsText: {fileID: 453435912}
   menuButton: {fileID: 2062179708}
   exitButton: {fileID: 1547844393}
-  globalLight: {fileID: 0}
+  globalLight: {fileID: 525134220}
   fadeDuration: 1
   fadeOutLight: 0
   fadeOutCanvasGroup: 0
