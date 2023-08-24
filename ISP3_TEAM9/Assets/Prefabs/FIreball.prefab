@@ -354,6 +354,7 @@ MonoBehaviour:
   secondCollider: {fileID: 236943369409788276}
   FireBallGFX: {fileID: 236943368682528284}
   FireBallGFX2: {fileID: 3034994265324498927}
+  playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
 --- !u!50 &8222015409187846376
 Rigidbody2D:
   serializedVersion: 4
