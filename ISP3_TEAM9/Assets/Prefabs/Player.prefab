@@ -934,16 +934,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79033a6746441f848b466502a900bc9e, type: 2}
   - {fileID: 11400000, guid: d602e4491e6d3114f9cce2414e74d00e, type: 2}
   itemsName:
-  - ItemAncientCoin
-  - ItemBrokenMask
-  - ItemBullHorn
-  - ItemDivineGoblet
-  - ItemFireRune
-  - ItemGoldenRod
-  - ItemMagicScepter
-  - ItemMysteriousOrb
-  - ItemSkullNecklace
-  - ItemStunSeed
+  - ItemA_AncientCoin
+  - ItemA_BrokenMask
+  - ItemA_BullHorn
+  - ItemA_DivineGoblet
+  - ItemA_FireRune
+  - ItemA_GoldenRod
+  - ItemA_MagicScepter
+  - ItemA_MysteriousOrb
+  - ItemA_SkullNecklace
+  - ItemA_StunSeed
 --- !u!61 &7963520640230783044
 BoxCollider2D:
   m_ObjectHideFlags: 0

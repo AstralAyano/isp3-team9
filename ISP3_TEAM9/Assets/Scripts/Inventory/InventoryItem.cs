@@ -74,8 +74,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
         {
             for (int i = 0; i < soItems.Length; i++)
             {
-                if (soItems[i].itemType.ToString() == "Artefact" &&
-                    item.name == soItems[i].itemName)
+                if (item.itemType.ToString() == "Artefact" &&
+                    item.itemName == soItems[i].itemName)
                 {
                     uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 0, soItems[i].health, soItems[i].healthMulti);
                     uiBook.ArtefactIncreaseStats(soItems[i].classResonance, 1, soItems[i].defense, soItems[i].defenseMulti);
@@ -91,8 +91,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEn
         {
             for (int i = 0; i < soItems.Length; i++)
             {
-                if (soItems[i].itemType.ToString() == "Artefact" &&
-                    item.name == soItems[i].itemName)
+                if (item.itemType.ToString() == "Artefact" &&
+                    item.itemName == soItems[i].itemName)
                 {
                     uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 0, soItems[i].health, soItems[i].healthMulti);
                     uiBook.ArtefactDecreaseStats(soItems[i].classResonance, 1, soItems[i].defense, soItems[i].defenseMulti);
