@@ -4,6 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,9 +42,11 @@ public class PlayerController : MonoBehaviour
 
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
+    private float maxSkillCooldownTimer = 0f;
     private float skillDurationTimer = 0f;
     private float ultCharge = 0f;
     private const int maxUltCharge = 100;
+    public bool ultChargeAdded;
 
     float interactRange = 5f;
 
@@ -155,19 +158,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             currentState = playerStates.Attack;
-            PlayerAttack(playerStats.chosenStats.attack, 1f, 10);
             //Debug.Log("Attacking");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             currentState = playerStates.Skill;
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             currentState = playerStates.Ultimate;
-            PlayerAttack(playerStats.chosenStats.attack, 2f, 0);
-
         }
 
         if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
@@ -201,6 +201,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (attackCooldownTimer <= 0f || skillCooldownTimer <= 0f)
+        {
+            ultChargeAdded = false;
+        }
+
         CheckIsHealthMax();
         CheckIsAtkPotionActive();
         CheckIsAtkSpdPotionActive();
@@ -221,14 +226,23 @@ public class PlayerController : MonoBehaviour
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
 
-        attackCooldownTimer -= Time.deltaTime;
-        skillCooldownTimer -= Time.deltaTime;
-        skillDurationTimer -= Time.deltaTime;
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
+        }
+        if (skillCooldownTimer > 0)
+        {
+            skillCooldownTimer -= Time.deltaTime;
+        }
+        if (skillDurationTimer > 0)
+        {
+            skillDurationTimer -= Time.deltaTime;
+        }
     }
 
     private void LateUpdate()
     {
-        lookDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookDir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
         lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         UpdateAnim();
     }
@@ -428,6 +442,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerSlashDown");
                 }
+                PlayerAttack(playerStats.chosenStats.attack, .5f, 10f);
                 break;
         }
 
@@ -448,28 +463,38 @@ public class PlayerController : MonoBehaviour
             case ScriptablePlayerStats.playerClass.Archer:
                 PlaySound(12);
                 skillCooldownTimer = 20;
+                SetMaxSkillCooldown(skillCooldownTimer);
                 skillDurationTimer = 10;
 
                 sr.color = Color.yellow;
                 playerStats.chosenStats.attackInterval -= 0.3f;
                 animator.speed += 0.3f;
+                GainUltCharge(20f);
                 break;
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
                 mageAttacktype = "skill";
+                skillCooldownTimer = 20;
+                SetMaxSkillCooldown(skillCooldownTimer);
+                skillDurationTimer = 10;
+
+                GainUltCharge(10f);
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 PlaySound(10);
                 skillCooldownTimer = 20;
+                SetMaxSkillCooldown(skillCooldownTimer);
                 skillDurationTimer = 10;
 
                 sr.color = Color.red;
                 playerStats.chosenStats.attack += 10;
+                GainUltCharge(10f);
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlaySound(11);
                 skillCooldownTimer = 20;
+                SetMaxSkillCooldown(skillCooldownTimer);
                 skillDurationTimer = 10;
 
                 PlayAnim("AnimPlayerCastDown");
@@ -478,6 +503,7 @@ public class PlayerController : MonoBehaviour
 
                 sr.color = Color.cyan;
                 playerStats.chosenStats.defense *= 125/100;
+                GainUltCharge(10f);
                 break;
         }
     }
@@ -546,6 +572,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayAnim("AnimPlayerUltDown");
                 }
+                PlayerAttack(playerStats.chosenStats.attack * 2, 1.5f, 0f);
                 ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
@@ -664,16 +691,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlayerAttack(int dmg, float range, int ultCharge)
+    private void PlayerAttack(int dmg, float range, float amount)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(lookDir.x, lookDir.y, 0), range);
         foreach (var collider in colliders)
         {
             if (collider.gameObject.CompareTag("EnemyHitbox"))
             {
                 collider.transform.parent.SendMessage("TakeDamage", dmg, SendMessageOptions.DontRequireReceiver);
-                this.ultCharge += ultCharge;
+                GainUltCharge(amount);
             }
+        }
+    }
+
+    public void GainUltCharge(float amount)
+    {
+        if (!ultChargeAdded && ultCharge < maxUltCharge)
+        {
+            ultChargeAdded = true;
+            ultCharge += amount;
         }
     }
 
@@ -685,6 +721,21 @@ public class PlayerController : MonoBehaviour
     public float GetMaxUltCharge()
     {
         return maxUltCharge;
+    }
+
+    public void SetMaxSkillCooldown(float amount)
+    {
+        maxSkillCooldownTimer = amount;
+    }
+
+    public float GetMaxSkillCooldown()
+    {
+        return maxSkillCooldownTimer;
+    }
+
+    public float GetSkillCooldown()
+    {
+        return skillCooldownTimer;
     }
 
     void CheckIsHealthMax()
