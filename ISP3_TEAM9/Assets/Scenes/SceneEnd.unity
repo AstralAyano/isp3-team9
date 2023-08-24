@@ -3243,9 +3243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeProfile: {fileID: 0}
+  audMix: {fileID: 0}
+  audMixGrp: []
   bookController: {fileID: 0}
   canUse: 1
-  resolutionDropdown: {fileID: 0}
 --- !u!4 &329952933
 Transform:
   m_ObjectHideFlags: 0
