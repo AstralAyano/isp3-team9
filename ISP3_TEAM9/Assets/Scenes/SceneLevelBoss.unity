@@ -10219,9 +10219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6b5f46c8d246b4ea3c5d7aa2c4c835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRoom: {fileID: 6896796617414109631, guid: efa9ce044706df1439d46a7efee9dd6e, type: 3}
-  EndPointRoom: {fileID: 8179193814338401251, guid: bdffeec8bd8a2cd468c84c3ddef67f3e, type: 3}
-  defaultRoom: {fileID: 4646956272834488505, guid: 9cf054d6a62a81e47b53c70c5bcdc726, type: 3}
+  playerRoom: {fileID: 5159287887421815875, guid: 82e27e235208cf44b8942c8fce7ccff8, type: 3}
+  EndPointRoom: {fileID: 5159287887421815875, guid: 82e27e235208cf44b8942c8fce7ccff8, type: 3}
+  defaultRoom: {fileID: 5159287887421815875, guid: 82e27e235208cf44b8942c8fce7ccff8, type: 3}
   graphTest: {fileID: 506356199}
   itemParent: {fileID: 354819254}
   cinemachineCamera: {fileID: 340503624}
