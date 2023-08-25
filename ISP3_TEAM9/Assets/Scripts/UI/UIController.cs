@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoadManager.DontDestroyOnLoad(this.gameObject);
         }
         else if (instance != null)
         {

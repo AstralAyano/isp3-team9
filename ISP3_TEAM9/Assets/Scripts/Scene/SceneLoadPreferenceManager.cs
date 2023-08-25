@@ -20,6 +20,11 @@ public class SceneLoadPreferenceManager : MonoBehaviour
 
     private bool localFullscreenBool;
 
+    void Awake()
+    {
+        DontDestroyOnLoadManager.DestroyAll();
+    }
+
     void Start()
     {
         if (canUse)
