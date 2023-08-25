@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

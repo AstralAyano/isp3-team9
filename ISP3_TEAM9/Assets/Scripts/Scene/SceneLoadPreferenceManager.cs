@@ -9,6 +9,9 @@ using UnityEngine.Audio;
 
 public class SceneLoadPreferenceManager : MonoBehaviour
 {
+    [Header("Player")]
+    [SerializeField] private ScriptablePlayerStats playerStats;
+
     [Header("References")]
     [SerializeField] private VolumeProfile volumeProfile;
     [SerializeField] private AudioMixer audMix;
@@ -23,6 +26,11 @@ public class SceneLoadPreferenceManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoadManager.DestroyAll();
+
+        playerStats.chosenBaseStats = playerStats.baseStats[ScriptablePlayerStats.playerClass.None];
+        playerStats.chosenStats = playerStats.currentStats[ScriptablePlayerStats.playerClass.None];
+        playerStats.chosenStatPoints = playerStats.currentStatPoints[ScriptablePlayerStats.playerClass.None];
+        playerStats.chosenStatMultipliers = playerStats.statMultipliers[ScriptablePlayerStats.playerClass.None];
     }
 
     void Start()
