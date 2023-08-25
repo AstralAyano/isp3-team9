@@ -56,7 +56,7 @@ public class EndController : MonoBehaviour
             GameObject gameTimer = FindObjectOfType<GameTimer>().gameObject;
 
             timeSpent = (int)GameTimer.timer;
-            Destroy(gameTimer, 0);
+            GameTimer.startClicked = false;
         }
 
         gridMenu.SetActive(true);

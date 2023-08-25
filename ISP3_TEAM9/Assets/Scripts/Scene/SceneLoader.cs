@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
     private void Awake()
     {
         onePercent = (endPos.y - startPos.y) / 100;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string sceneName)
@@ -76,7 +76,6 @@ public class SceneLoader : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        Destroy(gameObject);
         targetScene.allowSceneActivation = true;
 
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SceneMenu"))
