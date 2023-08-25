@@ -5265,7 +5265,7 @@ GameObject:
   - component: {fileID: 2042580814960836249}
   - component: {fileID: 982050822714435366}
   m_Layer: 8
-  m_Name: Boss
+  m_Name: BossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5371,7 +5371,7 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 5125891212960096399}
   health: 100
-  expDropped: 10
+  expDropped: 15
   attack: 15
   attackCD: 1
   attackDuration: 1.5
@@ -5442,7 +5442,7 @@ MonoBehaviour:
   target: {fileID: 0}
   nextWaypointDistance: 1
   reachedEndOfPath: 0
-  speed: 100
+  speed: 150
   attackToResolve: 0
   animDir: Down
 --- !u!61 &2042580814960836249
