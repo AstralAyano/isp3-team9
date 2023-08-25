@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private float ultCharge = 0f;
     private const int maxUltCharge = 100;
     public bool ultChargeAdded;
+    private bool isSkillsCleared = true;
 
     float interactRange = 5f;
 
@@ -178,7 +179,6 @@ public class PlayerController : MonoBehaviour
         {
             currentState = playerStates.Attack;
         }
-
         else if (Input.GetKeyDown(KeyCode.E))
         {
             currentState = playerStates.Skill;
@@ -238,6 +238,8 @@ public class PlayerController : MonoBehaviour
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
 
+        Debug.Log("Attack Interval: " + playerStats.chosenStats.attackInterval);
+
         if (attackCooldownTimer > 0)
         {
             attackCooldownTimer -= Time.deltaTime;
@@ -255,13 +257,16 @@ public class PlayerController : MonoBehaviour
         {
             skillCooldownTimer = 0;
         }
-        if (skillDurationTimer > 0)
+        if (skillDurationTimer >= 0)
         {
             skillDurationTimer -= Time.deltaTime;
         }
         else
         {
-            ClearSkillEffects();
+            if (!isSkillsCleared)
+            {
+                ClearSkillEffects();
+            }
             skillDurationTimer = 0;
         }
     }
@@ -482,6 +487,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        isSkillsCleared = false;
 
         switch (playerStats.chosenClass)
         {
@@ -604,16 +610,16 @@ public class PlayerController : MonoBehaviour
 
     private void ClearSkillEffects()
     {
-        if (skillDurationTimer > 0)
+        if (skillDurationTimer >= 0)
         {
             return;
         }
+        isSkillsCleared = true;
         sr.color = Color.white;
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
                 playerStats.chosenStats.attackInterval += 0.3f;
-                animator.speed -= 0.3f;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 playerStats.chosenStats.attack -= 10;

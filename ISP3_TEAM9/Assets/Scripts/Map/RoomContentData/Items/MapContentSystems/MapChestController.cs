@@ -11,11 +11,12 @@ public class MapChestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && playerWithinRange && !opened)
+
+        if (Input.GetKeyDown(KeyCode.F) && !opened && playerWithinRange)
         {
             opened = true;
             Instantiate(itemList.GetRandomItem(), transform.position, Quaternion.identity);
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject);
         }
     }
 
