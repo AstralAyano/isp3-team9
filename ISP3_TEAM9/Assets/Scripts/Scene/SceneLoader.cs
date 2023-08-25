@@ -91,7 +91,6 @@ public class SceneLoader : MonoBehaviour
             uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
             UIBookController uiBook = uiControl.GetComponentInChildren<UIBookController>();
             uiBook.GetReferences();
-            Debug.Log("Passed through TryCatch");
         }
         catch (Exception)
         {

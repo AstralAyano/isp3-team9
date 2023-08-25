@@ -56140,6 +56140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
+  levelText: {fileID: 0}
   healthBar: {fileID: 1560821905416840067}
   skillSlider: {fileID: 1560821904707970790}
   ultSlider: {fileID: 1560821904451549376}
@@ -61570,7 +61571,7 @@ MonoBehaviour:
   - 100
   classText: {fileID: 1560821905341704714}
   levelText: {fileID: 1560821903909449668}
-  statPointAmt: 100
+  statPointAmt: 1
   skillPointAmt: 0
   maxExp: 100
   StatPointsText: {fileID: 1560821903898757626}
