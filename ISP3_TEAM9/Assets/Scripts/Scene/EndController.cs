@@ -44,7 +44,7 @@ public class EndController : MonoBehaviour
     private float titleCounter = 0;
 
     private int timeSpent = 0;
-    public static int roomsCleared = 0;
+    public static int floorsCleared = 0;
 
     [Header("Stats")]
     [SerializeField] private ScriptablePlayerStats playerStats;
@@ -59,6 +59,8 @@ public class EndController : MonoBehaviour
             GameTimer.startClicked = false;
         }
 
+        floorsCleared = UIController.floorNum;
+
         gridMenu.SetActive(true);
 
         uiCanvasGroup = uiCanvasGroup.GetComponent<CanvasGroup>();
@@ -66,7 +68,7 @@ public class EndController : MonoBehaviour
         statsText.text = "	     Stats:\n" + 
                          "--------------------------\n" +
                          "Time Taken:\n" + DisplayTime() + "\n" +
-                         "Rooms Cleared: " + roomsCleared + "\n" +
+                         "Rooms Cleared: " + floorsCleared + "\n" +
                          "Class: " + playerStats.chosenClass + "\n" +
                          "Level: " + playerStats.chosenStats.level + "\n" +
                          "--------------------------\n";
