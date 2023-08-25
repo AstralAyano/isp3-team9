@@ -149,7 +149,7 @@ public abstract class EnemyController : MonoBehaviour
             // destroy self
             Destroy(gameObject, 0.75f);
         }
-        else
+        else if (!(health <= 0))
         {
             health -= damage;
 
