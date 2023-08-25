@@ -135,6 +135,8 @@ public class DialogueManager : MonoBehaviour
 
     public void TriggerDialogue(npcType triggeredNPC)
     {
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+
         currLineNo = 0;
 
         if ((int)triggeredNPC >= 2 && (int)triggeredNPC <= 5)
@@ -393,6 +395,7 @@ public class DialogueManager : MonoBehaviour
         uiHUD.SetToolTip();
 
         player.SetAnimator();
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void PromptNo()
@@ -400,6 +403,7 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 1;
 
         classPrompt.SetActive(false);
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
