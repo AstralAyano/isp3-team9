@@ -17,8 +17,8 @@ MonoBehaviour:
   itemType: 0
   itemName: Golden Rod
   itemDesc: If the player is of the mage class, increase projectile speed by 1 and
-    increase attack by 1. Does not work on other classes.
-  classResonance: 
+    increase attack by 2. Does not work on other classes.
+  classResonance: mage
   health: 0
   attack: 0
   defense: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   moveSpeed: 0
   projectileSpeed: 0
   healthMulti: 0
-  attackMulti: 1
+  attackMulti: 2
   defenseMulti: 0
   attackSpeedMulti: 0
   moveSpeedMulti: 0

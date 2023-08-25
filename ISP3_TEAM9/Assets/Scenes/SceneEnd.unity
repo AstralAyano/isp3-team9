@@ -3475,7 +3475,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\t     Stats\n--------------------------\nTime Taken: \n0 hrs 0 mins 0
-    secs\nRooms Cleared: 0\nClass: None\nLevel: 0\n--------------------------"
+    secs\nFloors Cleared: 0\nClass: None\nLevel: 0\n--------------------------"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6802bf885186d74fa18d7f03e8f7f60, type: 2}
   m_sharedMaterial: {fileID: 1153623899841523571, guid: b6802bf885186d74fa18d7f03e8f7f60, type: 2}

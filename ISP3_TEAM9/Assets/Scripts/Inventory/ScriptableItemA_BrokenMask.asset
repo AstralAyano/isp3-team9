@@ -16,7 +16,7 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Broken Mask
-  itemDesc: Increase defense by 2 but at the cost of 1 attack.
+  itemDesc: Increase defense by 2 but lose 1 attack.
   classResonance: 
   health: 0
   attack: -1
