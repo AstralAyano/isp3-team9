@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,7 +17,14 @@ public class SceneLobbyManager : MonoBehaviour
 
     private void Start()
     {
-        sceneLoader = GameObject.FindWithTag("SceneLoader").GetComponent<SceneLoader>();
+        try
+        {
+            sceneLoader = GameObject.FindWithTag("SceneLoader").GetComponent<SceneLoader>();
+        }
+        catch (Exception)
+        {
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
