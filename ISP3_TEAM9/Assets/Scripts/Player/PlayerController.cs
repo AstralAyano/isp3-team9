@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -136,13 +137,27 @@ public class PlayerController : MonoBehaviour
 
         if (PlayerInBattle())
         {
-            Transform audManager = GameObject.Find("SceneLoader").GetComponent<Transform>();
-            audManager.SendMessage("InCombatRange", SendMessageOptions.DontRequireReceiver);
+            try
+            {
+                Transform audManager = GameObject.Find("LoadReferences").GetComponent<Transform>();
+                audManager.SendMessage("InCombatRange", SendMessageOptions.DontRequireReceiver);
+            }
+            catch (Exception)
+            {
+                //Debug
+            }
         }
         else if (!PlayerInBattle())
         {
-            Transform audManager = GameObject.Find("SceneLoader").GetComponent<Transform>();
-            audManager.SendMessage("NotInCombatRange", SendMessageOptions.DontRequireReceiver);
+            try
+            {
+                Transform audManager = GameObject.Find("LoadReferences").GetComponent<Transform>();
+                audManager.SendMessage("NotInCombatRange", SendMessageOptions.DontRequireReceiver);
+            }
+            catch (Exception)
+            {
+                //Debug
+            }
         }
 
         if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))

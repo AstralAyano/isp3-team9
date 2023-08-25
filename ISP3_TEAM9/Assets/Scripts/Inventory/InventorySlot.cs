@@ -18,6 +18,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 if (transform.gameObject.CompareTag("ArtefactSlot"))
                 {
                     invItem.parentAfterDrag = transform;
+                    transform.parent.transform.parent.Find("Equip").GetComponent<AudioSource>().Play();
                 }
                 else if (transform.gameObject.CompareTag("InvSlot"))
                 {

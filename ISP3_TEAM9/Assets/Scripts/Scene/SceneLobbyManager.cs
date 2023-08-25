@@ -14,6 +14,11 @@ public class SceneLobbyManager : MonoBehaviour
 
     public static bool doorTouched = false;
 
+    private void Start()
+    {
+        sceneLoader = GameObject.FindWithTag("SceneLoader").GetComponent<SceneLoader>();
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None)

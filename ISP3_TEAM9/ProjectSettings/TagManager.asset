@@ -26,6 +26,7 @@ TagManager:
   - UI
   - Item
   - InventoryManager
+  - SceneLoader
   layers:
   - Default
   - TransparentFX

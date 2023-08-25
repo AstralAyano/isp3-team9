@@ -28,8 +28,15 @@ public class SceneLoader : MonoBehaviour
         
         SceneManager.LoadScene("SceneLoading");
 
-        UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
-        uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneLoading"));
+        try
+        {
+            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+            uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneLoading"));
+        }
+        catch (Exception)
+        {
+            //Debug
+        }
     }
 
     public static void LoaderCallback()
@@ -80,8 +87,15 @@ public class SceneLoader : MonoBehaviour
 
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SceneMenu"))
         {
-            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
-            uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+            try
+            {
+                UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+                uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+            }
+            catch (Exception)
+            {
+                //Debug
+            }
         }
 
         Debug.Log("Next Scene : " + target);
