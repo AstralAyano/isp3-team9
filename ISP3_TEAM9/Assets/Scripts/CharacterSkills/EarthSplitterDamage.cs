@@ -12,7 +12,7 @@ public class EarthSplitterDamage : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 1f)
+        if (timer >= 0.5f)
         {
             Destroy(gameObject);
         }
