@@ -242,23 +242,23 @@ public class PlayerController : MonoBehaviour
         {
             attackCooldownTimer -= Time.deltaTime;
         }
+        else
+        {
+            attackCooldownTimer = 0;
+        }
         if (skillCooldownTimer > 0)
         {
             skillCooldownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            skillCooldownTimer = 0;
         }
         if (skillDurationTimer > 0)
         {
             skillDurationTimer -= Time.deltaTime;
         }
-        if (attackCooldownTimer < 0)
-        {
-            attackCooldownTimer = 0;
-        }
-        if (skillCooldownTimer < 0)
-        {
-            skillCooldownTimer = 0;
-        }
-        if (skillDurationTimer < 0)
+        else
         {
             ClearSkillEffects();
             skillDurationTimer = 0;
@@ -491,7 +491,7 @@ public class PlayerController : MonoBehaviour
                 SetMaxSkillCooldown(skillCooldownTimer);
                 skillDurationTimer = 10;
 
-                sr.color = Color.yellow;
+                sr.color = new Color(139, 128, 0, 1f);
                 playerStats.chosenStats.attackInterval -= 0.3f;
                 animator.speed += 0.3f;
                 break;
