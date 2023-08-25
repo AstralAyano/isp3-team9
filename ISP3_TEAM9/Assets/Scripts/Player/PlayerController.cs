@@ -396,6 +396,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             attackCooldownTimer = playerStats.chosenStats.attackInterval;
+
+            for (int i = 0; i < animator.runtimeAnimatorController.animationClips.Length; i++)
+            {
+                if (animator.runtimeAnimatorController.animationClips[i].ToString().Contains("PlayerAttack"))
+                {
+                    //This way, any class's animation can be played
+                    //ToString() does not give only the name, so need to get rid of the part at the end
+                    //animator.runtimeAnimatorController.animationClips[i]
+                }
+            }
+
+            animator.speed = Mathf.Clamp(1 - (playerStats.chosenStats.attackInterval - playerStats.chosenBaseStats.attackInterval), 0.01f, Mathf.Infinity);
         }
 
         //Play different attack animation based on chosenClass
@@ -470,8 +482,6 @@ public class PlayerController : MonoBehaviour
                 PlayerAttack(playerStats.chosenStats.attack, .5f);
                 break;
         }
-
-        
     }
 
     private void PlayerSkill()
