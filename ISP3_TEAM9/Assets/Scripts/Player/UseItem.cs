@@ -8,8 +8,6 @@ public class UseItem : MonoBehaviour
     public InventorySlot[] invSlots;
     public InventoryManager invManager;
 
-    int selectedSlot = -1;
-
     [HideInInspector] public PlayerController controller;
 
     private void Awake()

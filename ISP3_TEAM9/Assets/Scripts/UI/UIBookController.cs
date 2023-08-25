@@ -69,7 +69,6 @@ public class UIBookController : MonoBehaviour
 
     [Header("Settings Variables")]
     [SerializeField] public int defaultResolution;
-    [SerializeField] private bool defaultFullscreen = true;
 
     private int currPageNo = 0;
     private int nextPageNo = 0;

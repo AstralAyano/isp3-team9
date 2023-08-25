@@ -115,6 +115,34 @@ public class DialogueManager : MonoBehaviour
         hudUI = GameObject.FindGameObjectsWithTag("HUD");
 
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        switch (playerStats.chosenClass)
+        {
+            case ScriptablePlayerStats.playerClass.Barbarian:
+                npcObj[0].SetActive(false);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(true);
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(false);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(true);
+                break;
+            case ScriptablePlayerStats.playerClass.Archer:
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(false);
+                npcObj[3].SetActive(true);
+                break;
+            case ScriptablePlayerStats.playerClass.Mage:
+                npcObj[0].SetActive(true);
+                npcObj[1].SetActive(true);
+                npcObj[2].SetActive(true);
+                npcObj[3].SetActive(false);
+                break;
+        }
     }
 
     public void TriggerDialogue(npcType triggeredNPC)
