@@ -29,7 +29,7 @@ public class ArcaneShotPart2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed, ForceMode2D.Impulse);
+        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed/50, ForceMode2D.Impulse);
         TimeBeforeActivate += Time.deltaTime;
     }
 

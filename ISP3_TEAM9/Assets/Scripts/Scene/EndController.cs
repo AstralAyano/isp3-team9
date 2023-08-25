@@ -68,7 +68,7 @@ public class EndController : MonoBehaviour
         statsText.text = "	     Stats:\n" + 
                          "--------------------------\n" +
                          "Time Taken:\n" + DisplayTime() + "\n" +
-                         "Rooms Cleared: " + floorsCleared + "\n" +
+                         "Floors Cleared: " + floorsCleared + "\n" +
                          "Class: " + playerStats.chosenClass + "\n" +
                          "Level: " + playerStats.chosenStats.level + "\n" +
                          "--------------------------\n";

@@ -11,6 +11,9 @@ public class ArcaneShot : MonoBehaviour
     private float angleInRad;
     private Vector2 dir;
 
+    [SerializeField]
+    private ScriptablePlayerStats playerStats;
+
     void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,7 +25,7 @@ public class ArcaneShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(dir * 0.1f, ForceMode2D.Impulse);
+        rb.AddForce(dir * playerStats.chosenStats.projectileSpeed/50, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
