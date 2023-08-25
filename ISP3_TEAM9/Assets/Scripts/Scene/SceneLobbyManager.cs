@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLobbyManager : MonoBehaviour
 {
-    [SerializeField]
     private SceneLoader sceneLoader;
 
     [SerializeField]
