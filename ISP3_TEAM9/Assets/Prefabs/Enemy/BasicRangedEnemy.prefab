@@ -5353,7 +5353,7 @@ MonoBehaviour:
   enemyPF: {fileID: 8572195380922931005}
   health: 30
   expDropped: 10
-  attack: 10
+  attack: 5
   attackCD: 1.5
   attackDuration: 1
   spawnPos: {fileID: 3105626331021124506}

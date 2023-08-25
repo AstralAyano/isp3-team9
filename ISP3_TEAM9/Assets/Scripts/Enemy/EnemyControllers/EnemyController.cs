@@ -25,7 +25,7 @@ public abstract class EnemyController : MonoBehaviour
 
     [SerializeField] protected float health = 50;
     [SerializeField] protected int expDropped = 10;
-    public int attack = 10;
+    public int attack = 4;
     [SerializeField] protected float attackCD = 0.5f;
     [SerializeField] protected float attackDuration = 0.5f;
 
@@ -157,7 +157,7 @@ public abstract class EnemyController : MonoBehaviour
             hurtParticles.Play();
 
             GameObject player = GameObject.FindWithTag("Player");
-            player.GetComponent<PlayerController>().GainUltCharge(10);
+            player.GetComponent<PlayerController>().GainUltCharge(5);
         }
     }
 
