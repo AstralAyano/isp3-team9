@@ -751,22 +751,22 @@ public class PlayerController : MonoBehaviour
         //Right
         if (lookAngle < 45 && lookAngle > -45)
         {
-            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, -90));
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x + .5f, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, -90));
         }
         //Left
         else if (lookAngle > 135 || lookAngle < -135)
         {
-            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 90));
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x - .5f, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 90));
         }
         //Up
         else if (lookAngle > 45 && lookAngle < 135)
         {
-            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.identity);
         }
         //Down
         else if (lookAngle < -45 && lookAngle > -135)
         {
-            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.Euler(0, 0, 180));
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Quaternion.Euler(0, 0, 180));
         }
     }
 
