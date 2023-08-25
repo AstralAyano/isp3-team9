@@ -188,11 +188,6 @@ public class PlayerController : MonoBehaviour
             currentState = playerStates.Ultimate;
         }
 
-        if ((skillDurationTimer <= 0) && (skillDurationTimer > -1))
-        {
-            ClearSkillEffects();
-        }
-
         if (PalaActivateUlt)
         {
             sr.color = Color.green;
@@ -254,6 +249,19 @@ public class PlayerController : MonoBehaviour
         if (skillDurationTimer > 0)
         {
             skillDurationTimer -= Time.deltaTime;
+        }
+        if (attackCooldownTimer < 0)
+        {
+            attackCooldownTimer = 0;
+        }
+        if (skillCooldownTimer < 0)
+        {
+            skillCooldownTimer = 0;
+        }
+        if (skillDurationTimer < 0)
+        {
+            ClearSkillEffects();
+            skillDurationTimer = 0;
         }
     }
 
@@ -595,6 +603,10 @@ public class PlayerController : MonoBehaviour
 
     private void ClearSkillEffects()
     {
+        if (skillDurationTimer > 0)
+        {
+            return;
+        }
         sr.color = Color.white;
         switch (playerStats.chosenClass)
         {
