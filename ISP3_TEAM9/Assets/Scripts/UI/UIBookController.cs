@@ -283,7 +283,7 @@ public class UIBookController : MonoBehaviour
                     break;
                 case 3:
                     playerStats.chosenStatPoints.attackSpeed++;
-                    playerStats.chosenStats.attackInterval += playerStats.chosenStatMultipliers.attackSpeed * playerStats.chosenBaseStats.attackInterval;
+                    playerStats.chosenStats.attackInterval -= playerStats.chosenStatMultipliers.attackSpeed * playerStats.chosenBaseStats.attackInterval;
                     break;
                 case 4:
                     playerStats.chosenStatPoints.moveSpeed++;
