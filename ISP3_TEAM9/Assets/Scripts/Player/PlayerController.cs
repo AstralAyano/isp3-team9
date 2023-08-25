@@ -504,6 +504,9 @@ public class PlayerController : MonoBehaviour
                 break;
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
+                skillCooldownTimer = 7;
+                SetMaxSkillCooldown(skillCooldownTimer);
+                skillDurationTimer = 0;
                 PlayAnim("AnimPlayerCastDown");
                 mageAttacktype = "skill";
 
@@ -576,6 +579,7 @@ public class PlayerController : MonoBehaviour
             case ScriptablePlayerStats.playerClass.Mage:
                 PlayAnim("AnimPlayerCastDown");
                 mageAttacktype = "ultimate";
+                ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 //Right
