@@ -14,7 +14,7 @@ public class BasicMeleeEnemy : EnemyController
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
 
-        health += (UIController.floorNum - 1) * 10;
+        health += (UIController.floorNum - 1) * 20;
         attack += (UIController.floorNum - 1) * 2;
         expDropped += (UIController.floorNum - 1) * 5;
     }

@@ -17,8 +17,8 @@ public class BasicRangedEnemy : EnemyController
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
 
-        health += (UIController.floorNum - 1) * 10;
-        attack += (UIController.floorNum - 1) * 2;
+        health += (UIController.floorNum - 1) * 15;
+        attack += (UIController.floorNum - 1) * 3;
         expDropped += (UIController.floorNum - 1) * 5;
     }
 
