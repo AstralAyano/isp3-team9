@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
 
-    void Awake()
+    void Start()
     {
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume");
         bgmSlider.value = PlayerPrefs.GetFloat("bgmVolume");

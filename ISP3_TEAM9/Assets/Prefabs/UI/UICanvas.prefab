@@ -42321,7 +42321,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1941707737}
+      - m_Target: {fileID: 1511749728}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: BGMVolumeApply
         m_Mode: 1
@@ -49476,7 +49476,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1941707737}
+      - m_Target: {fileID: 1511749728}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: MasterVolumeApply
         m_Mode: 1
@@ -61055,7 +61055,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1941707737}
+      - m_Target: {fileID: 1511749728}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXVolumeApply
         m_Mode: 1
@@ -61440,7 +61440,6 @@ GameObject:
   - component: {fileID: 1560821905512271903}
   - component: {fileID: 1560821905512271898}
   - component: {fileID: 1560821905512271899}
-  - component: {fileID: 1941707737}
   - component: {fileID: 1941707732}
   m_Layer: 5
   m_Name: BookUI
@@ -61610,22 +61609,6 @@ MonoBehaviour:
   fullscreenToggle: {fileID: 8711532242355877504}
   brightnessSlider: {fileID: 1560821904523141197}
   defaultResolution: 0
---- !u!114 &1941707737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560821905512271888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4cdb7b5c0b79c449aad6bce9fa024e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audMix: {fileID: 24100000, guid: bfc18136353a09c4985fc28d210c50b6, type: 2}
-  masterSlider: {fileID: 1560821905071702377}
-  bgmSlider: {fileID: 1560821904823805567}
-  sfxSlider: {fileID: 1560821905496720274}
 --- !u!82 &1941707732
 AudioSource:
   m_ObjectHideFlags: 0
