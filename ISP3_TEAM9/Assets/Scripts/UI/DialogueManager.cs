@@ -8,8 +8,6 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance;
-
     public enum npcType
     {
         Tutorial = 0,
@@ -82,16 +80,6 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoadManager.DontDestroyOnLoad(this.gameObject);
-        }
-        else if (instance != null)
-        {
-            Destroy(this);
-        }
-
         firstLinesArrays = new List<string[]>();
         firstLinesArrays.Add(tutorialFirst);
         firstLinesArrays.Add(skillFirst);

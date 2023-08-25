@@ -31,7 +31,8 @@ public class SceneLobbyManager : MonoBehaviour
         if (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None)
         {
             doorTouched = true;
-            DialogueManager.instance.TriggerDialogue(DialogueManager.npcType.Door);
+            DialogueManager dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+            dialogueManager.TriggerDialogue(DialogueManager.npcType.Door);
             return;
         }
 

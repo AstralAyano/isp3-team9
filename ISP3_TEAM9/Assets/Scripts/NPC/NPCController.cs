@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
 
     public void Interact()
     {
-        DialogueManager.instance.TriggerDialogue(npcName);
+        DialogueManager dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+        dialogueManager.TriggerDialogue(npcName);
     }
 }
