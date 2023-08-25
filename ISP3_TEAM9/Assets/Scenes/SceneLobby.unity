@@ -5463,7 +5463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04690503f43a6e84a82a027a1dd48ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoader: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 781918682be2dc643a1d997fa2d1e539, type: 2}
 --- !u!1 &567710699
 GameObject:
@@ -41571,7 +41570,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.1529503
+      m_AnimationSpeed: 5.0898714
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -42470,7 +42469,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.7203255
+      m_AnimationSpeed: 5.6068897
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

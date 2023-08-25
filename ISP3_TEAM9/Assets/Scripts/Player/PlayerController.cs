@@ -682,6 +682,7 @@ public class PlayerController : MonoBehaviour
             float multiplier = (float)percentage / 100;
             atkSpdIncreasedBy = playerStats.chosenStats.attackInterval * multiplier;
             playerStats.chosenStats.attackInterval -= (int)atkSpdIncreasedBy;
+            animator.speed += (float)atkSpdIncreasedBy;
         }
     }
 
@@ -847,6 +848,7 @@ public class PlayerController : MonoBehaviour
                 AtkSpdPotionDuration = 0;
 
                 playerStats.chosenStats.attackSpeed += (int)atkSpdIncreasedBy;
+                animator.speed -= (float)atkSpdIncreasedBy;
             }
         }
     }
