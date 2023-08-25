@@ -672,6 +672,13 @@ public class PlayerController : MonoBehaviour
     private void PlayerDeath()
     {
         Destroy(gameObject, 0);
+
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SceneMenu"))
+        {
+            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+            uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneEnd"));
+        }
+
         //Switch to end scene
         SceneManager.LoadScene("SceneEnd");
     }
