@@ -909,6 +909,7 @@ MonoBehaviour:
   ArcaneShotPrefab: {fileID: 3925729132500248789, guid: a0206c996a452b343b3eb51a460e79d9, type: 3}
   magicPrefab: {fileID: 1536097474418395924, guid: 844cef7de47bdac438fc60cf741a7677, type: 3}
   PaladinAuraPrefab: {fileID: 1991311167517984286, guid: af08a047202982c4a815423ce1d2a65a, type: 3}
+  barbarianUltPrefab: {fileID: 7479165395150704207, guid: 4584535845df7dc4c8a51caa3d6a8d13, type: 3}
   ultChargeAdded: 0
   IsHealthMax: 0
   IsSpeedPotionActive: 0

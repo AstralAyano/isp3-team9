@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private GameObject magicPrefab;
     [SerializeField]
     private GameObject PaladinAuraPrefab;
+    [SerializeField]
+    private GameObject barbarianUltPrefab;
 
     private float attackCooldownTimer = 0f;
     private float skillCooldownTimer = 0f;
@@ -288,44 +290,44 @@ public class PlayerController : MonoBehaviour
             switch (currentState)
             {
                 case playerStates.Idle:
-                    //Moving right
+                    //Right
                     if (lookAngle < 45 && lookAngle > -45)
                     {
                         PlayAnim("AnimPlayerIdleRight");
                     }
-                    //Moving left
+                    //Left
                     else if (lookAngle > 135 || lookAngle < -135)
                     {
                         PlayAnim("AnimPlayerIdleLeft");
                     }
-                    //Moving up
+                    //Up
                     else if (lookAngle > 45 && lookAngle < 135)
                     {
                         PlayAnim("AnimPlayerIdleUp");
                     }
-                    //Moving down
+                    //Down
                     else if (lookAngle < -45 && lookAngle > -135)
                     {
                         PlayAnim("AnimPlayerIdleDown");
                     }
                     break;
                 case playerStates.Walk:
-                    //Moving right
+                    //Right
                     if (lookAngle < 45 && lookAngle > -45)
                     {
                         PlayAnim("AnimPlayerWalkRight");
                     }
-                    //Moving left
+                    //Left
                     else if (lookAngle > 135 || lookAngle < -135)
                     {
                         PlayAnim("AnimPlayerWalkLeft");
                     }
-                    //Moving up
+                    //Up
                     else if (lookAngle > 45 && lookAngle < 135)
                     {
                         PlayAnim("AnimPlayerWalkUp");
                     }
-                    //Moving down
+                    //Down
                     else if (lookAngle < -45 && lookAngle > -135)
                     {
                         PlayAnim("AnimPlayerWalkDown");
@@ -381,44 +383,44 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                //Moving right
+                //Right
                 if (lookAngle < 45 && lookAngle > -45)
                 {
                     PlayAnim("AnimPlayerShootRight");
                 }
-                //Moving left
+                //Left
                 else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerShootLeft");
                 }
-                //Moving up
+                //Up
                 else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerShootUp");
                 }
-                //Moving down
+                //Down
                 else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerShootDown");
                 }
                 break;
             case ScriptablePlayerStats.playerClass.Mage:
-                //Moving right
+                //Right
                 if (lookAngle < 45 && lookAngle > -45)
                 {
                     PlayAnim("AnimPlayerCastRight");
                 }
-                //Moving left
+                //Left
                 else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerCastLeft");
                 }
-                //Moving up
+                //Up
                 else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerCastUp");
                 }
-                //Moving down
+                //Down
                 else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerCastDown");
@@ -426,22 +428,22 @@ public class PlayerController : MonoBehaviour
                 mageAttacktype = "attack";
                 break;
             default:
-                //Moving right
+                //Right
                 if (lookAngle < 45 && lookAngle > -45)
                 {
                     PlayAnim("AnimPlayerSlashRight");
                 }
-                //Moving left
+                //Left
                 else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerSlashLeft");
                 }
-                //Moving up
+                //Up
                 else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerSlashUp");
                 }
-                //Moving down
+                //Down
                 else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerSlashDown");
@@ -550,27 +552,26 @@ public class PlayerController : MonoBehaviour
                 mageAttacktype = "ultimate";
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                //Moving right
+                //Right
                 if (lookAngle < 45 && lookAngle > -45)
                 {
                     PlayAnim("AnimPlayerUltRight");
                 }
-                //Moving left
+                //Left
                 else if (lookAngle > 135 || lookAngle < -135)
                 {
                     PlayAnim("AnimPlayerUltLeft");
                 }
-                //Moving up
+                //Up
                 else if (lookAngle > 45 && lookAngle < 135)
                 {
                     PlayAnim("AnimPlayerUltUp");
                 }
-                //Moving down
+                //Down
                 else if (lookAngle < -45 && lookAngle > -135)
                 {
                     PlayAnim("AnimPlayerUltDown");
                 }
-                PlayerAttack(playerStats.chosenStats.attack * 2, 1.5f);
                 ultCharge = 0;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
@@ -595,14 +596,15 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attack = 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
-                playerStats.chosenStats.defense *= 75/100;
+                playerStats.chosenStats.defense *= 100/125;
                 break;
         }
     }
 
     public void PlayerTakeDamage(int dmg)
     {
-        playerStats.chosenStats.health -= (int)((float)dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense/100), 0.1f, 0.9f));
+        playerStats.chosenStats.health -= (int)(dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense / 100), 0.1f, 1f));
+        Debug.Log("Damage taken: " + (int)(dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense / 100), 0.1f, 1f)));
         if (playerStats.chosenStats.health > 0)
         {
             currentState = playerStates.Hurt;
@@ -700,6 +702,30 @@ public class PlayerController : MonoBehaviour
                 Instantiate(FireBallPrefab, transform.position, Quaternion.Euler(0, 0, lookAngle));
                 PlaySound(8);
                 break;
+        }
+    }
+
+    private void BarbarianUlt()
+    {
+        //Right
+        if (lookAngle < 45 && lookAngle > -45)
+        {
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, -90));
+        }
+        //Left
+        else if (lookAngle > 135 || lookAngle < -135)
+        {
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), Quaternion.Euler(0, 0, 90));
+        }
+        //Up
+        else if (lookAngle > 45 && lookAngle < 135)
+        {
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        }
+        //Down
+        else if (lookAngle < -45 && lookAngle > -135)
+        {
+            Instantiate(barbarianUltPrefab, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.Euler(0, 0, 180));
         }
     }
 
