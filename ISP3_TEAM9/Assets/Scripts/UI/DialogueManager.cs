@@ -176,7 +176,6 @@ public class DialogueManager : MonoBehaviour
         if ((SceneLobbyManager.doorTouched) && (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None))
         {
             RepeatedDialogue(triggeredNPC);
-            return;
         }
 
         if (PlayerPrefs.GetInt(triggeredNPC.ToString() + "Dialogue", 1) == 1)
@@ -370,6 +369,23 @@ public class DialogueManager : MonoBehaviour
         playerStats.UpdateClass();
 
         Time.timeScale = 1;
+        
+        playerStats.chosenStats.level = playerStats.chosenBaseStats.level;
+        playerStats.chosenStats.exp = playerStats.chosenBaseStats.exp;
+        playerStats.chosenStats.health = playerStats.chosenStats.maxHealth;
+        playerStats.chosenStats.attack = playerStats.chosenBaseStats.attack;
+        playerStats.chosenStats.attackSpeed = playerStats.chosenBaseStats.attackSpeed;
+        playerStats.chosenStats.attackInterval =  playerStats.chosenBaseStats.attackInterval;
+        playerStats.chosenStats.defense = playerStats.chosenBaseStats.defense;
+        playerStats.chosenStats.moveSpeed = playerStats.chosenBaseStats.moveSpeed;
+        playerStats.chosenStats.projectileSpeed = playerStats.chosenBaseStats.projectileSpeed;
+
+        playerStats.chosenStatPoints.health = 1;
+        playerStats.chosenStatPoints.defense = 1;
+        playerStats.chosenStatPoints.attack = 1;
+        playerStats.chosenStatPoints.attackSpeed = 1;
+        playerStats.chosenStatPoints.moveSpeed = 1;
+        playerStats.chosenStatPoints.projectileSpeed = 1;
 
         classPrompt.SetActive(false);
 

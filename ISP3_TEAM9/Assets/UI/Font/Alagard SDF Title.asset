@@ -1206,7 +1206,7 @@ Material:
     - _GlowInner: 0.25
     - _GlowOffset: 0
     - _GlowOuter: 0.5
-    - _GlowPower: 0.3897919
+    - _GlowPower: 0.23359789
     - _GradientScale: 10
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
