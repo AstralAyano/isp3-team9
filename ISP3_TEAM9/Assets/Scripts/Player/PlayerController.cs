@@ -148,12 +148,10 @@ public class PlayerController : MonoBehaviour
         if ((Mathf.Abs(rb.velocity.x) >= 0.01f || Mathf.Abs(rb.velocity.y) >= 0.01f) && (!Input.anyKeyDown))
         {
             currentState = playerStates.Walk;
-            //Debug.Log("Walking");
         }
         else if (!Input.anyKeyDown)
         {
             currentState = playerStates.Idle;
-            //Debug.Log("Idle");
         }
 
         if (playerStats.chosenClass == ScriptablePlayerStats.playerClass.None)
@@ -164,7 +162,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             currentState = playerStates.Attack;
-            //Debug.Log("Attacking");
         }
 
         else if (Input.GetKeyDown(KeyCode.E))
@@ -227,7 +224,6 @@ public class PlayerController : MonoBehaviour
         //Get direction
         moveDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveDir = Vector2.ClampMagnitude(moveDir, 1); //To ensure vector is unit length
-        //Debug.Log(moveDir);
 
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
@@ -481,7 +477,7 @@ public class PlayerController : MonoBehaviour
                 PlayAnim("AnimPlayerCastDown");
                 mageAttacktype = "skill";
 
-                GainUltCharge(10f);
+                GainUltCharge(5f);
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 PlaySound(10);
@@ -577,7 +573,6 @@ public class PlayerController : MonoBehaviour
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlayAnim("AnimPlayerCastDown");
                 PalaActivateUlt = true;
-                //PaladinUlt();
                 ultCharge = 0;
                 break;
         }
@@ -589,11 +584,11 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                playerStats.chosenStats.attackInterval = 1f;
-                animator.speed = 1f;
+                playerStats.chosenStats.attackInterval += 0.3f;
+                animator.speed -= 0.3f;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                playerStats.chosenStats.attack = 10;
+                playerStats.chosenStats.attack -= 10;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 playerStats.chosenStats.defense *= 100/125;
