@@ -6,12 +6,14 @@ public class MapChestController : MonoBehaviour
 {
     [SerializeField] RandomItemList itemList;
     private bool playerWithinRange = false;
+    private bool opened = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && playerWithinRange)
+        if (Input.GetKeyDown(KeyCode.F) && playerWithinRange && !opened)
         {
+            opened = true;
             Instantiate(itemList.GetRandomItem(), transform.position, Quaternion.identity);
             Destroy(gameObject, 0.5f);
         }
