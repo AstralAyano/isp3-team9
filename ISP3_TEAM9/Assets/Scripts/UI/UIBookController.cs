@@ -402,6 +402,8 @@ public class UIBookController : MonoBehaviour
 
     void UpdateStatusBars()
     {
+        levelText.text = "Lvl : " + playerStats.chosenStats.level;
+
         statusSliders[0].maxValue = playerStats.chosenStats.maxHealth;
         statusSliders[0].value = playerStats.chosenStats.health;
         statusValueText[0].text = statusSliders[0].value.ToString() + "/" + statusSliders[0].maxValue.ToString();

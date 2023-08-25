@@ -107,8 +107,6 @@ public class UIHUDController : MonoBehaviour
 
     public void UpdateSliders()
     {
-        levelText.text = "Lvl : " + playerStats.chosenStats.level;
-
         healthBar.maxValue = playerStats.chosenStats.maxHealth;
         healthBar.value = playerStats.chosenStats.health;
 
