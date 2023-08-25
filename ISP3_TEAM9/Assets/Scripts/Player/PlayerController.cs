@@ -748,6 +748,8 @@ public class PlayerController : MonoBehaviour
 
     private void BarbarianUlt()
     {
+        PlaySound(4);
+
         //Right
         if (lookAngle < 45 && lookAngle > -45)
         {

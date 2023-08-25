@@ -140,8 +140,11 @@ public abstract class EnemyController : MonoBehaviour
             // play anim
             ar.Play("AnimEnemyDeath");
 
-            hurtdeathAS.clip = hurtdeathClip[1];
-            hurtdeathAS.Play();
+            if (!hurtdeathAS.isPlaying)
+            {
+                hurtdeathAS.clip = hurtdeathClip[1];
+                hurtdeathAS.Play();
+            }
 
             // destroy self
             Destroy(gameObject, 0.75f);
@@ -150,8 +153,11 @@ public abstract class EnemyController : MonoBehaviour
         {
             health -= damage;
 
-            hurtdeathAS.clip = hurtdeathClip[0];
-            hurtdeathAS.Play();
+            if (!hurtdeathAS.isPlaying)
+            {
+                hurtdeathAS.clip = hurtdeathClip[0];
+                hurtdeathAS.Play();
+            }
 
             // Play Particles
             hurtParticles.Play();
