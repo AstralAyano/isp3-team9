@@ -64,7 +64,7 @@ public class UIBookController : MonoBehaviour
     [SerializeField] private Toggle fullscreenToggle;
     [Space(10)]
     [SerializeField] private Slider brightnessSlider;
-    private Volume globalBrightness;
+    [SerializeField] private Volume globalBrightness;
     //[Space(10)]
 
     [Header("Settings Variables")]
@@ -140,19 +140,7 @@ public class UIBookController : MonoBehaviour
             }
         }
 
-        // Find for objects with tag and try to get a component from it
-        if (GameObject.FindWithTag("PostProcessor").TryGetComponent(out Volume componentVol))
-        {
-            globalBrightness = componentVol;
-        }
-
-        if (GameObject.FindWithTag("Player").TryGetComponent(out PlayerController componentPlayer))
-        {
-            playerController = componentPlayer;
-        }
-
-        // Sets Slider PlayerPrefs
-        brightnessSlider.value = PlayerPrefs.GetFloat("brightness");
+        GetReferences();
 
         gameObject.SetActive(false);
     }
@@ -170,6 +158,22 @@ public class UIBookController : MonoBehaviour
         GetPlayerStats();
         SetPlayerStatsInBook();
         UpdateStatusBars();
+    }
+
+    public void GetReferences()
+    {
+        // Find for objects with tag and try to get a component from it
+        globalBrightness = transform.parent.GetComponent<Volume>();
+
+        if (GameObject.FindWithTag("Player").TryGetComponent(out PlayerController componentPlayer))
+        {
+            playerController = componentPlayer;
+        }
+
+        // Sets Slider PlayerPrefs
+        brightnessSlider.value = PlayerPrefs.GetFloat("brightness");
+
+        Debug.Log("Passed through GetReferences()");
     }
 
     void GetPlayerStats()
@@ -696,7 +700,7 @@ public class UIBookController : MonoBehaviour
         if (globalBrightness.profile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjust))
         {
             PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
-            colorAdjust.postExposure.value = PlayerPrefs.GetFloat("brightness");
+            colorAdjust.postExposure.value = brightnessSlider.value;
 
             Debug.Log("Brightness Applied : " + PlayerPrefs.GetFloat("brightness"));
         }

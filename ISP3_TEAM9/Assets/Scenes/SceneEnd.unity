@@ -3074,7 +3074,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2081
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -3674,6 +3674,10 @@ PrefabInstance:
     - target: {fileID: 1387618218523054725, guid: 0d75ad0ea3d143d4fabd7ff459211701, type: 3}
       propertyPath: m_Name
       value: Global Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387618218523054725, guid: 0d75ad0ea3d143d4fabd7ff459211701, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d75ad0ea3d143d4fabd7ff459211701, type: 3}

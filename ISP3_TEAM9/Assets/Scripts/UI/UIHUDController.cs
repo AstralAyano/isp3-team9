@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIHUDController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIHUDController : MonoBehaviour
     [SerializeField] private ScriptablePlayerStats playerStats;
 
     [Header("Health, Skill and Ultimate Bar")]
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider skillSlider;
     [SerializeField] private Slider ultSlider;
@@ -105,6 +107,8 @@ public class UIHUDController : MonoBehaviour
 
     public void UpdateSliders()
     {
+        levelText.text = "Lvl : " + playerStats.chosenStats.level;
+
         healthBar.maxValue = playerStats.chosenStats.maxHealth;
         healthBar.value = playerStats.chosenStats.health;
 

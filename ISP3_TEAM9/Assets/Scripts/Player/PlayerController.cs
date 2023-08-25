@@ -238,8 +238,6 @@ public class PlayerController : MonoBehaviour
         //Calculate velocity 
         rb.velocity = moveDir * playerStats.chosenStats.moveSpeed;
 
-        Debug.Log("Attack Interval: " + playerStats.chosenStats.attackInterval);
-
         if (attackCooldownTimer > 0)
         {
             attackCooldownTimer -= Time.deltaTime;

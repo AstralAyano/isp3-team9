@@ -85,17 +85,17 @@ public class SceneLoader : MonoBehaviour
 
         targetScene.allowSceneActivation = true;
 
-        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SceneMenu"))
+        try
         {
-            try
-            {
-                UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
-                uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
-            }
-            catch (Exception)
-            {
-                //Debug
-            }
+            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+            uiControl.CheckNextScene(SceneManager.GetSceneByName(target));
+            UIBookController uiBook = uiControl.GetComponentInChildren<UIBookController>();
+            uiBook.GetReferences();
+            Debug.Log("Passed through TryCatch");
+        }
+        catch (Exception)
+        {
+            //Debug
         }
 
         Debug.Log("Next Scene : " + target);
