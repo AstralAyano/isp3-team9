@@ -21,7 +21,6 @@ public class MapChestController : MonoBehaviour
     {
         if (!opened && playerWithinRange)
         {
-            Debug.Log("Chest Opened");
             opened = true;
             Instantiate(itemList.GetRandomItem(), transform.position, Quaternion.identity);
             Destroy(gameObject);
