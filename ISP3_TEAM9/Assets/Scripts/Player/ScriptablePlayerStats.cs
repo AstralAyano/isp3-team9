@@ -9,9 +9,9 @@ public class playerStats
     public int attack;
     public int defense;
     public float attackInterval; //(float)(attackSpeed/10) + 1. For timers in code
-    public int attackSpeed; //(int)(attackInterval - 1) * 10. For display
-    public int moveSpeed;
-    public int projectileSpeed; //For mage and archer
+    public float attackSpeed; //(int)(attackInterval - 1) * 10. For display
+    public float moveSpeed;
+    public float projectileSpeed; //For mage and archer
     public int exp;
     public int level;
 }
@@ -74,11 +74,11 @@ public class ScriptablePlayerStats : ScriptableObject
     
     public Dictionary<playerClass, playerStatMultipliers> statMultipliers = new()
     {
-        { playerClass.Barbarian, new playerStatMultipliers{ health = .1f, defense = .5f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
-        { playerClass.Mage, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
-        { playerClass.Archer, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
-        { playerClass.Paladin, new playerStatMultipliers{ health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f} },
-        { playerClass.None, new playerStatMultipliers { health = .1f, defense = .1f, attackPower = .2f, attackSpeed = .1f, moveSpeed = .25f, projectileSpeed = .25f } }
+        { playerClass.Barbarian, new playerStatMultipliers{ health = .2f, defense = .5f, attackPower = .2f, attackSpeed = .05f, moveSpeed = .1f, projectileSpeed = .2f} },
+        { playerClass.Mage, new playerStatMultipliers{ health = .2f, defense = .2f, attackPower = .2f, attackSpeed = .05f, moveSpeed = .1f, projectileSpeed = .2f} },
+        { playerClass.Archer, new playerStatMultipliers{ health = .2f, defense = .2f, attackPower = .2f, attackSpeed = .05f, moveSpeed = .1f, projectileSpeed = .2f} },
+        { playerClass.Paladin, new playerStatMultipliers{ health = .2f, defense = .2f, attackPower = .2f, attackSpeed = .05f, moveSpeed = .1f, projectileSpeed = .2f} },
+        { playerClass.None, new playerStatMultipliers { health = .2f, defense = .2f, attackPower = .2f, attackSpeed = .05f, moveSpeed = .1f, projectileSpeed = .2f } }
     };
 
     private void OnEnable()

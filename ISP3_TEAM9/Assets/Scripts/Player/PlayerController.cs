@@ -690,8 +690,8 @@ public class PlayerController : MonoBehaviour
             IsAtkSpdPotionActive = true;
             float multiplier = (float)percentage / 100;
             atkSpdIncreasedBy = playerStats.chosenStats.attackInterval * multiplier;
-            playerStats.chosenStats.attackInterval -= (int)atkSpdIncreasedBy;
-            animator.speed += (float)atkSpdIncreasedBy;
+            playerStats.chosenStats.attackInterval -= atkSpdIncreasedBy;
+            animator.speed += atkSpdIncreasedBy;
         }
     }
 
@@ -702,7 +702,7 @@ public class PlayerController : MonoBehaviour
             IsSpeedPotionActive = true;
             float multiplier = (float)percentage / 100;
             moveSpdIncreasedBy = playerStats.chosenStats.moveSpeed * multiplier;
-            playerStats.chosenStats.moveSpeed += (int)moveSpdIncreasedBy;
+            playerStats.chosenStats.moveSpeed += moveSpdIncreasedBy;
         }
     }
 

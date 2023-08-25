@@ -266,24 +266,24 @@ public class UIBookController : MonoBehaviour
         if (statPointAmt > 0)
         {
             statPointAmt--;
-            int valueIncrease;
+            float valueIncrease;
             switch (type)
             {
                 case 0:
                     playerStats.chosenStatPoints.health++;
-                    valueIncrease = (int)(playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth);
-                    playerStats.chosenStats.health += valueIncrease;
-                    playerStats.chosenStats.maxHealth += valueIncrease;
+                    valueIncrease = playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth;
+                    playerStats.chosenStats.health += (int)valueIncrease;
+                    playerStats.chosenStats.maxHealth += (int)valueIncrease;
                     break;
                 case 1:
                     playerStats.chosenStatPoints.defense++;
-                    valueIncrease = (int)(playerStats.chosenStatMultipliers.defense * (float)playerStats.chosenBaseStats.defense);
-                    playerStats.chosenStats.defense += valueIncrease;
+                    valueIncrease = playerStats.chosenStatMultipliers.defense * (float)playerStats.chosenBaseStats.defense;
+                    playerStats.chosenStats.defense += (int)valueIncrease;
                     break;
                 case 2:
                     playerStats.chosenStatPoints.attack++;
-                    valueIncrease = (int)(playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack);
-                    playerStats.chosenStats.attack += valueIncrease;
+                    valueIncrease = playerStats.chosenStatMultipliers.attackPower * (float)playerStats.chosenBaseStats.attack;
+                    playerStats.chosenStats.attack += (int)valueIncrease;
                     break;
                 case 3:
                     playerStats.chosenStatPoints.attackSpeed++;
@@ -291,12 +291,12 @@ public class UIBookController : MonoBehaviour
                     break;
                 case 4:
                     playerStats.chosenStatPoints.moveSpeed++;
-                    valueIncrease = (int)(playerStats.chosenStatMultipliers.moveSpeed * (float)playerStats.chosenBaseStats.moveSpeed);
+                    valueIncrease = playerStats.chosenStatMultipliers.moveSpeed * playerStats.chosenBaseStats.moveSpeed;
                     playerStats.chosenStats.moveSpeed += valueIncrease;
                     break;
                 case 5:
                     playerStats.chosenStatPoints.projectileSpeed++;
-                    valueIncrease = (int)(playerStats.chosenStatMultipliers.projectileSpeed * (float)playerStats.chosenBaseStats.projectileSpeed);
+                    valueIncrease = playerStats.chosenStatMultipliers.projectileSpeed * playerStats.chosenBaseStats.projectileSpeed;
                     playerStats.chosenStats.projectileSpeed += valueIncrease;
                     break;
             }
