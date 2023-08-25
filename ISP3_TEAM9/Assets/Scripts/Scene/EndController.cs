@@ -288,6 +288,12 @@ public class EndController : MonoBehaviour
     public void LoadMenuScene()
     {
         SceneManager.LoadScene("SceneMenu");
+
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SceneMenu"))
+        {
+            UIController uiControl = GameObject.FindWithTag("UI").GetComponent<UIController>();
+            uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneMenu"));
+        }
     }
 
     public void QuitGame()
