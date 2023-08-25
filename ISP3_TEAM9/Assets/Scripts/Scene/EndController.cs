@@ -59,7 +59,7 @@ public class EndController : MonoBehaviour
             GameTimer.startClicked = false;
         }
 
-        floorsCleared = UIController.floorNum;
+        floorsCleared = UIController.floorNum - 1;
 
         gridMenu.SetActive(true);
 
