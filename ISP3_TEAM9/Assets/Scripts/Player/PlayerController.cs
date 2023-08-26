@@ -533,7 +533,7 @@ public class PlayerController : MonoBehaviour
                 skillDurationTimer = 10;
 
                 sr.color = Color.red;
-                playerStats.chosenStats.attack *= 130/100;
+                playerStats.chosenStats.attack += playerStats.chosenStats.attack * 30/100;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlaySound(11);
@@ -546,7 +546,7 @@ public class PlayerController : MonoBehaviour
                 Instantiate(PaladinAuraPrefab, transform);
 
                 sr.color = Color.cyan;
-                playerStats.chosenStats.defense *= 125/100;
+                playerStats.chosenStats.defense += playerStats.chosenStats.defense * 25/100;
                 break;
         }
     }
@@ -637,14 +637,14 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                playerStats.chosenStats.attackInterval += playerStats.chosenStats.attackInterval * 30 / 100;
-                animator.speed -= animator.speed * 30 / 100;
+                playerStats.chosenStats.attackInterval += playerStats.chosenStats.attackInterval * 30/70;
+                animator.speed -= animator.speed * 30/130;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                playerStats.chosenStats.attack *= 100/130;
+                playerStats.chosenStats.attack -= playerStats.chosenStats.attack * 30/130;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
-                playerStats.chosenStats.defense *= 100/125;
+                playerStats.chosenStats.defense -= playerStats.chosenStats.defense * 25/125;
                 break;
         }
     }
