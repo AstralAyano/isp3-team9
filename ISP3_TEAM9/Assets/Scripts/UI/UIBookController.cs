@@ -324,7 +324,10 @@ public class UIBookController : MonoBehaviour
             case 0:
                 playerStats.chosenStatPoints.health += (amt + multi);
                 valueIncrease = (int)(playerStats.chosenStatMultipliers.health * (float)playerStats.chosenBaseStats.maxHealth) * (amt + multi);
-                playerStats.chosenStats.health += valueIncrease;
+                if (valueIncrease > 0)
+                {
+                    playerStats.chosenStats.health += valueIncrease;
+                }
                 playerStats.chosenStats.maxHealth += valueIncrease;
                 break;
             case 1:
