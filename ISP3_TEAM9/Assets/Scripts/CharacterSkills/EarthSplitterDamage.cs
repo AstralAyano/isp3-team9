@@ -23,7 +23,7 @@ public class EarthSplitterDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(other.gameObject.GetComponent<EnemyController>().gameObject.name);
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 2);
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 5);
         }
     }
 }
