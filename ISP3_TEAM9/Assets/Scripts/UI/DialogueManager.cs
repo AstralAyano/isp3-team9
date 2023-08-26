@@ -330,6 +330,8 @@ public class DialogueManager : MonoBehaviour
 
                     Time.timeScale = 0;
                 }
+                
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             }
         }
     }
@@ -395,7 +397,6 @@ public class DialogueManager : MonoBehaviour
         uiHUD.SetToolTip();
 
         player.SetAnimator();
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void PromptNo()
@@ -403,7 +404,6 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 1;
 
         classPrompt.SetActive(false);
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
