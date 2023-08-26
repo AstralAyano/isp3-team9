@@ -47,8 +47,8 @@ MonoBehaviour:
   lightSource: {fileID: 8572195380922931001, guid: e6678653cd4429f46946a1a16c9f154f, type: 3}
   prefabPlacer: {fileID: 8966017215838158861, guid: d7f9ffacfc88b2043ada0f1a0bb34ba8, type: 3}
   contentPlacementData:
-  - minQuantity: 0
-    maxQuantity: 3
+  - minQuantity: 3
+    maxQuantity: 5
     contentPrefab: {fileID: 6768884923863432182, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
     contentSize: {x: 1, y: 1}
   itemData:

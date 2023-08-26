@@ -47,8 +47,8 @@ MonoBehaviour:
   lightSource: {fileID: 145135264189320877, guid: a7bf03bd9d01bf845980d2f68041b8fc, type: 3}
   player: {fileID: 9187127078638063364, guid: 5da41d244e14ab2439729ec75edc25a9, type: 3}
   itemData:
-  - minQuantity: 10
-    maxQuantity: 15
+  - minQuantity: 5
+    maxQuantity: 5
     itemData: {fileID: 11400000, guid: 086f63cae08315e4d9e51664627a7aeb, type: 2}
   enemyPlacementData:
   - minQuantity: 1
