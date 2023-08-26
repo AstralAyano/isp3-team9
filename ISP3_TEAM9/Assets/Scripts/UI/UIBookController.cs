@@ -225,22 +225,22 @@ public class UIBookController : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    statsValueText[i].text = playerStats.chosenStatPoints.health.ToString();
+                    statsValueText[i].text = (Mathf.CeilToInt(playerStats.chosenBaseStats.maxHealth * playerStats.chosenStatMultipliers.health) + playerStats.chosenStatPoints.health).ToString();
                     break;
                 case 1:
-                    statsValueText[i].text = playerStats.chosenStatPoints.defense.ToString();
+                    statsValueText[i].text = (playerStats.chosenBaseStats.defense + playerStats.chosenStatPoints.defense).ToString();
                     break;
                 case 2:
-                    statsValueText[i].text = playerStats.chosenStatPoints.attack.ToString();
+                    statsValueText[i].text = (Mathf.CeilToInt(playerStats.chosenBaseStats.attack * playerStats.chosenStatMultipliers.attackPower) + playerStats.chosenStatPoints.attack).ToString();
                     break;
                 case 3:
-                    statsValueText[i].text = playerStats.chosenStatPoints.attackSpeed.ToString();
+                    statsValueText[i].text = ((int)(2 / playerStats.chosenBaseStats.attackInterval) + playerStats.chosenStatPoints.attackSpeed).ToString();
                     break;
                 case 4:
-                    statsValueText[i].text = playerStats.chosenStatPoints.moveSpeed.ToString();
+                    statsValueText[i].text = (playerStats.chosenBaseStats.moveSpeed + playerStats.chosenStatPoints.moveSpeed).ToString();
                     break;
                 case 5:
-                    statsValueText[i].text = playerStats.chosenStatPoints.projectileSpeed.ToString();
+                    statsValueText[i].text = (playerStats.chosenBaseStats.projectileSpeed + playerStats.chosenStatPoints.projectileSpeed).ToString();
                     break;
             }
         }

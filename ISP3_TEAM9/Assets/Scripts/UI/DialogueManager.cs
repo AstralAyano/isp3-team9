@@ -384,12 +384,12 @@ public class DialogueManager : MonoBehaviour
         playerStats.chosenStats.moveSpeed = playerStats.chosenBaseStats.moveSpeed;
         playerStats.chosenStats.projectileSpeed = playerStats.chosenBaseStats.projectileSpeed;
 
-        playerStats.chosenStatPoints.health = 1;
-        playerStats.chosenStatPoints.defense = 1;
-        playerStats.chosenStatPoints.attack = 1;
-        playerStats.chosenStatPoints.attackSpeed = 1;
-        playerStats.chosenStatPoints.moveSpeed = 1;
-        playerStats.chosenStatPoints.projectileSpeed = 1;
+        playerStats.chosenStatPoints.health = 0;
+        playerStats.chosenStatPoints.defense = 0;
+        playerStats.chosenStatPoints.attack = 0;
+        playerStats.chosenStatPoints.attackSpeed = 0;
+        playerStats.chosenStatPoints.moveSpeed = 0;
+        playerStats.chosenStatPoints.projectileSpeed = 0;
 
         classPrompt.SetActive(false);
 
