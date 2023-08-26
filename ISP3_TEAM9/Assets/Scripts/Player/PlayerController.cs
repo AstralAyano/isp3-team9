@@ -452,7 +452,7 @@ public class PlayerController : MonoBehaviour
                 }
                 mageAttacktype = "attack";
                 break;
-            default:
+            case ScriptablePlayerStats.playerClass.Barbarian:
                 //Right
                 if (lookAngle < 45 && lookAngle > -45)
                 {
@@ -474,6 +474,29 @@ public class PlayerController : MonoBehaviour
                     PlayAnim("AnimPlayerSlashDown");
                 }
                 PlayerAttack(playerStats.chosenStats.attack, .5f);
+                break;
+            case ScriptablePlayerStats.playerClass.Paladin:
+                //Right
+                if (lookAngle < 45 && lookAngle > -45)
+                {
+                    PlayAnim("AnimPlayerSlashRight");
+                }
+                //Left
+                else if (lookAngle > 135 || lookAngle < -135)
+                {
+                    PlayAnim("AnimPlayerSlashLeft");
+                }
+                //Up
+                else if (lookAngle > 45 && lookAngle < 135)
+                {
+                    PlayAnim("AnimPlayerSlashUp");
+                }
+                //Down
+                else if (lookAngle < -45 && lookAngle > -135)
+                {
+                    PlayAnim("AnimPlayerSlashDown");
+                }
+                PlayerAttack(playerStats.chosenStats.attack, .85f);
                 break;
         }
     }
