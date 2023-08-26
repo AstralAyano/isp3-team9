@@ -19,7 +19,7 @@ public class BasicRangedEnemy : EnemyController
 
         health += (UIController.floorNum - 1) * 15;
         attack += (UIController.floorNum - 1) * 3;
-        expDropped += (UIController.floorNum - 1) * 5;
+        expDropped += (UIController.floorNum - 1) * 1;
     }
 
     void Update()

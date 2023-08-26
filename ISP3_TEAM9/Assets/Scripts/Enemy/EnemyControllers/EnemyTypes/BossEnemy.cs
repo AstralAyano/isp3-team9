@@ -18,7 +18,7 @@ public class BossEnemy : EnemyController
         enemyPF.target = spawnPos.transform;
         attackToUse = Random.Range(1, 3);
 
-        health += (UIController.floorNum - 1) * 50;
+        health += (UIController.floorNum - 1) * 75;
         attack += (UIController.floorNum - 1) * 3;
         expDropped += (UIController.floorNum - 1) * 10;
     }

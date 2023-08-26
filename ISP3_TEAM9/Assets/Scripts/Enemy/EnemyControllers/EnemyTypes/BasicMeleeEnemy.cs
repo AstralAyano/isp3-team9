@@ -16,7 +16,7 @@ public class BasicMeleeEnemy : EnemyController
 
         health += (UIController.floorNum - 1) * 20;
         attack += (UIController.floorNum - 1) * 2;
-        expDropped += (UIController.floorNum - 1) * 5;
+        expDropped += (UIController.floorNum - 1) * 1;
     }
 
     void Update()
