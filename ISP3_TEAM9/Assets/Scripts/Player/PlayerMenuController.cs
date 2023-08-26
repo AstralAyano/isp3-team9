@@ -170,6 +170,7 @@ public class PlayerMenuController : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }

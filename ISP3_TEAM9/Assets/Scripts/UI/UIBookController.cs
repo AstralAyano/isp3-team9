@@ -742,6 +742,7 @@ public class UIBookController : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.Save();
         Application.Quit();
     }
 

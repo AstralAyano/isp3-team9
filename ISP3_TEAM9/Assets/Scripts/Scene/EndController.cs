@@ -295,11 +295,14 @@ public class EndController : MonoBehaviour
             uiControl.CheckNextScene(SceneManager.GetSceneByName("SceneMenu"));
         }
 
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("SceneMenu");
     }
 
     public void QuitGame()
     {
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }
