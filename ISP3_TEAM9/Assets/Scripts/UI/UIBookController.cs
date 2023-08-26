@@ -70,6 +70,9 @@ public class UIBookController : MonoBehaviour
     [Header("Settings Variables")]
     [SerializeField] public int defaultResolution;
 
+    [Header("Unlockable Artefact Slots")]
+    [SerializeField] private GameObject[] newArtefactSlots;
+
     private int currPageNo = 0;
     private int nextPageNo = 0;
     private float xOffset = 30;
@@ -412,18 +415,50 @@ public class UIBookController : MonoBehaviour
         statusSliders[1].value = playerController.GetUltCharge();
         statusValueText[1].text = statusSliders[1].value.ToString() + "/" + statusSliders[1].maxValue.ToString();
 
-        if (playerStats.chosenStats.exp >= statusSliders[2].maxValue)
+        while (true)
         {
-            playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
-            playerStats.chosenStats.level++;
-            statPointAmt += 2;
-            skillPointAmt++;
+            if (playerStats.chosenStats.exp >= statusSliders[2].maxValue)
+            {
+                playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
+                playerStats.chosenStats.level++;
+                statPointAmt += 2;
+                skillPointAmt++;
+            }
+            else
+            {
+                break;
+            }
         }
-        
+
         statusSliders[2].value = playerStats.chosenStats.exp;
         statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
 
         levelText.text = "Lvl : " + playerStats.chosenStats.level.ToString();
+        CheckLevel();
+    }
+
+    void CheckLevel()
+    {
+        if (playerStats.chosenStats.level == 15)
+        {
+            newArtefactSlots[0].tag = "ArtefactSlot";
+            newArtefactSlots[0].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+        }
+        else if (playerStats.chosenStats.level == 30)
+        {
+            newArtefactSlots[1].tag = "ArtefactSlot";
+            newArtefactSlots[1].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+        }
+        else if (playerStats.chosenStats.level == 45)
+        {
+            newArtefactSlots[2].tag = "ArtefactSlot";
+            newArtefactSlots[2].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+        }
+        else if (playerStats.chosenStats.level == 60)
+        {
+            newArtefactSlots[3].tag = "ArtefactSlot";
+            newArtefactSlots[3].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
+        }
     }
 
     void HideProjectileSpeedStat()
