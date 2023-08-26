@@ -415,19 +415,12 @@ public class UIBookController : MonoBehaviour
         statusSliders[1].value = playerController.GetUltCharge();
         statusValueText[1].text = statusSliders[1].value.ToString() + "/" + statusSliders[1].maxValue.ToString();
 
-        while (true)
+        while (playerStats.chosenStats.exp >= statusSliders[2].maxValue)
         {
-            if (playerStats.chosenStats.exp >= statusSliders[2].maxValue)
-            {
-                playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
-                playerStats.chosenStats.level++;
-                statPointAmt += 2;
-                skillPointAmt++;
-            }
-            else
-            {
-                break;
-            }
+            playerStats.chosenStats.exp -= (int)statusSliders[2].maxValue;
+            playerStats.chosenStats.level++;
+            statPointAmt += 2;
+            skillPointAmt++;
         }
 
         statusSliders[2].value = playerStats.chosenStats.exp;
