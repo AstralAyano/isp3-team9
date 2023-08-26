@@ -424,13 +424,13 @@ public class UIBookController : MonoBehaviour
             playerStats.chosenStats.level++;
             statPointAmt += 2;
             skillPointAmt++;
+            CheckLevel();
         }
 
         statusSliders[2].value = playerStats.chosenStats.exp;
         statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
 
         levelText.text = "Lvl : " + playerStats.chosenStats.level.ToString();
-        CheckLevel();
     }
 
     void CheckLevel()
