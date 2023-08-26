@@ -740,6 +740,11 @@ public class UIBookController : MonoBehaviour
         }
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ShowNodeNameDesc(string name, string desc)
     {
         nodeNameText.text = name;

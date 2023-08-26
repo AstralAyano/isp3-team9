@@ -76,7 +76,7 @@ public class InventoryManager : MonoBehaviour
 
             if (item.itemType == Item.types.Artefact)
             {
-                slot = invSlots[i + 8];
+                slot = invSlots[i + 3];
             }
 
             if (slot.GetComponentInChildren<InventoryItem>() == null)
