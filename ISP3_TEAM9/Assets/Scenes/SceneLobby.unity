@@ -26225,14 +26225,21 @@ MonoBehaviour:
   - Why are you here?
   - You shouldn't be here...
   - This place isn't as friendly as you think it is...
+  - I should guide you if you are going to attempt to leave.
+  - 'WASD: Move Around'
+  - 'LeftClick: Basic Attack'
+  - 'E: Skill, Q: Ultimate'
+  - Open your Stats, Inventory, Skill Tree & Settings Menu at the Top Right of the
+    Screen respectively.
+  - Now what are you waiting for? Get Going!
   skillFirst:
-  - Oh?
+  - Oh? YoWaiMo.
   - You seem to possess quite the potential
   barbarianFirst:
   - HurUR hURhRUr, ROARRRRR!
   - Oh Sorry, It seems like you're normal.
   - Hello! I am the Barbarian.
-  - HurUR hURhRUr, ROARRRRR!
+  - Want to Hack & Slash?
   paladinFirst:
   - Our Father Who Artd In Heaven, Hallowed be thy name
   - Thy kingdom come, Thy will be done on earth, As it is on heaven.
@@ -40695,7 +40702,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.7672973
+      m_AnimationSpeed: 5.670869
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -41594,7 +41601,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 5.677283
+      m_AnimationSpeed: 5.2373085
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
