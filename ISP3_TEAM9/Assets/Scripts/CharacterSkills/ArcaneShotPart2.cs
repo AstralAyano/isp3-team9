@@ -40,7 +40,6 @@ public class ArcaneShotPart2 : MonoBehaviour
             gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             ArcaneGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
             other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 1.5f);
-            Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Wall"))
         {
