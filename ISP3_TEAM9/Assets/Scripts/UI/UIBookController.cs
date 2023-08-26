@@ -217,7 +217,6 @@ public class UIBookController : MonoBehaviour
     {
         // Sets the class of the player to the Stats Page
         classText.text = "Class : " + playerStats.chosenClass.ToString();
-        levelText.text = "Lvl : " + playerStats.chosenStats.level.ToString();
 
         // Sets the stats value to the text boxes
         for (int i = 0; i < statsValueText.Length; i++)
@@ -420,8 +419,11 @@ public class UIBookController : MonoBehaviour
             statPointAmt += 2;
             skillPointAmt++;
         }
+        
         statusSliders[2].value = playerStats.chosenStats.exp;
         statusValueText[2].text = statusSliders[2].value.ToString() + "/" + statusSliders[2].maxValue.ToString();
+
+        levelText.text = "Lvl : " + playerStats.chosenStats.level.ToString();
     }
 
     void HideProjectileSpeedStat()
