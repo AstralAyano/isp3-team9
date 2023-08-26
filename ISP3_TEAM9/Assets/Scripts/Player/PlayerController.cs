@@ -175,7 +175,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0))
+        //Attack if mouse button held down and attack is not on cooldown
+        if (Input.GetMouseButton(0) && (attackCooldownTimer <= 0))
         {
             currentState = playerStates.Attack;
         }
@@ -392,17 +393,9 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack()
     {
-        //Return if cooldown is not over yet
-        if (attackCooldownTimer > 0)
-        {
-            return;
-        }
-        else
-        {
-            attackCooldownTimer = playerStats.chosenStats.attackInterval;
-            
-            animator.speed = Mathf.Clamp(1 - (playerStats.chosenStats.attackInterval - playerStats.chosenBaseStats.attackInterval), 0.01f, Mathf.Infinity);
-        }
+        attackCooldownTimer = playerStats.chosenStats.attackInterval;
+
+        animator.speed = Mathf.Clamp(1 - (playerStats.chosenStats.attackInterval - playerStats.chosenBaseStats.attackInterval), 0.01f, Mathf.Infinity);
 
         //Play different attack animation based on chosenClass
         switch (playerStats.chosenClass)
@@ -791,11 +784,6 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(barbarianUltPrefab, new Vector3(transform.position.x - 0.1f, transform.position.y - 0.5f, transform.position.z), Quaternion.Euler(0, 0, 180));
         }
-    }
-
-    private void ClearPalaUlt()
-    {
-
     }
 
     private void PlayerAttack(int dmg, float range)
