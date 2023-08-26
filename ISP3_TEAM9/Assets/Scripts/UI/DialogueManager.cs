@@ -308,6 +308,9 @@ public class DialogueManager : MonoBehaviour
             }
             else if (currLineNo > maxLineNo)
             {
+                player.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+                player.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+
                 autoButton.color = new Color32(255, 255, 255, 255);
                 currLineNo = 0;
                 maxLineNo = 0;
@@ -330,8 +333,6 @@ public class DialogueManager : MonoBehaviour
 
                     Time.timeScale = 0;
                 }
-                
-                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             }
         }
     }
