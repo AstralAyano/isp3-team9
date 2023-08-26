@@ -160,6 +160,9 @@ public abstract class EnemyController : MonoBehaviour
                 hurtdeathAS.Play();
             }
 
+            // play anim
+            ar.Play("AnimEnemy" + enemyPF.animDir + "Hurt");
+
             // Play Particles
             hurtParticles.Play();
 
