@@ -37,8 +37,6 @@ public class ArcaneShotPart2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || TimeBeforeActivate == 1.5f)
         {
-            gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            ArcaneGFX.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
             other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 1.5f);
         }
         else if (other.gameObject.CompareTag("Wall"))
