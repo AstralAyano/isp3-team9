@@ -21,11 +21,6 @@ public class BasicMeleeEnemy : EnemyController
 
     void Update()
     {
-        if (isStunned)
-        {
-            return;
-        }
-
         switch (currentState)
         {
             case State.IDLE:

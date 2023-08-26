@@ -77,6 +77,11 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Attack()
     {
+        if (isStunned)
+        {
+            return;
+        }
+
         if (enemyPF.attackToResolve) // else wait till attack over
         {
             attackTimer += Time.deltaTime;

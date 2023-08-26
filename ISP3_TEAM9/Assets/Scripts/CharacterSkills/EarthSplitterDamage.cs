@@ -22,7 +22,7 @@ public class EarthSplitterDamage : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && (timer <= 0.2f))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(other.gameObject.GetComponent<EnemyController>().gameObject.name);
             other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 5);

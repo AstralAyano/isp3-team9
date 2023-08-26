@@ -73,6 +73,11 @@ public class BossEnemy : EnemyController
 
     private void BossAttack()
     {
+        if (isStunned)
+        {
+            return;
+        }
+
         if (enemyPF.attackToResolve)
         {
             attackTimer += Time.deltaTime;

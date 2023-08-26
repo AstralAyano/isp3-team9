@@ -21,11 +21,6 @@ public class BasicRangedEnemy : EnemyController
 
     void Update()
     {
-        if (isStunned)
-        {
-            return;
-        }
-
         switch (currentState)
         {
             case State.IDLE:
