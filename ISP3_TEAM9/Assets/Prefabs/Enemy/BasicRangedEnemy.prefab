@@ -5352,7 +5352,7 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 8572195380922931005}
   health: 30
-  expDropped: 10
+  expDropped: 500
   attack: 5
   attackCD: 1.5
   attackDuration: 1
