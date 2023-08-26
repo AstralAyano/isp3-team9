@@ -513,8 +513,8 @@ public class PlayerController : MonoBehaviour
                 skillDurationTimer = 10;
 
                 sr.color = new Color(139, 128, 0, 1f);
-                playerStats.chosenStats.attackInterval -= 0.3f;
-                animator.speed += 0.3f;
+                playerStats.chosenStats.attackInterval -= playerStats.chosenStats.attackInterval *  30/100;
+                animator.speed += animator.speed * 30/100;
                 break;
             //Shoot a lightning bolt
             case ScriptablePlayerStats.playerClass.Mage:
@@ -637,7 +637,8 @@ public class PlayerController : MonoBehaviour
         switch (playerStats.chosenClass)
         {
             case ScriptablePlayerStats.playerClass.Archer:
-                playerStats.chosenStats.attackInterval += 0.3f;
+                playerStats.chosenStats.attackInterval += playerStats.chosenStats.attackInterval * 30 / 100;
+                animator.speed -= animator.speed * 30 / 100;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
                 playerStats.chosenStats.attack *= 100/130;

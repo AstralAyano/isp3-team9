@@ -56,7 +56,7 @@ public class UIHUDController : MonoBehaviour
                 ultIcon.sprite = ultSprites[0];
 
                 skillName = "Frenzied Rage";
-                skillDesc = "The player goes into a frenzied rage, increasing the player's attack by 30%.";
+                skillDesc = "The player goes into a frenzied rage, increasing attack by 30%.";
                 
                 ultName = "Earthsplitter";
                 ultDesc = "The player swings their axe to rupture the ground in front of them, dealing a large amount of damage to enemies in front and stunning them briefly.";
@@ -66,7 +66,7 @@ public class UIHUDController : MonoBehaviour
                 ultIcon.sprite = ultSprites[1];
 
                 skillName = "Holy Aura";
-                skillDesc = "The player casts an aura around themself, increasing defense and dealing a medium amount of damage to nearby enemies.";
+                skillDesc = "The player casts an aura around themself, increasing defense and dealing damage over time to nearby enemies.";
                 
                 ultName = "Divine Heal";
                 ultDesc = "The player calls upon the divine spirits and seeks their aid in battle, healing the player and gaining a regenerative buff for a short period of time.";
@@ -76,7 +76,7 @@ public class UIHUDController : MonoBehaviour
                 ultIcon.sprite = ultSprites[2];
 
                 skillName = "Ranger Haste";
-                skillDesc = "Increases attack speed.";
+                skillDesc = "Increases attack speed by 30%.";
                 
                 ultName = "Yggdrasil Shot";
                 ultDesc = "Draws back the bow and shoots 3 arrows that homes towards the nearest enemy. slowing targets hit for a period of time.";
@@ -88,8 +88,8 @@ public class UIHUDController : MonoBehaviour
                 skillName = "Arcane Shot";
                 skillDesc = "The player shoots a bolt of arcane energy in a form of a sphere, damaging enemies that it hits.";
                 
-                ultName = "Runic Fireball";
-                ultDesc = "The player draws upon their arcane energies, casting a fireball with runic magic. Dealing a large amount of damage in a large lasting area.";
+                ultName = "Fireball";
+                ultDesc = "The player draws upon their arcane energies, casting a fireball with arcane magic. Dealing a large amount of damage in a large area and scorching an area briefly, dealing damage over time.";
                 break;
         }
     }
