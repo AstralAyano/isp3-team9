@@ -28,6 +28,7 @@ public abstract class EnemyController : MonoBehaviour
     public int attack = 4;
     [SerializeField] protected float attackCD = 0.5f;
     [SerializeField] protected float attackDuration = 0.5f;
+    public bool isStunned = false;
 
     protected float attackTimer, attackDelay;
     [SerializeField] protected GameObject spawnPos;

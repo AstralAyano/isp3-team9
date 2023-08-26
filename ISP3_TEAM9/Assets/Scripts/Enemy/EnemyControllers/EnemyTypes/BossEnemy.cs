@@ -25,6 +25,11 @@ public class BossEnemy : EnemyController
 
     void Update()
     {
+        if (isStunned)
+        {
+            return;
+        }
+
         switch (currentState)
         {
             case State.IDLE:

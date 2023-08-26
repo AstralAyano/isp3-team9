@@ -9,6 +9,8 @@ public class EarthSplitterDamage : MonoBehaviour
 
     private float timer = 0f;
 
+    private EnemyController enemy;
+
     private void Update()
     {
         timer += Time.deltaTime;
@@ -23,7 +25,13 @@ public class EarthSplitterDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(other.gameObject.GetComponent<EnemyController>().gameObject.name);
-            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 5);
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(playerStats.chosenStats.attack * 2);
+            other.gameObject.GetComponent<EnemyController>().isStunned = true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        enemy.isStunned = false;
     }
 }

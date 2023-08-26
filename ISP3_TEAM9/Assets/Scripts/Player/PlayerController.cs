@@ -533,7 +533,7 @@ public class PlayerController : MonoBehaviour
                 skillDurationTimer = 10;
 
                 sr.color = Color.red;
-                playerStats.chosenStats.attack += 10;
+                playerStats.chosenStats.attack *= 130/100;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 PlaySound(11);
@@ -640,7 +640,7 @@ public class PlayerController : MonoBehaviour
                 playerStats.chosenStats.attackInterval += 0.3f;
                 break;
             case ScriptablePlayerStats.playerClass.Barbarian:
-                playerStats.chosenStats.attack -= 10;
+                playerStats.chosenStats.attack *= 100/130;
                 break;
             case ScriptablePlayerStats.playerClass.Paladin:
                 playerStats.chosenStats.defense *= 100/125;
