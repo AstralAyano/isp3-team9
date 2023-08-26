@@ -135,7 +135,7 @@ public class DialogueManager : MonoBehaviour
 
     public void TriggerDialogue(npcType triggeredNPC)
     {
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
         currLineNo = 0;
 
@@ -308,8 +308,8 @@ public class DialogueManager : MonoBehaviour
             }
             else if (currLineNo > maxLineNo)
             {
-                player.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-                player.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
                 autoButton.color = new Color32(255, 255, 255, 255);
                 currLineNo = 0;
