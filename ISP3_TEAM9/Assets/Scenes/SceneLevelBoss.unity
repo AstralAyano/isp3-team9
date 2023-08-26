@@ -11534,8 +11534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRoom: {fileID: 5159287887421815875, guid: 82e27e235208cf44b8942c8fce7ccff8, type: 3}
-  EndPointRoom: {fileID: 4646956272834488505, guid: 9cf054d6a62a81e47b53c70c5bcdc726, type: 3}
-  defaultRoom: {fileID: 4646956272834488505, guid: 9cf054d6a62a81e47b53c70c5bcdc726, type: 3}
+  EndPointRoom: {fileID: 3382718676830572858, guid: dc769f4ac30d126418610d01086f20b5, type: 3}
+  defaultRoom: {fileID: 3382718676830572858, guid: dc769f4ac30d126418610d01086f20b5, type: 3}
   graphTest: {fileID: 506356199}
   itemParent: {fileID: 354819254}
   cinemachineCamera: {fileID: 340503624}
@@ -11814,8 +11814,8 @@ MonoBehaviour:
   tilemapVisualizer: {fileID: 419124310}
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: ce3bc42ccb5cfd44ab363f046a102327, type: 2}
-  corridorLength: 1
-  corridorCount: 1
+  corridorLength: 2
+  corridorCount: 5
   roomPercent: 1
   showRoomGizmo: 0
   showCorridorsGizmo: 0

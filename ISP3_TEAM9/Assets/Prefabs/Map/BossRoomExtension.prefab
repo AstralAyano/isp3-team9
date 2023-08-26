@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7958877902622953190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7958877902622953185}
+  - component: {fileID: 3382718676830572858}
+  m_Layer: 0
+  m_Name: BossRoomExtension
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7958877902622953185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958877902622953190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.52883, y: 0.41938442, z: -60.39594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3382718676830572858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958877902622953190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbe1ca5d3545c74994c8f8619d45376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 6768884923863432182, guid: 62bf00b689987ee4a8ab45528a83d8f9, type: 3}
+  prefabPlacer: {fileID: 8966017215838158861, guid: d7f9ffacfc88b2043ada0f1a0bb34ba8, type: 3}
+  contentPlacementData:
+  - minQuantity: 1
+    maxQuantity: 5
+    contentPrefab: {fileID: 8572195380922931001, guid: e6678653cd4429f46946a1a16c9f154f, type: 3}
+    contentSize: {x: 1, y: 1}
+  itemData:
+  - minQuantity: 3
+    maxQuantity: 6
+    itemData: {fileID: 11400000, guid: 086f63cae08315e4d9e51664627a7aeb, type: 2}
