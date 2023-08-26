@@ -76,6 +76,8 @@ public class UIBookController : MonoBehaviour
     
     void Awake()
     {
+        UIController.floorNum = 1;
+
         int currResolutionIndex = 0;
         float currRefreshRate;
 
