@@ -5,10 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using Unity.VisualScripting;
-using UnityEditor.ShaderKeywordFilter;
-using System;
-using UnityEngine.Audio;
 
 public class UIBookController : MonoBehaviour
 {

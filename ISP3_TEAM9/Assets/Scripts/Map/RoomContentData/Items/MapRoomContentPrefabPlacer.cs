@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class MapRoomContentPrefabPlacer : MonoBehaviour
 {
@@ -101,16 +98,8 @@ public class MapRoomContentPrefabPlacer : MonoBehaviour
         if (prefab == null)
             return null;
         GameObject newItem;
-        if (Application.isPlaying)
-        {
-            newItem = Instantiate(prefab, placementPosition, Quaternion.identity);
-        }
-        else
-        {
-            newItem = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-            newItem.transform.position = placementPosition;
-            newItem.transform.rotation = Quaternion.identity;
-        }
+        
+        newItem = Instantiate(prefab, placementPosition, Quaternion.identity);
 
         return newItem;
     }
