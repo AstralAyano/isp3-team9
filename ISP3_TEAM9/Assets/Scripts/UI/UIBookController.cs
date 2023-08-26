@@ -435,8 +435,11 @@ public class UIBookController : MonoBehaviour
 
     void CheckLevel()
     {
+        Debug.Log("CheckLevel()");
         if (playerStats.chosenStats.level == 15)
         {
+            Debug.Log("Level 15");
+            Debug.Log(newArtefactSlots[0].tag);
             newArtefactSlots[0].tag = "ArtefactSlot";
             newArtefactSlots[0].GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         }

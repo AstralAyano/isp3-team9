@@ -49918,7 +49918,7 @@ MonoBehaviour:
   globalBrightness: {fileID: 1511749727}
   defaultResolution: 0
   newArtefactSlots:
-  - {fileID: 1560821905298526030}
+  - {fileID: 1560821905268764685}
   - {fileID: 1560821904394999758}
   - {fileID: 1560821904401192164}
   - {fileID: 1560821905429117338}
@@ -64909,19 +64909,19 @@ PrefabInstance:
     - target: {fileID: 7445095559244600987, guid: ba60289bbf328634fa9baad3d89e4955, type: 3}
       propertyPath: invSlots.Array.data[4]
       value: 
-      objectReference: {fileID: 1560821904441704448}
+      objectReference: {fileID: 1560821905268764683}
     - target: {fileID: 7445095559244600987, guid: ba60289bbf328634fa9baad3d89e4955, type: 3}
       propertyPath: invSlots.Array.data[5]
       value: 
-      objectReference: {fileID: 1146446257752958067}
+      objectReference: {fileID: 1560821904394999756}
     - target: {fileID: 7445095559244600987, guid: ba60289bbf328634fa9baad3d89e4955, type: 3}
       propertyPath: invSlots.Array.data[6]
       value: 
-      objectReference: {fileID: 5833299610264958619}
+      objectReference: {fileID: 1560821904401192162}
     - target: {fileID: 7445095559244600987, guid: ba60289bbf328634fa9baad3d89e4955, type: 3}
       propertyPath: invSlots.Array.data[7]
       value: 
-      objectReference: {fileID: 4556736504187931818}
+      objectReference: {fileID: 1560821905429117336}
     - target: {fileID: 7445095559244600987, guid: ba60289bbf328634fa9baad3d89e4955, type: 3}
       propertyPath: invSlots.Array.data[8]
       value: 

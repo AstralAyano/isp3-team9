@@ -23966,6 +23966,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1560821905512271899, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+      propertyPath: newArtefactSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1511749726}
     - target: {fileID: 1560821905522074329, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -24808,6 +24812,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+--- !u!1 &1511749726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1560821905268764685, guid: 8bc4b50dca9ff1c4dab0d36e15ecc158, type: 3}
+  m_PrefabInstance: {fileID: 1511749725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517724501
 GameObject:
   m_ObjectHideFlags: 0
@@ -39703,7 +39712,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.5704465
+      m_AnimationSpeed: 4.6718655
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -40602,7 +40611,7 @@ Tilemap:
       - {fileID: 1523548347, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 751355697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
       - {fileID: 1717843697, guid: 020f06360bf435b479013951ce3cbd35, type: 3}
-      m_AnimationSpeed: 4.61963
+      m_AnimationSpeed: 5.559672
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
