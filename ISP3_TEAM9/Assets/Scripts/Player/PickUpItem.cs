@@ -22,6 +22,8 @@ public class PickUpItem : MonoBehaviour
 
         for (int i = 0; i < itemsToPickup.Length; i++)
         {
+            invManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
+            
             if (other.gameObject.name.Contains(itemsName[i]) && invManager.AddItem(itemsToPickup[i]))
             {
                 if (invManager.lastItemAdded == itemsToPickup[7])

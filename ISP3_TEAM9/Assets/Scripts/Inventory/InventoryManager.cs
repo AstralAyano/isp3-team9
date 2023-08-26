@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     [Header("Objects")]
-    public InventorySlot[] invSlots;
+    public List<InventorySlot> invSlots = new List<InventorySlot>();
     public GameObject invItemPrefab;
+    public GameObject invSlotPrefab;
+
+    public GameObject slotContainer;
 
     public Item lastItemAdded;
-
-    //public SystemText sysText;
 
     int selectedSlot = -1;
 
@@ -42,7 +44,19 @@ public class InventoryManager : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        for (int i = 0; i < invSlots.Length; i++)
+        // Check if last slot is empty
+        int invSlotCount = invSlots.Count();
+        InventorySlot lastSlot = invSlots[invSlotCount - 2];
+
+        if (lastSlot.GetComponentInChildren<InventoryItem>() != null)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                AddSlot();
+            }
+        }
+
+        for (int i = 0; i < invSlots.Count; i++)
         {
             InventorySlot slot = invSlots[i];
             InventoryItem itemSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -56,7 +70,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < invSlots.Length; i++)
+        for (int i = 0; i < invSlots.Count; i++)
         {
             InventorySlot slot = invSlots[i];
 
@@ -74,6 +88,15 @@ public class InventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    void AddSlot()
+    {
+        GameObject newSlotGO = Instantiate(invSlotPrefab, slotContainer.transform);
+
+        InventorySlot newSlot = newSlotGO.GetComponentInChildren<InventorySlot>();
+
+        invSlots.Add(newSlot);
     }
 
     void SpawnNewItem(Item item, InventorySlot slot)
