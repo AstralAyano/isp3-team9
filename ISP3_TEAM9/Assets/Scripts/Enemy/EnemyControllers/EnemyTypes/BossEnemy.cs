@@ -88,7 +88,7 @@ public class BossEnemy : EnemyController
             if (attackToUse == 2)
             {
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack/10);
+                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack/20);
             }
 
             if (attackTimer > attackDuration)
