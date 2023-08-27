@@ -109,7 +109,7 @@ public class BossEnemy : EnemyController
 
     private void newRandomAttack()
     {
-        attackToUse = Random.Range(1, 3);
+        attackToUse = Random.Range(1, 4);
     }
 
     //Called in animation events

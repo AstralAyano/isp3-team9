@@ -112,7 +112,7 @@ public class SceneLoadPreferenceManager : MonoBehaviour
             }
             else
             {
-                audMix.SetFloat("bgmVol", 0);
+                audMix.SetFloat("bgmVol", -10);
             }
 
             // SFX VOLUME

@@ -51,13 +51,11 @@ public class EndController : MonoBehaviour
 
     void Awake()
     {
-        if (FindObjectOfType<GameTimer>() != null)
-        {
-            GameObject gameTimer = FindObjectOfType<GameTimer>().gameObject;
-
+        //if (FindObjectOfType<GameTimer>() != null)
+        //{
             timeSpent = (int)GameTimer.timer;
             GameTimer.startClicked = false;
-        }
+        //}
 
         floorsCleared = UIController.floorNum - 1;
 
