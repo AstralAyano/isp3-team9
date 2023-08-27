@@ -26,7 +26,7 @@ public class MapRoomContentGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.RightBracket))
         {
             foreach (var item in spawnedObjects)
             {
