@@ -16,7 +16,7 @@ MonoBehaviour:
   stackable: 0
   itemType: 1
   itemName: Defense Potion
-  itemDesc: Increase defense by 30%
+  itemDesc: Increase defense by 30% for 10 seconds
   classResonance: 
   health: 0
   attack: 0

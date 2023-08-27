@@ -16,7 +16,7 @@ MonoBehaviour:
   stackable: 0
   itemType: 1
   itemName: Sprint Potion
-  itemDesc: Increase move speed by 30%
+  itemDesc: Increase move speed by 30% for 15 seconds
   classResonance: 
   health: 0
   attack: 0

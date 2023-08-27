@@ -16,7 +16,7 @@ MonoBehaviour:
   stackable: 0
   itemType: 1
   itemName: Attack Potion
-  itemDesc: Increase attack by 30%
+  itemDesc: Increase attack by 30% for 8 seconds.
   classResonance: 
   health: 0
   attack: 0
