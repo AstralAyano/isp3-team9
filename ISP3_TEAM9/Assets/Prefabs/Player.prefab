@@ -950,6 +950,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6c9fb7bfac56e7a4d9e8525c7fc7a88d, type: 3}
   - {fileID: 8300000, guid: f5f4c60b92bd6bd41acca5fffb3125b0, type: 3}
   - {fileID: 8300000, guid: 7bfa483a89fdfd143958440159a6db84, type: 3}
+  - {fileID: 8300000, guid: 42f1fee532ede6148b59657c90eac142, type: 3}
   arrowPrefab: {fileID: 6675312301872718806, guid: 9bdfce63ac4fa17479ef8a002c3f4e02, type: 3}
   MagicArrowPrefab: {fileID: 2449804098602134871, guid: 437d5bd72a9e25449b3c09c1db8f83ad, type: 3}
   FireBallPrefab: {fileID: 236943370349818624, guid: 2d9a1f87d55d6b14db22746c7d8e1a34, type: 3}

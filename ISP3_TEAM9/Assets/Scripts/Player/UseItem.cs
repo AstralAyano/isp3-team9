@@ -31,6 +31,8 @@ public class UseItem : MonoBehaviour
         {
             if (consumable)
             {
+                GetComponent<PlayerController>().PlaySound(13);
+
                 if (usingItem.itemName.Contains("Small Health Potion") && !controller.IsHealthMax)
                 {
                     controller.GainHP(usingItem.HealPercent);
