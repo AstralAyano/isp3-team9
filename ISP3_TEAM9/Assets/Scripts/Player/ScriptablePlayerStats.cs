@@ -48,9 +48,9 @@ public class ScriptablePlayerStats : ScriptableObject
     public Dictionary<playerClass, playerStats> baseStats = new()
     {
         { playerClass.Barbarian, new playerStats{ health = 80, maxHealth = 80, attack = 25, defense = 3, attackInterval = 0.3f, moveSpeed = 4, projectileSpeed = 0, exp = 0, level = 1} },
-        { playerClass.Mage, new playerStats{ health = 60, maxHealth = 60, attack = 15, defense = 2, attackInterval = 1f, moveSpeed = 6, projectileSpeed = 4, exp = 0, level = 1} },
-        { playerClass.Archer, new playerStats{ health = 60, maxHealth = 60, attack = 10, defense = 2, attackInterval = 0.7f, moveSpeed = 7, projectileSpeed = 5, exp = 0, level = 1} },
-        { playerClass.Paladin, new playerStats{ health = 100, maxHealth = 100, attack = 7, defense = 5, attackInterval = 0.3f, moveSpeed = 5, projectileSpeed = 0, exp = 0, level = 1} },
+        { playerClass.Mage, new playerStats{ health = 60, maxHealth = 60, attack = 15, defense = 2, attackInterval = 1f, moveSpeed = 5, projectileSpeed = 4, exp = 0, level = 1} },
+        { playerClass.Archer, new playerStats{ health = 60, maxHealth = 60, attack = 10, defense = 2, attackInterval = 0.7f, moveSpeed = 6, projectileSpeed = 5, exp = 0, level = 1} },
+        { playerClass.Paladin, new playerStats{ health = 100, maxHealth = 100, attack = 7, defense = 5, attackInterval = 0.3f, moveSpeed = 4, projectileSpeed = 0, exp = 0, level = 1} },
         { playerClass.None, new playerStats { health = 1, maxHealth = 1, attack = 0, defense = 0, attackInterval = 1f, moveSpeed = 3, projectileSpeed = 0, exp = 0, level = 1} }
     };
 
