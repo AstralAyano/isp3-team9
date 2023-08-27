@@ -223,7 +223,7 @@ public class UIBookController : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    statsValueText[i].text = (Mathf.CeilToInt(playerStats.chosenBaseStats.maxHealth * playerStats.chosenStatMultipliers.health) + playerStats.chosenStatPoints.health).ToString();
+                    statsValueText[i].text = (Mathf.CeilToInt((playerStats.chosenBaseStats.maxHealth * playerStats.chosenStatMultipliers.health)/5) + playerStats.chosenStatPoints.health).ToString();
                     break;
                 case 1:
                     statsValueText[i].text = (playerStats.chosenBaseStats.defense + playerStats.chosenStatPoints.defense).ToString();
