@@ -20,13 +20,13 @@ MonoBehaviour:
     additionally increase attack by 2
   classResonance: barbarian
   health: 0
-  attack: 2
+  attack: 0
   defense: 0
   attackSpeed: 1
   moveSpeed: 0
   projectileSpeed: 0
   healthMulti: 0
-  attackMulti: 1
+  attackMulti: 2
   defenseMulti: 0
   attackSpeedMulti: 0
   moveSpeedMulti: 0

@@ -198,8 +198,7 @@ public class PlayerController : MonoBehaviour
                 if (IntervalOfHeal >= 0.5f)
                 {
                     PlaySound(2);
-                    int HealAmt = 5;
-                    playerStats.chosenStats.health += HealAmt;
+                    playerStats.chosenStats.health += playerStats.chosenStats.maxHealth * 10/100;
                     MaxHealCount++;
                     IntervalOfHeal = 0;
                     Debug.Log("Heal");
@@ -651,8 +650,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        playerStats.chosenStats.health -= (int)(dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense / 100), 0.1f, 1f));
-        Debug.Log("Damage taken: " + (int)(dmg * Mathf.Clamp((1 - playerStats.chosenStats.defense / 100), 0.1f, 1f)));
+        playerStats.chosenStats.health -= (int)Mathf.Clamp(dmg * (1 - playerStats.chosenStats.defense / 100), 1f, Mathf.Infinity);
+        Debug.Log("Damage taken: " + (int)Mathf.Clamp(dmg * (1 - playerStats.chosenStats.defense / 100), 1f, Mathf.Infinity));
         if (playerStats.chosenStats.health > 0)
         {
             currentState = playerStates.Hurt;

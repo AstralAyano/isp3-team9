@@ -5371,10 +5371,11 @@ MonoBehaviour:
   currentState: 0
   enemyPF: {fileID: 5125891212960096399}
   health: 100
-  expDropped: 15
+  expDropped: 20
   attack: 15
   attackCD: 1
-  attackDuration: 1.5
+  attackDuration: 1
+  isStunned: 0
   spawnPos: {fileID: 8485566968446511441}
   animToPlay: AnimEnemyDownIdle
   ladderPrefab: {fileID: 5859025879655792304, guid: eaa1c8b3597d70044abf33051512b8a7, type: 3}

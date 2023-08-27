@@ -16,7 +16,7 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Ancient Coin
-  itemDesc: Increase defense by 1.
+  itemDesc: 'Increase defense by 1. '
   classResonance: 
   health: 0
   attack: 0

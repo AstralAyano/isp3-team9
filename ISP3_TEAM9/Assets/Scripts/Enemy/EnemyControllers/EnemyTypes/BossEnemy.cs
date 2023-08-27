@@ -10,6 +10,7 @@ public class BossEnemy : EnemyController
 
     [SerializeField] private GameObject ladderPrefab;
     private bool isLadderSpawned = false;
+    private float spinCooldown = 0f;
 
     void Start()
     {
@@ -81,14 +82,16 @@ public class BossEnemy : EnemyController
         if (enemyPF.attackToResolve)
         {
             attackTimer += Time.deltaTime;
+            spinCooldown += Time.deltaTime;
 
             ar.Play("AnimEnemy" + enemyPF.animDir + "Attack" + attackToUse);
 
             //Second attack is spinning, so the player constantly takes damage
-            if (attackToUse == 2)
+            if ((attackToUse == 2) && (spinCooldown >= 0.1f))
             {
                 // call TakeDamage func in player using the child collider (PlayerHitbox)
-                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack/20);
+                triggerCollider.gameObject.GetComponentInParent<PlayerController>().PlayerTakeDamage(attack/10);
+                spinCooldown = 0f;
             }
 
             if (attackTimer > attackDuration)

@@ -16,16 +16,16 @@ MonoBehaviour:
   stackable: 0
   itemType: 0
   itemName: Fire Rune
-  itemDesc: Increase attack by 3 but decrease max health by 5. If the player is of
-    the mage class, this effect is doubled.
+  itemDesc: Increase attack by 3 but decrease health by 2. If the player is of the
+    mage class, this effect is doubled.
   classResonance: mage
-  health: -5
+  health: -2
   attack: 3
   defense: 0
   attackSpeed: 0
   moveSpeed: 0
   projectileSpeed: 0
-  healthMulti: 0
+  healthMulti: -2
   attackMulti: 3
   defenseMulti: 0
   attackSpeedMulti: 0
