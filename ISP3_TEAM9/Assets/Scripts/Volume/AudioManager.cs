@@ -27,17 +27,20 @@ public class AudioManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("masterVolume", masterSlider.value);
         audMix.SetFloat("masterVol", PlayerPrefs.GetFloat("masterVolume"));
+        PlayerPrefs.Save();
     }
 
     public void BGMVolumeApply()
     {
         PlayerPrefs.SetFloat("bgmVolume", bgmSlider.value);
         audMix.SetFloat("bgmVol", PlayerPrefs.GetFloat("bgmVolume"));
+        PlayerPrefs.Save();
     }
 
     public void SFXVolumeApply()
     {
         PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
         audMix.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVolume"));
+        PlayerPrefs.Save();
     }
 }

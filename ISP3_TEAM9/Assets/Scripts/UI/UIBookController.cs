@@ -712,6 +712,8 @@ public class UIBookController : MonoBehaviour
         PlayerPrefs.SetInt("resolutionIndex", resolutionIndex);
         PlayerPrefs.SetInt("resolutionWidth", resolution.width);
         PlayerPrefs.SetInt("resolutionHeight", resolution.height);
+        PlayerPrefs.Save();
+
         Debug.Log(PlayerPrefs.GetInt("resolutionIndex"));
 
         // Applies the resolution the player selected
@@ -723,6 +725,7 @@ public class UIBookController : MonoBehaviour
     {
         // Sets the fullscreen option based on the toggle boolean
         PlayerPrefs.SetString("fullscreen", fullscreenToggle.isOn.ToString());
+        PlayerPrefs.Save();
 
         Screen.fullScreen = fullscreenToggle.isOn;
         Debug.Log("Fullscreen Applied : " + fullscreenToggle.isOn);
@@ -734,6 +737,8 @@ public class UIBookController : MonoBehaviour
         if (globalBrightness.profile.TryGet<ColorAdjustments>(out ColorAdjustments colorAdjust))
         {
             PlayerPrefs.SetFloat("brightness", brightnessSlider.value);
+            PlayerPrefs.Save();
+            
             colorAdjust.postExposure.value = brightnessSlider.value;
 
             Debug.Log("Brightness Applied : " + PlayerPrefs.GetFloat("brightness"));
