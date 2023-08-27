@@ -16,7 +16,7 @@ public class BossEnemy : EnemyController
         GameObject tempGO = GameObject.Find("DungeonContentContainer");
         spawnPos.transform.parent = tempGO.transform;
         enemyPF.target = spawnPos.transform;
-        attackToUse = Random.Range(1, 3);
+        attackToUse = Random.Range(1, 4);
 
         health += (UIController.floorNum - 1) * 75;
         attack += (UIController.floorNum - 1) * 3;
